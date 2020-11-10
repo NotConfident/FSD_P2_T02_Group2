@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "LogIn";
+}
+
+<hr />
+<div>
+    <form method="post" action="~/Home/UserLogin">
+        <fieldset class="loginFieldset">
+            <legend>Login</legend>
+            <label for="txtLoginID">Username:</label>
+            <input name="txtLoginID"
+                   id="txtLoginID" required /><br />
+            <label for="txtPassword">Password:</label>
+            <input type="password" name="txtPassword"
+                   id="txtPassword" required />
+            <input type="submit"
+                   class="myButton" value="Login" />
+            <br />
+            <span style="color:red;">@TempData["Message"]</span>
+        </fieldset>
+    </form>
+</div>

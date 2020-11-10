@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "_CommonNavbar";
+    ViewData["Title"] = "Home";
+}
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
+</head>
+
+<body>
+    <div class="container text-center">
+        <form>
+            <h2 id="welcome_title">Hi<span style="color:white;"> ?name</span>, Welcome to Ukiyo!</h2>
+            <br />
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        document.getElementById("common_navbar").classList.remove("fixed-top");
+    </script>
+</body>
