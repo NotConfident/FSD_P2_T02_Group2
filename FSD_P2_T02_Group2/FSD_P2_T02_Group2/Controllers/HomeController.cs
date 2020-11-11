@@ -25,6 +25,11 @@ namespace FSD_P2_T2_Group2.Controllers
             return View();
         }
 
+        public IActionResult Livechat()
+        {
+            return Redirect("https://localhost:44323/");
+        }
+
         [HttpPost]
         public ActionResult UserLogin(IFormCollection formData)
         {
