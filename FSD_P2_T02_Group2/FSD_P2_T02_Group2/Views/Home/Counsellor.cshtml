@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "_CommonNavbar";
+    ViewData["Title"] = "Become a Counsellor";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Become a Counsellor</title>
+    <link href="~/css/cousellor.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="box-content">
+                <h1 style="text-align: center;">BECOME A COUNSELLOR</h1>
+                <br>
+                <form class="contact-form">
+                    <fieldset>
+                        <input style="text-align: left;" type="text" class="name" id="name" placeholder="Name">
+                    </fieldset>
+                    <fieldset>
+                        <input style="text-align: left;" type="email" class="email" id="email" placeholder="Email">
+                    </fieldset>
+                    <fieldset>
+                        <input style="text-align: left;" type="number" class="subject" id="subject" placeholder="Year of Experience">
+                    </fieldset>
+                    <fieldset>
+                        <div id="Certification">
+                            <p>Upload Certification</p>
+                            <input type="file" class="File" id="myFile" name="filename">
+                        </div>
+                        <br>
+                    </fieldset>
+                    <input type="submit" class="Submit" id="Submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
