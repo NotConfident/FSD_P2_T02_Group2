@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj": {}
+    "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj": {}
   },
   "projects": {
-    "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj": {
+    "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj",
+        "projectUniqueName": "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj",
         "projectName": "FSD_P2_T02_Group2",
-        "projectPath": "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj",
+        "projectPath": "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj",
         "packagesPath": "/Users/yongtenggg/.nuget/packages/",
-        "outputPath": "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/",
+        "outputPath": "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
