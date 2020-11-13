@@ -53,7 +53,7 @@ namespace FSD_P2_T2_Group2.Controllers
                 HttpContext.Session.SetString("Time", logintime.ToString());
 
                 // Redirect user to the "UserMain" view through an action 
-                return RedirectToAction("UserMain");
+                return RedirectToAction("UserMain", "User");
             }
             else
             {
@@ -80,6 +80,11 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         public IActionResult LogIn()
+        {
+            return View();
+        }
+
+        public IActionResult Register()
         {
             return View();
         }
