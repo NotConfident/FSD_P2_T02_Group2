@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_CommonNavbar";
+}
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
+    <style>
+        body {
+            background: white;
+            font-family: 'Josefin Sans';
+            font-size: 20px;
+        }
+
+        section {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        input {
+            border: 1px solid;
+            box-shadow: 3px 3px 4px #0F89AE;
+            border-color: #0F89AE;
+            padding: 10px;
+            text-align: center
+        }
+
+        .myButton {
+            background: #EFEFEF;
+            mix-blend-mode: normal;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 15px;
+            border: none;
+            width: 170px;
+            height: 50px;
+            font-size: 17px;
+            transition: background-color 0.15s linear;
+        }
+
+            .myButton:hover {
+                background-color: #4dbadb !important;
+            }
+    </style>
+</head>
+
+<body>
+    <div>
+        <section>
+            <form method="post" action="~/Home/Register">
+                <fieldset class="registerFieldset">
+                    <legend>Register</legend>
+                    <hr />
+                    <input name="txtLoginID"
+                           id="txtLoginID" required placeholder="Username" /><br /><br />
+                    <input type="password" name="txtPassword"
+                           id="txtPassword" required placeholder="Password" /><br /><br />
+                    <input type="email" name="txtEmail"
+                           id="txtEmail" required placeholder="Email" /><br /><br />
+                    <input name="txtPN"
+                           id="txtPN" required placeholder="Phone Number" /><br /><br />
+                    <br /><br />
+                    <input type="submit"
+                           class="myButton" value="Register" />
+                    <br />
+                    <span style="color:red;">@TempData["Message"]</span>
+                </fieldset>
+            </form>
+        </section>
+    </div>
+</body>
+
