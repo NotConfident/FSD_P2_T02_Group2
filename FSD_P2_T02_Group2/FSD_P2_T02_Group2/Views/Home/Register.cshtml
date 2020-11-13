@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["Title"] = "LogIn";
+﻿
+@{
+    ViewData["Title"] = "Register";
     Layout = "_CommonNavbar";
 }
 
@@ -25,7 +26,8 @@
             border: 1px solid;
             box-shadow: 3px 3px 4px #0F89AE;
             border-color: #0F89AE;
-            padding:10px;
+            padding: 10px;
+            text-align: center
         }
 
         .myButton {
@@ -49,18 +51,21 @@
 <body>
     <div>
         <section>
-            <form method="post" action="~/Home/UserLogin">
-                <fieldset class="loginFieldset">
-                    <legend>Login</legend>
+            <form method="post" action="~/Home/Register">
+                <fieldset class="registerFieldset">
+                    <legend>Register</legend>
                     <hr />
                     <input name="txtLoginID"
-                           id="txtLoginID" required placeholder="Username" style="text-align:center" /><br />
-                    <br />
+                           id="txtLoginID" required placeholder="Username" /><br /><br />
                     <input type="password" name="txtPassword"
-                           id="txtPassword" required placeholder="Password" style="text-align:center" />
+                           id="txtPassword" required placeholder="Password" /><br /><br />
+                    <input type="email" name="txtEmail"
+                           id="txtEmail" required placeholder="Email" /><br /><br />
+                    <input name="txtPN"
+                           id="txtPN" required placeholder="Phone Number" /><br /><br />
                     <br /><br />
                     <input type="submit"
-                           class="myButton" value="Login" />
+                           class="myButton" value="Register" />
                     <br />
                     <span style="color:red;">@TempData["Message"]</span>
                 </fieldset>
@@ -68,3 +73,4 @@
         </section>
     </div>
 </body>
+
