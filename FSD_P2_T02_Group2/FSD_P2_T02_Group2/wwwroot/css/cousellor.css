@@ -7,6 +7,8 @@
     position: relative;
     justify-content: center;
     margin: auto;
+    margin-bottom: 5%;
+    padding-left: 16%;
 }
 
 html, body, div, fieldset, form {
@@ -25,7 +27,7 @@ h1 {
     color: #555;
     font-family: "Josefin Sans";
     width: 200%;
-    margin-left: -40%;
+    margin-left: -30%;
 }
 
 #name, #email, #subject {
@@ -81,5 +83,5 @@ h1 {
     padding: 5px 15px;
     text-align: left;
     color: white;
-    width: 42%;
+    width: 46%;
 }
