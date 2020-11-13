@@ -25,9 +25,9 @@ namespace FSD_P2_T2_Group2.Controllers
             return View();
         }
 
-        public IActionResult Livechat()
+        public IActionResult ChatRoom()
         {
-            return Redirect("https://localhost:44323/");
+            return Redirect("https://www.google.com");
         }
 
         [HttpPost]
@@ -53,7 +53,7 @@ namespace FSD_P2_T2_Group2.Controllers
                 HttpContext.Session.SetString("Time", logintime.ToString());
 
                 // Redirect user to the "UserMain" view through an action 
-                return RedirectToAction("UserMain");
+                return RedirectToAction("ChatRoom", "Home");
             }
             else
             {

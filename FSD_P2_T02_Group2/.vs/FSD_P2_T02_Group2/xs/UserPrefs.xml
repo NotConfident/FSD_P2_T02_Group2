@@ -2,8 +2,9 @@
   <MonoDevelop.Ide.ItemProperties.FSD__P2__T02__Group2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="FSD_P2_T02_Group2/Controllers/HomeController.cs">
     <Files>
-      <File FileName="FSD_P2_T02_Group2/Views/Home/Index.cshtml" Line="23" Column="8" />
-      <File FileName="FSD_P2_T02_Group2/Controllers/HomeController.cs" Line="84" Column="46" />
+      <File FileName="FSD_P2_T02_Group2/Controllers/HomeController.cs" Line="37" Column="53" />
+      <File FileName="FSD_P2_T02_Group2/Views/Shared/_CommonNavbar.cshtml" Line="50" Column="83" />
+      <File FileName="FSD_P2_T02_Group2/Views/Shared/UserMenu.cshtml" Line="22" Column="79" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,6 +16,7 @@
               </Node>
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>
