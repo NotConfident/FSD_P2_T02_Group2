@@ -5,15 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using FSD_P2_T2_Group2.Models;
 using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
+using FSD_P2_T02_Group2.DAL;
+using FSD_P2_T2_Group2.Models;
 
 namespace FSD_P2_T2_Group2.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        public UserDAL userDAL = new UserDAL();
+
+        public readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -27,42 +30,39 @@ namespace FSD_P2_T2_Group2.Controllers
 
         public IActionResult ChatRoom()
         {
-            return Redirect("https://www.google.com");
+            return Redirect("http://52.86.100.250");
         }
 
         [HttpPost]
         public ActionResult UserLogin(IFormCollection formData)
         {
-            // Read inputs from textboxes
-            // Email address converted to lowercase 
-            string username = formData["txtLoginID"].ToString().ToLower();
+
+            string username = formData["txtLoginID"].ToString();
             string password = formData["txtPassword"].ToString();
 
-            // challenge create variable
-            DateTime logintime = DateTime.Now;
+            User user = userDAL.CheckLogin(username, password);
 
-            if (username == "username" && password == "password")
+            //DateTime logintime = DateTime.Now;
+
+            if (user != null)
             {
-                // store username in session with the key "LoginID"
-                HttpContext.Session.SetString("LoginID", username);
-                // Store user role "User" as a string in session with the key "Role"
+                HttpContext.Session.SetString("Username", username);
+                HttpContext.Session.SetString("Alias", user.Alias);
+
                 string role = "User";
                 HttpContext.Session.SetString("Role", role);
 
-                //store timing as a string with the key "Time"
-                HttpContext.Session.SetString("Time", logintime.ToString());
+                //HttpContext.Session.SetString("Time", logintime.ToString());
 
-                // Redirect user to the "UserMain" view through an action 
                 return RedirectToAction("ChatRoom", "Home");
             }
             else
             {
-                // Store an error message in TempData for display at the index view
                 TempData["Message"] = "Invaild Login Credentials!";
-                // Redirect user back to the index view through an action 
                 return RedirectToAction("Index");
             }
         }
+
         public ActionResult UserMain()
         {
             // Stop accessing the action if not logged in
@@ -79,7 +79,7 @@ namespace FSD_P2_T2_Group2.Controllers
 
         }
 
-        public IActionResult LogIn()
+        public IActionResult Login()
         {
             return View();
         }

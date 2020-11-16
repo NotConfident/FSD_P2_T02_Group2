@@ -2,9 +2,10 @@
   <MonoDevelop.Ide.ItemProperties.FSD__P2__T02__Group2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.Workbench ActiveDocument="FSD_P2_T02_Group2/Controllers/HomeController.cs">
     <Files>
-      <File FileName="FSD_P2_T02_Group2/Controllers/HomeController.cs" Line="37" Column="53" />
-      <File FileName="FSD_P2_T02_Group2/Views/Shared/_CommonNavbar.cshtml" />
-      <File FileName="FSD_P2_T02_Group2/Views/Shared/UserMenu.cshtml" />
+      <File FileName="FSD_P2_T02_Group2/Controllers/HomeController.cs" Line="43" Column="1" />
+      <File FileName="FSD_P2_T02_Group2/DAL/UserDAL.cs" Line="57" Column="54" />
+      <File FileName="FSD_P2_T02_Group2/Models/User.cs" Line="16" Column="46" />
+      <File FileName="FSD_P2_T02_Group2/appsettings.json" Line="14" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,9 +15,10 @@
               <Node name="Controllers" expanded="True">
                 <Node name="HomeController.cs" selected="True" />
               </Node>
+              <Node name="DAL" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="Home" expanded="True" />
-                <Node name="Shared" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -27,7 +29,10 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/Controllers/HomeController.cs" relfile="FSD_P2_T02_Group2/Controllers/HomeController.cs" line="43" column="1" />
+      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/DAL/UserDAL.cs" relfile="FSD_P2_T02_Group2/DAL/UserDAL.cs" line="64" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

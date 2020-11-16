@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "LogIn";
+    ViewData["Title"] = "Login";
     Layout = "_CommonNavbar";
 }
 
@@ -25,7 +25,7 @@
             border: 1px solid;
             box-shadow: 3px 3px 4px #0F89AE;
             border-color: #0F89AE;
-            padding:10px;
+            padding: 10px;
         }
 
         .myButton {
@@ -45,7 +45,12 @@
             }
     </style>
 </head>
-
+@if (TempData["Messgae"] != null)
+{
+    <div class="alert alert-danger alert-dismissable ">
+        <strong>@TempData["Messgae"]</strong>
+    </div>
+}
 <body>
     <div>
         <section>
@@ -62,7 +67,6 @@
                     <input type="submit"
                            class="myButton" value="Login" />
                     <br />
-                    <span style="color:red;">@TempData["Message"]</span>
                 </fieldset>
             </form>
         </section>
