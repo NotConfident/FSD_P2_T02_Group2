@@ -33,7 +33,6 @@ namespace FSD_P2_T02_Group2
             });
 
             services.AddControllersWithViews();
-            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +52,8 @@ namespace FSD_P2_T02_Group2
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

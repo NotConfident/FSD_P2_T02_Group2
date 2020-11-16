@@ -29,8 +29,13 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         public IActionResult ChatRoom()
+<<<<<<< HEAD
         {
             return Redirect("http://52.86.100.250");
+=======
+        {
+            return Redirect("https://www.google.com");
+>>>>>>> 7c105fc840bf79265d0df2407a1f4f8c3e96c60e
         }
 
         [HttpPost]
@@ -54,7 +59,12 @@ namespace FSD_P2_T2_Group2.Controllers
 
                 //HttpContext.Session.SetString("Time", logintime.ToString());
 
+<<<<<<< HEAD
                 return RedirectToAction("ChatRoom", "Home");
+=======
+                // Redirect user to the "UserMain" view through an action 
+                return RedirectToAction("UserMain");
+>>>>>>> 7c105fc840bf79265d0df2407a1f4f8c3e96c60e
             }
             else
             {
@@ -84,7 +94,17 @@ namespace FSD_P2_T2_Group2.Controllers
             return View();
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
         public IActionResult Counsellor()
+        {
+            return View();
+        }
+
+        public IActionResult Register()
         {
             return View();
         }
