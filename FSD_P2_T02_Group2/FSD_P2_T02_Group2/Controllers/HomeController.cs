@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -29,13 +30,10 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         public IActionResult ChatRoom()
-<<<<<<< HEAD
         {
-            return Redirect("http://52.86.100.250");
-=======
-        {
-            return Redirect("https://www.google.com");
->>>>>>> 7c105fc840bf79265d0df2407a1f4f8c3e96c60e
+            //return Redirect("http://54.147.90.7");
+            return Redirect("https://localhost:5001/");
+            //return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -44,7 +42,7 @@ namespace FSD_P2_T2_Group2.Controllers
 
             string username = formData["txtLoginID"].ToString();
             string password = formData["txtPassword"].ToString();
-
+            
             User user = userDAL.CheckLogin(username, password);
 
             //DateTime logintime = DateTime.Now;
@@ -53,24 +51,32 @@ namespace FSD_P2_T2_Group2.Controllers
             {
                 HttpContext.Session.SetString("Username", username);
                 HttpContext.Session.SetString("Alias", user.Alias);
-
+                
+                //localStorage.SetItem("Alias", user.Alias);
                 string role = "User";
                 HttpContext.Session.SetString("Role", role);
 
-                //HttpContext.Session.SetString("Time", logintime.ToString());
+                Set("Username", user.Alias, 60);
 
-<<<<<<< HEAD
                 return RedirectToAction("ChatRoom", "Home");
-=======
-                // Redirect user to the "UserMain" view through an action 
-                return RedirectToAction("UserMain");
->>>>>>> 7c105fc840bf79265d0df2407a1f4f8c3e96c60e
             }
             else
             {
                 TempData["Message"] = "Invaild Login Credentials!";
                 return RedirectToAction("Index");
             }
+        }
+
+        public void Set(string key, string value, int? expireTime)
+        {
+            CookieOptions option = new CookieOptions();
+
+            if (expireTime.HasValue)
+                option.Expires = DateTime.Now.AddMinutes(expireTime.Value);
+            else
+                option.Expires = DateTime.Now.AddMilliseconds(10);
+
+            Response.Cookies.Append(key, value, option);
         }
 
         public ActionResult UserMain()
@@ -100,11 +106,6 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         public IActionResult Counsellor()
-        {
-            return View();
-        }
-
-        public IActionResult Register()
         {
             return View();
         }
