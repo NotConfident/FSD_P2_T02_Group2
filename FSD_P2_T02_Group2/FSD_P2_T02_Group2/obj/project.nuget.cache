@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "er24kuDBmn1w1c80mmllqsBPsxJEBj2+MkEPHyMnBwO4dXkJRkJbkGXNs/UCWyoJhSECdh7Harf+J4PvvyU6vg==",
+  "dgSpecHash": "EMrR8hQxUjv6yO3hwMkhoJ6zCZ5Yp0kJr173LQMnffHLt8pKKi//HgU/TjUH+osS0KBbjFQOLxEutxT0TNXgMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ivan\\Desktop\\WeiJie Ang\\Year 2\\SEM 2\\FSD\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Ivan\\.nuget\\packages\\awssdk.cognitoidentity\\3.5.0.37\\awssdk.cognitoidentity.3.5.0.37.nupkg.sha512",
+    "C:\\Users\\Ivan\\.nuget\\packages\\awssdk.cognitoidentityprovider\\3.5.0.37\\awssdk.cognitoidentityprovider.3.5.0.37.nupkg.sha512",
+    "C:\\Users\\Ivan\\.nuget\\packages\\awssdk.core\\3.5.1.37\\awssdk.core.3.5.1.37.nupkg.sha512",
+    "C:\\Users\\Ivan\\.nuget\\packages\\awssdk.securitytoken\\3.5.1.17\\awssdk.securitytoken.3.5.1.17.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\blazored.localstorage\\3.0.0\\blazored.localstorage.3.0.0.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\google.api.commonprotos\\2.2.0\\google.api.commonprotos.2.2.0.nupkg.sha512",
     "C:\\Users\\Ivan\\.nuget\\packages\\google.api.gax\\3.2.0\\google.api.gax.3.2.0.nupkg.sha512",

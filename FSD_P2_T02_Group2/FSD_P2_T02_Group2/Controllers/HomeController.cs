@@ -10,11 +10,17 @@ using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
 using FSD_P2_T02_Group2.DAL;
 using FSD_P2_T2_Group2.Models;
+//using Amazon.CognitoIdentityProvider;
+//using Amazon.CognitoIdentityProvider.Model;
 
 namespace FSD_P2_T2_Group2.Controllers
 {
     public class HomeController : Controller
     {
+        //string poolID = "us-east-1_Vtm1usZsi";
+        //string appClientID = "6np915u728h5botst3fd7jsd21";
+        //static Amazon.RegionEndpoint Region = Amazon.RegionEndpoint.USEast1;
+
         public UserDAL userDAL = new UserDAL();
 
         public readonly ILogger<HomeController> _logger;
@@ -105,6 +111,28 @@ namespace FSD_P2_T2_Group2.Controllers
             return View();
         }
 
+        //static async Task SignUpUser(User user)
+        //{
+        //    AmazonCognitoIdentityProviderClient provider =
+        //        new AmazonCognitoIdentityProviderClient(new Amazon.Runtime.AnonymousAWSCredentials(), Region);
+
+        //    SignUpRequest signUpRequest = new SignUpRequest()
+        //    {
+        //        ClientId = appClientID,
+        //        Username = user.Username,
+        //        Password = user.Password
+        //    };
+        //    List<AttributeType> attributes = new List<AttributeType>()
+        //    {
+        //        new AttributeType(){Name = "email", Value = user.Email},
+        //        new AttributeType(){Name = "phone_number", Value = user.PhoneNo}
+        //    };
+
+        //    signUpRequest.UserAttributes = attributes;
+
+        //    SignUpResponse result = await provider.SignUpAsync(signUpRequest);
+        //}
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User user)
@@ -112,7 +140,7 @@ namespace FSD_P2_T2_Group2.Controllers
             if (ModelState.IsValid)
             {
                 userDAL.RegisterUser(user);
-                return RedirectToAction("Login");
+                return RedirectToAction("UserMain");
             }
             else
             {
@@ -121,6 +149,11 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         public IActionResult Counsellor()
+        {
+            return View();
+        }
+
+        public ActionResult AboutUs()
         {
             return View();
         }
