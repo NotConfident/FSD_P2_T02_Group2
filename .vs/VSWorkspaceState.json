@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\FSD_P2_T02_Group2",
+    "\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2",
+    "\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\Controllers",
+    "\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\DAL",
+    "\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\Views",
+    "\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\Views\\Home",
+    "\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\Views\\User"
+  ],
+  "SelectedNode": "\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\Controllers\\UserController.cs",
+  "PreviewInSolutionExplorer": false
+}
