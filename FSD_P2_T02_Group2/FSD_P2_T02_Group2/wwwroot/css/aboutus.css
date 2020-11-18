@@ -17,9 +17,12 @@ hr, .aboutUsTitle {
     width: 60%;
     margin-bottom: 2vh;
 }
+
 #subTitle {
     color: black;
     font-family: 'Josefin Sans', sans-serif;
+    text-align:center;
+    font-size:10vh;
 }
 
 .us {
