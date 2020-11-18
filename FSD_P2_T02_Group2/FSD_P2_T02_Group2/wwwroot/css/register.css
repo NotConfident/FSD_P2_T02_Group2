@@ -1,17 +1,23 @@
 ﻿body {
-    background: white;    
+    background: white;
     font-family: 'Josefin Sans';
 }
 
-section {
+#regForm {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-right: -50%;
+    /*margin-right: -50%;*/
     transform: translate(-50%, -50%);
     text-align: center;
 }
-
+.container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 5%;
+}
 input {
     border: 1px solid;
     box-shadow: 3px 3px 4px #A7BDE8;
@@ -41,6 +47,3 @@ input {
         background-color: #4dbadb !important;
     }
 
-/*.sky {
-    background-image: url("../images/sky.jpeg");
-}*/
