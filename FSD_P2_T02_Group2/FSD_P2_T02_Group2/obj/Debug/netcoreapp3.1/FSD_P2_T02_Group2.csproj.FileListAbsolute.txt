@@ -1050,3 +1050,7 @@ C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Gro
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.genruntimeconfig.cache
 >>>>>>> d1fbeb16c6520b4c66a35c342de4e3cc1b011c6a
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_UserNavbar.cshtml.g.cs
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentity.dll
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentityProvider.dll
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.SecurityToken.dll
