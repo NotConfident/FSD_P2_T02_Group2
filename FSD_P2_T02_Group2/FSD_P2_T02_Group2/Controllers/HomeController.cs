@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
 using FSD_P2_T02_Group2.DAL;
 using FSD_P2_T2_Group2.Models;
-using Amazon.CognitoIdentityProvider;
-using Amazon.CognitoIdentityProvider.Model;
+//using Amazon.CognitoIdentityProvider;
+//using Amazon.CognitoIdentityProvider.Model;
 
 namespace FSD_P2_T2_Group2.Controllers
 {
