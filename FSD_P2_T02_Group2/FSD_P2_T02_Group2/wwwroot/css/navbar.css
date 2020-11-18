@@ -1,13 +1,19 @@
-.navbar-nav>li {
+.navbar-nav > li {
     padding-left: 30px;
     padding-right: 30px;
 }
+
+.dropdown-menu {
+    min-width: 250px;
+}
+
 
 .navbar {
     font-family: 'Montserrat', sans-serif;
 }
 
-#ukiyo {
+
+#logo {
     padding-left: 10px;
     padding-right: 10px;
     height: 100%;
