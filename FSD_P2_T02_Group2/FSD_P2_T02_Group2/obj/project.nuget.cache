@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "hUGaUIgRUHiZUyIJdIxRmSyFgNS+ER8S57bCzB0hKuzFmwprgzG9HBtBesfcnMI//HZqsZk+bkOJOYrMwHaKZg==",
+  "dgSpecHash": "hTRhaRSHkBkZQR0q45V26u+zi6sgNJfHQ+/3c4XpRcCLqrRKFrZYWkOGPb5UW+mKSSh0O3W1uiCiyhYE3c5soA==",
   "success": true,
   "projectFilePath": "C:\\Users\\gekteng\\Downloads\\ngee ann\\year 2.2\\P2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gekteng\\.nuget\\packages\\awssdk.cognitoidentity\\3.5.0.37\\awssdk.cognitoidentity.3.5.0.37.nupkg.sha512",
+    "C:\\Users\\gekteng\\.nuget\\packages\\awssdk.cognitoidentityprovider\\3.5.0.37\\awssdk.cognitoidentityprovider.3.5.0.37.nupkg.sha512",
+    "C:\\Users\\gekteng\\.nuget\\packages\\awssdk.core\\3.5.1.37\\awssdk.core.3.5.1.37.nupkg.sha512",
+    "C:\\Users\\gekteng\\.nuget\\packages\\awssdk.securitytoken\\3.5.1.17\\awssdk.securitytoken.3.5.1.17.nupkg.sha512",
     "C:\\Users\\gekteng\\.nuget\\packages\\blazored.localstorage\\3.0.0\\blazored.localstorage.3.0.0.nupkg.sha512",
     "C:\\Users\\gekteng\\.nuget\\packages\\google.api.commonprotos\\2.2.0\\google.api.commonprotos.2.2.0.nupkg.sha512",
     "C:\\Users\\gekteng\\.nuget\\packages\\google.api.gax\\3.2.0\\google.api.gax.3.2.0.nupkg.sha512",
@@ -148,12 +152,5 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\gekteng\\Downloads\\ngee ann\\year 2.2\\P2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
