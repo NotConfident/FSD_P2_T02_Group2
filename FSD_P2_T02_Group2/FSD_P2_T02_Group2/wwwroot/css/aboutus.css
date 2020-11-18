@@ -1,9 +1,5 @@
-﻿.body {
-    font-family: "Josefin Sans Std";
-}
-
-.container {
-    justify-content: center;
+﻿.body, p{
+    font-family: "Josefin Sans";
 }
 
 html, body, div, fieldset, form {
@@ -19,26 +15,30 @@ hr, .aboutUsTitle {
     margin: 0 auto;
     height: 100%;
     width: 60%;
+    margin-bottom: 2vh;
 }
-h4 {
+#subTitle {
     color: black;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .us {
     background: #DDDFF4;
     align-content:center;
     margin: 0 auto;
-    height: 100%;
-    width: 60%;
+    width:65%;
+    height: auto;
     padding:2em;
     margin-bottom: 2em;
 }
 
 #ourPic {
     box-shadow: 8px 8px #A7BDE8;
-    width:50vh;
+    width:40vh;
+    min-width:10%;
     height:auto;
+    align-content:center;
+    margin: 2vh;
 }
 .box-content {
     color: #555;
