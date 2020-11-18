@@ -31,8 +31,8 @@ namespace FSD_P2_T2_Group2.Controllers
 
         public IActionResult ChatRoom()
         {
-            //return Redirect("http://54.147.90.7");
-            return Redirect("https://localhost:5001/");
+            return Redirect("http://54.147.90.7");
+            //return Redirect("https://localhost:5001/");
             //return RedirectToAction("Index", "Home");
         }
 
@@ -103,6 +103,21 @@ namespace FSD_P2_T2_Group2.Controllers
         public IActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                userDAL.RegisterUser(user);
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                return View(user);
+            }
         }
 
         public IActionResult Counsellor()

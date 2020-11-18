@@ -54,14 +54,35 @@ namespace FSD_P2_T02_Group2.DAL
                     user.Username = reader.GetString(1);
                     user.Password = reader.GetString(2);
                     user.Email = reader.GetString(3);
-                    user.First = reader.GetString(4);
-                    user.Last = reader.GetString(5);
-                    user.Alias = reader.GetString(6);
+                    user.Name = reader.GetString(4);
+                    user.Alias = reader.GetString(5);
+                    user.PhoneNo = reader.GetString(6);
                 }
             }
             reader.Close();
             conn.Close();
             return user;
+        }
+
+        public void RegisterUser(User user)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"INSERT INTO UserDetails(Username, Password, Email, Name, Alias, PhoneNo)
+                                VALUES(@username, @password, @email, @name, @alias, @phoneNo)";
+
+            cmd.Parameters.AddWithValue("@username", user.Username);
+            cmd.Parameters.AddWithValue("@password", user.Password);
+            cmd.Parameters.AddWithValue("@email", user.Email);
+            cmd.Parameters.AddWithValue("@name", user.Name);
+            cmd.Parameters.AddWithValue("@alias", user.Alias);
+            cmd.Parameters.AddWithValue("@phoneNo", user.PhoneNo);
+
+            conn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
         }
     }
 }
