@@ -17,7 +17,7 @@ namespace FSD_P2_T2_Group2.Models
         public string Password { get; set; }
 
         [Required]
-        [Compare("Password", ErrorMessage ="Passwords do not match!")]
+        [Compare("Password", ErrorMessage = "Passwords do not match!")]
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Phone number must be provided.")]
