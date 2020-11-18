@@ -1,28 +1,28 @@
 ﻿body {
     background: white;
-    font-family: 'Josefin Sans';
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 #regForm {
     position: absolute;
     top: 50%;
     left: 50%;
-    /*margin-right: -50%;*/
     transform: translate(-50%, -50%);
     text-align: center;
 }
-.container {
+.myRegister {
     display: flex;
     position: relative;
     justify-content: center;
     margin: auto;
     margin-bottom: 5%;
+    margin-top: 5%;
 }
 input {
     border: 1px solid;
     box-shadow: 3px 3px 4px #A7BDE8;
     border-color: #A7BDE8;
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     font-size: 20px;
 }
@@ -41,6 +41,7 @@ input {
     height: 50px;
     font-size: 17px;
     transition: background-color 0.15s linear;
+    margin-left:3%;
 }
 
     .myButton:hover {

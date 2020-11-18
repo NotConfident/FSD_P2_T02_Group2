@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gekteng\\Downloads\\ngee ann\\year 2.2\\P2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {}
+    "C:\\Users\\Ivan\\Desktop\\WeiJie Ang\\Year 2\\SEM 2\\FSD\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gekteng\\Downloads\\ngee ann\\year 2.2\\P2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {
+    "C:\\Users\\Ivan\\Desktop\\WeiJie Ang\\Year 2\\SEM 2\\FSD\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gekteng\\Downloads\\ngee ann\\year 2.2\\P2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
+        "projectUniqueName": "C:\\Users\\Ivan\\Desktop\\WeiJie Ang\\Year 2\\SEM 2\\FSD\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
         "projectName": "FSD_P2_T02_Group2",
-        "projectPath": "C:\\Users\\gekteng\\Downloads\\ngee ann\\year 2.2\\P2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
-        "packagesPath": "C:\\Users\\gekteng\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gekteng\\Downloads\\ngee ann\\year 2.2\\P2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\obj\\",
+        "projectPath": "C:\\Users\\Ivan\\Desktop\\WeiJie Ang\\Year 2\\SEM 2\\FSD\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
+        "packagesPath": "C:\\Users\\Ivan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ivan\\Desktop\\WeiJie Ang\\Year 2\\SEM 2\\FSD\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\gekteng\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ivan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -29,7 +26,6 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -41,7 +37,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Blazored.LocalStorage": {
               "target": "Package",
@@ -88,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

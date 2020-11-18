@@ -1,6 +1,6 @@
 ﻿body {
-    background: white;    
-    font-family: 'Josefin Sans';
+    background: white;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 section {
@@ -10,6 +10,15 @@ section {
     margin-right: -50%;
     transform: translate(-50%, -50%);
     text-align: center;
+}
+
+.mylogin {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 input {
@@ -35,12 +44,9 @@ input {
     height: 50px;
     font-size: 17px;
     transition: background-color 0.15s linear;
+    margin-left: 3%;
 }
 
     .myButton:hover {
         background-color: #4dbadb !important;
     }
-
-/*.sky {
-    background-image: url("../images/sky.jpeg");
-}*/
