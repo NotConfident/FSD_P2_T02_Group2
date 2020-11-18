@@ -28,7 +28,6 @@
             padding: 10px;
             text-align: center;
             font-size: 20px;
-            
         }
 
         ::placeholder {
@@ -54,24 +53,29 @@
 </head>
 
 <body>
-    <div id="regForm">
+    <div>
         <form asp-action="Register">
             <fieldset class="registerFieldset">
                 <legend style="padding-top:10vh">Register</legend>
                 <hr />
                 <input asp-for="Name" placeholder="Full Name" size="30" /><br /><br />
+                <span asp-validation-for="Name" class="text-danger"></span>
                 <input asp-for="Alias" placeholder="Alias" size="30" /><br /><br />
+                <span asp-validation-for="Alias" class="text-danger"></span>
                 <input asp-for="Username" placeholder="Username" size="30" /><br /><br />
-                <input asp-for="Password" placeholder="Password" size="30" type="password"/><br /><br />
-                <input asp-for="ConfirmPassword" placeholder="Confirm Password" size="30" type="password" />                
+                <span asp-validation-for="Username" class="text-danger"></span>
+                <input asp-for="Password" placeholder="Password" size="30" type="password" /><br /><br />
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <input asp-for="ConfirmPassword" placeholder="Confirm Password" size="30" type="password" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 <br /><br />
                 <input asp-for="Email" placeholder="Email" size="30" /><br /><br />
+                <span asp-validation-for="Email" class="text-danger"></span>
                 <input asp-for="PhoneNo" placeholder="Phone Number" size="30" /><br /><br />
+                <span asp-validation-for="PhoneNo" class="text-danger"></span>
                 <input type="submit"
                        class="myButton" value="Register" />
                 <br />
-                <span style="color:red;">@TempData["Message"]</span>
             </fieldset>
         </form>
     </div>

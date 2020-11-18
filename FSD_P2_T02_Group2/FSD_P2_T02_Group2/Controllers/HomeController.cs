@@ -112,7 +112,7 @@ namespace FSD_P2_T2_Group2.Controllers
             if (ModelState.IsValid)
             {
                 userDAL.RegisterUser(user);
-                return RedirectToAction("Login");
+                return RedirectToAction("UserMain");
             }
             else
             {
@@ -121,6 +121,11 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         public IActionResult Counsellor()
+        {
+            return View();
+        }
+
+        public ActionResult AboutUs()
         {
             return View();
         }

@@ -1,0 +1,65 @@
+﻿@{
+    Layout = "_CommonNavbar";
+    ViewData["Title"] = "About Us";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>About Us</title>
+    <link href="~/css/aboutUs.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <hr style="background-color:#0F89AE; width:10vh;"/>
+        <div class="row aboutUsTitle">
+            <h3 class="col">about us</h3>
+            <div class="col">We are Ukiyo, here for you.</div>
+        </div>
+        <div class="row us">
+            <img src="~/images/yongteng.jpeg" id="ourPic" />
+            <div class="col">
+                <h5>Tee Yong Teng</h5><br /><br />
+                <p>Role:</p>
+            </div>
+        </div>
+        <div class="row us">
+            <img src="~/images/joey.JPG" id="ourPic" />
+            <div class="col">
+                <h5>Aw Joey</h5><br /><br />
+                <p>Role:</p>
+            </div>
+        </div>
+        <div class="row us">
+            <img src="~/images/jax.jpg" id="ourPic" />
+            <div class="col">
+                <h5>Chua Jing Yi Jax</h5><br /><br />
+                <p>Role:</p>
+            </div>
+        </div>
+        <div class="row us">
+            <img src="~/images/weijie.jpeg" id="ourPic" />
+            <div class="col">
+                <h5>Ang Wei Jie</h5><br /><br />
+                <p>Role:</p>
+            </div>
+        </div>
+        <div class="row us">
+            <img src="~/images/joey.JPG" id="ourPic" />
+            <div class="col">
+                <h5>Aw Joey</h5><br /><br />
+                <p>Role:</p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("common_navbar").classList.remove("fixed-top");
+    </script>
+</body>
+</html>
