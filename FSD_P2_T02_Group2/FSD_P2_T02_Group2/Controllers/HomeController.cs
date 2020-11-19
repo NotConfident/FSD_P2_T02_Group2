@@ -79,7 +79,7 @@ namespace FSD_P2_T2_Group2.Controllers
             }
             else
             {
-                TempData["Message"] = "Invaild Login Credentials!";
+                TempData["Message"] = "Invalid Login Credentials!";
                 return RedirectToAction("Login");
             }
         }

@@ -819,8 +819,6 @@ C:/Users/gekteng/Downloads/ngee ann/year 2.2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Gro
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.pdb
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.genruntimeconfig.cache
-<<<<<<< HEAD
-=======
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.csprojAssemblyReference.cache
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.json
@@ -1147,7 +1145,6 @@ C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.genruntimeconfig.cache
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\RegisterOTP.cshtml.g.cs
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
->>>>>>> df85e8614ae6fe116880fd3b6322f42573a86a56
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.exe
@@ -1311,26 +1308,22 @@ C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Gro
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.pdb
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.genruntimeconfig.cache
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\Homepage.cshtml.g.cs
->>>>>>> d1fbeb16c6520b4c66a35c342de4e3cc1b011c6a
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_UserNavbar.cshtml.g.cs
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentity.dll
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentityProvider.dll
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.SecurityToken.dll
->>>>>>> 67124a1196e361fa06425b5507b43778bace5298
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentity.dll
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentityProvider.dll
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.SecurityToken.dll
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
->>>>>>> 1e51f7960af26740b90262857f50a2f7737213e5
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentity.dll
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentityProvider.dll
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.SecurityToken.dll
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\FAQ.cshtml.g.cs
->>>>>>> 1e63d0db6ad3567bb00f361422e78f5e89458f3c
 C:\Users\jaxch\Source\Repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\jaxch\Source\Repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\jaxch\Source\Repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -1502,3 +1495,8 @@ C:\Users\jaxch\Source\Repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group
 C:\Users\jaxch\Source\Repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.pdb
 C:\Users\jaxch\Source\Repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.genruntimeconfig.cache
 >>>>>>> c2affc4a55c939e93d4c1a6556aab38d947adaca
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\FAQ.cshtml.g.cs
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\ChatRoom.cshtml.g.cs
