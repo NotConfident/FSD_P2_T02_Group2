@@ -15,10 +15,9 @@
 
 
 #logo {
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 100%;
-    width: 33%;
+    padding-left: 16px;
+    height: auto;
+    width: 50%;
     display: inline-block;
 }
 

@@ -19,12 +19,14 @@
     <div class="mylogin">
         <div class="row">
             <div class="box-content">
-                <form class="contact-form">
+                <form class="contact-form" method="post">
                     <input name="txtLoginID"
                            id="txtLoginID" required placeholder="Username" style="text-align:center" size="30" /><br />
                     <br />
                     <input type="password" name="txtPassword"
                            id="txtPassword" required placeholder="Password" style="text-align:center" size="30" />
+                    <br /><br />
+                    <span style="color: #ffffff;margin:10px">@TempData["Message"]</span>
                     <br /><br />
                     <input type="submit"
                            class="myButton" value="Login" />
