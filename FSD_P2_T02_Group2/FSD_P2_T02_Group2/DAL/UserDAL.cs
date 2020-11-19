@@ -34,6 +34,31 @@ namespace FSD_P2_T02_Group2.DAL
             conn = new SqlConnection(strConn);
         }
 
+        public List<User> GetUsers()
+        {
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT * FROM UserDetails";
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<User> userList = new List<User>();
+            while (reader.Read())
+            {
+                userList.Add(
+                new User
+                {
+                    Username = reader.GetString(1),
+                    Password = reader.GetString(2),
+                    Email = reader.GetString(3),
+                    Name = reader.GetString(4),
+                    Alias = reader.GetString(5),
+                    PhoneNo = reader.GetString(6)
+                });
+            }
+            reader.Close();
+            conn.Close();
+            return userList;
+        }
+
         public User CheckLogin(string username, string password)
         {
             User user = new User();

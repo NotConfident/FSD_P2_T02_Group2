@@ -43,34 +43,37 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserLogin(IFormCollection formData)
+        public ActionResult Login(IFormCollection formData)
         {
 
             string username = formData["txtLoginID"].ToString();
             string password = formData["txtPassword"].ToString();
-            
-            User user = userDAL.CheckLogin(username, password);
+
+            List<User> userList = userDAL.GetUsers();
 
             //DateTime logintime = DateTime.Now;
 
-            if (user != null)
+            foreach (User u in userList)
             {
-                HttpContext.Session.SetString("Username", username);
-                HttpContext.Session.SetString("Alias", user.Alias);
-                
-                //localStorage.SetItem("Alias", user.Alias);
-                string role = "User";
-                HttpContext.Session.SetString("Role", role);
+                if (username == u.Username && password == u.Password)
+                {
 
-                Set("Username", user.Alias, 60);
+                    HttpContext.Session.SetString("Username", username);
+                    HttpContext.Session.SetString("Alias", u.Alias);
 
-                return RedirectToAction("ChatRoom", "Home");
+                    //localStorage.SetItem("Alias", user.Alias);
+                    HttpContext.Session.SetString("Role", "User");
+
+                    Set("Username", u.Alias, 60);
+
+                    return RedirectToAction("ChatRoom", "Home");
+                }
+                else
+                {
+                    TempData["Message"] = "Invalid Login Credentials!";
+                }
             }
-            else
-            {
-                TempData["Message"] = "Invaild Login Credentials!";
-                return RedirectToAction("Index");
-            }
+            return RedirectToAction("Login");
         }
 
         public void Set(string key, string value, int? expireTime)
