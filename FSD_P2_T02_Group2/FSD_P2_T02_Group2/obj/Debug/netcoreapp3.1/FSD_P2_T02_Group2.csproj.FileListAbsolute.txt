@@ -1062,3 +1062,9 @@ C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_G
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.SecurityToken.dll
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
 >>>>>>> 1e51f7960af26740b90262857f50a2f7737213e5
+C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentity.dll
+C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentityProvider.dll
+C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
+C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.SecurityToken.dll
+C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
+C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\FAQ.cshtml.g.cs
