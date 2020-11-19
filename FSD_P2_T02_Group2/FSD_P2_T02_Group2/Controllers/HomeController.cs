@@ -22,6 +22,7 @@ namespace FSD_P2_T2_Group2.Controllers
     {
 
         public UserDAL userDAL = new UserDAL();
+        public AdminDAL adminDAL = new AdminDAL();
 
         public readonly ILogger<HomeController> _logger;
 
@@ -53,7 +54,7 @@ namespace FSD_P2_T2_Group2.Controllers
 
             //DateTime logintime = DateTime.Now;
 
-            if (user != null)
+            if (user.Username != null)
             {
                 HttpContext.Session.SetString("Username", username);
                 HttpContext.Session.SetString("Alias", user.Alias);
@@ -71,6 +72,10 @@ namespace FSD_P2_T2_Group2.Controllers
                 //resp.Headers.AddCookies(new System.Net.Http.Headers.CookieHeaderValue[] { cookie })
 
                 return RedirectToAction("ChatRoom", "User");
+            }
+            else if(username == "Admin" && password == "admin")
+            {
+                return RedirectToAction("Index", "Admin");
             }
             else
             {
