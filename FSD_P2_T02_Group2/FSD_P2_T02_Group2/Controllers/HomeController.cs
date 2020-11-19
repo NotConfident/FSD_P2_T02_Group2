@@ -20,6 +20,7 @@ namespace FSD_P2_T2_Group2.Controllers
 {
     public class HomeController : Controller
     {
+
         public UserDAL userDAL = new UserDAL();
 
         public readonly ILogger<HomeController> _logger;
@@ -42,12 +43,12 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         [HttpPost]
-        public ActionResult UserLogin(IFormCollection formData)
+        public ActionResult Login(IFormCollection formData)
         {
 
             string username = formData["txtLoginID"].ToString();
             string password = formData["txtPassword"].ToString();
-            
+
             User user = userDAL.CheckLogin(username, password);
 
             //DateTime logintime = DateTime.Now;
@@ -74,7 +75,7 @@ namespace FSD_P2_T2_Group2.Controllers
             else
             {
                 TempData["Message"] = "Invaild Login Credentials!";
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
             }
         }
 
@@ -120,6 +121,28 @@ namespace FSD_P2_T2_Group2.Controllers
             return View();
         }
 
+        //static async Task SignUpUser(User user)
+        //{
+        //    AmazonCognitoIdentityProviderClient provider =
+        //        new AmazonCognitoIdentityProviderClient(new Amazon.Runtime.AnonymousAWSCredentials(), Region);
+
+        //    SignUpRequest signUpRequest = new SignUpRequest()
+        //    {
+        //        ClientId = appClientID,
+        //        Username = user.Username,
+        //        Password = user.Password
+        //    };
+        //    List<AttributeType> attributes = new List<AttributeType>()
+        //    {
+        //        new AttributeType(){Name = "email", Value = user.Email},
+        //        new AttributeType(){Name = "phone_number", Value = user.PhoneNo}
+        //    };
+
+        //    signUpRequest.UserAttributes = attributes;
+
+        //    SignUpResponse result = await provider.SignUpAsync(signUpRequest);
+        //}
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User user)
@@ -127,7 +150,7 @@ namespace FSD_P2_T2_Group2.Controllers
             if (ModelState.IsValid)
             {
                 userDAL.RegisterUser(user);
-                return RedirectToAction("Login");
+                return RedirectToAction("UserMain");
             }
             else
             {
@@ -136,6 +159,11 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         public IActionResult Counsellor()
+        {
+            return View();
+        }
+
+        public ActionResult AboutUs()
         {
             return View();
         }

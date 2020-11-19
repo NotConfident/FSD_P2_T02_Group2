@@ -1,0 +1,61 @@
+﻿body {
+    font-family: 'Josefin Sans', sans-serif;
+    color:white;
+}
+
+section {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.mylogin {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 11.5%;
+}
+
+.signUpNow {
+    text-align: center;
+    color:#DDDFF4;
+}
+
+a{
+    color:beige;
+}
+a:hover{
+    color:black;
+}
+input {
+    border: 1px solid;
+    box-shadow: 3px 3px 4px #A7BDE8;
+    border-color: #A7BDE8;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+::placeholder {
+    color: #bcbfc4;
+}
+
+.myButton {
+    background: #EFEFEF;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: none;
+    width: 325px;
+    height: 50px;
+    font-size: 17px;
+    transition: background-color 0.15s linear;
+}
+
+    .myButton:hover {
+        background-color: #C8D8F8 !important;
+    }

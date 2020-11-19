@@ -1,40 +1,40 @@
 ﻿@using Microsoft.AspNetCore.Http;
 @{
     Layout = "_CommonNavbar";
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Home Page";
 }
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
+    <title>Home Page</title>
+    <link href="~/css/homepage.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;338&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <script type="text/javascript">document.getElementById("common_navbar").classList.remove("fixed-top");</script>
-
-    <div class="hero-image container-fluid">
-        <div class="row hero-row">
-            <div class="col vcenter">
-                <div class="page-title">
-                    <h1>Live Chat</h1>
-                </div>
+    <div class="w3-content" style="max-width:1100px">
+        <div class="w3-row w3-padding-64" id="menu">
+            <div class="w3-col l6 w3-padding-large">
+                <h1 style="font-family: 'Josefin Sans', sans-serif;">UKIYO</h1>
+                <p>JAPANESE</p>
+                <hr />
+                <p>LITERALLY</p>
+                <p>"THE FLOATING WORLD"</p>
+                <p>LIVING IN THE MOMENT</p>
+                <p>DETACHED FROM</p>
+                <p>THE BOTHERS OF LIFE</p>
             </div>
-            @if (Context.Session.GetString("Role") == "User")
-            {
-                <partial name="~/View/User/ChatRoom.cshtml" />
-            }
-            else
-            {
-                <form>
-                    <h2 id="welcome_title">Hi<span style="color:white;"> ?name</span>, Welcome to Ukiyo!</h2>
-                    <br />
-                </form>
-            }
+
+            <div class="w3-col l6 w3-padding-64">
+                <img src="~/images/homepage.png" style="width:100%">
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 </html>
-

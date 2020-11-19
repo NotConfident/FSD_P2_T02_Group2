@@ -1,5 +1,5 @@
 ﻿.body {
-    font-family: "Josefin Sans";
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .container {
@@ -7,31 +7,25 @@
     position: relative;
     justify-content: center;
     margin: auto;
-    margin-bottom: 5%;
-    padding-left: 16%;
+    padding-left: 12.5%;
+    margin-top: 5%;
+    margin-bottom: 3%;
 }
 
-html, body, div, fieldset, form {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-}
-
-h1 {
-    color: black;
-    font-family: 'Courier New', Courier, monospace;
+h3 {
+    color:black;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .box-content {
     color: #555;
-    font-family: "Josefin Sans";
+    font-family: 'Josefin Sans', sans-serif;
     width: 200%;
-    margin-left: -30%;
+    margin-left: -20%;
 }
 
 #name, #email, #subject {
-    font-size: 160%;
+    font-size: 120%;
     vertical-align: baseline;
     *vertical-align: middle;
     width: 1000%;
@@ -43,7 +37,7 @@ h1 {
 }
 
 #name::-webkit-input-placeholder, #email::-webkit-input-placeholder, #subject::-webkit-input-placeholder {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .contact-form input.button {
@@ -78,10 +72,10 @@ h1 {
 }
 
 #Certification {
-    font-size: 150%;
+    font-size: 140%;
     background-color: #A7BDE8;
     padding: 5px 15px;
     text-align: left;
     color: white;
-    width: 46%;
+    width: 70%;
 }

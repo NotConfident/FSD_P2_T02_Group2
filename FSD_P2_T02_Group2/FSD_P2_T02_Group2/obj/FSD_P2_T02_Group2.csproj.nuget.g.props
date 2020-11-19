@@ -20,5 +20,9 @@
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">/Users/yongtenggg/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.1</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">/Users/yongtenggg/.nuget/packages/awssdk.core/3.5.1.37</PkgAWSSDK_Core>
+    <PkgAWSSDK_SecurityToken Condition=" '$(PkgAWSSDK_SecurityToken)' == '' ">/Users/yongtenggg/.nuget/packages/awssdk.securitytoken/3.5.1.17</PkgAWSSDK_SecurityToken>
+    <PkgAWSSDK_CognitoIdentityProvider Condition=" '$(PkgAWSSDK_CognitoIdentityProvider)' == '' ">/Users/yongtenggg/.nuget/packages/awssdk.cognitoidentityprovider/3.5.0.37</PkgAWSSDK_CognitoIdentityProvider>
+    <PkgAWSSDK_CognitoIdentity Condition=" '$(PkgAWSSDK_CognitoIdentity)' == '' ">/Users/yongtenggg/.nuget/packages/awssdk.cognitoidentity/3.5.0.37</PkgAWSSDK_CognitoIdentity>
   </PropertyGroup>
 </Project>

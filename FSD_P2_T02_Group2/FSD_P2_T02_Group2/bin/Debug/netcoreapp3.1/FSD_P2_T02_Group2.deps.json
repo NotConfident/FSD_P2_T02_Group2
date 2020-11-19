@@ -24,6 +24,9 @@
     ".NETCoreApp,Version=v3.1": {
       "FSD_P2_T02_Group2/1.0.0": {
         "dependencies": {
+          "AWSSDK.CognitoIdentity": "3.5.0.37",
+          "AWSSDK.CognitoIdentityProvider": "3.5.0.37",
+          "AWSSDK.Core": "3.5.1.37",
           "Blazored.LocalStorage": "3.0.0",
           "Google.Cloud.Firestore": "2.2.0",
           "Microsoft.AspNet.WebApi.Client": "5.2.7",
@@ -307,6 +310,60 @@
         },
         "compile": {
           "FSD_P2_T02_Group2.dll": {}
+        }
+      },
+      "AWSSDK.CognitoIdentity/3.5.0.37": {
+        "dependencies": {
+          "AWSSDK.Core": "3.5.1.37",
+          "AWSSDK.SecurityToken": "3.5.1.17"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.CognitoIdentity.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.5.0.37"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.CognitoIdentity.dll": {}
+        }
+      },
+      "AWSSDK.CognitoIdentityProvider/3.5.0.37": {
+        "dependencies": {
+          "AWSSDK.Core": "3.5.1.37"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.CognitoIdentityProvider.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.5.0.37"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.CognitoIdentityProvider.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.5.1.37": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.5.1.37"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {}
+        }
+      },
+      "AWSSDK.SecurityToken/3.5.1.17": {
+        "dependencies": {
+          "AWSSDK.Core": "3.5.1.37"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.SecurityToken.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.5.1.17"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.SecurityToken.dll": {}
         }
       },
       "Blazored.LocalStorage/3.0.0": {
@@ -3702,6 +3759,34 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AWSSDK.CognitoIdentity/3.5.0.37": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6QjMhEhuX2/dz5wZF6slXM3cZDzz1DnlELEsU+yKpmg9q8vI+7S5QIbz4RFN5OWYMyYYzRh3UujUX4C/46daGA==",
+      "path": "awssdk.cognitoidentity/3.5.0.37",
+      "hashPath": "awssdk.cognitoidentity.3.5.0.37.nupkg.sha512"
+    },
+    "AWSSDK.CognitoIdentityProvider/3.5.0.37": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-X4KVJNJO1kHPzE2dMz/fRUXYygoUOxhMTGzVUmJeOuqtKuCTnYy3Keix3frVUnZybigXn1wmFlMuJ2RIWGjLSg==",
+      "path": "awssdk.cognitoidentityprovider/3.5.0.37",
+      "hashPath": "awssdk.cognitoidentityprovider.3.5.0.37.nupkg.sha512"
+    },
+    "AWSSDK.Core/3.5.1.37": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nzF3MaZNOc4y1+RMWlzWd4N7FxwEqyccyl+rr6svIfz4ljsFMd20r1ecguYN7Jd4x5L2QoTj/QSF6UD5CH8Cmw==",
+      "path": "awssdk.core/3.5.1.37",
+      "hashPath": "awssdk.core.3.5.1.37.nupkg.sha512"
+    },
+    "AWSSDK.SecurityToken/3.5.1.17": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RMo1o/19CHqYG5hgcQ0FkQ/J1a/Y7MqcsIrZ1jhMRNbnSLrzU+TehUdIgFm7ns1KjEqWw5a9HVgJ8HaanP7p4g==",
+      "path": "awssdk.securitytoken/3.5.1.17",
+      "hashPath": "awssdk.securitytoken.3.5.1.17.nupkg.sha512"
     },
     "Blazored.LocalStorage/3.0.0": {
       "type": "package",

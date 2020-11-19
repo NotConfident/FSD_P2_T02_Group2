@@ -1,0 +1,82 @@
+﻿.body, p{
+    font-family: "Josefin Sans";
+}
+
+html, body, div, fieldset, form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+}
+
+/*hr, .aboutUsTitle {
+    text-align: center;
+    align-content: center;
+    margin: 0 auto;
+    height: 100%;
+    width: 60%;
+    margin-bottom: 2vh;
+}*/
+
+hr {
+    background-color: #0F89AE;
+    width: 7vh;
+    height: 0.4vh;
+    margin-bottom: 2vh;
+    margin-right: 70%;
+}
+
+h5 {
+    font-family: 'Josefin Sans',sans-serif;
+}
+
+#subTitle {
+    color: black;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: left;
+    letter-spacing: 0.7em;
+    margin-left: 20%;
+    margin-bottom: 2%;
+}
+
+.us {
+    background: #DDDFF4;
+    align-content:center;
+    margin: 0 auto;
+    width:65%;
+    height: auto;
+    padding:2em;
+    margin-bottom: 2em;
+}
+
+#ourPic {
+    box-shadow: 8px 8px #A7BDE8;
+    width:40vh;
+    min-width:10%;
+    height:auto;
+    align-content:center;
+    margin: 2vh;
+}
+.box-content {
+    color: #555;
+    font-family: "Josefin Sans";
+    width: 200%;
+    margin-left: -30%;
+}
+
+#name, #email, #subject {
+    font-size: 160%;
+    vertical-align: baseline;
+    *vertical-align: middle;
+    width: 1000%;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    max-width: 100%;
+    background: #F5F5F5;
+    border: 0px solid #dddddd;
+}
+
+#name::-webkit-input-placeholder, #email::-webkit-input-placeholder, #subject::-webkit-input-placeholder {
+    font-family: 'Courier New', Courier, monospace;
+}
+

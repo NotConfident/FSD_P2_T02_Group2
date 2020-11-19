@@ -1,16 +1,22 @@
-.navbar-nav>li {
+.navbar-nav > li {
     padding-left: 30px;
     padding-right: 30px;
 }
 
-.navbar {
-    font-family: 'Montserrat', sans-serif;
+.dropdown-menu {
+    min-width: 250px;
 }
 
-#ukiyo {
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 100%;
+
+.navbar {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color:white;
+}
+
+
+#logo {
+    padding-left: 16px;
+    height: auto;
     width: 50%;
     display: inline-block;
 }

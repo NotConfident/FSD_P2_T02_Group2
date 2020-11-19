@@ -3,78 +3,40 @@
     Layout = "_CommonNavbar";
 }
 
+<!DOCTYPE html>
 <head>
-    <link href='https://fonts.googleapis.com/css?family=Josefin Sans' rel='stylesheet'>
-    <style>
-        body {
-            background: white;
-            font-family: 'Josefin Sans';
-            font-size: 20px;
-        }
-
-        section {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-right: -50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        input {
-            border: 1px solid;
-            box-shadow: 3px 3px 4px #A7BDE8;
-            border-color: #A7BDE8;
-            padding: 10px;
-            text-align: center;
-            font-size: 20px;
-        }
-
-        ::placeholder {
-            color: #bcbfc4;
-        }
-
-        .myButton {
-            background: #EFEFEF;
-            mix-blend-mode: normal;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 15px;
-            border: none;
-            width: 300px;
-            height: 50px;
-            font-size: 17px;
-            transition: background-color 0.15s linear;
-        }
-
-            .myButton:hover {
-                background-color: #4dbadb !important;
-            }
-    </style>
+    <title>Login</title>
+    <link href="~/css/login.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
 </head>
-@if (TempData["Messgae"] != null)
-{
-    <div class="alert alert-danger alert-dismissable ">
-        <strong>@TempData["Messgae"]</strong>
-    </div>
-}
-<body>
-    <div>
-        <section>
-            <form method="post" action="~/Home/UserLogin">
-                <fieldset class="loginFieldset">
-                    <legend>Login</legend>
-                    <hr />
+
+<body style="background: url(../images/cloud.jpg);background-repeat:no-repeat; background-size:cover">
+    <div class="mylogin">
+        <div class="row">
+            <div class="box-content">
+                <form class="contact-form" method="post">
                     <input name="txtLoginID"
                            id="txtLoginID" required placeholder="Username" style="text-align:center" size="30" /><br />
                     <br />
                     <input type="password" name="txtPassword"
-                           id="txtPassword" required placeholder="Password" style="text-align:center" size="30"/>
+                           id="txtPassword" required placeholder="Password" style="text-align:center" size="30" />
+                    <br /><br />
+                    <span style="color: #ffffff;margin:10px">@TempData["Message"]</span>
                     <br /><br />
                     <input type="submit"
                            class="myButton" value="Login" />
-                    <br />
-                </fieldset>
-            </form>
-        </section>
+                    <br /><br />
+                    <p class="signUpNow">Don't have an account? <a href="~/Home/Register">Sign up now!</a></p>
+                </form>
+            </div>
+        </div>
     </div>
+    <script type="text/javascript">
+        document.getElementById("common_navbar").classList.remove("fixed-top");
+    </script>
 </body>

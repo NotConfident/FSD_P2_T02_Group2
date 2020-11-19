@@ -5,14 +5,15 @@
     <title>@ViewData["Title"]</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="~/images/ukiyo_Logo.JPG">
+    <link rel="icon" type="image/x-icon" href="~/images/ukiyoLogo.svg">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="~/css/navbar.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
         </button>
 
         <div class="navbar-header align">
-            <img id="ukiyo" src="@Url.Content("~/images/ukiyo_Logo.png")">
+            <img id="ukiyo" src="@Url.Content("~/images/ukiyoLogo.svg")">
         </div>
 
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
@@ -59,8 +60,6 @@
 
         </div>
     </nav>
-
-    <div style="margin-top:56px;"></div>
     @RenderBody()
 
 </body>

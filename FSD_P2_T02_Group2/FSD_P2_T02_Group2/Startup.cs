@@ -44,7 +44,7 @@ namespace FSD_P2_T02_Group2
 
 
             services.AddControllersWithViews();
-
+            //services.AddCognitoIdentity();
 
         }
 
@@ -71,6 +71,8 @@ namespace FSD_P2_T02_Group2
             app.UseAuthorization();
 
             app.UseSession();
+
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
