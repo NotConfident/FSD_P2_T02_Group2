@@ -10,18 +10,19 @@ using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
 using FSD_P2_T02_Group2.DAL;
 using FSD_P2_T2_Group2.Models;
-//using Amazon.CognitoIdentityProvider;
-//using Amazon.CognitoIdentityProvider.Model;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Microsoft.Net.Http.Headers;
+using System.Text;
 
 namespace FSD_P2_T2_Group2.Controllers
 {
     public class HomeController : Controller
     {
-        //string poolID = "us-east-1_Vtm1usZsi";
-        //string appClientID = "6np915u728h5botst3fd7jsd21";
-        //static Amazon.RegionEndpoint Region = Amazon.RegionEndpoint.USEast1;
 
         public UserDAL userDAL = new UserDAL();
+        public AdminDAL adminDAL = new AdminDAL();
 
         public readonly ILogger<HomeController> _logger;
 
@@ -37,8 +38,8 @@ namespace FSD_P2_T2_Group2.Controllers
 
         public IActionResult ChatRoom()
         {
-            return Redirect("http://54.147.90.7");
-            //return Redirect("https://localhost:5001/");
+            //return Redirect("http://54.147.90.7");
+            return RedirectToAction("ChatRoom", "User");
             //return RedirectToAction("Index", "Home");
         }
 
@@ -49,41 +50,52 @@ namespace FSD_P2_T2_Group2.Controllers
             string username = formData["txtLoginID"].ToString();
             string password = formData["txtPassword"].ToString();
 
-            List<User> userList = userDAL.GetUsers();
+            User user = userDAL.CheckLogin(username, password);
 
             //DateTime logintime = DateTime.Now;
 
-            foreach (User u in userList)
+            if (user.Username != null)
             {
-                if (username == u.Username && password == u.Password)
-                {
+                HttpContext.Session.SetString("Username", username);
+                HttpContext.Session.SetString("Alias", user.Alias);
+                
+                string role = "User";
+                HttpContext.Session.SetString("Role", role);
+                Set("Username", user.Alias, 60);
 
-                    HttpContext.Session.SetString("Username", username);
-                    HttpContext.Session.SetString("Alias", u.Alias);
+                //var resp = new HttpResponseMessage();
 
-                    //localStorage.SetItem("Alias", user.Alias);
-                    HttpContext.Session.SetString("Role", "User");
+                //var cookie = new System.Net.Http.Headers.CookieHeaderValue("Username", user.Alias);
 
-                    Set("Username", u.Alias, 60);
+                //cookie.Expires = DateTimeOffset.Now.AddDays(1);
+                //cookie.Path = "/";
+                //resp.Headers.AddCookies(new System.Net.Http.Headers.CookieHeaderValue[] { cookie })
 
-                    return RedirectToAction("ChatRoom", "Home");
-                }
-                else
-                {
-                    TempData["Message"] = "Invalid Login Credentials!";
-                }
+                return RedirectToAction("UserMain", "User");
             }
-            return RedirectToAction("Login");
+            else if(username == "Admin" && password == "admin")
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                TempData["Message"] = "Invaild Login Credentials!";
+                return RedirectToAction("Login");
+            }
         }
 
         public void Set(string key, string value, int? expireTime)
         {
-            CookieOptions option = new CookieOptions();
+            CookieOptions option = new CookieOptions { IsEssential = true };
 
             if (expireTime.HasValue)
+            {
                 option.Expires = DateTime.Now.AddMinutes(expireTime.Value);
+            }
             else
+            {
                 option.Expires = DateTime.Now.AddMilliseconds(10);
+            }
 
             Response.Cookies.Append(key, value, option);
         }
@@ -157,6 +169,11 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         public ActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public ActionResult FAQ()
         {
             return View();
         }

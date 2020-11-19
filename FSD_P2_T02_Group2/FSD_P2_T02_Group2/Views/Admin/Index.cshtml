@@ -1,0 +1,121 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using FSD_P2_T02_Group2.DAL;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="~/vendor/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" href="~/vendor/bootstrap/bootstrap.min.css" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+
+</html>
+@*@if (Context.Session.GetString("Role") != null)
+    {
+        @if (TempData["Login"] != null)
+        {
+            <div class="alert alert-success alert-dismissable">
+                <strong>@TempData["Login"]</strong>
+            </div>
+        }
+        if (Context.Session.GetString("Role") == "Administrator")
+        {
+            <partial name="~/Views/Shared/_AdminNavBar.cshtml" model="@Model" />
+        }
+    }
+    else
+    {
+        <partial name="~/Views/Home/Index.cshtml" model="@Model" />
+    }*@
+@{
+    UserDAL user = new UserDAL();
+}
+<div class="content" style="padding-top:10%;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <i class="large material-icons">person</i>
+                        Total No. Of Users
+                        <h3 class="card-title">
+                            @user.CountUser()
+                        </h3>
+                        <small>Users</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="large material-icons">person_add</i>
+                            No. Of New Signups
+                        </div>
+                        <h3 class="card-title">34,245</h3>
+                        <small>Users</small>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">date_range</i> Last 24 Hours
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="curve_chart" style="width: 1500px; height: 700px;"></div>
+    </div>
+</div>
+
+<script type="text/javascript">google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Value'],
+            ['2019-01', 2726368],
+            ['2019-02', 2522088],
+            ['2019-03', 2787741],
+            ['2019-04', 2700598],
+            ['2019-05', 2691345],
+            ['2019-06', 2834087],
+            ['2019-07', 2853267],
+            ['2019-08', 2911530],
+            ['2019-09', 2682724],
+            ['2019-10', 2801262],
+            ['2019-11', 2855679],
+            ['2019-12', 3132828],
+            ['2020-01', 2855679],
+            ['2020-02', 2893053]
+            //['2020-03',  1000],
+            //['2020-04',  1000],
+            //['2020-05',  1000],
+            //['2020-06',  1000],
+            //['2020-07',  1000],
+            //['2020-08',  1000],
+            //['2020-09',  1000],
+            //['2020-10',  1000],
+            //['2020-11',  1000],
+            //['2020-12',  1000],
+        ]);
+
+        var options = {
+            title: 'No. of Users',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }</script>
