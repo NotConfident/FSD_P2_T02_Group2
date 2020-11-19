@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http;
+@{
     Layout = "_CommonNavbar";
     ViewData["Title"] = "Home Page";
 }
@@ -34,8 +35,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        document.getElementById("common_navbar").classList.remove("fixed-top");
-    </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 </body>
 </html>

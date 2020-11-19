@@ -29,19 +29,20 @@ namespace FSD_P2_T02_Group2
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 //options.CheckConsentNeeded = context => true;
-                options.CheckConsentNeeded = context => false;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.CheckConsentNeeded = context => true;
+            });
+
+            // Add the session service
+            services.AddSession(options =>
+            {
+                options.Cookie.IsEssential = true;
+                options.Cookie.SameSite = SameSiteMode.Unspecified;
             });
 
             // Add a default in-memory implementation of distributed cache
             services.AddDistributedMemoryCache();
-            // Add the session service
-            services.AddSession(options =>
-            {
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
-            
+
+
             services.AddControllersWithViews();
             //services.AddCognitoIdentity();
 

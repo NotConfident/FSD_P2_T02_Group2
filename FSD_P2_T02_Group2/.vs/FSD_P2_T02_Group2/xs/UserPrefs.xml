@@ -1,25 +1,22 @@
 ﻿<Properties StartupConfiguration="{4C14988B-6C47-42EE-805E-DA313C1D0B13}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.ItemProperties.FSD__P2__T02__Group2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FSD_P2_T02_Group2/Controllers/HomeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FSD_P2_T02_Group2/DAL/UserDAL.cs">
     <Files>
-      <File FileName="FSD_P2_T02_Group2/Controllers/HomeController.cs" Line="39" Column="13" />
-      <File FileName="FSD_P2_T02_Group2/DAL/UserDAL.cs" Line="64" Column="1" />
-      <File FileName="FSD_P2_T02_Group2/Models/User.cs" />
-      <File FileName="FSD_P2_T02_Group2/appsettings.json" />
-      <File FileName="FSD_P2_T02_Group2/Startup.cs" />
+      <File FileName="FSD_P2_T02_Group2/Controllers/HomeController.cs" Line="54" Column="49" />
+      <File FileName="FSD_P2_T02_Group2/DAL/UserDAL.cs" Line="1" Column="1" />
+      <File FileName="FSD_P2_T02_Group2/Views/Home/Index.cshtml" />
+      <File FileName="FSD_P2_T02_Group2/Controllers/AdminController.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FSD_P2_T02_Group2" expanded="True">
             <Node name="FSD_P2_T02_Group2" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="HomeController.cs" selected="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="DAL" expanded="True">
+                <Node name="UserDAL.cs" selected="True" />
               </Node>
-              <Node name="DAL" expanded="True" />
-              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="Home" expanded="True" />
                 <Node name="User" expanded="True" />
               </Node>
             </Node>
@@ -31,9 +28,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/DAL/UserDAL.cs" relfile="FSD_P2_T02_Group2/DAL/UserDAL.cs" line="64" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
