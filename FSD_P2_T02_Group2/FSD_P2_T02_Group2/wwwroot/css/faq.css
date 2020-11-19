@@ -7,6 +7,7 @@
 }
 
 
+
 #subTitle {
     color: black;
     font-family: 'Josefin Sans', sans-serif;
@@ -14,4 +15,47 @@
     letter-spacing: 0.7em;
 /*    margin-left: 17%;
     margin-bottom: 2%;*/
+}
+
+a.button {
+    display: inline-flex;
+    padding: 4.5em 5em 0.7em 2em;
+    border: 0.01em solid black;
+    margin: 0 0.7em 0.7em 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    font-family: 'Josefin Sans',sans-serif;
+    color: black;
+    text-align: center;
+    transition: all 0.15s;
+}
+
+    a.button:hover {
+        color: #0F89AE;
+        border-color: #0F89AE;
+    }
+
+    a.button:active {
+        color: white;
+        border-color: black;
+        background-color: #0F89AE;
+    }
+
+@media all and (max-width:30em) {
+     a.button {
+        display: block;
+        margin: 1em;
+    }
+}
+
+#buttons {
+    justify-content:center;
+    
+}
+p {
+    font-family: 'Josefin Sans',sans-serif;
+    color: #026c8c;
+    text-align: center;
 }

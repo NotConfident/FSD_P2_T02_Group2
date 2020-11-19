@@ -71,7 +71,7 @@ namespace FSD_P2_T2_Group2.Controllers
                 //cookie.Path = "/";
                 //resp.Headers.AddCookies(new System.Net.Http.Headers.CookieHeaderValue[] { cookie })
 
-                return RedirectToAction("ChatRoom", "User");
+                return RedirectToAction("UserMain", "User");
             }
             else if(username == "Admin" && password == "admin")
             {
@@ -169,6 +169,11 @@ namespace FSD_P2_T2_Group2.Controllers
         }
 
         public ActionResult AboutUs()
+        {
+            return View();
+        }
+
+        public ActionResult FAQ()
         {
             return View();
         }
