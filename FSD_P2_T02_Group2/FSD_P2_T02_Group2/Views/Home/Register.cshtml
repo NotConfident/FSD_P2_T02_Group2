@@ -20,24 +20,21 @@
     <div class="myRegister" style="background: url(../images/cloud.jpg);background-repeat:no-repeat; background-size:cover">
         <div class="row">
             <div class="box-content">
-                <form>
-                    <input asp-for="Name" placeholder="Full Name" size="30" /><br /><br />
-                    <span asp-validation-for="Name"></span>
-                    <input asp-for="Alias" placeholder="Alias" size="30" /><br /><br />
-                    <span asp-validation-for="Alias"></span>
-                    <input asp-for="Username" placeholder="Username" size="30" /><br /><br />
-                    <span asp-validation-for="Username"></span>
-                    <input asp-for="Password" placeholder="Password" size="30" type="password" /><br /><br />
-                    <span asp-validation-for="Password"></span>
+                <form method="post">
+                    <input asp-for="Name" placeholder="Full Name" size="30" />
+                    <span asp-validation-for="Name" style="color:white"></span><br /><br />
+                    <input asp-for="Alias" placeholder="Alias" size="30" />
+                    <span asp-validation-for="Alias" style="color:white"></span><br /><br />
+                    <input asp-for="Username" placeholder="Username" size="30" />
+                    <span asp-validation-for="Username" style="color:white"></span><br /><br />
+                    <input asp-for="Password" placeholder="Password" size="30" type="password" />
+                    <span asp-validation-for="Password" style="color:white"></span><br /><br />
                     <input asp-for="ConfirmPassword" placeholder="Confirm Password" size="30" type="password" />
-                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                    <br /><br />
-                    <input asp-for="Email" placeholder="Email" size="30" /><br /><br />
-                    <span asp-validation-for="Email"></span>
-                    <div id="firebaseui-auth-container">
-                        <input asp-for="PhoneNo" placeholder="Phone Number" size="30" />
-                        <span asp-validation-for="PhoneNo"></span>
-                    </div><br /><br />
+                    <span asp-validation-for="ConfirmPassword"style="color:white"></span><br /><br />
+                    <input asp-for="Email" placeholder="Email" size="30" />
+                    <span asp-validation-for="Email"style="color:white"></span><br /><br />
+                    <input asp-for="PhoneNo" placeholder="Phone Number" size="30" />
+                    <span asp-validation-for="PhoneNo" style="color:white"></span><br /><br />
                     <input type="submit" class="myButton" value="Register" />
                 </form>
             </div>

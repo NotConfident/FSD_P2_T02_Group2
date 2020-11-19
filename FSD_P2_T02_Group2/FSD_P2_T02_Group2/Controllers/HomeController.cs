@@ -155,7 +155,7 @@ namespace FSD_P2_T2_Group2.Controllers
             if (ModelState.IsValid)
             {
                 userDAL.RegisterUser(user);
-                return RedirectToAction("UserMain");
+                return RedirectToAction("Login");
             }
             else
             {
