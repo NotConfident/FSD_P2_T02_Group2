@@ -13,5 +13,10 @@ namespace FSD_P2_T02_Group2.Controllers
             return View();
         }
 
+        public IActionResult ChatRoom()
+        {
+            return View();
+        }
+
     }
 }

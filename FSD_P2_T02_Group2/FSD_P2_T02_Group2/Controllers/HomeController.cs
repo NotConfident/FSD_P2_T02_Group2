@@ -10,6 +10,11 @@ using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
 using FSD_P2_T02_Group2.DAL;
 using FSD_P2_T2_Group2.Models;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Microsoft.Net.Http.Headers;
+using System.Text;
 
 namespace FSD_P2_T2_Group2.Controllers
 {
@@ -31,8 +36,8 @@ namespace FSD_P2_T2_Group2.Controllers
 
         public IActionResult ChatRoom()
         {
-            return Redirect("http://54.147.90.7");
-            //return Redirect("https://localhost:5001/");
+            //return Redirect("http://54.147.90.7");
+            return RedirectToAction("ChatRoom", "User");
             //return RedirectToAction("Index", "Home");
         }
 
@@ -52,13 +57,19 @@ namespace FSD_P2_T2_Group2.Controllers
                 HttpContext.Session.SetString("Username", username);
                 HttpContext.Session.SetString("Alias", user.Alias);
                 
-                //localStorage.SetItem("Alias", user.Alias);
                 string role = "User";
                 HttpContext.Session.SetString("Role", role);
-
                 Set("Username", user.Alias, 60);
 
-                return RedirectToAction("ChatRoom", "Home");
+                //var resp = new HttpResponseMessage();
+
+                //var cookie = new System.Net.Http.Headers.CookieHeaderValue("Username", user.Alias);
+
+                //cookie.Expires = DateTimeOffset.Now.AddDays(1);
+                //cookie.Path = "/";
+                //resp.Headers.AddCookies(new System.Net.Http.Headers.CookieHeaderValue[] { cookie })
+
+                return RedirectToAction("ChatRoom", "User");
             }
             else
             {
@@ -69,12 +80,16 @@ namespace FSD_P2_T2_Group2.Controllers
 
         public void Set(string key, string value, int? expireTime)
         {
-            CookieOptions option = new CookieOptions();
+            CookieOptions option = new CookieOptions { IsEssential = true };
 
             if (expireTime.HasValue)
+            {
                 option.Expires = DateTime.Now.AddMinutes(expireTime.Value);
+            }
             else
+            {
                 option.Expires = DateTime.Now.AddMilliseconds(10);
+            }
 
             Response.Cookies.Append(key, value, option);
         }
