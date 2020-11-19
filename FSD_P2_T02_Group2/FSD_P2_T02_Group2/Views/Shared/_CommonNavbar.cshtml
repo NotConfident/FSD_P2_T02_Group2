@@ -13,44 +13,57 @@
     <link rel="stylesheet" href="~/css/navbar.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
+    <style>
+        .usernav{
+            transition:background-color linear;
+            
+        }
+            .usernav a {
+                transition: color linear;
+                padding-top: 40px;
+            }
+        .usernav a{
+            color:black;
+        }
+        .usernav:hover, .usernav a:hover{
+            color:white;
+            background-color:#0F89AE;
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav id="common_navbar" class="navbar navbar-expand-md navbar-light navbar-inverse fixed-top">
+    <nav id="common_navbar" class="navbar navbar-expand-md col-lg-12" style="padding-top:0px;margin:auto">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style="background-color: #0F89AE; margin-top: 10px;">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="navbar-header align">
             <img id="logo" src="@Url.Content("~/images/ukiyoLogo.svg")">
-        </div>
+
 
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
 
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="~/Home/Index" style="color:black">Home</a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item usernav">
+                    <a class="nav-link" href="~/Home/Index" >Home</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="~/Home/AboutUs" style="color:black">About Us</a>
+                <li class="nav-item usernav">
+                    <a class="nav-link" href="~/Home/AboutUs">About Us</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="~/Home/FAQ" style="color:black">FAQ</a>
+                <li class="nav-item usernav">
+                    <a class="nav-link" href="~/Home/FAQ">FAQ</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="~/Home/Counsellor" style="color:black">Become a Counsellor</a>
+                <li class="nav-item usernav">
+                    <a class="nav-link" href="~/Home/Counsellor">Become a Counsellor</a>
                 </li>
-
+                <li class="nav-item usernav"><a class="nav-link" href="~/Home/LogIn">Log In</a></li>
             </ul>
 
-            <ul class="nav navbar-nav ml-auto">
-                <li><a href="~/Home/LogIn" style="color:#5F6169">Log In</a></li>
-            </ul>
 
         </div>
     </nav>
