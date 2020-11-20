@@ -7593,19 +7593,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\joeya\\.nuget\\packages\\": {}
+    "C:\\Users\\jaxch\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\joeya\\Downloads\\NP_ICT\\FSD & P2\\FSD_P2_T02_Grp2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
+      "projectUniqueName": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
       "projectName": "FSD_P2_T02_Group2",
-      "projectPath": "C:\\Users\\joeya\\Downloads\\NP_ICT\\FSD & P2\\FSD_P2_T02_Grp2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
-      "packagesPath": "C:\\Users\\joeya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\joeya\\Downloads\\NP_ICT\\FSD & P2\\FSD_P2_T02_Grp2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\obj\\",
+      "projectPath": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
+      "packagesPath": "C:\\Users\\jaxch\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\joeya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jaxch\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

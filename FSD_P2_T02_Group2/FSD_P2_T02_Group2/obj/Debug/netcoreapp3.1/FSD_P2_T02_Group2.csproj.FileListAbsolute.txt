@@ -1505,3 +1505,4 @@ C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_G
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\FAQ.cshtml.g.cs
 C:\Users\Ivan\Desktop\WeiJie Ang\Year 2\SEM 2\FSD\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\ChatRoom.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
