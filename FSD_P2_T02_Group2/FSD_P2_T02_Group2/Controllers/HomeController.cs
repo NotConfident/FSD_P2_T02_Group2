@@ -9,14 +9,13 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
 using FSD_P2_T02_Group2.DAL;
-using FSD_P2_T2_Group2.Models;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Net.Http.Headers;
 using System.Text;
 
-namespace FSD_P2_T2_Group2.Controllers
+namespace FSD_P2_T02_Group2.Controllers
 {
     public class HomeController : Controller
     {
@@ -39,7 +38,7 @@ namespace FSD_P2_T2_Group2.Controllers
         public IActionResult ChatRoom()
         {
             //return Redirect("http://54.147.90.7");
-            return RedirectToAction("ChatRoom", "User");
+            return RedirectToAction("UserMain", "User");
             //return RedirectToAction("Index", "Home");
         }
 
@@ -51,7 +50,6 @@ namespace FSD_P2_T2_Group2.Controllers
             string password = formData["txtPassword"].ToString();
 
             User user = userDAL.CheckLogin(username, password);
-
             //DateTime logintime = DateTime.Now;
 
             if (user.Username != null)
@@ -62,7 +60,7 @@ namespace FSD_P2_T2_Group2.Controllers
                 string role = "User";
                 HttpContext.Session.SetString("Role", role);
                 Set("Username", user.Alias, 60);
-
+                
                 //var resp = new HttpResponseMessage();
 
                 //var cookie = new System.Net.Http.Headers.CookieHeaderValue("Username", user.Alias);

@@ -4,14 +4,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
 using FSD_P2_T02_Group2.DAL;
-using FSD_P2_T2_Group2.Models;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using System.IO;
+using Google.Cloud.Firestore;
 
 namespace FSD_P2_T02_Group2.DAL
 {
@@ -65,8 +64,8 @@ namespace FSD_P2_T02_Group2.DAL
 
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT * FROM UserDetails
-                                WHERE Username = @username AND PASSWORD = @password";
+            cmd.CommandText = @"SELECT * FROM [User]
+                                WHERE Username = @username AND Password = @password";
 
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@password", password);
@@ -77,11 +76,11 @@ namespace FSD_P2_T02_Group2.DAL
                 while (reader.Read())
                 {
                     user.Username = reader.GetString(1);
-                    user.Password = reader.GetString(2);
-                    user.Email = reader.GetString(3);
-                    user.Name = reader.GetString(4);
-                    user.Alias = reader.GetString(5);
-                    user.PhoneNo = reader.GetString(6);
+                    user.Password = reader.GetString(4);
+                    user.Email = reader.GetString(5);
+                    user.Name = reader.GetString(2);
+                    user.Alias = reader.GetString(3);
+                    user.PhoneNo = reader.GetString(7);
                 }
             }
             reader.Close();
@@ -129,6 +128,31 @@ namespace FSD_P2_T02_Group2.DAL
             reader.Close();
             conn.Close();
             return count.Value;
+        }
+
+        public async Task sendMessage(User user, ChatMessage message)
+        {
+            string datetime = DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt");
+
+            var firestoreDb = CreateFirestoreDb();
+            //CollectionReference collection = firestoreDb.Collection("Badminton");
+            //DocumentReference document = await collection.AddAsync(new { Alias = user.Alias, CreatedAt = datetime, Message = message.Message });
+
+            await firestoreDb.Collection("Badminton").AddAsync(new ChatMessage
+            {
+                Alias = user.Alias,
+                Message = message.Message,
+                CreatedAt = datetime
+            });
+        }
+
+        private FirestoreDb CreateFirestoreDb()
+        { 
+            var projectName = "fir-chat-ukiyo";
+            var authFilePath = "/Users/yongtenggg/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            return FirestoreDb.Create(projectName);
         }
     }
 }
