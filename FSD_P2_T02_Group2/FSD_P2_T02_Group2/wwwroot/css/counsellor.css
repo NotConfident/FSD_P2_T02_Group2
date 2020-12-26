@@ -16,7 +16,7 @@ hr {
     width: 7vh;
     height: 0.4vh;
     margin-bottom: 4vh;
-    margin-right: 40%;
+    margin-left: 40%;
 }
 
 #subTitle {
@@ -39,7 +39,7 @@ h3 {
     margin-left: -20%;
 }
 
-#name, #email, #subject {
+#name, #email, #number {
     font-size: 120%;
     vertical-align: baseline;
     *vertical-align: middle;
@@ -51,7 +51,7 @@ h3 {
     border: 0px solid #dddddd;
 }
 
-#name::-webkit-input-placeholder, #email::-webkit-input-placeholder, #subject::-webkit-input-placeholder {
+#name::-webkit-input-placeholder, #email::-webkit-input-placeholder, #number::-webkit-input-placeholder {
     font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -88,7 +88,7 @@ h3 {
     font-size: 140%;
     background-color: #A7BDE8;
     padding: 5px 15px;
-    text-align: center;
+    text-align: left;
     color: white;
 }
 input {
@@ -119,3 +119,8 @@ input {
     .myButton:hover {
         background-color: #C8D8F8 !important;
     }
+
+p{
+    margin-bottom:0;
+    margin-top:0;
+}

@@ -15,10 +15,10 @@
 
 
 #logo {
-    padding-left: 16px;
-    height: auto;
-    width: 50%;
-    display: inline-block;
+    margin-top:30px;
+    height: 38px;
+    width: 57px;
+    margin: auto;
 }
 
 .align {

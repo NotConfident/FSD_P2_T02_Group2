@@ -77,7 +77,7 @@ namespace FSD_P2_T02_Group2.Controllers
             }
             else
             {
-                TempData["Message"] = "Invaild Login Credentials!";
+                TempData["Message"] = "Invalid Login Credentials!";
                 return RedirectToAction("Login");
             }
         }
@@ -153,7 +153,7 @@ namespace FSD_P2_T02_Group2.Controllers
             if (ModelState.IsValid)
             {
                 userDAL.RegisterUser(user);
-                return RedirectToAction("UserMain");
+                return RedirectToAction("Login");
             }
             else
             {

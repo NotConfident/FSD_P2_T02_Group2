@@ -19,7 +19,9 @@ section {
     margin: 0 auto;
     margin-top: 11.5%;
 }
-
+@media only screen and (min-width:768px){
+    .navbar-header{width:100%}
+}
 .signUpNow {
     text-align: center;
     color:#DDDFF4;
