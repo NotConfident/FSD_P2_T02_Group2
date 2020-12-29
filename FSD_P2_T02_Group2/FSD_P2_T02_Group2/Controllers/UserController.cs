@@ -36,8 +36,6 @@ namespace FSD_P2_T02_Group2.Controllers
         {
             User user = new User();
             user.Alias = HttpContext.Session.GetString("Alias");
-
-
             userDAL.sendMessage(user, messageVar);
             return View();
         }

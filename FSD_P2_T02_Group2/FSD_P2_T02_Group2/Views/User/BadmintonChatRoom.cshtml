@@ -1,4 +1,4 @@
-﻿@model FSD_P2_T02_Group2.Models.ChatMessage
+﻿@model IEnumerable<FSD_P2_T02_Group2.Models.ChatMessage>
 @using Microsoft.AspNetCore.Http;
 @using Google.Cloud.Firestore;
 @using System.Web;
@@ -14,13 +14,46 @@
     <h1>Chat room</h1>
 
     <p>Current user: @Context.Session.GetString("Alias")</p>
-    <form asp-action="BadmintonChatRoom">
-        <input type="text" placeholder="Type something..." asp-for="Message" runat="server">
-        <button type="submit">Send</button>
-    </form>
+
+    @{
+        var projectName = "fir-chat-ukiyo";
+        var authFilePath = "/Users/yongtenggg/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+        FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+        FirestoreDb db = FirestoreDb.Create(projectName);
+
+        ChatMessage cmContext1 = new ChatMessage();
+
+        Query query = db.Collection("Badminton").OrderBy("CreatedAt").LimitToLast(50);
+        QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+        foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+        {
+            var messages = documentSnapshot.ConvertTo<ChatMessage>();
+            cmContext1.chatMessages.Add(messages);
+        }
+    }
+
+    <div style="margin:0 auto;overflow:auto;height:500px">
+        @foreach (ChatMessage item in cmContext1.chatMessages)
+        {
+            @if (item.Alias == Context.Session.GetString("Alias"))
+            {
+                <p style="padding:10px;word-break:break-all;max-width:401px;text-align:right;margin-left:auto;margin-right:0;margin-bottom:0">
+                    <div style="display: inline-block; background-color: #DDF4DE; padding: 10px;">@item.Message</div>
+                </p>
+            }
+            else
+            {
+                <p style="padding:10px 10px 10px 0px;word-break:break-all;max-width:401px;margin-bottom:0">
+                    <div style="background-color:#DDDFF4;padding:10px;display:inline-block;">@item.Alias: <br />@item.Message</div>
+                </p>
+            }
+
+        }
+    </div>
+
+    <partial name="~/Views/User/_BadmintonSend.cshtml" />
 </body>
-
-
 
 
 

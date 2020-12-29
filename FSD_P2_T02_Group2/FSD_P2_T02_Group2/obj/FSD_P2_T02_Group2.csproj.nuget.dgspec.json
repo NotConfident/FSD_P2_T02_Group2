@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj": {}
   },
   "projects": {
@@ -13,30 +12,12 @@
         "projectPath": "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2.csproj",
         "packagesPath": "/Users/yongtenggg/.nuget/packages/",
         "outputPath": "/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/",
-=======
-    "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
-        "projectName": "FSD_P2_T02_Group2",
-        "projectPath": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
-        "packagesPath": "C:\\Users\\jaxch\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\obj\\",
->>>>>>> 05432623c0f88cb51b1ba9feefd57d688122fe01
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
           "/Users/yongtenggg/.config/NuGet/NuGet.Config"
-=======
-          "C:\\Users\\jaxch\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
->>>>>>> 05432623c0f88cb51b1ba9feefd57d688122fe01
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -46,6 +27,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -57,6 +39,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "AWSSDK.CognitoIdentity": {
               "target": "Package",
@@ -127,11 +110,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.100/RuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
->>>>>>> 05432623c0f88cb51b1ba9feefd57d688122fe01
         }
       }
     }
