@@ -1,24 +1,7 @@
 ﻿@model FSD_P2_T02_Group2.Models.ChatMessage
 
-<form asp-action="BadmintonChatRoom">
-    <input type="text" placeholder="Type something..." asp-for="Message" runat="server">
-    <button type="submit">Send</button>
+<form asp-action="BadmintonChatRoom" id="messagebox">
+    <input type="text" placeholder="Type something..." asp-for="Message"runat="server">
+
+    <button type="submit" onclick="clear()">Send</button>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

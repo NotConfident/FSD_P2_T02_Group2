@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{4C14988B-6C47-42EE-805E-DA313C1D0B13}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.ItemProperties.FSD__P2__T02__Group2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FSD_P2_T02_Group2/Views/User/_BadmintonSend.cshtml">
     <Files>
       <File FileName="FSD_P2_T02_Group2/Controllers/HomeController.cs" Line="53" Column="1" />
       <File FileName="FSD_P2_T02_Group2/Controllers/UserController.cs" Line="38" Column="65" />
       <File FileName="FSD_P2_T02_Group2/DAL/UserDAL.cs" Line="151" Column="48" />
-      <File FileName="FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" Line="42" Column="1" />
+      <File FileName="FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" Line="56" Column="1" />
+      <File FileName="FSD_P2_T02_Group2/Views/User/_BadmintonSend.cshtml" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,7 +18,7 @@
               <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="User" expanded="True">
-                  <Node name="BadmintonChatRoom.cshtml" selected="True" />
+                  <Node name="_BadmintonSend.cshtml" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -31,10 +32,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/usr/local/share/dotnet/sdk/5.0.100/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" line="241" column="5" />
-      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" relfile="FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" line="37" column="1" />
-      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" relfile="FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" line="42" column="1" />
-      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" relfile="FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" line="32" column="1" />
-      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" relfile="FSD_P2_T02_Group2/Views/User/BadmintonChatRoom.cshtml" line="31" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

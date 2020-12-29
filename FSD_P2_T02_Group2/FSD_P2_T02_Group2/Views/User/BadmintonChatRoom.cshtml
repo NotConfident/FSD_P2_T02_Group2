@@ -24,7 +24,7 @@
 
         ChatMessage cmContext1 = new ChatMessage();
 
-        Query query = db.Collection("Badminton").OrderBy("CreatedAt").LimitToLast(50);
+        Query query = db.Collection("Badminton").OrderBy("CreatedAt").LimitToLast(10);
         QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
         foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
         {
