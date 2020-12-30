@@ -21,30 +21,19 @@
     <h1 style="color:white;padding-left:32px">groups</h1>
     <ul class="nav flex-column">
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span aria-hidden="true"></span> <b>General</b>
-            </NavLink>
+            <a class="nav-link" asp-action="General" asp-controller="User">General</a>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="https://localhost:10001/">
-                <span aria-hidden="true"></span> Sports
-            </NavLink>
+            <a class="nav-link" asp-action="Sports" asp-controller="User">Sports</a>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="https://localhost:8001/">
-                <span aria-hidden="true"></span> Football
-            </NavLink>
+            <a class="nav-link" asp-action="Football" asp-controller="User">Football</a>
         </li>
         <li class="nav-item px-3">
-            @*<NavLink class="nav-link"">*@
-             <a class="nav-link" asp-action="BadmintonChatRoom" asp-controller="User">Badminton</a>
-                @*<span aria-hidden="true"></span> Badminton
-            </NavLink>*@
+             <a class="nav-link" asp-action="Badminton" asp-controller="User">Badminton</a>
         </li>
         <li class="nav-item px-3">
-            <NavLink class="nav-link" href="https://localhost:3001/">
-                <span aria-hidden="true"></span> Basketball
-            </NavLink>
+            <a class="nav-link" asp-action="Basketball" asp-controller="User">Basketball</a>
         </li>
     </ul>
 </div>

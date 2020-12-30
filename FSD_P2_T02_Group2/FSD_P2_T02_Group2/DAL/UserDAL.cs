@@ -130,15 +130,15 @@ namespace FSD_P2_T02_Group2.DAL
             return count.Value;
         }
 
-        public async Task sendMessage(User user, ChatMessage message)
+        public async Task sendMessage(User user, ChatMessage message, string room)
         {
             string datetime = DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt");
 
             var firestoreDb = CreateFirestoreDb();
             //CollectionReference collection = firestoreDb.Collection("Badminton");
             //DocumentReference document = await collection.AddAsync(new { Alias = user.Alias, CreatedAt = datetime, Message = message.Message });
-
-            await firestoreDb.Collection("Badminton").AddAsync(new ChatMessage
+            
+            await firestoreDb.Collection(room).AddAsync(new ChatMessage
             {
                 Alias = user.Alias,
                 Message = message.Message,
@@ -149,7 +149,7 @@ namespace FSD_P2_T02_Group2.DAL
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/yongtenggg/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             return FirestoreDb.Create(projectName);

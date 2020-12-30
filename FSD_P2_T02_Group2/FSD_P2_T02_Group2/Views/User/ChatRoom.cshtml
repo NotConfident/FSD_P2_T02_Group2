@@ -2,7 +2,10 @@
 @using Microsoft.AspNetCore.Http;
 @using Google.Cloud.Firestore;
 @using System.Web;
-
+@{
+    ViewData["Title"] = "UserMain";
+    Layout = "_UserLayout";
+}
 <!DOCTYPE html>
 <head>
     <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
@@ -14,17 +17,19 @@
     <h1>Chat room</h1>
 
     <p>Current user: @Context.Session.GetString("Alias")</p>
+    <p>Current room @Context.Session.GetString("room")</p>
 
     @{
         var projectName = "fir-chat-ukiyo";
-        var authFilePath = "/Users/yongtenggg/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+        var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
         FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
         FirestoreDb db = FirestoreDb.Create(projectName);
 
         ChatMessage cmContext1 = new ChatMessage();
+        string room = Context.Session.GetString("room");
 
-        Query query = db.Collection("Badminton").OrderBy("CreatedAt").LimitToLast(10);
+        Query query = db.Collection(Context.Session.GetString("room")).OrderBy("CreatedAt").LimitToLast(10);
         QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
         foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
         {
@@ -52,7 +57,7 @@
         }
     </div>
 
-    <partial name="~/Views/User/_BadmintonSend.cshtml" />
+    <partial name="~/Views/User/_Send.cshtml" />
 </body>
 
 
