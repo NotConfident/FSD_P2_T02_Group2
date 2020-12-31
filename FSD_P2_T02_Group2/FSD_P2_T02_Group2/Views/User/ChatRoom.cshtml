@@ -21,7 +21,8 @@
 
     @{
         var projectName = "fir-chat-ukiyo";
-        var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+        var authFilePath = "/Users/yongtenggg/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+        @*var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"*@
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
         FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
         FirestoreDb db = FirestoreDb.Create(projectName);

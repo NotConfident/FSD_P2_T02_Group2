@@ -22,6 +22,7 @@ namespace FSD_P2_T02_Group2.Controllers
 
         public UserDAL userDAL = new UserDAL();
         public AdminDAL adminDAL = new AdminDAL();
+        public CounsellorDAL counsellorDAL = new CounsellorDAL();
 
         public readonly ILogger<HomeController> _logger;
 
@@ -164,6 +165,29 @@ namespace FSD_P2_T02_Group2.Controllers
         public IActionResult Counsellor()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Counsellor(IFormCollection formData)
+        {
+
+            string name = formData["name"].ToString();
+            string email = formData["email"].ToString();
+            int phoneno = Convert.ToInt32(formData["number"]);
+            //byte[] certicatePre = System.IO.File.ReadAllBytes(formData["filename"]);
+            //string certificate = Convert.ToBase64String(certicatePre);
+
+            PendingCounsellor counsellor = new PendingCounsellor();
+            counsellor.Name = name;
+            counsellor.Email = email;
+            counsellor.PhoneNumber = phoneno;
+            counsellor.Image = Request.Form["base64Image"];
+            counsellor.Certificate = Request.Form["base64Certificate"];
+
+            counsellorDAL.CounsellorForm(counsellor);
+
+            return View();
+            
         }
 
         public ActionResult AboutUs()
