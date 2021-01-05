@@ -15,6 +15,7 @@ using System.Net.Http.Headers;
 using Microsoft.Net.Http.Headers;
 using System.Text;
 
+
 namespace FSD_P2_T02_Group2.Controllers
 {
     public class HomeController : Controller
@@ -125,35 +126,13 @@ namespace FSD_P2_T02_Group2.Controllers
             return View();
         }
 
-        //static async Task SignUpUser(User user)
-        //{
-        //    AmazonCognitoIdentityProviderClient provider =
-        //        new AmazonCognitoIdentityProviderClient(new Amazon.Runtime.AnonymousAWSCredentials(), Region);
-
-        //    SignUpRequest signUpRequest = new SignUpRequest()
-        //    {
-        //        ClientId = appClientID,
-        //        Username = user.Username,
-        //        Password = user.Password
-        //    };
-        //    List<AttributeType> attributes = new List<AttributeType>()
-        //    {
-        //        new AttributeType(){Name = "email", Value = user.Email},
-        //        new AttributeType(){Name = "phone_number", Value = user.PhoneNo}
-        //    };
-
-        //    signUpRequest.UserAttributes = attributes;
-
-        //    SignUpResponse result = await provider.SignUpAsync(signUpRequest);
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User user)
         {
             if (ModelState.IsValid)
             {
-                userDAL.RegisterUser(user);
+                userDAL.OTP(user.PhoneNo);
                 return RedirectToAction("Login");
             }
             else

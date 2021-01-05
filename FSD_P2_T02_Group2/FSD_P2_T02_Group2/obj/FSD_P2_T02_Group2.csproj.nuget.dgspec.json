@@ -90,6 +90,10 @@
             "System.Text.Json": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[5.52.1, )"
             }
           },
           "imports": [

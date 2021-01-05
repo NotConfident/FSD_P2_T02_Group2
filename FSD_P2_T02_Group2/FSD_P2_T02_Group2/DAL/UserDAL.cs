@@ -11,6 +11,10 @@ using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using Google.Cloud.Firestore;
+using Twilio;
+using Twilio.Types;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Exceptions;
 
 namespace FSD_P2_T02_Group2.DAL
 {
@@ -149,10 +153,34 @@ namespace FSD_P2_T02_Group2.DAL
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/yongtenggg/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json" 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             return FirestoreDb.Create(projectName);
+        }
+
+        public void OTP(string number)
+        {
+            const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
+            const string authToken = "6a59bcdf0c1eef55b1883cf0153771c7";
+
+            // Initialize the TwilioClient.
+            TwilioClient.Init(accountSID, authToken);
+
+            try
+            {
+                // Send an SMS message.
+                var message = MessageResource.Create(
+                    to: new PhoneNumber(number),
+                    from: new PhoneNumber("+12566854677"),
+                    body: "BB CALLS 2 PLUTO AND BEYOND. OTP TEST");
+            }
+            catch (TwilioException ex)
+            {
+                // An exception occurred making the REST call
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
