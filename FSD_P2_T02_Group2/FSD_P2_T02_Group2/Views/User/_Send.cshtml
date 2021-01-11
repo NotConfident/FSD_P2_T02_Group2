@@ -1,7 +1,19 @@
 ﻿@model FSD_P2_T02_Group2.Models.ChatMessage
+<script>
+    var input = document.getElementById("textbox");
 
-<form asp-action="ChatRoom" id="messagebox">
-    <input type="text" placeholder="Type something..." asp-for="Message" runat="server">
-
-    <button type="submit" onclick="clear()">Send</button>
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function (event) {
+        // Number 13 is the "Enter" key on the keyboard
+        if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("myBtn").click();
+        }
+    });
+</script>
+<form id="messagebox">
+    <input type="text" placeholder="Type something..." id="textbox" required>
+    <button type="submit" onclick="sendMessage()" id="myBtn">Send</button>
 </form>
