@@ -52,6 +52,8 @@ namespace FSD_P2_T02_Group2.Controllers
             string password = formData["txtPassword"].ToString();
 
             User user = userDAL.CheckLogin(username, password);
+            User admin = adminDAL.CheckAdminLogin(username, password);
+
             //DateTime logintime = DateTime.Now;
 
             if (user.Username != null)
@@ -73,8 +75,15 @@ namespace FSD_P2_T02_Group2.Controllers
 
                 return RedirectToAction("UserMain", "User");
             }
-            else if(username == "Admin" && password == "admin")
+            else if (admin.Username != null)
             {
+                HttpContext.Session.SetString("Username", username);
+                HttpContext.Session.SetString("Alias", admin.Alias);
+
+                string role = "Admin";
+                HttpContext.Session.SetString("Role", role);
+                Set("Username", admin.Alias, 60);
+
                 return RedirectToAction("Index", "Admin");
             }
             else
@@ -152,7 +161,7 @@ namespace FSD_P2_T02_Group2.Controllers
 
             string name = formData["name"].ToString();
             string email = formData["email"].ToString();
-            int phoneno = Convert.ToInt32(formData["number"]);
+            string phoneno = formData["number"].ToString();
             //byte[] certicatePre = System.IO.File.ReadAllBytes(formData["filename"]);
             //string certificate = Convert.ToBase64String(certicatePre);
 

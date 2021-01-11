@@ -1,39 +1,43 @@
 ﻿<Properties StartupConfiguration="{4C14988B-6C47-42EE-805E-DA313C1D0B13}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.ItemProperties.FSD__P2__T02__Group2 PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FSD_P2_T02_Group2/Views/User/ChatRoom.cshtml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FSD_P2_T02_Group2/Controllers/AdminController.cs">
     <Files>
-      <File FileName="FSD_P2_T02_Group2/Controllers/UserController.cs" Line="1" Column="1" />
-      <File FileName="FSD_P2_T02_Group2/DAL/UserDAL.cs" Line="176" Column="56" />
-      <File FileName="FSD_P2_T02_Group2/Views/Home/Counsellor.cshtml" Line="1" Column="1" />
-      <File FileName="FSD_P2_T02_Group2/Controllers/HomeController.cs" Line="1" Column="1" />
-      <File FileName="FSD_P2_T02_Group2/Views/User/ChatRoom.cshtml" Line="1" Column="1" />
+      <File FileName="FSD_P2_T02_Group2/Controllers/HomeController.cs" Line="182" Column="10" />
+      <File FileName="FSD_P2_T02_Group2/DAL/UserDAL.cs" Line="109" Column="25" />
+      <File FileName="FSD_P2_T02_Group2/Controllers/AdminController.cs" Line="41" Column="1" />
+      <File FileName="FSD_P2_T02_Group2/DAL/AdminDAL.cs" Line="92" Column="14" />
+      <File FileName="FSD_P2_T02_Group2/Views/Admin/PendingCounsellor.cshtml" Line="39" Column="22" />
+      <File FileName="FSD_P2_T02_Group2/Views/Admin/Index.cshtml" Line="5" Column="26" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FSD_P2_T02_Group2" expanded="True">
             <Node name="FSD_P2_T02_Group2" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="AdminController.cs" selected="True" />
+              </Node>
               <Node name="DAL" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="Admin" expanded="True" />
                 <Node name="Home" expanded="True" />
-                <Node name="User" expanded="True">
-                  <Node name="ChatRoom.cshtml" selected="True" />
-                </Node>
               </Node>
             </Node>
           </Node>
         </State>
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/Controllers/AdminController.cs" relfile="FSD_P2_T02_Group2/Controllers/AdminController.cs" line="54" column="1" />
+      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/Controllers/AdminController.cs" relfile="FSD_P2_T02_Group2/Controllers/AdminController.cs" line="55" column="1" />
+      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/Controllers/AdminController.cs" relfile="FSD_P2_T02_Group2/Controllers/AdminController.cs" line="37" column="1" />
+      <Breakpoint file="/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/Controllers/AdminController.cs" relfile="FSD_P2_T02_Group2/Controllers/AdminController.cs" line="41" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

@@ -107,9 +107,7 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.Parameters.AddWithValue("@phoneNo", user.PhoneNo);
 
             conn.Open();
-
             cmd.ExecuteNonQuery();
-
             conn.Close();
         }
 
@@ -118,7 +116,7 @@ namespace FSD_P2_T02_Group2.DAL
             int? count = 0;
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT COUNT(userID) FROM  UserDetails";
+            cmd.CommandText = @"SELECT COUNT(userID) FROM  [User]";
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -130,7 +128,7 @@ namespace FSD_P2_T02_Group2.DAL
                 }
             }
             reader.Close();
-            conn.Close();
+            conn.Close();   
             return count.Value;
         }
 
@@ -162,8 +160,8 @@ namespace FSD_P2_T02_Group2.DAL
 
         public void OTP(string number)
         {
-            const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
-            const string authToken = "6a59bcdf0c1eef55b1883cf0153771c7";
+            const string accountSID = "";
+            const string authToken = "";
 
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
