@@ -1,0 +1,80 @@
+﻿@model IEnumerable<FSD_P2_T02_Group2.Models.PendingCounsellor>
+    <br />
+    <br />
+    <br />
+    <br />
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <div class="wrap-contact100">
+        <div class="table-responsive">
+            <table id="viewPendingCounsellors" class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    @if (ViewBag.pCounsellorList != null)
+                    {
+                        <tr>
+                            <th>Counseollor ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Date of Birth</th>
+                            <th>Self Image</th>
+                            <th>Certificate</th>
+                            <th>Action</th>
+                        </tr>
+                    }
+                </thead>
+                <tbody>
+                    @if (ViewBag.pCounsellorList == null)
+                    {
+                        <div style="text-align: center;">
+                            <img src="~/images/Empty.png" />
+                        </div>
+                    }
+                    else
+                    {
+                        @foreach (PendingCounsellor item in ViewBag.pCounsellorList)
+                        {
+                            <tr>
+                                <td>@item.PCounsellorID</td>
+                                <td>@item.Name</td>
+                                <td>@item.Email</td>
+                                <td>@item.PhoneNumber</td>
+                                <td>@item.DateBirth</td>
+                                <td><button value="@item.Image" onclick="genericPopup(this.value)">View</button></td>
+                                <td><button value="@item.Certificate" onclick="genericPopup(this.value)">View</button></td>
+                                <td>
+                                    <button><a asp-controller="Admin" asp-action="ApproveCounsellor" asp-route-id=@item.PCounsellorID>Approve</a></button>
+                                    <br />
+                                    <button><a asp-controller="Admin" asp-action="RejectCounsellor" asp-route-id=@item.PCounsellorID>Reject</a></button>
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+<script>
+    function genericPopup(val) {
+        var newTab = window.open();
+        newTab.document.body.innerHTML = '<img src="' + val + '">';
+    }
+</script>

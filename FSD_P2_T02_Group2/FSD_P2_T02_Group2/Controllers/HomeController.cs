@@ -51,7 +51,11 @@ namespace FSD_P2_T02_Group2.Controllers
             string username = formData["txtLoginID"].ToString();
             string password = formData["txtPassword"].ToString();
 
+<<<<<<< HEAD
             User user = userDAL.CheckLogin(username, password);
+=======
+            User user = userDAL.CheckLogin(username, password);
+>>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df
             User admin = adminDAL.CheckAdminLogin(username, password);
 
             //DateTime logintime = DateTime.Now;
@@ -76,8 +80,20 @@ namespace FSD_P2_T02_Group2.Controllers
                 return RedirectToAction("UserMain", "User");
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             else if(username == "Admin" && password == "admin")
             {
+=======
+            else if (admin.Username != null)
+            {
+                HttpContext.Session.SetString("Username", username);
+                HttpContext.Session.SetString("Alias", admin.Alias);
+
+                string role = "Admin";
+                HttpContext.Session.SetString("Role", role);
+                Set("Username", admin.Alias, 60);
+
+>>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df
 =======
             else if (admin.Username != null)
             {
@@ -192,8 +208,13 @@ namespace FSD_P2_T02_Group2.Controllers
 
             string name = formData["name"].ToString();
 <<<<<<< HEAD
+<<<<<<< HEAD
             string email = formData["email"].ToString();
             int phoneno = Convert.ToInt32(formData["number"]);
+=======
+            string email = formData["email"].ToString();
+            string phoneno = formData["number"].ToString();
+>>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df
 =======
             string email = formData["email"].ToString();
             string phoneno = formData["number"].ToString();

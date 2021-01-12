@@ -895,6 +895,9 @@ C:/Users/jaxch/source/repos/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
+/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
+/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.JSInterop.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.VisualStudio.Web.CodeGeneration.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
@@ -914,9 +917,11 @@ C:/Users/jaxch/source/repos/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/System.Composition.Runtime.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/System.Composition.TypedParts.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/System.Data.SqlClient.dll
+/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/System.Linq.Async.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/System.Reactive.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/System.Text.Json.dll
+/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Twilio.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/cs/Microsoft.CodeAnalysis.resources.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/de/Microsoft.CodeAnalysis.resources.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/es/Microsoft.CodeAnalysis.resources.dll
@@ -980,6 +985,7 @@ C:/Users/jaxch/source/repos/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/sni.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/System.Data.SqlClient.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/System.Data.SqlClient.dll
+/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.csprojAssemblyReference.cache
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.GeneratedMSBuildEditorConfig.editorconfig
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.AssemblyInfoInputs.cache
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.AssemblyInfo.cs
@@ -994,6 +1000,7 @@ C:/Users/jaxch/source/repos/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.TagHelpers.output.cache
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.RazorCoreGenerate.cache
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Admin/Index.cshtml.g.cs
+/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Admin/PendingCounsellor.cshtml.g.cs
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Home/AboutUs.cshtml.g.cs
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Home/Counsellor.cshtml.g.cs
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Home/FAQ.cshtml.g.cs
@@ -1002,6 +1009,7 @@ C:/Users/jaxch/source/repos/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Home/Register.cshtml.g.cs
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs
+/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_AdminNavBar.cshtml.g.cs
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_CommonNavbar.cshtml.g.cs
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_UserLayout.cshtml.g.cs
@@ -1020,6 +1028,7 @@ C:/Users/jaxch/source/repos/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.pdb
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.genruntimeconfig.cache
+<<<<<<< HEAD
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
@@ -1210,3 +1219,190 @@ C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\staticwebassets\FSD_P2_T02_Group2.StaticWebAssets.Manifest.cache
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\staticwebassets\FSD_P2_T02_Group2.StaticWebAssets.xml
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.genruntimeconfig.cache
+=======
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.exe
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.deps.json
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.runtimeconfig.json
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.runtimeconfig.dev.json
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.pdb
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.Views.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.Views.pdb
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentity.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.CognitoIdentityProvider.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\AWSSDK.SecurityToken.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Blazored.LocalStorage.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FirebaseAdmin.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Firebase.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Api.CommonProtos.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Api.Gax.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Api.Gax.Grpc.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Api.Gax.Grpc.GrpcCore.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Api.Gax.Rest.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Apis.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Apis.Auth.PlatformServices.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Apis.Auth.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Apis.Core.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Cloud.Firestore.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Cloud.Firestore.V1.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.LongRunning.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Grpc.Auth.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Grpc.Core.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Grpc.Core.Api.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\LiteDB.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.JSInterop.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\dotnet-aspnet-codegenerator-design.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\NuGet.Frameworks.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Composition.AttributedModel.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Composition.Convention.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Composition.Hosting.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Composition.Runtime.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Composition.TypedParts.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Linq.Async.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Reactive.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\Twilio.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\linux\native\libgrpc_csharp_ext.x64.so
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\linux\native\libgrpc_csharp_ext.x86.so
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\osx\native\libgrpc_csharp_ext.x64.dylib
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\osx\native\libgrpc_csharp_ext.x86.dylib
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\win\native\grpc_csharp_ext.x64.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\win\native\grpc_csharp_ext.x86.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.csprojAssemblyReference.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.AssemblyInfoInputs.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.AssemblyInfo.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.csproj.CoreCompileInputs.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.RazorAssemblyInfo.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.RazorAssemblyInfo.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\staticwebassets\FSD_P2_T02_Group2.StaticWebAssets.Manifest.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\staticwebassets\FSD_P2_T02_Group2.StaticWebAssets.xml
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\scopedcss\bundle\FSD_P2_T02_Group2.styles.css
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.TagHelpers.input.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.TagHelpers.output.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.RazorCoreGenerate.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\PendingCounsellor.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\Counsellor.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\FAQ.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Home\Register.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminNavBar.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CommonNavbar.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_UserLayout.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_UserNavbar.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\ChatRoom.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\ChatRooms.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\UserMain.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\_Send.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.RazorTargetAssemblyInfo.cache
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.RazorTargetAssemblyInfo.cs
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.Views.pdb
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.csproj.CopyComplete
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.dll
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.pdb
+C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.genruntimeconfig.cache
+>>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df

@@ -8659,11 +8659,17 @@
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\joeya\\.nuget\\packages\\": {}
+=======
+    "C:\\Users\\jaxch\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+>>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\joeya\\Downloads\\NP_ICT\\FSD & P2\\FSD_P2_T02_Grp2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
       "projectName": "FSD_P2_T02_Group2",
       "projectPath": "C:\\Users\\joeya\\Downloads\\NP_ICT\\FSD & P2\\FSD_P2_T02_Grp2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
@@ -8672,6 +8678,19 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\joeya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+      "projectUniqueName": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
+      "projectName": "FSD_P2_T02_Group2",
+      "projectPath": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
+      "packagesPath": "C:\\Users\\jaxch\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\jaxch\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8768,7 +8787,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+>>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df
       }
     }
   }

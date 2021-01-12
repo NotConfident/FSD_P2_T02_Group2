@@ -107,9 +107,7 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.Parameters.AddWithValue("@phoneNo", user.PhoneNo);
 
             conn.Open();
-
             cmd.ExecuteNonQuery();
-
             conn.Close();
         }
 
@@ -118,7 +116,7 @@ namespace FSD_P2_T02_Group2.DAL
             int? count = 0;
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT COUNT(userID) FROM  UserDetails";
+            cmd.CommandText = @"SELECT COUNT(userID) FROM  [User]";
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -130,40 +128,44 @@ namespace FSD_P2_T02_Group2.DAL
                 }
             }
             reader.Close();
-            conn.Close();
+            conn.Close();   
             return count.Value;
         }
 
         public async Task sendMessage(User user, ChatMessage message, string room)
         {
-            string datetime = DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt");
 
-            var firestoreDb = CreateFirestoreDb();
-            //CollectionReference collection = firestoreDb.Collection("Badminton");
-            //DocumentReference document = await collection.AddAsync(new { Alias = user.Alias, CreatedAt = datetime, Message = message.Message });
+            var firestoreDb = CreateFirestoreDb();;
             
             await firestoreDb.Collection(room).AddAsync(new ChatMessage
             {
                 Alias = user.Alias,
-                Message = message.Message,
-                CreatedAt = datetime
-            });
+                CreatedAt = Google.Cloud.Firestore.Timestamp.FromDateTime(DateTime.UtcNow),
+                Message = message.Message
+        });
         }
 
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/yongtenggg/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json" 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            Console.WriteLine("Created Firestore");
             return FirestoreDb.Create(projectName);
+            
         }
 
         public string OTP(string number)
         {
+<<<<<<< HEAD
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
             const string authToken = "6f9f2d9c380962bcae5002986da09be6";
+=======
+            const string accountSID = "";
+            const string authToken = "";
+>>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df
 
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
