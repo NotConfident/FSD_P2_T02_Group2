@@ -16,7 +16,7 @@ namespace FSD_P2_T02_Group2.Models
         public string Message { get; set; }
 
         [FirestoreProperty]
-        public string CreatedAt { get; set; }
+        public Timestamp CreatedAt { get; set; }
 
         [FirestoreProperty]
         public string Alias { get; set; }

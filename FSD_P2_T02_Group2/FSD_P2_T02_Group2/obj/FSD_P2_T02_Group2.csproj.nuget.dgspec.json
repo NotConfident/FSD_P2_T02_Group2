@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {}
+    "C:\\Users\\jaxch\\Source\\Repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {
+    "C:\\Users\\jaxch\\Source\\Repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
+        "projectUniqueName": "C:\\Users\\jaxch\\Source\\Repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
         "projectName": "FSD_P2_T02_Group2",
-        "projectPath": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
+        "projectPath": "C:\\Users\\jaxch\\Source\\Repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
         "packagesPath": "C:\\Users\\jaxch\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\obj\\",
+        "outputPath": "C:\\Users\\jaxch\\Source\\Repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

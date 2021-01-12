@@ -134,28 +134,27 @@ namespace FSD_P2_T02_Group2.DAL
 
         public async Task sendMessage(User user, ChatMessage message, string room)
         {
-            string datetime = DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt");
 
-            var firestoreDb = CreateFirestoreDb();
-            //CollectionReference collection = firestoreDb.Collection("Badminton");
-            //DocumentReference document = await collection.AddAsync(new { Alias = user.Alias, CreatedAt = datetime, Message = message.Message });
+            var firestoreDb = CreateFirestoreDb();;
             
             await firestoreDb.Collection(room).AddAsync(new ChatMessage
             {
                 Alias = user.Alias,
-                Message = message.Message,
-                CreatedAt = datetime
-            });
+                CreatedAt = Google.Cloud.Firestore.Timestamp.FromDateTime(DateTime.UtcNow),
+                Message = message.Message
+        });
         }
 
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/yongtenggg/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json" 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            Console.WriteLine("Created Firestore");
             return FirestoreDb.Create(projectName);
+            
         }
 
         public void OTP(string number)

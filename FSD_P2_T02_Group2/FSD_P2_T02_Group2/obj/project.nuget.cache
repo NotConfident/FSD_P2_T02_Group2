@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gt2EEQUunApDOU7Qaodxdxi3sz2OnCwangG/h8UQ2oRbiLYLVzToarVWTsO2gxSk/bvvwtPTBbtvnfXz+yyF3A==",
+  "dgSpecHash": "hZ48LgHcVOku12+Dgdfs8FqEKKwrD2vFsNLGsD4ui8cDv7OLYmyMUmrmE/ESMCniwaRCU7yk32f1Djqh5alubw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jaxch\\source\\repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
+  "projectFilePath": "C:\\Users\\jaxch\\Source\\Repos\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2\\FSD_P2_T02_Group2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jaxch\\.nuget\\packages\\awssdk.cognitoidentity\\3.5.0.37\\awssdk.cognitoidentity.3.5.0.37.nupkg.sha512",
     "C:\\Users\\jaxch\\.nuget\\packages\\awssdk.cognitoidentityprovider\\3.5.0.37\\awssdk.cognitoidentityprovider.3.5.0.37.nupkg.sha512",
