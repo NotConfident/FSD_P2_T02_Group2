@@ -132,8 +132,10 @@ namespace FSD_P2_T02_Group2.Controllers
         {
             if (ModelState.IsValid)
             {
-                userDAL.OTP(user.PhoneNo);
-                return RedirectToAction("Login");
+                string otp = userDAL.OTP(user.PhoneNo);
+                TempData.Put("newUser", user);
+                TempData["OTP"] = otp;
+                return RedirectToAction("RegisterOTP");
             }
             else
             {
@@ -141,6 +143,30 @@ namespace FSD_P2_T02_Group2.Controllers
             }
         }
 
+        public IActionResult RegisterOTP()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterOTP(string inputOtp)
+        {
+            string otp = TempData["OTP"].ToString();
+            string corrOTP = TempData["OTP"].ToString();
+            User u = TempData.Get<User>("newUser");
+            if (otp == corrOTP)
+            {
+                userDAL.RegisterUser(u);
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                string newOtp = userDAL.OTP(u.PhoneNo);
+                TempData["OTP"] = newOtp;
+                return View();
+            }
+        }
         public IActionResult Counsellor()
         {
             return View();

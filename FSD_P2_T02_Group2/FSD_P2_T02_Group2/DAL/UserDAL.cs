@@ -160,27 +160,30 @@ namespace FSD_P2_T02_Group2.DAL
             return FirestoreDb.Create(projectName);
         }
 
-        public void OTP(string number)
+        public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
-            const string authToken = "6a59bcdf0c1eef55b1883cf0153771c7";
+            const string authToken = "6f9f2d9c380962bcae5002986da09be6";
 
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
-
+            string randNum = "";
             try
             {
+                Random random = new Random();
+                randNum = random.Next(100000, 999999).ToString();
                 // Send an SMS message.
                 var message = MessageResource.Create(
                     to: new PhoneNumber(number),
                     from: new PhoneNumber("+12566854677"),
-                    body: "BB CALLS 2 PLUTO AND BEYOND. OTP TEST");
+                    body: "Hi, Your OTP Number is " + randNum);
             }
             catch (TwilioException ex)
             {
                 // An exception occurred making the REST call
                 Console.WriteLine(ex.Message);
             }
+            return randNum;
         }
     }
 }
