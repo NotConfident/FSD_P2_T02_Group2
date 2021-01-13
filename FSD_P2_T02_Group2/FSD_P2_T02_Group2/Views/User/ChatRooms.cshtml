@@ -1,0 +1,44 @@
+﻿@model FSD_P2_T02_Group2.Models.User
+
+@{
+    ViewData["Title"] = "UserMain";
+    Layout = "";
+}
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<div style="background-color: #0F89AE;height:100vh;">
+    <div class="top-row pl-4 navbar">
+        <div class="logo">
+            <svg width="57" height="37.5" viewBox="0 0 114 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M67.6257 2L14.0645 2.00004C7.40148 2.00005 2 7.40153 2 14.0646V14.0646C2 19.2279 5.28575 23.8189 10.1731 25.4843L15.5669 27.3223C18.1458 28.2011 20.9922 27.75 23.173 26.117V26.117C25.9198 24.0602 29.6529 23.9184 32.5478 25.7608L32.793 25.9168C35.5081 27.6449 38.957 27.7268 41.7512 26.1297L43.2484 25.2739C46.0095 23.6958 49.4249 23.8117 52.0726 25.5735L52.3505 25.7585C55.0443 27.551 58.5583 27.5219 61.2221 25.685V25.685C63.8452 23.8762 67.2977 23.8181 69.9803 25.5376L70.3957 25.8039C73.1698 27.5821 76.7297 27.5645 79.4861 25.759V25.759C82.3137 23.9068 85.9786 23.9401 88.7721 25.8433L89.2771 26.1874C91.6301 27.7905 94.589 28.2238 97.3028 27.3627L103.741 25.3197C108.659 23.7593 112 19.194 112 14.0347V14.0347V14.0347C112 7.38816 106.612 2.00003 99.9653 2.00001L96.2728 2L80.5455 2.00005" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M10.6465 25.5455C12.2054 29.331 13.3444 35.4958 13.3444 38.4349C13.3444 43.2095 28.1636 43.5062 28.1636 51.1958C28.1636 57.779 33.9532 59.7319 36.1953 69.657C37.3926 74.9567 47.6237 72.3009 56.3313 68.1864C59.3437 66.763 59.1515 57.3461 62.8925 55.7428C66.6335 54.1395 68.3224 51.8966 71.9424 53.8197C75.5623 55.7428 83.9548 52.7991 85.2908 51.1958C86.9609 49.1917 85.6248 39.8393 92.9731 37.1671C100.321 34.495 96.0172 28.8856 103.032 25.5455" stroke="white" stroke-width="3" />
+            </svg>
+        </div>
+        <button class="navbar-toggler" onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+
+    <div class="NavMenuCssClass" style="background-color:#0F89AE;padding-top:40px" onclick="ToggleNavMenu">
+        <h1 style="color:white;padding-left:32px">groups</h1>
+        <ul class="nav flex-column">
+            <li class="nav-item px-3">
+                <a class="nav-link" style="color:white;" asp-action="General" asp-controller="User">General</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link" style="color:white;" asp-action="Sports" asp-controller="User">Sports</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link" style="color:white;" asp-action="Football" asp-controller="User">Football</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link" style="color:white;" asp-action="Badminton" asp-controller="User">Badminton</a>
+            </li>
+            <li class="nav-item px-3">
+                <a class="nav-link" style="color:white;" asp-action="Basketball" asp-controller="User">Basketball</a>
+            </li>
+        </ul>
+    </div>
+</div>
+

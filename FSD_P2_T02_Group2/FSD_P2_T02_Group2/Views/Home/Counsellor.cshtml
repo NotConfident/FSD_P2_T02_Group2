@@ -1,0 +1,89 @@
+﻿@model FSD_P2_T02_Group2.Models.Counsellor;
+@{
+    Layout = "_CommonNavbar";
+    ViewData["Title"] = "Become a Counsellor";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Become a Counsellor</title>
+    <link href="~/css/counsellor.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
+</head>
+
+<body>
+    <div class="container-fluid" style="padding-top:5vh">
+        <hr />
+        <p id="subTitle">become a counsellor</p>
+        <br />
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="box-content">
+                <form class="contact-form" asp-action="Counsellor">
+                    <fieldset>
+                        <input style="text-align: center;" type="text" class="name" id="name" name="name" placeholder="Name">
+                    </fieldset>
+                    <fieldset>
+                        <input style="text-align: center;" type="email" class="email" id="email" name="email" placeholder="Email">
+                    </fieldset>
+                    <fieldset>
+                        <input style="text-align: center;" type="text" class="number" id="number" name="number" placeholder="Phone Number">
+                    </fieldset>
+                    <fieldset>
+                        <div id="Image">
+                            <p>Upload Image</p>
+                            <input type="file" class="File" id="myFile" name="filename" onchange="getBase64Image(this)">
+                            <input type="hidden" value="" id="Base64Image" name="Base64Image" />
+                        </div>
+                        <br>
+                        <div id="Certification">
+                            <p>Upload Certification</p>
+                            <input type="file" class="File" id="myFile" name="filename" onchange="getBase64Certificate(this)">
+                            <input type="hidden" value="" id="Base64Certificate" name="Base64Certificate" />
+                        </div>
+                    </fieldset>
+                    <input type="submit" class="myButton" id="Submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        document.getElementById("common_navbar").classList.remove("fixed-top");
+
+        function getBase64Image(element) {
+            var file = element.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                localStorage.setItem("Base64Image", reader.result);
+            }
+            console.log(localStorage.getItem("Base64Image"));
+
+            reader.readAsDataURL(file);
+            document.getElementById("Base64Image").value = localStorage.getItem("Base64Image");
+        }
+
+        function getBase64Certificate(element) {
+            var file = element.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                localStorage.setItem("Base64Certificate", reader.result);
+            }
+            console.log(localStorage.getItem("Base64Certificate"));
+
+            reader.readAsDataURL(file);
+            document.getElementById("Base64Certificate").value = localStorage.getItem("Base64Certificate");
+        }
+
+
+    </script>
+</body>
+</html>

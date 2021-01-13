@@ -1,0 +1,26 @@
+.navbar-nav > li {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.dropdown-menu {
+    min-width: 250px;
+}
+
+
+.navbar {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color:white;
+}
+
+
+#logo {
+    margin-top:30px;
+    height: 38px;
+    width: 57px;
+    margin: auto;
+}
+
+.align {
+    vertical-align: middle;
+}

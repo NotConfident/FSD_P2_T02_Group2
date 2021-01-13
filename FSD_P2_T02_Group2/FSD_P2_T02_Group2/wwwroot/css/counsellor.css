@@ -1,0 +1,134 @@
+﻿.body {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin: auto;
+    padding-left: 7%;
+    margin-bottom: 3%;
+}
+
+hr {
+    background-color: #0F89AE;
+    width: 7vh;
+    height: 0.4vh;
+    margin-bottom: 4vh;
+    margin-left: 40%;
+}
+
+#subTitle {
+    color: black;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+    letter-spacing: 0.7em;
+    margin-bottom: 2%;
+}
+
+h3 {
+    color:black;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.box-content {
+    color: #555;
+    font-family: 'Josefin Sans', sans-serif;
+    width: 200%;
+    margin-left: -20%;
+}
+
+#name, #email, #number {
+    font-size: 120%;
+    vertical-align: baseline;
+    *vertical-align: middle;
+    width: 1000%;
+    padding: 8px 10px;
+    margin-bottom: 20px;
+    max-width: 100%;
+    background: #F5F5F5;
+    border: 0px solid #dddddd;
+}
+
+#name::-webkit-input-placeholder, #email::-webkit-input-placeholder, #number::-webkit-input-placeholder {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.contact-form input.button {
+    width: auto;
+    color: white;
+    background-color: #A7BDE8;
+    border: 0;
+    outline: 0;
+    margin-bottom: 0;
+    padding: 12px 38px;
+}
+
+.contact-form input.Submit {
+    width: auto;
+    color: white;
+    background: #0F89AE;
+    border: 0;
+    outline: 0;
+    margin-bottom: 0;
+    padding: 12px 38px;
+    font-size: large;
+}
+
+.File {
+    width: 90%;
+    color: white;
+    background: #A7BDE8;
+    padding: 5px 15px;
+    font-size: 60%;
+}
+
+#Image {
+    font-size: 140%;
+    background-color: #A7BDE8;
+    padding: 5px 15px;
+    text-align: left;
+    color: white;
+}
+
+#Certification {
+    font-size: 140%;
+    background-color: #A7BDE8;
+    padding: 5px 15px;
+    text-align: left;
+    color: white;
+}
+input {
+    border: 1px solid;
+    box-shadow: 3px 3px 4px #A7BDE8;
+    border-color: #A7BDE8;
+    padding: 8px;
+    text-align: center;
+    font-size: 20px;
+}
+
+::placeholder {
+    color: #bcbfc4;
+}
+
+.myButton {
+    background: #EFEFEF;
+    mix-blend-mode: normal;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    height: 50px;
+    font-size: 17px;
+    transition: background-color 0.15s linear;
+}
+
+    .myButton:hover {
+        background-color: #C8D8F8 !important;
+    }
+
+p{
+    margin-bottom:0;
+    margin-top:0;
+}
