@@ -1028,13 +1028,6 @@ C:/Users/jaxch/source/repos/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.dll
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.pdb
 /Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.genruntimeconfig.cache
-<<<<<<< HEAD
-/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.JsonWebTokens.dll
-/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Logging.dll
-/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Microsoft.IdentityModel.Tokens.dll
-/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/System.IdentityModel.Tokens.Jwt.dll
-/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/bin/Debug/netcoreapp3.1/Twilio.dll
-/Users/yongtenggg/Desktop/Poly/Year 2/Year 2 Sem 2/P2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/FSD_P2_T02_Group2/obj/Debug/netcoreapp3.1/FSD_P2_T02_Group2.csprojAssemblyReference.cache
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.csprojAssemblyReference.cache
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.AssemblyInfoInputs.cache
@@ -1219,7 +1212,6 @@ C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\staticwebassets\FSD_P2_T02_Group2.StaticWebAssets.Manifest.cache
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\staticwebassets\FSD_P2_T02_Group2.StaticWebAssets.xml
 C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.genruntimeconfig.cache
-=======
 C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\bin\Debug\netcoreapp3.1\FSD_P2_T02_Group2.exe
@@ -1406,3 +1398,5 @@ C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group
 C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.pdb
 C:\Users\jaxch\source\repos\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\FSD_P2_T02_Group2.genruntimeconfig.cache
 >>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Admin\PendingCounsellor.cshtml.g.cs
+C:\Users\joeya\Downloads\NP_ICT\FSD & P2\FSD_P2_T02_Grp2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminNavBar.cshtml.g.cs

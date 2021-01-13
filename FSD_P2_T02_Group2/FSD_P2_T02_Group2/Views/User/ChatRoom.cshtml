@@ -83,12 +83,15 @@
         });
         function displayMessage(name, text) {
             if (name != alias) {
-                var txt = '<p style="padding:10px 10px 10px 0px;word-break:break-all;max-width:401px;margin-bottom:0"><div style="background-color:#DDDFF4;padding:10px;display:inline-block;">' + name + ': <br />' + text + '</div></p>';
+                var txt = '<p></p><div style="word-break:break-all;display:inline-block;max-width:401px;background-color:#DDDFF4;padding:10px;margin-top:15px;">' + name + ': <br />' + text + '</div>';
+                var newTxt = txt.toString();
+
             }
             else {
-                var txt = '<p style="padding:10px;word-break:break-all;max-width:401px;text-align:right;margin-left:auto;margin-right:0;margin-bottom:0"><div style="display: inline-block; background-color: #DDF4DE; padding: 10px;">' + text + '</div></p>';
+                var txt = '<p></p><div style="word-break:break-all;max-width:401px;margin-right: 5px;margin-left: auto;display:table;background-color: #DDF4DE; padding: 10px;margin-top:15px;">' + text + '</div>';
+                var newTxt = txt.toString();
             }
-            $(txt).hide().appendTo(".chat").fadeIn(1000);
+            $(newTxt).hide().appendTo(".chat").fadeIn(1000);
         };
     </script>
     <!-- TODO: Add SDKs for Firebase products that you want to use

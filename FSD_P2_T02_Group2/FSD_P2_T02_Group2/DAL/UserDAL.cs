@@ -96,8 +96,8 @@ namespace FSD_P2_T02_Group2.DAL
         {
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"INSERT INTO UserDetails(Username, Password, Email, Name, Alias, PhoneNo)
-                                VALUES(@username, @password, @email, @name, @alias, @phoneNo)";
+            cmd.CommandText = @"INSERT INTO [User](Username, Name, Alias, Password, Email, PhoneNo, DateCreated)
+                                VALUES(@username, @name, @alias, @password, @email, @phoneNo, @date)";
 
             cmd.Parameters.AddWithValue("@username", user.Username);
             cmd.Parameters.AddWithValue("@password", user.Password);
@@ -105,6 +105,7 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.Parameters.AddWithValue("@name", user.Name);
             cmd.Parameters.AddWithValue("@alias", user.Alias);
             cmd.Parameters.AddWithValue("@phoneNo", user.PhoneNo);
+            cmd.Parameters.AddWithValue("@date", DateTime.Now.Date);
 
             conn.Open();
             cmd.ExecuteNonQuery();
@@ -148,7 +149,7 @@ namespace FSD_P2_T02_Group2.DAL
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json" 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
@@ -159,13 +160,8 @@ namespace FSD_P2_T02_Group2.DAL
 
         public string OTP(string number)
         {
-<<<<<<< HEAD
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
-            const string authToken = "6f9f2d9c380962bcae5002986da09be6";
-=======
-            const string accountSID = "";
-            const string authToken = "";
->>>>>>> 33c80cdd18f7e4c08e8d4a218ca058259394a9df
+            const string authToken = "d4fa2167bc11ccc0450d2e1249c06f13";
 
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
