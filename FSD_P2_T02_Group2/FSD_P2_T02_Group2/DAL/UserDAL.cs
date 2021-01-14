@@ -4,14 +4,17 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
 using FSD_P2_T02_Group2.DAL;
-using FSD_P2_T2_Group2.Models;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using System.IO;
+using Google.Cloud.Firestore;
+using Twilio;
+using Twilio.Types;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Exceptions;
 
 namespace FSD_P2_T02_Group2.DAL
 {
@@ -65,8 +68,8 @@ namespace FSD_P2_T02_Group2.DAL
 
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT * FROM UserDetails
-                                WHERE Username = @username AND PASSWORD = @password";
+            cmd.CommandText = @"SELECT * FROM [User]
+                                WHERE Username = @username AND Password = @password";
 
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@password", password);
@@ -77,11 +80,11 @@ namespace FSD_P2_T02_Group2.DAL
                 while (reader.Read())
                 {
                     user.Username = reader.GetString(1);
-                    user.Password = reader.GetString(2);
-                    user.Email = reader.GetString(3);
-                    user.Name = reader.GetString(4);
-                    user.Alias = reader.GetString(5);
-                    user.PhoneNo = reader.GetString(6);
+                    user.Password = reader.GetString(4);
+                    user.Email = reader.GetString(5);
+                    user.Name = reader.GetString(2);
+                    user.Alias = reader.GetString(3);
+                    user.PhoneNo = reader.GetString(7);
                 }
             }
             reader.Close();
@@ -93,8 +96,8 @@ namespace FSD_P2_T02_Group2.DAL
         {
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"INSERT INTO UserDetails(Username, Password, Email, Name, Alias, PhoneNo)
-                                VALUES(@username, @password, @email, @name, @alias, @phoneNo)";
+            cmd.CommandText = @"INSERT INTO [User](Username, Name, Alias, Password, Email, PhoneNo, DateCreated)
+                                VALUES(@username, @name, @alias, @password, @email, @phoneNo, @date)";
 
             cmd.Parameters.AddWithValue("@username", user.Username);
             cmd.Parameters.AddWithValue("@password", user.Password);
@@ -102,11 +105,10 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.Parameters.AddWithValue("@name", user.Name);
             cmd.Parameters.AddWithValue("@alias", user.Alias);
             cmd.Parameters.AddWithValue("@phoneNo", user.PhoneNo);
+            cmd.Parameters.AddWithValue("@date", DateTime.Now.Date);
 
             conn.Open();
-
             cmd.ExecuteNonQuery();
-
             conn.Close();
         }
 
@@ -115,7 +117,7 @@ namespace FSD_P2_T02_Group2.DAL
             int? count = 0;
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT COUNT(userID) FROM  UserDetails";
+            cmd.CommandText = @"SELECT COUNT(userID) FROM  [User]";
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
 
@@ -127,8 +129,59 @@ namespace FSD_P2_T02_Group2.DAL
                 }
             }
             reader.Close();
-            conn.Close();
+            conn.Close();   
             return count.Value;
+        }
+
+        public async Task sendMessage(User user, ChatMessage message, string room)
+        {
+
+            var firestoreDb = CreateFirestoreDb();;
+            
+            await firestoreDb.Collection(room).AddAsync(new ChatMessage
+            {
+                Alias = user.Alias,
+                CreatedAt = Google.Cloud.Firestore.Timestamp.FromDateTime(DateTime.UtcNow),
+                Message = message.Message
+        });
+        }
+
+        private FirestoreDb CreateFirestoreDb()
+        { 
+            var projectName = "fir-chat-ukiyo";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json" 
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            Console.WriteLine("Created Firestore");
+            return FirestoreDb.Create(projectName);
+            
+        }
+
+        public string OTP(string number)
+        {
+            const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
+            const string authToken = "d4fa2167bc11ccc0450d2e1249c06f13";
+
+            // Initialize the TwilioClient.
+            TwilioClient.Init(accountSID, authToken);
+            string randNum = "";
+            try
+            {
+                Random random = new Random();
+                randNum = random.Next(100000, 999999).ToString();
+                // Send an SMS message.
+                var message = MessageResource.Create(
+                    to: new PhoneNumber(number),
+                    from: new PhoneNumber("+12566854677"),
+                    body: "Hi, Your OTP Number is " + randNum);
+            }
+            catch (TwilioException ex)
+            {
+                // An exception occurred making the REST call
+                Console.WriteLine(ex.Message);
+            }
+            return randNum;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace FSD_P2_T2_Group2.Models
+namespace FSD_P2_T02_Group2.Models
 {
     public class User
     {

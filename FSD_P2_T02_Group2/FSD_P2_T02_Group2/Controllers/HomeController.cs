@@ -9,20 +9,21 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
 using FSD_P2_T02_Group2.DAL;
-using FSD_P2_T2_Group2.Models;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Net.Http.Headers;
 using System.Text;
 
-namespace FSD_P2_T2_Group2.Controllers
+
+namespace FSD_P2_T02_Group2.Controllers
 {
     public class HomeController : Controller
     {
 
         public UserDAL userDAL = new UserDAL();
         public AdminDAL adminDAL = new AdminDAL();
+        public CounsellorDAL counsellorDAL = new CounsellorDAL();
 
         public readonly ILogger<HomeController> _logger;
 
@@ -39,7 +40,7 @@ namespace FSD_P2_T2_Group2.Controllers
         public IActionResult ChatRoom()
         {
             //return Redirect("http://54.147.90.7");
-            return RedirectToAction("ChatRoom", "User");
+            return RedirectToAction("UserMain", "User");
             //return RedirectToAction("Index", "Home");
         }
 
@@ -51,6 +52,7 @@ namespace FSD_P2_T2_Group2.Controllers
             string password = formData["txtPassword"].ToString();
 
             User user = userDAL.CheckLogin(username, password);
+            User admin = adminDAL.CheckAdminLogin(username, password);
 
             //DateTime logintime = DateTime.Now;
 
@@ -62,7 +64,7 @@ namespace FSD_P2_T2_Group2.Controllers
                 string role = "User";
                 HttpContext.Session.SetString("Role", role);
                 Set("Username", user.Alias, 60);
-
+                
                 //var resp = new HttpResponseMessage();
 
                 //var cookie = new System.Net.Http.Headers.CookieHeaderValue("Username", user.Alias);
@@ -73,8 +75,15 @@ namespace FSD_P2_T2_Group2.Controllers
 
                 return RedirectToAction("UserMain", "User");
             }
-            else if(username == "Admin" && password == "admin")
+            else if (admin.Username != null)
             {
+                HttpContext.Session.SetString("Username", username);
+                HttpContext.Session.SetString("Alias", admin.Alias);
+
+                string role = "Admin";
+                HttpContext.Session.SetString("Role", role);
+                Set("Username", admin.Alias, 60);
+
                 return RedirectToAction("Index", "Admin");
             }
             else
@@ -126,36 +135,17 @@ namespace FSD_P2_T2_Group2.Controllers
             return View();
         }
 
-        //static async Task SignUpUser(User user)
-        //{
-        //    AmazonCognitoIdentityProviderClient provider =
-        //        new AmazonCognitoIdentityProviderClient(new Amazon.Runtime.AnonymousAWSCredentials(), Region);
-
-        //    SignUpRequest signUpRequest = new SignUpRequest()
-        //    {
-        //        ClientId = appClientID,
-        //        Username = user.Username,
-        //        Password = user.Password
-        //    };
-        //    List<AttributeType> attributes = new List<AttributeType>()
-        //    {
-        //        new AttributeType(){Name = "email", Value = user.Email},
-        //        new AttributeType(){Name = "phone_number", Value = user.PhoneNo}
-        //    };
-
-        //    signUpRequest.UserAttributes = attributes;
-
-        //    SignUpResponse result = await provider.SignUpAsync(signUpRequest);
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User user)
         {
             if (ModelState.IsValid)
             {
-                userDAL.RegisterUser(user);
-                return RedirectToAction("Login");
+                string otp = userDAL.OTP(user.PhoneNo);
+                ViewBag.newUser = user;
+                TempData.Put("newUser", user);
+                TempData["OTP"] = otp;
+                return RedirectToAction("RegisterOTP");
             }
             else
             {
@@ -163,9 +153,55 @@ namespace FSD_P2_T2_Group2.Controllers
             }
         }
 
+        public IActionResult RegisterOTP()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterOTP(string inputOtp)
+        {
+            string otp = TempData["OTP"].ToString();
+            string corrOTP = TempData["OTP"].ToString();
+            User u = ViewBag.newUser;
+            User u2 = TempData.Get<User>("newUser");
+            if (otp == corrOTP)
+            {
+                userDAL.RegisterUser(u2);
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                string newOtp = userDAL.OTP(u.PhoneNo);
+                TempData["OTP"] = newOtp;
+                return View();
+            }
+        }
         public IActionResult Counsellor()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Counsellor(IFormCollection formData)
+        {
+
+            string name = formData["name"].ToString();
+            string email = formData["email"].ToString();
+            string phoneno = formData["number"].ToString();
+
+            PendingCounsellor counsellor = new PendingCounsellor();
+            counsellor.Name = name;
+            counsellor.Email = email;
+            counsellor.PhoneNumber = phoneno;
+            counsellor.Image = Request.Form["base64Image"];
+            counsellor.Certificate = Request.Form["base64Certificate"];
+
+            counsellorDAL.CounsellorForm(counsellor);
+
+            return View();
+            
         }
 
         public ActionResult AboutUs()

@@ -84,6 +84,14 @@ h3 {
     font-size: 60%;
 }
 
+#Image {
+    font-size: 140%;
+    background-color: #A7BDE8;
+    padding: 5px 15px;
+    text-align: left;
+    color: white;
+}
+
 #Certification {
     font-size: 140%;
     background-color: #A7BDE8;

@@ -42,6 +42,8 @@ namespace FSD_P2_T02_Group2
             // Add a default in-memory implementation of distributed cache
             services.AddDistributedMemoryCache();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddHttpContextAccessor();
 
             services.AddControllersWithViews();
             //services.AddCognitoIdentity();

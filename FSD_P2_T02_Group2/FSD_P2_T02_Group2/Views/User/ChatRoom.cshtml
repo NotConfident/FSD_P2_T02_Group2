@@ -1,61 +1,100 @@
-﻿@using Microsoft.AspNetCore.Http;
+﻿@model IEnumerable<FSD_P2_T02_Group2.Models.ChatMessage>
+@using Microsoft.AspNetCore.Http;
+@using Google.Cloud.Firestore;
+@using System.Web;
+@{
+    ViewData["Title"] = "UserMain";
+    Layout = "";
+}
 <!DOCTYPE html>
 <head>
     <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
 </head>
 
-<body>
-    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
-    <div class="hero-image container-fluid">
-        <div class="row hero-row">
-            <div class="col vcenter">
-                <div class="page-title">
-                    <h1>Live Chat</h1>
+<body style="margin-bottom:0">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+    <div class="d-flex align-items-stretch">
+        <div style="width:250px;">
+            <partial name="~/Views/User/ChatRooms.cshtml" />
+        </div>
+        <div style="padding-left:50px">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="padding-top:0px;height:56px;">
+                <div class="container">
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item usernav" style="padding:10px;">
+                                <a class="nav-link">Counselling</a>
+                            </li>
+                            <li class="nav-item usernav" style="padding:10px;">
+                                <a class="nav-link">Account</a>
+                            </li>
+                            <li class="nav-item usernav" style="padding:10px;">
+                                <a class="nav-link" asp-action="Index" asp-controller="Home">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="chat-window" id="chat-window">
-                <ul id="messages">
-                    <li class="msg">
-                        <span class="msg-span">
-                            <i class="name">Host: </i>Hello and welcome to the chat!
-                        </span>
-                    </li>
-                </ul>
-                <form id="messageForm" autocomplete="off">
-                    <input type="text" id="msg-input" placeholder="Enter a message">
-                    <button id="msg-btn" type="submit">Send</button>
-                </form>
-            </div>
+            </nav>
+            <h1>@Context.Session.GetString("room")</h1>
+
+
+            <div style="margin:0 auto;overflow:auto;height:500px;width:50vw;" id="chat" class="chat"></div>
+            <partial name="~/Views/User/_Send.cshtml" />
         </div>
     </div>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB_3YSraE6XM9lB-Va12Q36Gxmu19Mju8U",
+            authDomain: "fir-chat-ukiyo.firebaseapp.com",
+            databaseURL: "https://fir-chat-ukiyo-default-rtdb.firebaseio.com",
+            projectId: "fir-chat-ukiyo",
+            storageBucket: "fir-chat-ukiyo.appspot.com",
+            messagingSenderId: "1003455832615"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var firestore = firebase.firestore();
+        console.log("initialized")
+        var room = "@Context.Session.GetString("room")";
+        var alias = "@Context.Session.GetString("Alias")";
+        console.log(room);
+        // Create the query to load the last 12 messages and listen for new ones.
+        var query = firestore.collection(room).orderBy("CreatedAt", "asc");
+
+        // Start listening to the query.
+        query.onSnapshot(function (snapshot) {
+            var messages_array = [];
+            snapshot.docChanges().forEach(function (change) {
+                var message = change.doc.data();
+                console.log("displaying message: " + message.Message);
+                displayMessage(message.Alias, message.Message);
+            });
+            $('.chat').scrollTop($('.chat')[0].scrollHeight);
+        });
+        function displayMessage(name, text) {
+            if (name != alias) {
+                var txt = '<p></p><div style="word-break:break-all;display:inline-block;max-width:401px;background-color:#DDDFF4;padding:10px;margin-top:15px;">' + name + ': <br />' + text + '</div>';
+                var newTxt = txt.toString();
+
+            }
+            else {
+                var txt = '<p></p><div style="word-break:break-all;max-width:401px;margin-right: 5px;margin-left: auto;display:table;background-color: #DDF4DE; padding: 10px;margin-top:15px;">' + text + '</div>';
+                var newTxt = txt.toString();
+            }
+            $(newTxt).hide().appendTo(".chat").fadeIn(1000);
+        };
+    </script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
