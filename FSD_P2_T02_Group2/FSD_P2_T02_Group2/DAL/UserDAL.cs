@@ -36,7 +36,7 @@ namespace FSD_P2_T02_Group2.DAL
         public List<User> GetUsers()
         {
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = @"SELECT * FROM UserDetails";
+            cmd.CommandText = @"SELECT * FROM User";
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             List<User> userList = new List<User>();
@@ -45,17 +45,52 @@ namespace FSD_P2_T02_Group2.DAL
                 userList.Add(
                 new User
                 {
-                    Username = reader.GetString(1),
-                    Password = reader.GetString(2),
-                    Email = reader.GetString(3),
-                    Name = reader.GetString(4),
-                    Alias = reader.GetString(5),
-                    PhoneNo = reader.GetString(6)
+                    UserID = reader.GetInt32(0),
+                    Username = !reader.IsDBNull(1) ? reader.GetString(1) : null,
+                    Password = !reader.IsDBNull(2) ? reader.GetString(2) : null,
+                    Email = !reader.IsDBNull(3) ? reader.GetString(3) : null,
+                    Name = !reader.IsDBNull(4) ? reader.GetString(4) : null,
+                    Alias = !reader.IsDBNull(5) ? reader.GetString(5) : null,
+                    PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null,
+                    ProfilePicture = !reader.IsDBNull(8) ? reader.GetString(8) : null,
+                    Status = !reader.IsDBNull(9) ? reader.GetString(9) : null
                 });
             }
             reader.Close();
             conn.Close();
             return userList;
+        }
+
+        public User GetUser(int id)
+        {
+            User user = new User();
+
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT * FROM [User]
+                                WHERE UserID = @userid";
+
+            cmd.Parameters.AddWithValue("@userid", id);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    user.UserID = reader.GetInt32(0);
+                    user.Username = !reader.IsDBNull(1) ? reader.GetString(1) : null;
+                    user.Name = !reader.IsDBNull(2) ? reader.GetString(2) : null;
+                    user.Alias = !reader.IsDBNull(3) ? reader.GetString(3) : null;
+                    user.Password = !reader.IsDBNull(4) ? reader.GetString(4) : null;
+                    user.Email = !reader.IsDBNull(5) ? reader.GetString(5) : null;
+                    user.PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null;
+                    user.ProfilePicture = !reader.IsDBNull(8) ? reader.GetString(8) : null;
+                    user.Status = !reader.IsDBNull(9) ? reader.GetString(9) : null;
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return user;
         }
 
         public User CheckLogin(string username, string password)
@@ -75,12 +110,15 @@ namespace FSD_P2_T02_Group2.DAL
             {
                 while (reader.Read())
                 {
-                    user.Username = reader.GetString(1);
-                    user.Password = reader.GetString(4);
-                    user.Email = reader.GetString(5);
-                    user.Name = reader.GetString(2);
-                    user.Alias = reader.GetString(3);
-                    user.PhoneNo = reader.GetString(7);
+                    user.UserID = reader.GetInt32(0);
+                    user.Username = !reader.IsDBNull(1) ? reader.GetString(1) : null;
+                    user.Name = !reader.IsDBNull(2) ? reader.GetString(2) : null;
+                    user.Alias = !reader.IsDBNull(3) ? reader.GetString(3) : null;
+                    user.Password = !reader.IsDBNull(4) ? reader.GetString(4) : null;
+                    user.Email = !reader.IsDBNull(5) ? reader.GetString(5) : null;
+                    user.PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null;
+                    user.ProfilePicture = !reader.IsDBNull(8) ? reader.GetString(8) : null;
+                    user.Status = !reader.IsDBNull(9) ? reader.GetString(9) : null;
                 }
             }
             reader.Close();
@@ -92,8 +130,8 @@ namespace FSD_P2_T02_Group2.DAL
         {
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"INSERT INTO UserDetails(Username, Password, Email, Name, Alias, PhoneNo)
-                                VALUES(@username, @password, @email, @name, @alias, @phoneNo)";
+            cmd.CommandText = @"INSERT INTO User(Username, Password, Email, Name, Alias, PhoneNo, Status, ProfilePicture) OUTPUT INSERTED.UserID 
+                                VALUES(@username, @password, @email, @name, @alias, @phoneNo, @status, @profpic)";
 
             cmd.Parameters.AddWithValue("@username", user.Username);
             cmd.Parameters.AddWithValue("@password", user.Password);
@@ -101,12 +139,48 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.Parameters.AddWithValue("@name", user.Name);
             cmd.Parameters.AddWithValue("@alias", user.Alias);
             cmd.Parameters.AddWithValue("@phoneNo", user.PhoneNo);
+            cmd.Parameters.AddWithValue("@status", user.Status);
+            cmd.Parameters.AddWithValue("@profpic", DBNull.Value);
 
             conn.Open();
 
             cmd.ExecuteNonQuery();
 
             conn.Close();
+        }
+
+        public int UpdateUser(User user)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"UPDATE User SET Password = @password, Name = @name, Alias = @alias, Status = @status, PhoneNo = @phoneno, ProfilePicture = @profpic WHERE UserID = @userid";
+            cmd.Parameters.AddWithValue("@password", user.Password);
+            cmd.Parameters.AddWithValue("@name", user.Name);
+            cmd.Parameters.AddWithValue("@alias", user.Alias);
+            cmd.Parameters.AddWithValue("@status", user.Status);
+            cmd.Parameters.AddWithValue("@phoneno", user.PhoneNo);
+            if (String.IsNullOrEmpty(user.ProfilePicture))
+            {
+                cmd.Parameters.AddWithValue("@profpic", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@profpic", user.ProfilePicture);
+            }
+
+            try
+            {
+                conn.Open();
+                int count = cmd.ExecuteNonQuery();
+                System.Diagnostics.Debug.WriteLine("Number of rows affected in update:" + count);
+                conn.Close();
+                return count;
+            }
+            catch
+            {
+                conn.Close();
+                return 0;
+            }
         }
 
         public int CountUser()
@@ -149,7 +223,7 @@ namespace FSD_P2_T02_Group2.DAL
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             return FirestoreDb.Create(projectName);
