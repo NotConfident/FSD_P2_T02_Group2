@@ -1,0 +1,102 @@
+﻿@model FSD_P2_T02_Group2.Models.User
+@using Microsoft.AspNetCore.Http;
+@using Google.Cloud.Firestore;
+@using System.Web;
+
+@{
+    ViewData["Title"] = "Account";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<head>
+    <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+    <h1>Account</h1>
+
+    @{
+        var projectName = "fir-chat-ukiyo";
+        var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+        FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+        FirestoreDb db = FirestoreDb.Create(projectName);
+
+        CollectionReference postRef = db.Collection("Posts");
+        List<Post> postList = new List<Post>();
+
+        Query query = postRef.WhereEqualTo("UserID", Model.UserID);
+        QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+        if (querySnapshot != null)
+        {
+            foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+            {
+                Post posts = documentSnapshot.ConvertTo<Post>();
+                postList.Add(posts);
+            }
+            Model.PostList = postList;
+        }
+    }
+
+    <div>
+        <h4>User</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PhoneNo)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PhoneNo)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ProfilePicture)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ProfilePicture)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("View Account Details", "ViewAccDetails", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    <div>
+        @if (postList != null)
+        {
+            @foreach (Post p in postList)
+            {
+                Console.WriteLine(p.Description);
+                Console.WriteLine(p.Likes);
+                Console.WriteLine(p.Tags);
+                Console.WriteLine(p.TimeCreated.ToString());
+
+            }
+        }
+        else
+        {
+            <p>No posts to show !</p>
+        }
+    </div>
+
+</body>

@@ -60,7 +60,8 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 HttpContext.Session.SetString("Username", username);
                 HttpContext.Session.SetString("Alias", user.Alias);
-                
+                HttpContext.Session.SetInt32("UserID", user.UserID);
+
                 string role = "User";
                 HttpContext.Session.SetString("Role", role);
                 Set("Username", user.Alias, 60);

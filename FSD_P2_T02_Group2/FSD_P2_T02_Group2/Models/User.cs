@@ -8,7 +8,7 @@ namespace FSD_P2_T02_Group2.Models
 {
     public class User
     {
-        //public int UserID { get; set; }
+        public int UserID { get; set; }
 
         [Required(ErrorMessage ="Username must be provided.")]
         public string Username { get; set; }
@@ -31,5 +31,11 @@ namespace FSD_P2_T02_Group2.Models
 
         [Required(ErrorMessage = "Alias must be provided.")]
         public string Alias { get; set; }
+
+        public string Status { get; set; } = "";
+
+        public string ProfilePicture { get; set; }
+
+        public List<Post> PostList { get; set; }
     }
 }
