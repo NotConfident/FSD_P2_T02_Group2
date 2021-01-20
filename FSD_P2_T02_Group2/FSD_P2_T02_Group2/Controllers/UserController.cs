@@ -63,9 +63,6 @@ namespace FSD_P2_T02_Group2.Controllers
             ModelState.Clear(); // Clears textbox
             return View();
         }
-<<<<<<< HEAD
-=======
-
 
         public ActionResult Account()
         {
@@ -131,7 +128,5 @@ namespace FSD_P2_T02_Group2.Controllers
                 return View(user);
             }
         }
-
->>>>>>> 1865f3499c556e603ef0142ae3261ee2f6dab972
     }
 }
