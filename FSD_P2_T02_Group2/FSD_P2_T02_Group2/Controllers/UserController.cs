@@ -63,10 +63,5 @@ namespace FSD_P2_T02_Group2.Controllers
             ModelState.Clear(); // Clears textbox
             return View();
         }
-
-        public ActionResult Talents()
-        {
-            return View();
-        }
     }
 }

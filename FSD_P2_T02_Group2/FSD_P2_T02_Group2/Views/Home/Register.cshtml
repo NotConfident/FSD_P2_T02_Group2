@@ -5,39 +5,73 @@
 }
 
 <!DOCTYPE html>
+<html>
 <head>
     <title>Register</title>
     <link href="~/css/register.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <div class="myRegister" style="background: url(../images/cloud.jpg);background-repeat:no-repeat; background-size:cover">
-        <div class="row">
-            <div class="box-content">
+<body class="form-v4">
+    <div class="page-content" style="background: url(../images/Login.png);background-repeat:no-repeat; background-size:cover">
+        <div class="form-v4-content">
+            <div class="form-detail">
                 <form method="post">
-                    <input asp-for="Name" placeholder="Full Name" size="30" />
-                    <span asp-validation-for="Name" style="color:white"></span><br /><br />
-                    <input asp-for="Alias" placeholder="Alias" size="30" />
-                    <span asp-validation-for="Alias" style="color:white"></span><br /><br />
-                    <input asp-for="Username" placeholder="Username" size="30" />
-                    <span asp-validation-for="Username" style="color:white"></span><br /><br />
-                    <input asp-for="Password" placeholder="Password" size="30" type="password" />
-                    <span asp-validation-for="Password" style="color:white"></span><br /><br />
-                    <input asp-for="ConfirmPassword" placeholder="Confirm Password" size="30" type="password" />
-                    <span asp-validation-for="ConfirmPassword"style="color:white"></span><br /><br />
-                    <input asp-for="Email" placeholder="Email" size="30" />
-                    <span asp-validation-for="Email"style="color:white"></span><br /><br />
-                    <input asp-for="PhoneNo" placeholder="Phone Number" size="30" />
-                    <span asp-validation-for="PhoneNo" style="color:white"></span><br /><br />
-                    <input type="submit" class="myButton" value="Register" />
+                    <h2>Register as a User</h2>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="full_name">Full Name</label>
+                            <input asp-for="Name" class="input-text">
+                            <span asp-validation-for="Name" style="color:#ff848c"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-1">
+                            <label for="alias">Alias</label>
+                            <input asp-for="Alias" class="input-text">
+                            <span asp-validation-for="Alias" style="color:#ff848c"></span>
+                        </div>
+                        <div class="form-row form-row-1">
+                            <label for="username">Username</label>
+                            <input asp-for="Username" class="input-text">
+                            <span asp-validation-for="Username" style="color:#ff848c"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-1">
+                            <label for="your_email">Your Email</label>
+                            <input asp-for="Email" class="input-text">
+                            <span asp-validation-for="Email" style="color:#ff848c"></span>
+                        </div>
+                        <div class="form-row form-row-1">
+                            <label for="phone_number">Phone Number</label>
+                            <input asp-for="PhoneNo" class="input-text">
+                            <span asp-validation-for="PhoneNo" style="color:#ff848c"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-1 ">
+                            <label for="password">Password</label>
+                            <input asp-for="Password" type="password" class="input-text">
+                            <span asp-validation-for="Password" style="color:#ff848c"></span>
+                        </div>
+                        <div class="form-row form-row-1">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input asp-for="ConfirmPassword" type="password" class="input-text">
+                            <span asp-validation-for="ConfirmPassword" style="color:#ff848c"></span>
+                        </div>
+                    </div>
+                    <div class="form-row-last">
+                        <input type="submit" name="register" class="register" value="Sign Up">
+                    </div>
                 </form>
-            </div>
+            </div>           
         </div>
     </div>
 </body>
+</html>

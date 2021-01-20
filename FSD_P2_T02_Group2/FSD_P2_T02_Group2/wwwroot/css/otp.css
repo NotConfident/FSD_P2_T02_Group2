@@ -66,7 +66,7 @@
         .form-v4-content .form-detail h2 {
             color: #333333;
             font-family: Josefin Sans, sans-serif;
-            font-size: 33px;
+            font-size: 29px;
             text-align: center;
         }
 
@@ -82,8 +82,6 @@
         }
 
         .form-v4-content .form-detail .form-group .form-row.form-row-1 {
-            width: 50%;
-            padding: 0 14px;
             display: table-footer-group;
         }
 
@@ -95,8 +93,9 @@
             -webkit-appearance: unset;
             outline: none;
             font-family: Josefin Sans, sans-serif;
-            font-size: 15px;
+            font-size: 25px;
             color: #333;
+            text-align: center;
             -webkit-box-sizing: border-box;
         }
 
@@ -104,7 +103,7 @@
             border: 1px solid #0F89AE;
         }
 
-        .form-v4-content .form-detail .register {
+        .form-v4-content .form-detail .submit {
             background: #3786bd;
             border-radius: 10px;
             border: none;
@@ -115,7 +114,7 @@
             font-size: 15px;
         }
 
-            .form-v4-content .form-detail .register:hover {
+            .form-v4-content .form-detail .submit:hover {
                 background: #1098C2;
             }
 
