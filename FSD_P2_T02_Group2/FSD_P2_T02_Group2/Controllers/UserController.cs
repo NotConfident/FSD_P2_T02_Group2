@@ -63,5 +63,75 @@ namespace FSD_P2_T02_Group2.Controllers
             ModelState.Clear(); // Clears textbox
             return View();
         }
+<<<<<<< HEAD
+=======
+
+
+        public ActionResult Account()
+        {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+                    (HttpContext.Session.GetString("Role") != "User"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            User user = userDAL.GetUser((int)HttpContext.Session.GetInt32("UserID"));
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(user);
+        }
+
+        public ActionResult ViewAccDetails()
+        {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+                    (HttpContext.Session.GetString("Role") != "User"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            User user = userDAL.GetUser((int)HttpContext.Session.GetInt32("UserID"));
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(user);
+        }
+
+        public ActionResult EditAccount()
+        {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+                    (HttpContext.Session.GetString("Role") != "User"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            User user = userDAL.GetUser((int)HttpContext.Session.GetInt32("UserID"));
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditAccount(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                int id = userDAL.UpdateUser(user);
+                if (id != 0)
+                {
+                    return RedirectToAction("ViewAccDetails");
+                }
+                return View(user);
+            }
+            else
+            {
+                TempData["Error"] = "Information not changed!";
+                return View(user);
+            }
+        }
+
+>>>>>>> 1865f3499c556e603ef0142ae3261ee2f6dab972
     }
 }

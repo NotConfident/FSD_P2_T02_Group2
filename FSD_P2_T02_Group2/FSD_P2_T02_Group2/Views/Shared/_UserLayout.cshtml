@@ -54,7 +54,7 @@
                                     <a class="nav-link">Counselling</a>
                                 </li>
                                 <li class="nav-item usernav" style="padding:10px;">
-                                    <a class="nav-link">Account</a>
+                                    <a class="nav-link" asp-action="Account" asp-controller="User">Account</a>
                                 </li>
                                 <li class="nav-item usernav" style="padding:10px;">
                                     <a class="nav-link" asp-action="Index" asp-controller="Home">Log Out</a>
@@ -65,6 +65,11 @@
                     @if (Context.Session.GetString("Role") == "Admin")
                     {
                         <partial name="~/Views/Shared/_AdminNavBar.cshtml" />
+
+                    }
+                    @if (Context.Session.GetString("Role") == "Counsellor")
+                    {
+                        <partial name="~/Views/Shared/_CounsellorNavBar.cshtml" />
 
                     }
                 </div>
