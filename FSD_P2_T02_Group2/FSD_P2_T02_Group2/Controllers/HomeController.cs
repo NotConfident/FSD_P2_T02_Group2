@@ -53,8 +53,8 @@ namespace FSD_P2_T02_Group2.Controllers
 
             User user = userDAL.CheckLogin(username, password);
             User admin = adminDAL.CheckAdminLogin(username, password);
+            Counsellor counsellor = counsellorDAL.CheckLogin(username, password);
 
-            //DateTime logintime = DateTime.Now;
 
             if (user.Username != null)
             {
@@ -75,6 +75,17 @@ namespace FSD_P2_T02_Group2.Controllers
                 //resp.Headers.AddCookies(new System.Net.Http.Headers.CookieHeaderValue[] { cookie })
 
                 return RedirectToAction("UserMain", "User");
+            }
+            else if (counsellor.Name != null)
+            {
+                HttpContext.Session.SetString("Email", username);
+                HttpContext.Session.SetString("Alias", counsellor.Name);
+
+                string role = "Counsellor";
+                HttpContext.Session.SetString("Role", role);
+                Set("Username", counsellor.Name, 60);
+
+                return RedirectToAction("Index", "Counsellor");
             }
             else if (admin.Username != null)
             {

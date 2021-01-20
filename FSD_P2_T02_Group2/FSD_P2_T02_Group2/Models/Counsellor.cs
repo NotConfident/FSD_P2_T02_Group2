@@ -8,8 +8,8 @@ namespace FSD_P2_T02_Group2.Models
 {
     public class Counsellor
     {
+        public int counsellorID { get; set; }
 
-        [Required(ErrorMessage ="Username must be provided.")]
         public string Name { get; set; }
 
         public string Password { get; set; }
@@ -18,16 +18,16 @@ namespace FSD_P2_T02_Group2.Models
 
         public DateTime DateCreated { get; set; }
 
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public string Image { get; set; }
-
-        public string Certificate { get; set; }
+        public string? Image { get; set; }
+        
+        public string? Certificate { get; set; }
 
         public DateTime DateBirth { get; set; }
 
-        public int AvgRating { get; set; }
+        public float? AvgRating { get; set; }
 
-        public string Status { get; set; }
+        public string? Status { get; set; }
     }
 }

@@ -67,6 +67,11 @@
                         <partial name="~/Views/Shared/_AdminNavBar.cshtml" />
 
                     }
+                    @if (Context.Session.GetString("Role") == "Counsellor")
+                    {
+                        <partial name="~/Views/Shared/_CounsellorNavBar.cshtml" />
+
+                    }
                 </div>
             </nav>
         </header>
