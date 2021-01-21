@@ -56,7 +56,7 @@ namespace FSD_P2_T02_Group2.DAL
                     Password = !reader.IsDBNull(4) ? reader.GetString(4) : null,
                     Email = !reader.IsDBNull(5) ? reader.GetString(5) : null,
                     PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null,
-                    ProfilePicture = !reader.IsDBNull(8) ? reader.GetString(8) : null,
+                    Image = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                     Status = !reader.IsDBNull(9) ? reader.GetString(9) : null
                 });
             }
@@ -88,7 +88,7 @@ namespace FSD_P2_T02_Group2.DAL
                     user.Password = !reader.IsDBNull(4) ? reader.GetString(4) : null;
                     user.Email = !reader.IsDBNull(5) ? reader.GetString(5) : null;
                     user.PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null;
-                    user.ProfilePicture = !reader.IsDBNull(8) ? reader.GetString(8) : null;
+                    user.Image = !reader.IsDBNull(8) ? reader.GetString(8) : null;
                     user.Status = !reader.IsDBNull(9) ? reader.GetString(9) : null;
                     //user.Username = reader.GetString(1);
                     //user.Name = reader.GetString(2);
@@ -129,7 +129,7 @@ namespace FSD_P2_T02_Group2.DAL
                     user.Password = !reader.IsDBNull(4) ? reader.GetString(4) : null;
                     user.Email = !reader.IsDBNull(5) ? reader.GetString(5) : null;
                     user.PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null;
-                    user.ProfilePicture = !reader.IsDBNull(8) ? reader.GetString(8) : null;
+                    user.Image = !reader.IsDBNull(8) ? reader.GetString(8) : null;
                     user.Status = !reader.IsDBNull(9) ? reader.GetString(9) : null;
                 }
             }
@@ -162,35 +162,34 @@ namespace FSD_P2_T02_Group2.DAL
         {
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"UPDATE [User] SET Password = @password, Name = @name, Alias = @alias, Status = @status, PhoneNo = @phoneno, ProfilePicture = @profpic WHERE UserID = @userid";
+            cmd.CommandText = @"UPDATE [User] SET Password = @password, Name = @name, Alias = @alias, Status = @status, PhoneNo = @phoneno, Image = @image WHERE UserID = @userid";
             cmd.Parameters.AddWithValue("@userid", user.UserID);
             cmd.Parameters.AddWithValue("@password", user.Password);
             cmd.Parameters.AddWithValue("@name", user.Name);
             cmd.Parameters.AddWithValue("@alias", user.Alias);
-            cmd.Parameters.AddWithValue("@status", user.Status);
             cmd.Parameters.AddWithValue("@phoneno", user.PhoneNo);
-            if (String.IsNullOrEmpty(user.ProfilePicture))
+            if (String.IsNullOrEmpty(user.Status))
             {
-                cmd.Parameters.AddWithValue("@profpic", DBNull.Value);
+                cmd.Parameters.AddWithValue("@status", DBNull.Value);
             }
             else
             {
-                cmd.Parameters.AddWithValue("@profpic", user.ProfilePicture);
+                cmd.Parameters.AddWithValue("@status", user.Status);
+            }
+            if (String.IsNullOrEmpty(user.Image))
+            {
+                cmd.Parameters.AddWithValue("@image", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@image", user.Image);
             }
 
-            try
-            {
-                conn.Open();
-                int count = cmd.ExecuteNonQuery();
-                System.Diagnostics.Debug.WriteLine("Number of rows affected in update:" + count);
-                conn.Close();
-                return count;
-            }
-            catch
-            {
-                conn.Close();
-                return 0;
-            }
+            conn.Open();
+            int count = cmd.ExecuteNonQuery();
+            System.Diagnostics.Debug.WriteLine("Number of rows affected in update:" + count);
+            conn.Close();
+            return count;
         }
 
         public int CountUser()
@@ -243,7 +242,7 @@ namespace FSD_P2_T02_Group2.DAL
         public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
-            const string authToken = "26b0ccfbc027d0dafb402ded896726fd";
+            const string authToken = "";
 
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
