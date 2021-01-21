@@ -40,5 +40,26 @@ namespace FSD_P2_T02_Group2.Controllers
             }
             return View();
         }
+
+        public ActionResult ViewFormDetails(int sessionID)
+        {
+            List<PendingCounsellorSession> session = new List<PendingCounsellorSession>();
+            //PendingCounsellorSession session = null;
+            List<PendingCounsellorSession> pcSessionList = new List<PendingCounsellorSession>();
+            pcSessionList = counsellorDAL.retrieveUserForms();
+
+
+            foreach (PendingCounsellorSession item in pcSessionList)
+            {
+                if (item.SessionID == sessionID)
+                {
+                    session.Add(item);
+                    //session = item;
+                    break;
+                }
+            }
+            return View(session);
+            //return RedirectToAction("PendingCounsellorSessions");
+        }
     }
 }

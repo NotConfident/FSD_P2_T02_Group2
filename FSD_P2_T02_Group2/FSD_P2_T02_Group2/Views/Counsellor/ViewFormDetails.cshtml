@@ -1,0 +1,83 @@
+﻿@model IEnumerable<FSD_P2_T02_Group2.Models.PendingCounsellorSession>
+@*<br />
+<br />
+<br />
+<br />
+<br />*@
+
+<partial name="~/Views/Counsellor/PendingCounsellorSessions.cshtml" />
+
+
+@*<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditAccount">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label class="control-label">SessionID:</label>
+                <span>@Html.Display("SessionID")</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">UserID</label>
+                <span>@Html.Display("UserID")</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Feeling</label>
+                <span>@Html.Display("Feeling")</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Thought</label>
+                <span>@Html.Display("Thought")</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Problems</label>
+                <span>@Html.Display("Problems")</span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">DateCreated</label>
+                <span>@Html.Display("DateCreated")</span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Start Chat" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>*@
+
+
+@foreach (PendingCounsellorSession item in Model)
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="EditAccount">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group" hidden>
+                        <label class="control-label">SessionID:</label>
+                        <span>@item.SessionID</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">UserID</label>
+                        <span>@item.UserID</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Feeling</label>
+                        <span>@item.Feeling</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Thought</label>
+                        <span>@item.Thought</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Problems</label>
+                        <span>@item.Problems</span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">DateCreated</label>
+                        <span>@item.DateCreated</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Start Chat" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    }

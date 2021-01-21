@@ -3,6 +3,8 @@
 <br />
 <br />
 <br />
+<br />
+
 <style>
     table {
         font-family: arial, sans-serif;
@@ -19,16 +21,42 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+
+    .container {
+        display: block;
+        width: 20%;
+        height: 83.5vh;
+        margin-left: -20px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 </style>
-<div class="wrap-contact100">
-    <div class="table-responsive">
-        <table id="viewPendingCounsellorSessions" class="table table-striped table-bordered">
+<div class="container" style="background-color:#0F89AE;padding-top:40px" onclick="ToggleNavMenu">
+    <h1 style="color:white;padding-left:32px">Queue</h1>
+    <h2 style="color:white;padding-left:32px">User ID</h2>
+
+    <ul class="nav flex-column">
+        @if (ViewBag.pcSessionList != null)
+        {
+            @foreach (PendingCounsellorSession item in ViewBag.pcSessionList)
+            {
+                <li class="nav-item px-3">
+                    <a type="button" id="modal" class="nav-link" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.UserID</a>
+                </li>
+
+            }
+        }
+    </ul>
+</div>
+
+    @*<table id="viewPendingCounsellorSessions" class="table table-striped table-bordered">
             <thead class="thead-dark">
                 @if (ViewBag.pcSessionList != null)
                 {
                     <tr>
                         <th>User ID</th>
                         <th>Session ID</th>
+                        <th>Feeling</th>
                         <th>Thought</th>
                         <th>Problems</th>
                         <th>Date Created</th>
@@ -48,6 +76,7 @@
                     {
                         <tr>
                             <td>@item.UserID</td>
+                            <td>@item.SessionID</td>
                             <td>@item.Feeling</td>
                             <td>@item.Thought</td>
                             <td>@item.Problems</td>
@@ -57,7 +86,5 @@
                     }
                 }
             </tbody>
-        </table>
+        </table>*@
 
-    </div>
-</div>
