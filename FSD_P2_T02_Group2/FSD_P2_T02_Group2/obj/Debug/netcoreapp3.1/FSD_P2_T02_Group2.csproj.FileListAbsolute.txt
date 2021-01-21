@@ -1531,3 +1531,4 @@ C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Gro
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\Account.cshtml.g.cs
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\ViewAccDetails.cshtml.g.cs
 C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\EditAccount.cshtml.g.cs
+C:\Users\gekteng\Downloads\ngee ann\year 2.2\P2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\FSD_P2_T02_Group2\obj\Debug\netcoreapp3.1\Razor\Views\User\_PostView.cshtml.g.cs

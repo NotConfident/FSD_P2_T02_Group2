@@ -64,6 +64,11 @@ namespace FSD_P2_T02_Group2.Controllers
             return View();
         }
 
+        public ActionResult Talent()
+        {
+            return View();
+        }
+
 
         public ActionResult Account()
         {
@@ -121,7 +126,11 @@ namespace FSD_P2_T02_Group2.Controllers
                 {
                     return RedirectToAction("ViewAccDetails");
                 }
-                return View(user);
+                else
+                {
+                    TempData["Error"] = "Information not changed!";
+                    return View(user);
+                }
             }
             else
             {

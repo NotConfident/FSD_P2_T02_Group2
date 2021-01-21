@@ -34,7 +34,7 @@ namespace FSD_P2_T02_Group2.Models
 
         public string Status { get; set; } = "";
 
-        public string ProfilePicture { get; set; }
+        public string Image { get; set; }
 
         public List<Post> PostList { get; set; }
     }
