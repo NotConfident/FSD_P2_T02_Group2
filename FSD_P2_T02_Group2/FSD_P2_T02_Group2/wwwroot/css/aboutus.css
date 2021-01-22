@@ -1,5 +1,28 @@
-﻿.body, p{
-    font-family: "Josefin Sans";
+﻿/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+.body, p {
+    font-family: Josefin Sans,sans-serif;
 }
 
 html, body, div, fieldset, form {
@@ -27,12 +50,12 @@ hr {
 }
 
 h5 {
-    font-family: 'Josefin Sans',sans-serif;
+    font-family: Josefin Sans,sans-serif;
 }
 
 #subTitle {
     color: black;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: Josefin Sans,sans-serif;
     text-align: left;
     letter-spacing: 0.7em;
     margin-left: 20%;
@@ -59,7 +82,7 @@ h5 {
 }
 .box-content {
     color: #555;
-    font-family: "Josefin Sans";
+    font-family: Josefin Sans,sans-serif;
     width: 200%;
     margin-left: -30%;
 }

@@ -17,39 +17,47 @@
     <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
 </head>
 
-<body>
-    <div class="container-fluid" style="padding-top:5vh">
-        <hr />
-        <p id="subTitle">become a counsellor</p>
-        <br />
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="box-content">
-                <form class="contact-form" asp-action="Counsellor">
-                    <fieldset>
-                        <input style="text-align: center;" type="text" class="name" id="name" name="name" placeholder="Name">
-                    </fieldset>
-                    <fieldset>
-                        <input style="text-align: center;" type="email" class="email" id="email" name="email" placeholder="Email">
-                    </fieldset>
-                    <fieldset>
-                        <input style="text-align: center;" type="text" class="number" id="number" name="number" placeholder="Phone Number">
-                    </fieldset>
-                    <fieldset>
-                        <div id="Image">
-                            <p>Upload Image</p>
-                            <input type="file" class="File" id="myFile" name="filename" onchange="getBase64Image(this)">
+<body class="form-v4">
+    <div class="page-content" style="background: url(../images/Login.png);background-repeat:no-repeat; background-size:cover">
+        <div class="form-v4-content">
+            <div class="form-detail">
+                <form method="post">
+                    <h2>Become a Counsellor</h2>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="full_name">Full Name</label>
+                            <input type="text" name="name" class="input-text" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="your_email">Email</label>
+                            <input type="email" name="email" class="input-text" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="text" name="number" class="input-text" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="image">Image Upload</label>
+                            <input type="file" class="input-text" id="myFile" name="filename" onchange="getBase64Image(this)">
                             <input type="hidden" value="" id="Base64Image" name="Base64Image" />
                         </div>
-                        <br>
-                        <div id="Certification">
-                            <p>Upload Certification</p>
-                            <input type="file" class="File" id="myFile" name="filename" onchange="getBase64Certificate(this)">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="image">Certification Upload</label>
+                            <input type="file" class="input-text" id="myFile" name="filename" onchange="getBase64Certificate(this)">
                             <input type="hidden" value="" id="Base64Certificate" name="Base64Certificate" />
                         </div>
-                    </fieldset>
-                    <input type="submit" class="myButton" id="Submit" value="Submit">
+                    </div>
+                    <div class="form-row-last">
+                        <input type="submit" name="submit" class="submit" value="Submit">
+                    </div>
                 </form>
             </div>
         </div>
@@ -82,8 +90,6 @@
             reader.readAsDataURL(file);
             document.getElementById("Base64Certificate").value = localStorage.getItem("Base64Certificate");
         }
-
-
     </script>
 </body>
 </html>

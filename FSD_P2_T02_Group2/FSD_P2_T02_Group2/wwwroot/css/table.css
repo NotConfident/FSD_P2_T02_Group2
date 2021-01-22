@@ -1,4 +1,25 @@
-﻿@import "https://fonts.googleapis.com/css?family=Montserrat:300,400,700";
+﻿/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
 
 html {
     scroll-behavior: smooth;

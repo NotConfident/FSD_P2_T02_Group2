@@ -1,10 +1,33 @@
-﻿* {
+﻿/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+* {
     box-sizing: border-box;
 }
 
 body {
     padding: 0 1em;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: Josefin Sans,sans-serif;
 }
 
 

@@ -10,10 +10,10 @@
 
 #subTitle {
     color: black;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: Josefin Sans,sans-serif;
     text-align: center;
     letter-spacing: 0.7em;
-/*    margin-left: 17%;
+    /*    margin-left: 17%;
     margin-bottom: 2%;*/
 }
 
@@ -26,7 +26,7 @@ a.button {
     text-decoration: none;
     text-transform: lowercase;
     letter-spacing: 0.1em;
-    font-family: 'Josefin Sans',sans-serif;
+    font-family: Josefin Sans,sans-serif;
     color: black;
     text-align: center;
     transition: all 0.15s;
@@ -55,7 +55,7 @@ a.button {
     
 }
 p {
-    font-family: 'Josefin Sans',sans-serif;
+    font-family: Josefin Sans,sans-serif;
     color: #026c8c;
     text-align: center;
 }
