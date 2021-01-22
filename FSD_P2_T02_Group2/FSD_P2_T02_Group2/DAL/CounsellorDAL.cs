@@ -103,7 +103,7 @@ namespace FSD_P2_T02_Group2.DAL
 
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT * FROM PendingCounsellingSession";
+            cmd.CommandText = @"SELECT * FROM PendingSessionView";
 
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
@@ -119,6 +119,7 @@ namespace FSD_P2_T02_Group2.DAL
                     Problems = reader.GetString(3),
                     DateCreated = reader.GetDateTime(4),
                     UserID = reader.GetInt32(5),
+                    //Alias = reader.GetString(6),
                 });
             }
             reader.Close();

@@ -21,5 +21,6 @@ namespace FSD_P2_T02_Group2.Models
 
         public int UserID { get; set; }
 
+        public string Alias { get; set; }
     }
 }

@@ -34,12 +34,34 @@ namespace FSD_P2_T02_Group2.Controllers
             pcSessionList = counsellorDAL.retrieveUserForms();
 
             ViewBag.pcSessionList = pcSessionList;
+
             if (pcSessionList.Count() == 0)
             {
                 ViewBag.pcSessionList = null;
             }
             return View();
         }
+
+        //[HttpPost]
+        //public IActionResult PendingCounsellorSessions(int sessionID)
+        //{
+        //    List<PendingCounsellorSession> session = new List<PendingCounsellorSession>();
+        //    List<PendingCounsellorSession> pcSessionList = new List<PendingCounsellorSession>();
+        //    pcSessionList = counsellorDAL.retrieveUserForms();
+
+        //    if(sessionID != null)
+        //    {
+        //        foreach (PendingCounsellorSession item in pcSessionList)
+        //        {
+        //            if (item.SessionID == sessionID)
+        //            {
+        //                session.Add(item);
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    return View(session);
+        //}
 
         public ActionResult ViewFormDetails(int sessionID)
         {
@@ -48,6 +70,11 @@ namespace FSD_P2_T02_Group2.Controllers
             List<PendingCounsellorSession> pcSessionList = new List<PendingCounsellorSession>();
             pcSessionList = counsellorDAL.retrieveUserForms();
 
+            ViewBag.pcSessionList1 = pcSessionList;
+            if (pcSessionList.Count() == 0)
+            {
+                ViewBag.pcSessionList = null;
+            }
 
             foreach (PendingCounsellorSession item in pcSessionList)
             {
