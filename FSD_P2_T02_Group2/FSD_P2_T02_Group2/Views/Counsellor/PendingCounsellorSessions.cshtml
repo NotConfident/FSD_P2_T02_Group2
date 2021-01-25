@@ -1,7 +1,4 @@
 ﻿@model IEnumerable<FSD_P2_T02_Group2.Models.PendingCounsellorSession>
-
-
-
 <br />
 <br />
 <br />
@@ -9,43 +6,38 @@
 <br />
 
 <style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
+    .wrapper {
+        display: flex;
         width: 100%;
+        align-items: stretch;
+    }
+    #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        background: #0F89AE;
+        color: #fff;
+        transition: all 0.3s;
     }
 
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-
-    .container {
-        display: block;
-        width: 20%;
-        height: 83.5vh;
-        margin-left: -20px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-</style>
-<div class="container" style="background-color:#0F89AE;padding-top:40px" onclick="ToggleNavMenu">
-    <h1 style="color:white;padding-left:32px">Queue</h1>
-    <h2 style="color:white;padding-left:32px">User ID</h2>
-
-    <ul class="nav flex-column">
-
-        @foreach (PendingCounsellorSession item in ViewBag.pcSessionList)
-        {
-            <li class="nav-item px-3">
-                <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.UserID</a>      
-            </li>
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #0F89AE;
         }
-        
-    </ul>
+</style>
+<div class="wrapper" onclick="ToggleNavMenu">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h1>Queue</h1>
+            <h5>User ID</h5>
+            <ul class="nav flex-column">
+                @foreach (PendingCounsellorSession item in ViewBag.pcSessionList)
+                {
+                    <li>
+                        <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.UserID</a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </nav>
 </div>

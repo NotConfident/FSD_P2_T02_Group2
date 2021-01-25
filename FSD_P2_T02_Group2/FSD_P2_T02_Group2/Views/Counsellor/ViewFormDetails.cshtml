@@ -1,129 +1,116 @@
 ﻿@model IEnumerable<FSD_P2_T02_Group2.Models.PendingCounsellorSession>
-
-
-@*<br />
-    <br />
-    <br />
-    <br />
-    <br />*@
-
-
-
-@*<div class="row">
-        <div class="col-md-4">
-            <form asp-action="EditAccount">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group" hidden>
-                    <label class="control-label">SessionID:</label>
-                    <span>@Html.Display("SessionID")</span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">UserID</label>
-                    <span>@Html.Display("UserID")</span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Feeling</label>
-                    <span>@Html.Display("Feeling")</span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Thought</label>
-                    <span>@Html.Display("Thought")</span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Problems</label>
-                    <span>@Html.Display("Problems")</span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">DateCreated</label>
-                    <span>@Html.Display("DateCreated")</span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Start Chat" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
-    </div>*@
-
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
+    .wrapper {
+        display: flex;
         width: 100%;
+        align-items: stretch;
     }
 
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
+    #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        background: #0F89AE;
+        color: #fff;
+        transition: all 0.3s;
     }
 
-    tr:nth-child(even) {
-        background-color: #dddddd;
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #0F89AE;
+        }
+
+    #content {
+        width: 100%;
+        padding: 20px;
+        min-height: 100vh;
+        transition: all 0.3s;
+        padding-top: 8%;
     }
 
-    .container {
+    .submit {
+        background: #0F89AE;
+        border-radius: 10px;
+        border: none;
+        margin: 6px 0 60px 0px;
+        cursor: pointer;
+        color: #fff;
+        font-weight: 700;
+        font-size: 15px;
+    }
+        .submit:hover {
+            background: #1098C2;
+        }
+    .form-row-last input {
+        font-family: Josefin Sans, sans-serif;
+        font-size: 19px;
+        width: 70%;
+        height: 110%;
+        background: #0F89AE;
         display: block;
-        width: 20%;
-        height: 83.5vh;
-        margin-left: -20px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
     }
 </style>
-<div class="container" style="background-color:#0F89AE;padding-top:40px" onclick="ToggleNavMenu">
-    <h1 style="color:white;padding-left:32px">Queue</h1>
-    <h2 style="color:white;padding-left:32px">User ID</h2>
 
-    <ul class="nav flex-column">
-        @if (ViewBag.pcSessionList1 != null)
-        {
-            @foreach (PendingCounsellorSession item in ViewBag.pcSessionList1)
-            {
-                <li class="nav-item px-3">
-                    <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.UserID</a>
-                </li>
-            }
-        }
-    </ul>
-</div>
-
-<div class="d-flex flex-row">
-    @foreach (PendingCounsellorSession item in Model)
-    {
-        <div class="row p-2">
-            <div class="col-md-4">
-                <form asp-action="EditAccount">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group" hidden>
-                        <label class="control-label">SessionID:</label>
-                        <span>@item.SessionID</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">UserID</label>
-                        <span>@item.UserID</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Feeling</label>
-                        <span>@item.Feeling</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Thought</label>
-                        <span>@item.Thought</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Problems</label>
-                        <span>@item.Problems</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">DateCreated</label>
-                        <span>@item.DateCreated</span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Start Chat" class="btn btn-primary" />
-                    </div>
-                </form>
-            </div>
+<div class="wrapper" onclick="ToggleNavMenu">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h1>Queue</h1>
+            <h5>User ID</h5>
+            <ul class="nav flex-column">
+                @if (ViewBag.pcSessionList1 != null)
+                {
+                    @foreach (PendingCounsellorSession item in ViewBag.pcSessionList1)
+                    {
+                        <li>
+                            <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.UserID</a>
+                        </li>
+                    }
+                }
+            </ul>
         </div>
-    }
+    </nav>
+    <div id="content">
+        @foreach (PendingCounsellorSession item in Model)
+        {
+            <div class="row p-2">
+                <div class="col-md-4">
+                    <form asp-action="EditAccount">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group" hidden>
+                            <label class="control-label">SessionID:</label>
+                            <span>@item.SessionID</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">User ID:</label>
+                            <span>@item.UserID</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Feeling:</label>
+                            <span>@item.Feeling</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Thought:</label>
+                            <span>@item.Thought</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Problems:</label>
+                            <span>@item.Problems</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Date Created:</label>
+                            <span>@item.DateCreated</span>
+                        </div>
+                        <div class="form-row-last">
+                            <input type="submit" value="Start Chat" class="submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
 </div>
