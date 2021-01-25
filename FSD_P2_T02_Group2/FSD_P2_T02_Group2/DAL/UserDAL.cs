@@ -213,6 +213,51 @@ namespace FSD_P2_T02_Group2.DAL
             return count.Value;
         }
 
+
+
+
+
+        public void reqHelp(int userid, CounselReq c)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"INSERT INTO PendingCounsellingSession(Feeling,Thought,Problems,DateCreated,UserID)
+                                        VALUES(@feelings,@thought,@problems,@datetime,@userID)";
+            cmd.Parameters.AddWithValue("@feelings", c.Feelings);
+            cmd.Parameters.AddWithValue("@thought", c.Thought);
+            cmd.Parameters.AddWithValue("@problems", c.Problems);
+            cmd.Parameters.AddWithValue("@datetime", DateTime.UtcNow);
+            cmd.Parameters.AddWithValue("@userID", userid);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        public List<CounselSession> getSession(int userid)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT * FROM CounselSessionView WHERE UserID = @user";
+            cmd.Parameters.AddWithValue("@user", userid);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<CounselSession> cList = new List<CounselSession>();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    cList.Add(
+                    new CounselSession
+                    {
+                        UserID = userid,
+                        CounsellorID = reader.GetInt32(1),
+                        CName = reader.GetString(2)
+                    });
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return cList;
+        }
         public async Task sendMessage(User user, ChatMessage message, string room)
         {
 
@@ -242,7 +287,6 @@ namespace FSD_P2_T02_Group2.DAL
         public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
-            const string authToken = "";
 
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
