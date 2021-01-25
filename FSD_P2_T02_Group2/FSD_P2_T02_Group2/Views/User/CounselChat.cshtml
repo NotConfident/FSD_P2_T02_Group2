@@ -4,7 +4,7 @@
 @using System.Web;
 @{
     ViewData["Title"] = "UserMain";
-    Layout = "";
+    Layout = "_UserLayout";
 }
 <!DOCTYPE html>
 <head>
@@ -14,65 +14,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Josefin Sans;
         }
-
-        .usernav {
-            transition: background-color linear;
-        }
-
-            .usernav a {
-                transition: color linear;
-            }
-
-            .usernav a {
-                color: black;
-                padding-top: 30px;
-            }
-
-                .usernav:hover, .usernav a:hover {
-                    color: white;
-                    background-color: #0F89AE;
-                }
     </style>
 </head>
 
-<body style="margin-bottom:0;font-family: Josefin Sans;">
+<body style="background: url(../images/Login.png);background-repeat:no-repeat; background-size:cover;">
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
 
-    <div class="d-flex align-items-stretch">
-        <div style="width:250px;">
-            <partial name="~/Views/User/ChatRooms.cshtml" />
-        </div>
-        <div style="padding-left:50px">
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="padding-top:0px;height:56px;">
-                <div class="container">
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item usernav" style="padding:10px;padding-top: 30px;">
-                                <a class="nav-link" asp-action="Counselling" asp-controller="User">Counselling</a>
-                            </li>
-                            <li class="nav-item usernav" style="padding:10px;padding-top: 30px;">
-                                <a class="nav-link" asp-action="Account" asp-controller="User">Account</a>
-                            </li>
-                            <li class="nav-item usernav" style="padding:10px;padding-top: 30px;">
-                                <a class="nav-link" asp-action="Index" asp-controller="Home">Log Out</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <h1 style="padding-top:20px;margin-top:20px;">@Context.Session.GetString("room")</h1>
-            
-
-
-            <div style="margin:0 auto;overflow:auto;height:500px;width:50vw;" id="chat" class="chat"></div>
-            <partial name="~/Views/User/_Send.cshtml" />
+    <div class="d-flex align-items-center col-lg-8" style="border:3px solid#0F89AE ;border-radius:10px;margin:0 auto;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);background-color:white">
+        <div style="margin:0 auto;padding:10px;width:100%">
+            <div style="margin:0 auto;margin-bottom:5px;overflow:auto;height:500px;" id="chat" class="chat"></div>
+            <partial name="~/Views/User/_CounselSend.cshtml" />
         </div>
     </div>
 
@@ -89,11 +48,10 @@
         firebase.initializeApp(firebaseConfig);
         var firestore = firebase.firestore();
         console.log("initialized")
-        var room = "@Context.Session.GetString("room")";
+        var room = "@Context.Session.GetString("roomID")";
         var alias = "@Context.Session.GetString("Alias")";
         console.log(room);
-        // Create the query to load the last 12 messages and listen for new ones.
-        var query = firestore.collection(room).orderBy("CreatedAt", "asc");
+        var query = firestore.collection('CounsellingChat').doc(room).collection('Messages').orderBy("CreatedAt", "asc");
 
         // Start listening to the query.
         query.onSnapshot(function (snapshot) {

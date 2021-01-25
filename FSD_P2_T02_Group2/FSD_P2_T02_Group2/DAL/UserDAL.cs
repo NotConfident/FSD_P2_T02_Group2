@@ -250,7 +250,8 @@ namespace FSD_P2_T02_Group2.DAL
                     {
                         UserID = userid,
                         CounsellorID = reader.GetInt32(1),
-                        CName = reader.GetString(2)
+                        CName = reader.GetString(2),
+                        roomName = Convert.ToString(reader.GetInt32(1)) +'-'+ Convert.ToString(userid)
                     });
                 }
             }
@@ -261,7 +262,7 @@ namespace FSD_P2_T02_Group2.DAL
         public async Task sendMessage(User user, ChatMessage message, string room)
         {
 
-            var firestoreDb = CreateFirestoreDb();;
+            var firestoreDb = CreateFirestoreDb();
             
             await firestoreDb.Collection(room).AddAsync(new ChatMessage
             {
@@ -270,13 +271,25 @@ namespace FSD_P2_T02_Group2.DAL
                 Message = message.Message
         });
         }
+        public async Task sendCMessage(string alias, ChatMessage message, string room)
+        {
+
+            var firestoreDb = CreateFirestoreDb();
+
+            await firestoreDb.Collection("CounsellingChat").Document(room).Collection("Messages").AddAsync(new ChatMessage
+            {
+                Alias = alias,
+                CreatedAt = Google.Cloud.Firestore.Timestamp.FromDateTime(DateTime.UtcNow),
+                Message = message.Message
+            });
+        }
 
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
             //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
-            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
-            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
+            //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             Console.WriteLine("Created Firestore");

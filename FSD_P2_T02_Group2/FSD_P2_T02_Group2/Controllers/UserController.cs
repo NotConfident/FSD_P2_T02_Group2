@@ -69,6 +69,7 @@ namespace FSD_P2_T02_Group2.Controllers
             counselS.Sessions = userDAL.getSession(id);
             return View(counselS);
         }
+
         [HttpPost]
         public ActionResult Counselling(CounselReq counsel)
         {
@@ -78,6 +79,26 @@ namespace FSD_P2_T02_Group2.Controllers
             CounselReq counselS = new CounselReq();
             counselS.Sessions = userDAL.getSession(id);
             return View(counselS) ;
+        }
+        public ActionResult CounselChat(String id)
+        {
+            if (id != "")
+            {
+                HttpContext.Session.SetString("roomID", id);
+                return View();
+            }
+            else
+                return RedirectToAction("Counselling");
+        }
+        [HttpPost]
+        public ActionResult CounselChat(ChatMessage messageVar)
+        {
+            string Alias = HttpContext.Session.GetString("Alias");
+            string room = HttpContext.Session.GetString("roomID");
+            Console.WriteLine(room);
+            userDAL.sendCMessage(Alias, messageVar, room);
+            ModelState.Clear(); // Clears textbox
+            return View();
         }
         public ActionResult Account()
         {
