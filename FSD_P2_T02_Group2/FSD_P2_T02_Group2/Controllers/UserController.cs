@@ -19,7 +19,6 @@ namespace FSD_P2_T02_Group2.Controllers
         {
             return View();
         }
-        public string room = "";
         public IActionResult ChatRooms()
         {
             return View();
@@ -63,7 +62,23 @@ namespace FSD_P2_T02_Group2.Controllers
             ModelState.Clear(); // Clears textbox
             return View();
         }
-
+        public ActionResult Counselling()
+        {
+            int id = (int)HttpContext.Session.GetInt32("UserID");
+            CounselReq counselS = new CounselReq();
+            counselS.Sessions = userDAL.getSession(id);
+            return View(counselS);
+        }
+        [HttpPost]
+        public ActionResult Counselling(CounselReq counsel)
+        {
+            int id = (int)HttpContext.Session.GetInt32("UserID");
+            userDAL.reqHelp(id, counsel);
+            ModelState.Clear(); // Clears textbox
+            CounselReq counselS = new CounselReq();
+            counselS.Sessions = userDAL.getSession(id);
+            return View(counselS) ;
+        }
         public ActionResult Account()
         {
             if ((HttpContext.Session.GetString("Role") == null) ||
