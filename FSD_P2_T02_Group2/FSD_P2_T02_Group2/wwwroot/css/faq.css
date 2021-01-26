@@ -1,9 +1,31 @@
-﻿hr {
+﻿/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+hr {
     background-color: #0F89AE;
     width: 7vh;
     height: 0.4vh;
     margin-bottom: 4vh;
-    margin-right: 60%;
 }
 
 
@@ -12,9 +34,9 @@
     color: black;
     font-family: Josefin Sans,sans-serif;
     text-align: center;
-    letter-spacing: 0.7em;
-    /*    margin-left: 17%;
-    margin-bottom: 2%;*/
+    letter-spacing: 0.1em;
+    margin-bottom: 2%;
+    font-size: 33px;
 }
 
 a.button {

@@ -32,21 +32,11 @@ html, body, div, fieldset, form {
     font-size: 100%;
 }
 
-/*hr, .aboutUsTitle {
-    text-align: center;
-    align-content: center;
-    margin: 0 auto;
-    height: 100%;
-    width: 60%;
-    margin-bottom: 2vh;
-}*/
-
 hr {
     background-color: #0F89AE;
     width: 7vh;
     height: 0.4vh;
     margin-bottom: 2vh;
-    margin-right: 70%;
 }
 
 h5 {
@@ -56,10 +46,10 @@ h5 {
 #subTitle {
     color: black;
     font-family: Josefin Sans,sans-serif;
-    text-align: left;
-    letter-spacing: 0.7em;
-    margin-left: 20%;
+    text-align: center;
+    letter-spacing: 0.1em;
     margin-bottom: 2%;
+    font-size:33px;
 }
 
 .us {
