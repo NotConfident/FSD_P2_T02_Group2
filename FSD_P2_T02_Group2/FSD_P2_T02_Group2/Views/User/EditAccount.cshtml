@@ -1,79 +1,201 @@
-﻿@model FSD_P2_T02_Group2.Models.User
+﻿@*@model FSD_P2_T02_Group2.Models.User
 
-@{
-    ViewData["Title"] = "EditAccount";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
-}
+    @{
+        ViewData["Title"] = "EditAccount";
+        Layout = "~/Views/Shared/_UserLayout.cshtml";
+    }
 
-<h1>EditAccount</h1>
+    <h1>EditAccount</h1>
 
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditAccount">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group" hidden>
-                <label asp-for="UserID" class="control-label"></label>
-                <input asp-for="UserID" class="form-control" />
-                <span asp-validation-for="UserID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" readonly/>
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" type="password" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" type="password" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNo" class="control-label"></label>
-                <input asp-for="PhoneNo" class="form-control" />
-                <span asp-validation-for="PhoneNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" readonly/>
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" readonly/>
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Alias" class="control-label"></label>
-                <input asp-for="Alias" class="form-control" />
-                <span asp-validation-for="Alias" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProfilePicture" class="control-label"></label>
-                <input asp-for="ProfilePicture" class="form-control" />
-                <span asp-validation-for="ProfilePicture" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+    <h4>User</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="EditAccount">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group" hidden>
+                    <label asp-for="UserID" class="control-label"></label>
+                    <input asp-for="UserID" class="form-control" />
+                    <span asp-validation-for="UserID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label"></label>
+                    <input asp-for="Username" class="form-control" readonly />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" type="password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNo" class="control-label"></label>
+                    <input asp-for="PhoneNo" class="form-control" />
+                    <span asp-validation-for="PhoneNo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" readonly />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" readonly />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Alias" class="control-label"></label>
+                    <input asp-for="Alias" class="form-control" />
+                    <span asp-validation-for="Alias" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label"></label>
+                    <input asp-for="Status" class="form-control" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label"></label>
+                    <input asp-for="Image" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+    @if (TempData.ContainsKey("Error"))
+    {
+        <a class="text-danger">@TempData["Error"]</a>
+    }
 
-<div>
-    <a asp-action="ViewAccDetails">Back</a>
-</div>
+    <div>
+        <a asp-action="ViewAccDetails">Back</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
+
+@model FSD_P2_T02_Group2.Models.User
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    ViewData["Title"] = "EditAccount";
 }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Account</title>
+    <link href="~/css/editaccount.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
+</head>
+
+<body class="form-v4">
+    <div class="page-content" style="background: url(../images/Login.png);background-repeat:no-repeat; background-size:cover">
+        <div class="form-v4-content">
+            <div class="form-detail">
+                <form method="post">
+                    <h2>Edit Account</h2>
+                    <div class="form-group" hidden>
+                        <label asp-for="UserID" class="control-label"></label>
+                        <input asp-for="UserID" class="form-control" />
+                        <span asp-validation-for="UserID" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="image">Upload New Profile Picture</label>
+                            <input asp-for="Image" type="file" class="input-text" id="myFile" name="filename" onchange="getBase64Image(this)">
+                            <input type="hidden" value="" id="Base64Image" name="Base64Image" />
+                            <span asp-validation-for="Image" class="text-danger" style="color:#ff848c"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-1">
+                            <label for="Name">Full Name</label>
+                            <p>@Model.Name</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-1">
+                            <label for="Email">Email</label>
+                            <p>@Model.Email</p>
+                        </div>
+                        <div class="form-row form-row-1">
+                            <label for="username">Username</label>
+                            <p>@Model.Username</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row">
+                            <label for="Status">Status</label>
+                            <input asp-for="Status" class="input-text">
+                            <span asp-validation-for="Status" class="text-danger" style="color:#ff848c"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-1">
+                            <label for="alias">Alias</label>
+                            <input asp-for="Alias" class="input-text">
+                            <span asp-validation-for="Alias" class="text-danger" style="color:#ff848c"></span>
+                        </div>
+                        <div class="form-row form-row-1">
+                            <label for="PhoneNo">Phone Number</label>
+                            <input asp-for="PhoneNo" class="input-text">
+                            <span asp-validation-for="PhoneNo" class="text-danger" style="color:#ff848c"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-row form-row-1 ">
+                            <label for="Password">New Password</label>
+                            <input asp-for="Password" type="password" class="input-text">
+                            <span asp-validation-for="Password" class="text-danger" style="color:#ff848c"></span>
+                        </div>
+                        <div class="form-row form-row-1">
+                            <label for="ConfirmPassword">Confirm New Password</label>
+                            <input asp-for="ConfirmPassword" type="password" class="input-text">
+                            <span asp-validation-for="ConfirmPassword" class="text-danger" style="color:#ff848c"></span>
+                        </div>
+                    </div>
+                    <div class="form-row-last">
+                        <input type="submit" class="submit" value="Save">
+                    </div>
+                </form>
+            </div>
+        </div>
+        @if (TempData.ContainsKey("Error"))
+        {
+            <a class="text-danger">@TempData["Error"]</a>
+        }
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+    </div>
+    <script type="text/javascript">
+        document.getElementById("common_navbar").classList.remove("fixed-top");
+
+        function getBase64Image(element) {
+            var file = element.files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                localStorage.setItem("Base64Image", reader.result);
+            }
+            console.log(localStorage.getItem("Base64Image"));
+
+            reader.readAsDataURL(file);
+            document.getElementById("Base64Image").value = localStorage.getItem("Base64Image");
+        }
+    </script>
+</body>
+</html>

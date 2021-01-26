@@ -31,6 +31,42 @@ namespace FSD_P2_T02_Group2.DAL
             conn = new SqlConnection(strConn);
         }
 
+        public Counsellor CheckLogin(string email, string password)
+        {
+            Counsellor counsellor = new Counsellor();
+
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT * FROM Counsellor
+                                WHERE Email = @email AND Password = @password";
+
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@password", password);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    counsellor.counsellorID = reader.GetInt32(0);
+                    counsellor.Name = reader.GetString(1);
+                    counsellor.Password = reader.GetString(2);
+                    counsellor.Email = reader.GetString(3);
+                    counsellor.DateCreated = reader.GetDateTime(4);
+                    counsellor.PhoneNumber = reader.GetString(5);
+                    counsellor.Image = !reader.IsDBNull(6) ? reader.GetString(6) : null;
+                    counsellor.Certificate = !reader.IsDBNull(7) ? reader.GetString(7) : null;
+                    counsellor.DateBirth = reader.GetDateTime(8);
+                    //counsellor.AvgRating = !reader.IsDBNull(9) ? reader.GetFloat(9) : null;
+                    counsellor.Status = reader.GetString(10);
+
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return counsellor;
+        }
+
         public void CounsellorForm(PendingCounsellor counsellorForm)
         {
             SqlCommand cmd = conn.CreateCommand();
@@ -59,5 +95,37 @@ namespace FSD_P2_T02_Group2.DAL
 
             conn.Close();
         }
+
+        public List<PendingCounsellorSession> retrieveUserForms() // Change to admin model
+        {
+            PendingCounsellorSession pcSession = new PendingCounsellorSession(); // Change to admin model
+            List<PendingCounsellorSession> pcSessionList = new List<PendingCounsellorSession>();
+
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT * FROM PendingSessionView";
+
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                pcSessionList.Add(
+                new PendingCounsellorSession
+                {
+                    SessionID = reader.GetInt32(0),
+                    Feeling = reader.GetInt32(1),
+                    Thought = reader.GetInt32(2),
+                    Problems = reader.GetString(3),
+                    DateCreated = reader.GetDateTime(4),
+                    UserID = reader.GetInt32(5),
+                    //Alias = reader.GetString(6),
+                });
+            }
+            reader.Close();
+            conn.Close();
+            return pcSessionList;
+        }
+
     }
 }

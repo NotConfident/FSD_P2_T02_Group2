@@ -1,6 +1,13 @@
-﻿<head>
-    <title>Register</title>
-    <link href="~/css/register.css" rel="stylesheet">
+﻿@{
+    ViewData["Title"] = "Register";
+    Layout = "_CommonNavbar";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTP</title>
+    <link href="~/css/otp.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
@@ -9,17 +16,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
 </head>
 
-
-<body>
-    <div class="myRegister" style="background: url(../images/cloud.jpg);background-repeat:no-repeat; background-size:cover; padding-top: 5em">
-        <div class="row" style:margin-top="10em">
-            <div class="box-content">
+<body class="form-v4">
+    <div class="page-content" style="background: url(../images/Login.png);background-repeat:no-repeat; background-size:cover">
+        <div class="form-v4-content">
+            <div class="form-detail">
                 <form method="post">
-                    <input placeholder="OTP" size="30" required/>
-                    <span style="color:white"></span><br /><br />
-                    <input type="submit" class="myButton" value="Submit OTP" />
+                    <h2>Enter OTP Number</h2>
+                    <div class="form-group">
+                        <div class="form-row form-row-1">
+                            <input class="input-text" placeholder="OTP">
+                            <span style="color:#ff848c"></span>
+                        </div>
+                    </div>
+                    <div class="form-row-last">
+                        <input type="submit" class="submit" value="Submit">
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </body>
+</html>

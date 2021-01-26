@@ -55,7 +55,7 @@ namespace FSD_P2_T02_Group2.DAL
                     Password = !reader.IsDBNull(4) ? reader.GetString(4) : null,
                     Email = !reader.IsDBNull(5) ? reader.GetString(5) : null,
                     PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null,
-                    ProfilePicture = !reader.IsDBNull(8) ? reader.GetString(8) : null,
+                    Image = !reader.IsDBNull(8) ? reader.GetString(8) : null,
                     Status = !reader.IsDBNull(9) ? reader.GetString(9) : null
                 });
             }
@@ -87,7 +87,7 @@ namespace FSD_P2_T02_Group2.DAL
                     user.Password = !reader.IsDBNull(4) ? reader.GetString(4) : null;
                     user.Email = !reader.IsDBNull(5) ? reader.GetString(5) : null;
                     user.PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null;
-                    user.ProfilePicture = !reader.IsDBNull(8) ? reader.GetString(8) : null;
+                    user.Image = !reader.IsDBNull(8) ? reader.GetString(8) : null;
                     user.Status = !reader.IsDBNull(9) ? reader.GetString(9) : null;
                     //user.Username = reader.GetString(1);
                     //user.Name = reader.GetString(2);
@@ -128,7 +128,7 @@ namespace FSD_P2_T02_Group2.DAL
                     user.Password = !reader.IsDBNull(4) ? reader.GetString(4) : null;
                     user.Email = !reader.IsDBNull(5) ? reader.GetString(5) : null;
                     user.PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null;
-                    user.ProfilePicture = !reader.IsDBNull(8) ? reader.GetString(8) : null;
+                    user.Image = !reader.IsDBNull(8) ? reader.GetString(8) : null;
                     user.Status = !reader.IsDBNull(9) ? reader.GetString(9) : null;
                 }
             }
@@ -161,35 +161,34 @@ namespace FSD_P2_T02_Group2.DAL
         {
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"UPDATE [User] SET Password = @password, Name = @name, Alias = @alias, Status = @status, PhoneNo = @phoneno, ProfilePicture = @profpic WHERE UserID = @userid";
+            cmd.CommandText = @"UPDATE [User] SET Password = @password, Name = @name, Alias = @alias, Status = @status, PhoneNo = @phoneno, Image = @image WHERE UserID = @userid";
             cmd.Parameters.AddWithValue("@userid", user.UserID);
             cmd.Parameters.AddWithValue("@password", user.Password);
             cmd.Parameters.AddWithValue("@name", user.Name);
             cmd.Parameters.AddWithValue("@alias", user.Alias);
-            cmd.Parameters.AddWithValue("@status", user.Status);
             cmd.Parameters.AddWithValue("@phoneno", user.PhoneNo);
-            if (String.IsNullOrEmpty(user.ProfilePicture))
+            if (String.IsNullOrEmpty(user.Status))
             {
-                cmd.Parameters.AddWithValue("@profpic", DBNull.Value);
+                cmd.Parameters.AddWithValue("@status", DBNull.Value);
             }
             else
             {
-                cmd.Parameters.AddWithValue("@profpic", user.ProfilePicture);
+                cmd.Parameters.AddWithValue("@status", user.Status);
+            }
+            if (String.IsNullOrEmpty(user.Image))
+            {
+                cmd.Parameters.AddWithValue("@image", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@image", user.Image);
             }
 
-            try
-            {
-                conn.Open();
-                int count = cmd.ExecuteNonQuery();
-                System.Diagnostics.Debug.WriteLine("Number of rows affected in update:" + count);
-                conn.Close();
-                return count;
-            }
-            catch
-            {
-                conn.Close();
-                return 0;
-            }
+            conn.Open();
+            int count = cmd.ExecuteNonQuery();
+            System.Diagnostics.Debug.WriteLine("Number of rows affected in update:" + count);
+            conn.Close();
+            return count;
         }
 
         public int CountUser()
@@ -213,10 +212,56 @@ namespace FSD_P2_T02_Group2.DAL
             return count.Value;
         }
 
+
+
+
+
+        public void reqHelp(int userid, CounselReq c)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"INSERT INTO PendingCounsellingSession(Feeling,Thought,Problems,DateCreated,UserID)
+                                        VALUES(@feelings,@thought,@problems,@datetime,@userID)";
+            cmd.Parameters.AddWithValue("@feelings", c.Feelings);
+            cmd.Parameters.AddWithValue("@thought", c.Thought);
+            cmd.Parameters.AddWithValue("@problems", c.Problems);
+            cmd.Parameters.AddWithValue("@datetime", DateTime.UtcNow);
+            cmd.Parameters.AddWithValue("@userID", userid);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        public List<CounselSession> getSession(int userid)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT * FROM CounselSessionView WHERE UserID = @user";
+            cmd.Parameters.AddWithValue("@user", userid);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<CounselSession> cList = new List<CounselSession>();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    cList.Add(
+                    new CounselSession
+                    {
+                        UserID = userid,
+                        CounsellorID = reader.GetInt32(1),
+                        CName = reader.GetString(2),
+                        roomName = Convert.ToString(reader.GetInt32(1)) +'-'+ Convert.ToString(userid)
+                    });
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return cList;
+        }
         public async Task sendMessage(User user, ChatMessage message, string room)
         {
 
-            var firestoreDb = CreateFirestoreDb();;
+            var firestoreDb = CreateFirestoreDb();
             
             await firestoreDb.Collection(room).AddAsync(new ChatMessage
             {
@@ -225,13 +270,25 @@ namespace FSD_P2_T02_Group2.DAL
                 Message = message.Message
         });
         }
+        public async Task sendCMessage(string alias, ChatMessage message, string room)
+        {
+
+            var firestoreDb = CreateFirestoreDb();
+
+            await firestoreDb.Collection("CounsellingChat").Document(room).Collection("Messages").AddAsync(new ChatMessage
+            {
+                Alias = alias,
+                CreatedAt = Google.Cloud.Firestore.Timestamp.FromDateTime(DateTime.UtcNow),
+                Message = message.Message
+            });
+        }
 
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
             //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
-            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
-            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
+            //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             Console.WriteLine("Created Firestore");
@@ -242,7 +299,6 @@ namespace FSD_P2_T02_Group2.DAL
         public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
-            const string authToken = "26b0ccfbc027d0dafb402ded896726fd";
 
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);

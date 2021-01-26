@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FSD_P2_T02_Group2.Models.PendingCounsellorSession>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<style>
+    .wrapper {
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+    #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        background: #0F89AE;
+        color: #fff;
+        transition: all 0.3s;
+    }
+
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #0F89AE;
+        }
+</style>
+<div class="wrapper" onclick="ToggleNavMenu">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h1>Queue</h1>
+            <h5>User ID</h5>
+            <ul class="nav flex-column">
+                @foreach (PendingCounsellorSession item in ViewBag.pcSessionList)
+                {
+                    <li>
+                        <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.UserID</a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </nav>
+</div>

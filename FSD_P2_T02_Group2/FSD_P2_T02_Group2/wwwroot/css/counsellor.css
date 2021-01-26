@@ -1,134 +1,155 @@
-﻿.body {
-    font-family: 'Josefin Sans', sans-serif;
+﻿/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
 }
 
-.container {
-    display: flex;
-    position: relative;
-    justify-content: center;
-    margin: auto;
-    padding-left: 7%;
-    margin-bottom: 3%;
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
 }
 
-hr {
-    background-color: #0F89AE;
-    width: 7vh;
-    height: 0.4vh;
-    margin-bottom: 4vh;
-    margin-left: 40%;
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
 }
 
-#subTitle {
-    color: black;
-    font-family: 'Josefin Sans', sans-serif;
-    text-align: center;
-    letter-spacing: 0.7em;
-    margin-bottom: 2%;
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
 }
 
-h3 {
-    color:black;
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-.box-content {
-    color: #555;
-    font-family: 'Josefin Sans', sans-serif;
-    width: 200%;
-    margin-left: -20%;
-}
-
-#name, #email, #number {
-    font-size: 120%;
-    vertical-align: baseline;
-    *vertical-align: middle;
-    width: 1000%;
-    padding: 8px 10px;
-    margin-bottom: 20px;
-    max-width: 100%;
-    background: #F5F5F5;
-    border: 0px solid #dddddd;
-}
-
-#name::-webkit-input-placeholder, #email::-webkit-input-placeholder, #number::-webkit-input-placeholder {
-    font-family: 'Josefin Sans', sans-serif;
-}
-
-.contact-form input.button {
-    width: auto;
-    color: white;
-    background-color: #A7BDE8;
-    border: 0;
-    outline: 0;
-    margin-bottom: 0;
-    padding: 12px 38px;
-}
-
-.contact-form input.Submit {
-    width: auto;
-    color: white;
-    background: #0F89AE;
-    border: 0;
-    outline: 0;
-    margin-bottom: 0;
-    padding: 12px 38px;
-    font-size: large;
-}
-
-.File {
-    width: 90%;
-    color: white;
-    background: #A7BDE8;
-    padding: 5px 15px;
-    font-size: 60%;
-}
-
-#Image {
-    font-size: 140%;
-    background-color: #A7BDE8;
-    padding: 5px 15px;
-    text-align: left;
-    color: white;
-}
-
-#Certification {
-    font-size: 140%;
-    background-color: #A7BDE8;
-    padding: 5px 15px;
-    text-align: left;
-    color: white;
-}
-input {
-    border: 1px solid;
-    box-shadow: 3px 3px 4px #A7BDE8;
-    border-color: #A7BDE8;
-    padding: 8px;
-    text-align: center;
-    font-size: 20px;
-}
-
-::placeholder {
-    color: #bcbfc4;
-}
-
-.myButton {
-    background: #EFEFEF;
-    mix-blend-mode: normal;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    border: none;
+.page-content {
     width: 100%;
-    height: 50px;
-    font-size: 17px;
-    transition: background-color 0.15s linear;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
 }
 
-    .myButton:hover {
-        background-color: #C8D8F8 !important;
+.form-v4-content {
+    background: #fff;
+    width: 600px;
+    border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    position: relative;
+    display: flex;
+    display: -webkit-flex;
+    font-family: Josefin Sans, sans-serif;
+}
+
+    .form-v4-content h2 {
+        font-size: 33px;
+        padding: 25px 0 0;
+        margin-bottom: 30px;
+        text-align: center;
     }
 
-p{
-    margin-bottom:0;
-    margin-top:0;
+    .form-v4-content .form-detail {
+        padding: 20px 40px;
+        position: relative;
+        width: 100%;
+        border-color: #0F89AE;
+        border-style: solid;
+        border-width: initial;
+        border-radius: 10px;
+    }
+
+        .form-v4-content .form-detail h2 {
+            color: #333333;
+            font-family: Josefin Sans, sans-serif;
+            font-size: 33px;
+            text-align: center;
+        }
+
+        .form-v4-content .form-detail .form-group {
+            display: flex;
+            display: -webkit-flex;
+            margin: 1 -8px;
+        }
+
+        .form-v4-content .form-detail .form-row {
+            width: 100%;
+            position: relative;
+        }
+
+        .form-v4-content .form-detail .form-group .form-row.form-row-1 {
+            width: 50%;
+            padding: 0 14px;
+            display: table-footer-group;
+        }
+
+        .form-v4-content .form-detail input {
+            width: 100%;
+            padding: 11.5px 15px;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            -webkit-appearance: unset;
+            outline: none;
+            font-family: Josefin Sans, sans-serif;
+            font-size: 15px;
+            color: #333;
+            -webkit-box-sizing: border-box;
+        }
+
+        .form-v4-content .form-detail .form-row input:focus {
+            border: 1px solid #0F89AE;
+        }
+
+        .form-v4-content .form-detail .submit {
+            background: #3786bd;
+            border-radius: 10px;
+            border: none;
+            margin: 6px 0 60px 0px;
+            cursor: pointer;
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+            .form-v4-content .form-detail .submit:hover {
+                background: #1098C2;
+            }
+
+        .form-v4-content .form-detail .form-row-last input {
+            font-family: Josefin Sans, sans-serif;
+            font-size: 19px;
+            width: 60%;
+            height: 100%;
+            background: #0F89AE;
+            margin: auto;
+            display: block;
+        }
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+    .form-v4-content {
+        margin: 70px 20px;
+        flex-direction: column;
+        -webkit-flex-direction: column;
+    }
+
+        .form-v4-content .form-detail {
+            padding: 10px 40px 10px 40px;
+            width: auto;
+        }
+}
+
+@media screen and (max-width: 575px) {
+    .form-v4-content .form-detail .form-group {
+        -webkit-flex-direction: column;
+    }
+
+        .form-v4-content .form-detail .form-group .form-row.form-row-1 {
+            width: 100%;
+            padding: 0 15px;
+        }
 }

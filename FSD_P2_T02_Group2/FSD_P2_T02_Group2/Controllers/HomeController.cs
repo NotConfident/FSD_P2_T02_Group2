@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Web;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -53,16 +53,15 @@ namespace FSD_P2_T02_Group2.Controllers
 
             User user = userDAL.CheckLogin(username, password);
             User admin = adminDAL.CheckAdminLogin(username, password);
+            Counsellor counsellor = counsellorDAL.CheckLogin(username, password);
 
-            //DateTime logintime = DateTime.Now;
 
             if (user.Username != null)
             {
                 HttpContext.Session.SetString("Username", username);
                 HttpContext.Session.SetString("Alias", user.Alias);
                 HttpContext.Session.SetInt32("UserID", user.UserID);
-                //HttpContext.Session.SetString("UserDP", user.ProfilePicture);
-                
+
                 string role = "User";
                 HttpContext.Session.SetString("Role", role);
                 Set("Username", user.Alias, 60);
@@ -76,6 +75,17 @@ namespace FSD_P2_T02_Group2.Controllers
                 //resp.Headers.AddCookies(new System.Net.Http.Headers.CookieHeaderValue[] { cookie })
 
                 return RedirectToAction("UserMain", "User");
+            }
+            else if (counsellor.Name != null)
+            {
+                HttpContext.Session.SetString("Email", username);
+                HttpContext.Session.SetString("Alias", counsellor.Name);
+
+                string role = "Counsellor";
+                HttpContext.Session.SetString("Role", role);
+                Set("Username", counsellor.Name, 60);
+
+                return RedirectToAction("Index", "Counsellor");
             }
             else if (admin.Username != null)
             {
@@ -168,8 +178,6 @@ namespace FSD_P2_T02_Group2.Controllers
             string corrOTP = TempData["OTP"].ToString();
             User u = ViewBag.newUser;
             User u2 = TempData.Get<User>("newUser");
-            Console.Write(otp);
-            Console.Write(corrOTP);
             if (otp == corrOTP)
             {
                 userDAL.RegisterUser(u2);
@@ -179,7 +187,7 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 string newOtp = userDAL.OTP(u.PhoneNo);
                 TempData["OTP"] = newOtp;
-                return View(inputOtp);
+                return View();
             }
         }
         public IActionResult Counsellor()

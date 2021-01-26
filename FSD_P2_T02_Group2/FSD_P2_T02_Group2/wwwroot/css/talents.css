@@ -1,4 +1,5 @@
-﻿/*[ FONT ] */
+﻿/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
 
 @font-face {
     font-family: Josefin Sans;
@@ -26,11 +27,12 @@
 
 body {
     padding: 0 1em;
-    font-family: Josefin Sans, sans-serif;
+    font-family: Josefin Sans,sans-serif;
 }
 
 
 /* * Post widget * */
+
 input[type="file"] {
     display: none;
 }

@@ -47,10 +47,8 @@
 }
 
     .form-v4-content h2 {
-        font-size: 33px;
-        padding: 25px 0 0;
-        margin-bottom: 30px;
-        text-align: center;
+        margin-bottom: 15px;
+        padding: 10px 0 0;
     }
 
     .form-v4-content .form-detail {
@@ -63,12 +61,12 @@
         border-radius: 10px;
     }
 
-        .form-v4-content .form-detail h2 {
-            color: #333333;
-            font-family: Josefin Sans, sans-serif;
-            font-size: 33px;
-            text-align: center;
-        }
+.form-v4-content .form-detail h2 {
+    color: #333333;
+    font-family: Josefin Sans, sans-serif;
+    font-size: 33px;
+    text-align: center;
+}
 
         .form-v4-content .form-detail .form-group {
             display: flex;
@@ -104,7 +102,7 @@
             border: 1px solid #0F89AE;
         }
 
-        .form-v4-content .form-detail .register {
+        .form-v4-content .form-detail .submit {
             background: #3786bd;
             border-radius: 10px;
             border: none;
@@ -115,7 +113,7 @@
             font-size: 15px;
         }
 
-            .form-v4-content .form-detail .register:hover {
+            .form-v4-content .form-detail .submit:hover {
                 background: #1098C2;
             }
 

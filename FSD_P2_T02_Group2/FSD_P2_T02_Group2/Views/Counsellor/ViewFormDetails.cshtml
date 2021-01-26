@@ -1,0 +1,116 @@
+﻿@model IEnumerable<FSD_P2_T02_Group2.Models.PendingCounsellorSession>
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<style>
+    .wrapper {
+        display: flex;
+        width: 100%;
+        align-items: stretch;
+    }
+
+    #sidebar {
+        min-width: 250px;
+        max-width: 250px;
+        background: #0F89AE;
+        color: #fff;
+        transition: all 0.3s;
+    }
+
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #0F89AE;
+        }
+
+    #content {
+        width: 100%;
+        padding: 20px;
+        min-height: 100vh;
+        transition: all 0.3s;
+        padding-top: 8%;
+    }
+
+    .submit {
+        background: #0F89AE;
+        border-radius: 10px;
+        border: none;
+        margin: 6px 0 60px 0px;
+        cursor: pointer;
+        color: #fff;
+        font-weight: 700;
+        font-size: 15px;
+    }
+        .submit:hover {
+            background: #1098C2;
+        }
+    .form-row-last input {
+        font-family: Josefin Sans, sans-serif;
+        font-size: 19px;
+        width: 70%;
+        height: 110%;
+        background: #0F89AE;
+        display: block;
+    }
+</style>
+
+<div class="wrapper" onclick="ToggleNavMenu">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h1>Queue</h1>
+            <h5>User ID</h5>
+            <ul class="nav flex-column">
+                @if (ViewBag.pcSessionList1 != null)
+                {
+                    @foreach (PendingCounsellorSession item in ViewBag.pcSessionList1)
+                    {
+                        <li>
+                            <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.UserID</a>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+    </nav>
+    <div id="content">
+        @foreach (PendingCounsellorSession item in Model)
+        {
+            <div class="row p-2">
+                <div class="col-md-4">
+                    <form asp-action="EditAccount">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group" hidden>
+                            <label class="control-label">SessionID:</label>
+                            <span>@item.SessionID</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">User ID:</label>
+                            <span>@item.UserID</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Feeling:</label>
+                            <span>@item.Feeling</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Thought:</label>
+                            <span>@item.Thought</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Problems:</label>
+                            <span>@item.Problems</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Date Created:</label>
+                            <span>@item.DateCreated</span>
+                        </div>
+                        <div class="form-row-last">
+                            <input type="submit" value="Start Chat" class="submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+    </div>
+</div>
