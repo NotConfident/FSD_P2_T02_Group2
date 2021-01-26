@@ -214,18 +214,16 @@
                 {
                     <div class="post">
                         <p>@p.Description</p>
-                        @for (int i = 0; i < p.Tags.Length; i++)
-                        {
-                            <p>@p.Tags[i]</p>
-                        }
+                        <p>@p.Tag</p>
                         @for (int i = 0; i < p.Likes.Length; i++)
                         {
                             <p>@p.Likes[i]</p>
                         }
-                        @for (int i = 0; i < p.Media.Length; i++)
+                        @*@for (int i = 0; i < p.Media.Length; i++)
                         {
                             <p>@p.Media[i]</p>
-                        }
+                        }*@
+                        @* to be resolved, have to take from SQL *@
                         <p>@p.TimeCreated</p>
                     </div>
                 }
