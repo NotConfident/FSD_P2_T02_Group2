@@ -61,7 +61,8 @@ namespace FSD_P2_T02_Group2.Controllers
                 HttpContext.Session.SetString("Username", username);
                 HttpContext.Session.SetString("Alias", user.Alias);
                 HttpContext.Session.SetInt32("UserID", user.UserID);
-
+                //HttpContext.Session.SetString("UserDP", user.ProfilePicture);
+                
                 string role = "User";
                 HttpContext.Session.SetString("Role", role);
                 Set("Username", user.Alias, 60);
@@ -167,6 +168,8 @@ namespace FSD_P2_T02_Group2.Controllers
             string corrOTP = TempData["OTP"].ToString();
             User u = ViewBag.newUser;
             User u2 = TempData.Get<User>("newUser");
+            Console.Write(otp);
+            Console.Write(corrOTP);
             if (otp == corrOTP)
             {
                 userDAL.RegisterUser(u2);
@@ -176,7 +179,7 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 string newOtp = userDAL.OTP(u.PhoneNo);
                 TempData["OTP"] = newOtp;
-                return View();
+                return View(inputOtp);
             }
         }
         public IActionResult Counsellor()
