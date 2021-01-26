@@ -178,6 +178,7 @@ namespace FSD_P2_T02_Group2.Controllers
         [HttpPost]
         public async Task<ActionResult> TalentsAsync(PostViewModel newPost)
         {
+            ViewData["PostCategories"] = GetPostCategories();
             string media = Request.Form["uploadImg"];
             if (media != "" || media != null)
             {

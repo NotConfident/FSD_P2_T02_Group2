@@ -61,7 +61,7 @@
                             <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
                             <input type="hidden" id="uploadImg" name="uploadImg" />
                         </div>
-                        <select asp-for="post.Tag"
+                        <select asp-for="post.T"
                                 asp-items="@ViewData["PostCategories"]
                             as List<SelectListItem>"
                                 class="form-control">
@@ -140,8 +140,19 @@
             }
         }
 
-        //document.querySelector("upload-image").onchange = function (e) {
+        function getBase64Image(element) {
+            var file = element.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                localStorage.setItem("uploadImg", reader.result);
+            }
+            console.log(localStorage.getItem("uploadImg"));
 
+            reader.readAsDataURL(file);
+            document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
+        };
+
+        //document.querySelector("upload-image").onchange = function (e) {
         //    var file = e.target.files[0],                  // reference first file BLOB
         //        url = URL.createObjectURL(file),           // create an Object URL
         //        img = new Image();                         // create a temp. image object
@@ -153,24 +164,6 @@
 
         //};
 
-        function getBase64Image(element) {
-            var file = element.files[0];
-            var reader = new FileReader();
-
-            //url = URL.createObjectURL(file),           // create an Object URL
-            //    img = new Image();                         // create a temp. image object
-            //img.onload = function () {                    // handle async image loading
-            //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
-            //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
-
-            reader.onloadend = function () {
-                localStorage.setItem("uploadImg", reader.result);
-            }
-            console.log(localStorage.getItem("uploadImg"));
-
-            reader.readAsDataURL(file);
-            document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
-        };
     </script>
 </body>
 
