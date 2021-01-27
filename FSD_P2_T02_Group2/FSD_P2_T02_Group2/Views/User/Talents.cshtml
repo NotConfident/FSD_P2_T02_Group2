@@ -61,7 +61,7 @@
                             <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
                             <input type="hidden" id="uploadImg" name="uploadImg" />
                         </div>
-                        <select asp-for="post.T"
+                        <select asp-for="post.Tag"
                                 asp-items="@ViewData["PostCategories"]
                             as List<SelectListItem>"
                                 class="form-control">
