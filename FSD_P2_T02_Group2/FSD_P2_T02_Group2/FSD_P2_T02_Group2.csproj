@@ -26,6 +26,5 @@
   <ItemGroup>
     <Folder Include="DAL\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\Counsellor\" />
   </ItemGroup>
 </Project>

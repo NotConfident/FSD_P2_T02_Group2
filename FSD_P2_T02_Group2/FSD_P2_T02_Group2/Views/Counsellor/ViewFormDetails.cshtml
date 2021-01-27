@@ -81,7 +81,7 @@
                 <div class="col-md-4">
                     <form asp-action="EditAccount">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group" hidden>
+                        <div class="form-group">
                             <label class="control-label">SessionID:</label>
                             <span>@item.SessionID</span>
                         </div>
@@ -106,7 +106,7 @@
                             <span>@item.DateCreated</span>
                         </div>
                         <div class="form-row-last">
-                            <input type="submit" value="Start Chat" class="submit" />
+                            <a asp-action="CounsellorChat" asp-controller="Counsellor" asp-route-sessionID="@item.SessionID">Start Chat</a>
                         </div>
                     </form>
                 </div>

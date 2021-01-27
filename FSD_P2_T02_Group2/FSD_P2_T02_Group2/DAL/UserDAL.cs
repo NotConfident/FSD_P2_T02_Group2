@@ -300,6 +300,7 @@ namespace FSD_P2_T02_Group2.DAL
         public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
+            const string authToken = "";
 
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
@@ -320,6 +321,16 @@ namespace FSD_P2_T02_Group2.DAL
                 Console.WriteLine(ex.Message);
             }
             return randNum;
+        }
+        public async Task<string> CheckStatusAsync(string room)
+        {
+            var firestoreDb = CreateFirestoreDb();
+
+            DocumentReference doc = firestoreDb.Collection("CounsellingChat").Document(room);
+            DocumentSnapshot docSnapshot = await doc.GetSnapshotAsync();
+            var status = docSnapshot.GetValue<string>("Status");
+            Console.WriteLine(status);
+            return status;
         }
     }
 }

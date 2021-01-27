@@ -80,11 +80,14 @@ namespace FSD_P2_T02_Group2.Controllers
             counselS.Sessions = userDAL.getSession(id);
             return View(counselS) ;
         }
-        public ActionResult CounselChat(String id)
+        public async Task<ActionResult> CounselChatAsync(String id)
         {
             if (id != "")
             {
                 HttpContext.Session.SetString("roomID", id);
+                string status = await userDAL.CheckStatusAsync(HttpContext.Session.GetString("roomID"));
+                if (status != "Online")
+                    return RedirectToAction("Counselling");
                 return View();
             }
             else

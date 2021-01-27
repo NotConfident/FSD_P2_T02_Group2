@@ -21,6 +21,7 @@ namespace FSD_P2_T02_Group2.Controllers
     public class CounsellorController : Controller
     {
         public CounsellorDAL counsellorDAL = new CounsellorDAL();
+        public UserDAL userDAL = new UserDAL();
 
         // GET: /<controller>/
         public IActionResult Index()
@@ -87,6 +88,35 @@ namespace FSD_P2_T02_Group2.Controllers
             }
             return View(session);
             //return RedirectToAction("PendingCounsellorSessions");
+        }
+        public ActionResult CounsellorChat(int sessionID)
+        {
+            Console.WriteLine(sessionID);
+            if (HttpContext.Session.GetInt32("CounsellorID") != null)
+            {
+                int cID = HttpContext.Session.GetInt32("CounsellorID").Value;
+
+                int uID = counsellorDAL.getUserSession(sessionID);
+
+                string roomNo = Convert.ToString(cID) + "-" + Convert.ToString(uID);
+                HttpContext.Session.SetString("roomID", roomNo);
+                Console.WriteLine(roomNo);
+                counsellorDAL.startChat(roomNo);
+                return View();
+            }
+            else
+                return RedirectToAction("PendingCounsellorSession");
+        }
+
+        [HttpPost]
+        public ActionResult CounsellorChat(ChatMessage messageVar)
+        {
+            string Alias = HttpContext.Session.GetString("Alias");
+            string room = HttpContext.Session.GetString("roomID");
+            Console.WriteLine(room);
+            userDAL.sendCMessage(Alias, messageVar, room);
+            ModelState.Clear(); // Clears textbox
+            return View();
         }
     }
 }

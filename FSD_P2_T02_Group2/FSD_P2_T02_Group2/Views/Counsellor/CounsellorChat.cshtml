@@ -1,0 +1,82 @@
+﻿@model IEnumerable<FSD_P2_T02_Group2.Models.ChatMessage>
+@using Microsoft.AspNetCore.Http;
+@using Google.Cloud.Firestore;
+@using System.Web;
+@{
+    ViewData["Title"] = "UserMain";
+    Layout = "_UserLayout";
+}
+<!DOCTYPE html>
+<head>
+    <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Josefin Sans;
+        }
+    </style>
+</head>
+
+<body style="background: url(../images/Login.png);background-repeat:no-repeat; background-size:cover;">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+    <div class="d-flex align-items-center col-lg-8" style="border:3px solid#0F89AE ;border-radius:10px;margin:0 auto;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);background-color:white">
+        <div style="margin:0 auto;padding:10px;width:100%">
+            <div style="margin:0 auto;margin-bottom:5px;overflow:auto;height:500px;" id="chat" class="chat"></div>
+            <partial name="~/Views/Counsellor/_CounsellorSend.cshtml" />
+        </div>
+    </div>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB_3YSraE6XM9lB-Va12Q36Gxmu19Mju8U",
+            authDomain: "fir-chat-ukiyo.firebaseapp.com",
+            databaseURL: "https://fir-chat-ukiyo-default-rtdb.firebaseio.com",
+            projectId: "fir-chat-ukiyo",
+            storageBucket: "fir-chat-ukiyo.appspot.com",
+            messagingSenderId: "1003455832615"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var firestore = firebase.firestore();
+        console.log("initialized")
+        var room = "@Context.Session.GetString("roomID")";
+        var alias = "@Context.Session.GetString("Alias")";
+        console.log(room);
+        var query = firestore.collection('CounsellingChat').doc(room).collection('Messages').orderBy("CreatedAt", "asc");
+
+        // Start listening to the query.
+        query.onSnapshot(function (snapshot) {
+            var messages_array = [];
+            snapshot.docChanges().forEach(function (change) {
+                var message = change.doc.data();
+                console.log("displaying message: " + message.Message);
+                displayMessage(message.Alias, message.Message);
+            });
+            $('.chat').scrollTop($('.chat')[0].scrollHeight);
+        });
+        function displayMessage(name, text) {
+            if (name != alias) {
+                var txt = '<p></p><div style="border-radius:5px;word-break:break-word;display:inline-block;max-width:401px;background-color:#DDDFF4;padding:10px;margin-top:15px;">' + name + ': <br />' + text + '</div>';
+                var newTxt = txt.toString();
+
+            }
+            else {
+                var txt = '<p></p><div style="border-radius:5px;word-break:break-word;max-width:401px;margin-right: 5px;margin-left: auto;display:table;background-color: #DDF4DE; padding: 10px;margin-top:15px;">' + text + '</div>';
+                var newTxt = txt.toString();
+            }
+            $(newTxt).hide().appendTo(".chat").fadeIn(1000);
+        };
+    </script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+</body>
