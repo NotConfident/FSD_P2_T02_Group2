@@ -79,15 +79,14 @@
         {
             <div class="row p-2">
                 <div class="col-md-4">
-                    <form asp-action="EditAccount">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <form asp-action="CreateCounsellingSession">
                         <div class="form-group" hidden>
                             <label class="control-label">SessionID:</label>
                             <span>@item.SessionID</span>
                         </div>
                         <div class="form-group">
                             <label class="control-label">User ID:</label>
-                            <span>@item.UserID</span>
+                            <span id="userID">@item.UserID</span>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Feeling:</label>
@@ -107,6 +106,8 @@
                         </div>
                         <div class="form-row-last">
                             <input type="submit" value="Start Chat" class="submit" />
+                            @Html.Hidden("userID", item.UserID)
+                            <a asp-action="CounsellorChat" asp-controller="Counsellor" asp-route-sessionID="@item.SessionID">Start Chat</a>
                         </div>
                     </form>
                 </div>

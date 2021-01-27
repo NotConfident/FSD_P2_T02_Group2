@@ -9,11 +9,14 @@ namespace FSD_P2_T02_Group2.Models
     [FirestoreData]
     public class Post
     {
-        [FirestoreProperty]
-        public int PostID { get; set; }
+        //[FirestoreProperty]
+        //public int PostID { get; set; }
 
         [FirestoreProperty]
         public int UserID { get; set; }
+
+        //[FirestoreProperty]
+        //public string UserDP { get; set; }
 
         [FirestoreProperty]
         public string Description { get; set; }
@@ -21,13 +24,18 @@ namespace FSD_P2_T02_Group2.Models
         [FirestoreProperty]
         public int[] Likes { get; set; }
 
-        [FirestoreProperty]
-        public string[] Media { get; set; }
+        //[FirestoreProperty]
+        //public string Tag { get; set; }
 
         [FirestoreProperty]
-        public string[] Tags { get; set; }
-
-        [FirestoreProperty]
+        public string Media { get; set; }
+        
         public DateTime TimeCreated { get; set; }
+
+        [FirestoreProperty]
+        public bool hasMedia { get; set; }
+
+        [FirestoreProperty]
+        public string Tag { get; set; }
     }
 }
