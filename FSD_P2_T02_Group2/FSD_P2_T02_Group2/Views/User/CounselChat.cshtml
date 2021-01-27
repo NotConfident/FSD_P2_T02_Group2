@@ -20,6 +20,9 @@
         body {
             font-family: Josefin Sans;
         }
+        .btn:hover {
+            filter: brightness(110%);
+        }
     </style>
 </head>
 
@@ -52,16 +55,24 @@
         var alias = "@Context.Session.GetString("Alias")";
         console.log(room);
         var query = firestore.collection('CounsellingChat').doc(room).collection('Messages').orderBy("CreatedAt", "asc");
-
+        var docStatus = firestore.collection('CounsellingChat').doc(room);
         // Start listening to the query.
         query.onSnapshot(function (snapshot) {
-            var messages_array = [];
             snapshot.docChanges().forEach(function (change) {
                 var message = change.doc.data();
                 console.log("displaying message: " + message.Message);
                 displayMessage(message.Alias, message.Message);
             });
             $('.chat').scrollTop($('.chat')[0].scrollHeight);
+        });
+        docStatus.onSnapshot(function (doc) {
+            var status = doc.data();
+            console.log(status.Status);
+            if (status.Status == "Offline") {
+                $('#myModal').modal('show');
+                $("#textbox").attr('disabled', true);
+                $("#myBtn").attr('disabled', true);
+            }
         });
         function displayMessage(name, text) {
             if (name != alias) {
@@ -76,7 +87,22 @@
             $(newTxt).hide().appendTo(".chat").fadeIn(1000);
         };
     </script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog"style="transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%;width:25vw">
+
+            <!-- Modal content-->
+            <div class="modal-content"style="border: 3px solid #0F89AE; background-color: #0F89AE;border-radius: 15px;">
+                <div class="modal-header" style="background-color: white; border-radius: 14px 14px 0px 0px;">
+                    <h4 class="modal-title">Session has ended</h4>
+                </div>
+                <div class="modal-footer" style="background-color:white;border-radius: 0px 0px 14px 14px;">
+                    <a id="btn" class="btn btn-default" style="border: 3px solid #0F89AE;background-color:#0F89AE;color:white ;border-radius: 10px;padding:5px;" asp-action="UserMain" asp-controller="User">Return to Home Page</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
 </body>

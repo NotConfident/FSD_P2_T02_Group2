@@ -299,6 +299,7 @@ namespace FSD_P2_T02_Group2.DAL
         public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
+            const string authToken = "";
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
             string randNum = "";
@@ -333,7 +334,8 @@ namespace FSD_P2_T02_Group2.DAL
         public async Task CreatePostAsync(Post newPost, string base64image)
         {
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
