@@ -90,8 +90,9 @@
             Post post = documentSnapshot.ConvertTo<Post>();
             postList.Add(post);     //add each post to postList
         }
+        List<Post> orderedPostList = postList.OrderByDescending(p => p.TimeCreated).ToList();
         <div>
-            @foreach (Post post in postList)
+            @foreach (Post post in orderedPostList)
             {
             <div class="container" style="background:#C8D8F8">
                 <p>@post.Description</p>
