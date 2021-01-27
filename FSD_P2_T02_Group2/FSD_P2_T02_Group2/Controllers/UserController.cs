@@ -8,7 +8,9 @@ using Firebase.Database.Query;
 using FSD_P2_T02_Group2.Models;
 using Microsoft.AspNetCore.Http;
 using Google.Cloud.Firestore;
+using Firebase.Storage;
 using FSD_P2_T02_Group2.DAL;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FSD_P2_T02_Group2.Controllers
 {
@@ -69,6 +71,7 @@ namespace FSD_P2_T02_Group2.Controllers
             counselS.Sessions = userDAL.getSession(id);
             return View(counselS);
         }
+
         [HttpPost]
         public ActionResult Counselling(CounselReq counsel)
         {
@@ -78,6 +81,29 @@ namespace FSD_P2_T02_Group2.Controllers
             CounselReq counselS = new CounselReq();
             counselS.Sessions = userDAL.getSession(id);
             return View(counselS) ;
+        }
+        public async Task<ActionResult> CounselChatAsync(String id)
+        {
+            if (id != "")
+            {
+                HttpContext.Session.SetString("roomID", id);
+                string status = await userDAL.CheckStatusAsync(HttpContext.Session.GetString("roomID"));
+                if (status != "Online")
+                    return RedirectToAction("Counselling");
+                return View();
+            }
+            else
+                return RedirectToAction("Counselling");
+        }
+        [HttpPost]
+        public ActionResult CounselChat(ChatMessage messageVar)
+        {
+            string Alias = HttpContext.Session.GetString("Alias");
+            string room = HttpContext.Session.GetString("roomID");
+            Console.WriteLine(room);
+            userDAL.sendCMessage(Alias, messageVar, room);
+            ModelState.Clear(); // Clears textbox
+            return View();
         }
         public ActionResult Account()
         {
@@ -145,6 +171,74 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 TempData["Error"] = "Information not changed!";
                 return View(user);
+            }
+        }
+        private List<SelectListItem> GetPostCategories()
+        {
+            List<SelectListItem> categoryList = new List<SelectListItem>();
+            categoryList.Add(new SelectListItem
+            {
+                Value = "None",
+                Text = "None"
+            });
+            categoryList.Add(new SelectListItem
+            {
+                Value = "Information Technology",
+                Text = "Information Technology"
+            });
+            categoryList.Add(new SelectListItem
+            {
+                Value = "Art",
+                Text = "Art"
+            });
+            categoryList.Add(new SelectListItem
+            {
+                Value = "Engineering",
+                Text = "Engineering"
+            });
+            return categoryList;
+        }
+
+        public async Task<ActionResult> TalentsAsync()
+        {
+            //Check if role is user
+            if ((HttpContext.Session.GetString("Role") == null) || (HttpContext.Session.GetString("Role") != "User"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            //Check user's details
+            User user = userDAL.GetUser((int)HttpContext.Session.GetInt32("UserID"));
+            if (user == null)
+            {
+                return RedirectToAction("Index", "Home");   //if there is no current user, redirect back home
+            }
+            ViewData["PostCategories"] = GetPostCategories();
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> TalentsAsync(PostViewModel newPost)
+        {
+            string media = Request.Form["uploadImg"];
+            if (media != "" || media != null)
+            {
+                newPost.post.hasMedia = true;
+                newPost.Image = media;
+            }
+            else
+            {
+                newPost.post.hasMedia = false;
+            }
+
+            if (newPost.post.Description != null || newPost.Image != null)
+            {
+                newPost.post.UserID = (int)HttpContext.Session.GetInt32("UserID");
+                await userDAL.CreatePostAsync(newPost.post, newPost.Image);
+                return View();
+            }
+            else
+            {
+                return View(newPost);
             }
         }
     }

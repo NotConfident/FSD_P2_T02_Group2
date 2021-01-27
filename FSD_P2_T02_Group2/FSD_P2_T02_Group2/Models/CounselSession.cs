@@ -10,5 +10,6 @@ namespace FSD_P2_T02_Group2.Models
         public int UserID { get; set; }
         public int CounsellorID { get; set; }
         public string CName { get; set; }
+        public string roomName { get; set; }
     }
 }

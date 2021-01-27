@@ -20,7 +20,6 @@ namespace FSD_P2_T02_Group2.DAL
 {
     public class UserDAL
     {
-
         private IConfiguration Configuration { get; }
         private SqlConnection conn;
 
@@ -250,7 +249,8 @@ namespace FSD_P2_T02_Group2.DAL
                     {
                         UserID = userid,
                         CounsellorID = reader.GetInt32(1),
-                        CName = reader.GetString(2)
+                        CName = reader.GetString(2),
+                        roomName = Convert.ToString(reader.GetInt32(1)) +'-'+ Convert.ToString(userid)
                     });
                 }
             }
@@ -261,7 +261,7 @@ namespace FSD_P2_T02_Group2.DAL
         public async Task sendMessage(User user, ChatMessage message, string room)
         {
 
-            var firestoreDb = CreateFirestoreDb();;
+            var firestoreDb = CreateFirestoreDb();
             
             await firestoreDb.Collection(room).AddAsync(new ChatMessage
             {
@@ -270,13 +270,25 @@ namespace FSD_P2_T02_Group2.DAL
                 Message = message.Message
         });
         }
+        public async Task sendCMessage(string alias, ChatMessage message, string room)
+        {
+
+            var firestoreDb = CreateFirestoreDb();
+
+            await firestoreDb.Collection("CounsellingChat").Document(room).Collection("Messages").AddAsync(new ChatMessage
+            {
+                Alias = alias,
+                CreatedAt = Google.Cloud.Firestore.Timestamp.FromDateTime(DateTime.UtcNow),
+                Message = message.Message
+            });
+        }
 
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
             //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
-            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
-            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
+            //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             Console.WriteLine("Created Firestore");
@@ -287,8 +299,7 @@ namespace FSD_P2_T02_Group2.DAL
         public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
-            const string authToken = "a3dc67dd384c8677d4cdec274e6908c8";
-
+            
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
             string randNum = "";
@@ -308,6 +319,55 @@ namespace FSD_P2_T02_Group2.DAL
                 Console.WriteLine(ex.Message);
             }
             return randNum;
+        }
+        public async Task<string> CheckStatusAsync(string room)
+        {
+            var firestoreDb = CreateFirestoreDb();
+
+            DocumentReference doc = firestoreDb.Collection("CounsellingChat").Document(room);
+            DocumentSnapshot docSnapshot = await doc.GetSnapshotAsync();
+            var status = docSnapshot.GetValue<string>("Status");
+            Console.WriteLine(status);
+            return status;
+        }
+
+        public async Task CreatePostAsync(Post newPost, string base64image)
+        {
+            var projectName = "fir-chat-ukiyo";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            FirestoreDb db = FirestoreDb.Create(projectName);
+            newPost.TimeCreated = DateTime.UtcNow;
+            Dictionary<string, object> newPostDictionary = new Dictionary<string, object>
+            {
+                { "Description", newPost.Description },
+                {"Likes", newPost.Likes},
+                {"Tag", newPost.Tag },
+                {"TimeCreated", newPost.TimeCreated },
+                {"UserID", newPost.UserID },
+                {"hasMedia", newPost.hasMedia }
+            };
+            DocumentReference docRef = await db.Collection("Posts").Document("Category").Collection("All").AddAsync(newPostDictionary);
+
+            if (newPost.Tag != "None")
+            {
+                await db.Collection("Posts").Document("Category").Collection(newPost.Tag).Document(docRef.Id).CreateAsync(newPost);
+            }
+            
+            if (newPost.hasMedia is true)
+            {
+                SqlCommand cmd = conn.CreateCommand();
+
+                cmd.CommandText = @"INSERT INTO PostMedia(DocumentKey, Image)
+                                    VALUES(@key, @image)";
+
+                cmd.Parameters.AddWithValue("@key", docRef.Id);
+                cmd.Parameters.AddWithValue("@image", base64image);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
         }
     }
 }

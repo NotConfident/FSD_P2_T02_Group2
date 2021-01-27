@@ -13,7 +13,7 @@
         }
     });
 </script>
-<form asp-action="ChatRoom" id="messagebox" style="width:100%;display:flex">
+<form asp-action="CounsellorChat" id="messagebox" style="width:100%;display:flex">
     <input type="text" placeholder="Type something..." asp-for="Message" id="textbox" runat="server" style="flex-grow:10;" required>
     <button type="submit" onclick="clear()" id="myBtn" style="float:right;">Send</button>
 </form>
