@@ -1,0 +1,171 @@
+﻿@model FSD_P2_T02_Group2.Models.PostViewModel
+@using Microsoft.AspNetCore.Http
+@using Google.Cloud.Firestore;
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    Layout = "_UserLayout";
+    ViewData["Title"] = "Talents Recognition";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Talents Recognition</title>
+    <link href="~/css/talents.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col">
+            <h3><u>Information Technology</u></h3>
+        </div>
+        <div class="col">
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">Select Filter</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <a href="#">Information Technology</a>
+                    <a href="#">Badmintion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @*<img src="@HttpContextAccessor.HttpContext.Session.GetString("UserDP")" class="rounded-circle" align="left" />*@
+        <div class="column">
+            <div class="widget-post" aria-labelledby="post-header-title">
+                <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" method="post" asp-action="Talents">
+                    <div class="widget-post__content">
+                        <label for="post-content" class="sr-only">Share</label>
+                        <input id="post-content" class="widget-post__textarea scroller" placeholder="Share something..." asp-for="@Model.post.Description" />
+                        <input hidden asp-for="@Model.Image" value="" />
+                    </div>
+                    <div class="widget-post__options is--hidden" id="stock-options">
+                    </div>
+                    <div class="widget-post__actions post--actions">
+                        <div class="post-actions__attachments">
+                            <button type="button" class="btn post-actions__upload attachments--btn">
+                                <label for="upload-image" class="post-actions__label">
+                                    <i class="fa fa-upload" aria-hidden="true"></i>
+                                    <img src="~/images/photoicon.JPG">
+                                    upload image/video
+                                </label>
+                            </button>
+                            <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
+                            <input type="hidden" id="uploadImg" name="uploadImg" />
+                        </div>
+                        <select asp-for="post.Tag"
+                                asp-items="@ViewData["PostCategories"]
+                            as List<SelectListItem>"
+                                class="form-control">
+                        </select>
+                        <div class="post-actions__widget">
+                            <button class="btn post-actions__publish" type="submit">Publish</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @{
+        //retrieving posts
+        var projectName = "fir-chat-ukiyo";
+        var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+        FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+        FirestoreDb db = FirestoreDb.Create(projectName);
+
+        Query allPostsQuery = db.Collection("Posts").Document("Category").Collection("All");
+        List<Post> postList = new List<Post>();
+        QuerySnapshot allPostsSnapshot = await allPostsQuery.GetSnapshotAsync();
+        foreach (DocumentSnapshot documentSnapshot in allPostsSnapshot.Documents)
+        {
+            Post post = documentSnapshot.ConvertTo<Post>();
+            postList.Add(post);     //add each post to postList
+        }
+        List<Post> orderedPostList = postList.OrderByDescending(p => p.TimeCreated).ToList();
+        <div>
+            @foreach (Post post in orderedPostList)
+            {
+            <div class="container" style="background:#C8D8F8">
+                <p>@post.Description</p>
+                @if (post.Likes != null)
+                {
+                    <p>@post.Likes.Count() likes</p>
+                }
+                else
+                {
+                    <p>0 likes</p>
+                }
+                @if (post.hasMedia is true)
+                {
+                <h2>Media:</h2>
+                @*<img src="@post.Image" id="postsImages" />*@
+                    /*take note that have to be retrieved from sql */
+                }
+                <p>@post.TimeCreated</p>
+                @if (post.Tag != null)
+                {
+                <h2>Tags:</h2>
+                <p>@post.Tag</p>
+                }
+            </div>
+            }
+        </div>
+    }
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        function filterFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    a[i].style.display = "";
+                } else {
+                    a[i].style.display = "none";
+                }
+            }
+        }
+
+        function getBase64Image(element) {
+            var file = element.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                localStorage.setItem("uploadImg", reader.result);
+            }
+            console.log(localStorage.getItem("uploadImg"));
+
+            reader.readAsDataURL(file);
+            document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
+        };
+
+        //document.querySelector("upload-image").onchange = function (e) {
+        //    var file = e.target.files[0],                  // reference first file BLOB
+        //        url = URL.createObjectURL(file),           // create an Object URL
+        //        img = new Image();                         // create a temp. image object
+
+        //    img.onload = function () {                    // handle async image loading
+        //        URL.revokeObjectURL(this.src);             // free memory held by Object URL
+        //        c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
+        //    };
+
+        //};
+
+    </script>
+</body>
+
+</html>
