@@ -20,7 +20,6 @@ namespace FSD_P2_T02_Group2.DAL
 {
     public class UserDAL
     {
-
         private IConfiguration Configuration { get; }
         private SqlConnection conn;
 
@@ -301,7 +300,6 @@ namespace FSD_P2_T02_Group2.DAL
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
             const string authToken = "";
-
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
             string randNum = "";
@@ -331,6 +329,45 @@ namespace FSD_P2_T02_Group2.DAL
             var status = docSnapshot.GetValue<string>("Status");
             Console.WriteLine(status);
             return status;
+        }
+
+        public async Task CreatePostAsync(Post newPost, string base64image)
+        {
+            var projectName = "fir-chat-ukiyo";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            FirestoreDb db = FirestoreDb.Create(projectName);
+            newPost.TimeCreated = DateTime.UtcNow;
+            Dictionary<string, object> newPostDictionary = new Dictionary<string, object>
+            {
+                { "Description", newPost.Description },
+                {"Likes", newPost.Likes},
+                {"Tag", newPost.Tag },
+                {"TimeCreated", newPost.TimeCreated },
+                {"UserID", newPost.UserID },
+                {"hasMedia", newPost.hasMedia }
+            };
+            DocumentReference docRef = await db.Collection("Posts").Document("Category").Collection("All").AddAsync(newPostDictionary);
+
+            if (newPost.Tag != "None")
+            {
+                await db.Collection("Posts").Document("Category").Collection(newPost.Tag).Document(docRef.Id).CreateAsync(newPost);
+            }
+            
+            if (newPost.hasMedia is true)
+            {
+                SqlCommand cmd = conn.CreateCommand();
+
+                cmd.CommandText = @"INSERT INTO PostMedia(DocumentKey, Image)
+                                    VALUES(@key, @image)";
+
+                cmd.Parameters.AddWithValue("@key", docRef.Id);
+                cmd.Parameters.AddWithValue("@image", base64image);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
         }
     }
 }
