@@ -9,8 +9,8 @@ namespace FSD_P2_T02_Group2.Models
     [FirestoreData]
     public class Post
     {
-        [FirestoreProperty]
-        public int PostID { get; set; }
+        //[FirestoreProperty]
+        //public int PostID { get; set; }
 
         [FirestoreProperty]
         public int UserID { get; set; }
@@ -22,7 +22,7 @@ namespace FSD_P2_T02_Group2.Models
         public int[] Likes { get; set; }
 
         [FirestoreProperty]
-        public string[] Media { get; set; }
+        public string Media { get; set; }
 
         [FirestoreProperty]
         public string[] Tags { get; set; }

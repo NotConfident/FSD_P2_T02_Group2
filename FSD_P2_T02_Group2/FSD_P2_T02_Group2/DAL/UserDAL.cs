@@ -287,6 +287,7 @@ namespace FSD_P2_T02_Group2.DAL
         public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
+            const string authToken = "a3dc67dd384c8677d4cdec274e6908c8";
 
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);

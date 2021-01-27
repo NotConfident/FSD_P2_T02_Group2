@@ -9,8 +9,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using FSD_P2_T02_Group2.Models;
 using FSD_P2_T02_Group2.DAL;
-using System.Net;
-using System.Net.Http;
+using Google.Cloud.Firestore;
+using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
 using Microsoft.Net.Http.Headers;
 
@@ -42,31 +42,9 @@ namespace FSD_P2_T02_Group2.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult PendingCounsellorSessions(int sessionID)
-        //{
-        //    List<PendingCounsellorSession> session = new List<PendingCounsellorSession>();
-        //    List<PendingCounsellorSession> pcSessionList = new List<PendingCounsellorSession>();
-        //    pcSessionList = counsellorDAL.retrieveUserForms();
-
-        //    if(sessionID != null)
-        //    {
-        //        foreach (PendingCounsellorSession item in pcSessionList)
-        //        {
-        //            if (item.SessionID == sessionID)
-        //            {
-        //                session.Add(item);
-        //                break;
-        //            }
-        //        }
-        //    }
-        //    return View(session);
-        //}
-
         public ActionResult ViewFormDetails(int sessionID)
         {
             List<PendingCounsellorSession> session = new List<PendingCounsellorSession>();
-            //PendingCounsellorSession session = null;
             List<PendingCounsellorSession> pcSessionList = new List<PendingCounsellorSession>();
             pcSessionList = counsellorDAL.retrieveUserForms();
 
@@ -81,12 +59,34 @@ namespace FSD_P2_T02_Group2.Controllers
                 if (item.SessionID == sessionID)
                 {
                     session.Add(item);
-                    //session = item;
                     break;
                 }
             }
             return View(session);
-            //return RedirectToAction("PendingCounsellorSessions");
+        }
+
+        public async Task CreateCounsellingSession(IFormCollection form)
+        {
+            string userID = form["userID"].ToString();
+            string counsellorID = HttpContext.Session.GetInt32("CounsellorID").ToString();
+            string session = counsellorID + "-" + userID;
+
+            var projectName = "fir-chat-ukiyo";
+            var authFilePath = "/Users/tee/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            FirestoreDb db = FirestoreDb.Create(projectName);
+
+            DocumentReference docRef = db.Collection("CounsellingChat").Document(session);
+
+            Dictionary<string, object> start = new Dictionary<string, object>
+            {
+                { "Date", DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt")},
+            };
+
+            await docRef.SetAsync(start);
+
+            //return View();
         }
     }
 }
