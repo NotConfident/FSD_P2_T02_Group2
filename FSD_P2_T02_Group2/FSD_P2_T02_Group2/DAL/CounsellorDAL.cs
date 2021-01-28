@@ -10,6 +10,7 @@ using FSD_P2_T02_Group2.Models;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using System.IO;
+using Google.Cloud.Firestore;
 
 namespace FSD_P2_T02_Group2.DAL
 {
@@ -126,5 +127,47 @@ namespace FSD_P2_T02_Group2.DAL
             return pcSessionList;
         }
 
+        public int getUserSession(int sesID) // Change to admin model
+        {
+            int uID = 0;
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT UserID FROM PendingSessionView WHERE SessionID = @sesID";
+            cmd.Parameters.AddWithValue("@sesID", sesID);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                uID = reader.GetInt32(0);
+            }
+            reader.Close();
+            conn.Close();
+            return uID;
+        }
+        private FirestoreDb CreateFirestoreDb()
+        {
+            var projectName = "fir-chat-ukiyo";
+            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            Console.WriteLine("Created Firestore");
+            return FirestoreDb.Create(projectName);
+
+        }
+        public async Task startChat(string room)
+        {
+            var firestoreDb = CreateFirestoreDb();
+
+            await firestoreDb.Collection("CounsellingChat").Document(room).UpdateAsync("Status", "Online");
+        }
+        public async Task endChat(string room)
+        {
+            var firestoreDb = CreateFirestoreDb();
+
+            await firestoreDb.Collection("CounsellingChat").Document(room).UpdateAsync("Status", "Offline");
+        }
     }
 }

@@ -80,6 +80,7 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 HttpContext.Session.SetString("Email", username);
                 HttpContext.Session.SetString("Alias", counsellor.Name);
+                HttpContext.Session.SetInt32("CounsellorID", counsellor.counsellorID);
 
                 string role = "Counsellor";
                 HttpContext.Session.SetString("Role", role);

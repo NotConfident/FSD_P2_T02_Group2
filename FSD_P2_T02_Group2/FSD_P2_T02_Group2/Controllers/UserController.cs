@@ -82,11 +82,14 @@ namespace FSD_P2_T02_Group2.Controllers
             counselS.Sessions = userDAL.getSession(id);
             return View(counselS) ;
         }
-        public ActionResult CounselChat(String id)
+        public async Task<ActionResult> CounselChatAsync(String id)
         {
             if (id != "")
             {
                 HttpContext.Session.SetString("roomID", id);
+                string status = await userDAL.CheckStatusAsync(HttpContext.Session.GetString("roomID"));
+                if (status != "Online")
+                    return RedirectToAction("Counselling");
                 return View();
             }
             else
@@ -153,6 +156,7 @@ namespace FSD_P2_T02_Group2.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.Image = Request.Form["Base64Image"];
                 int id = userDAL.UpdateUser(user);
                 if (id != 0)
                 {
@@ -272,6 +276,21 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 return View(newPost);
             }
+        }
+
+        public ActionResult EndChat()
+        {
+            var projectName = "fir-chat-ukiyo";
+            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            FirestoreDb db = FirestoreDb.Create(projectName);
+
+            CollectionReference cchatRef = db.Collection("CounsellingChat");
+
+            return RedirectToAction("User", "EndChat");
+
+
         }
     }
 }

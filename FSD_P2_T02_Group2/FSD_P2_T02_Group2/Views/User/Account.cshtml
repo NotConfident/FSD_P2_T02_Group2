@@ -130,13 +130,22 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+    <style>
+        .preview--rounded {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 
 <body>
     <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
     @{
         var projectName = "fir-chat-ukiyo";
-        var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
+        //var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
+        var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
         Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
         FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
         FirestoreDb db = FirestoreDb.Create(projectName);
@@ -160,17 +169,19 @@
         <div class="form-content">
             <div class="container">
                 <form method="post">
-                    </br>
+                    <br />
                     <h2>Account</h2>
-                    </br>
+                    <br />
                     <div class="row">
                         <div class="col-md-4">
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.Image)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.Image)
-                            </dd>
+                            @if (Model.Image != null)
+                            {
+                                <img class="preview preview--rounded" src="@Model.Image.ToString()" />
+                            }
+                            else
+                            {
+                                <img />
+                            }
                         </div>
                         <div class="col-md-6">
                             <dt class="col-sm-2">
@@ -202,8 +213,8 @@
                             @Html.ActionLink("View Profile", "ViewAccDetails", new { /* id = Model.PrimaryKey */ })
                         </div>
                     </div>
-                    </br>
-                    </br>
+                    <br />
+                    <br />
                 </form>
             </div>
         </div>

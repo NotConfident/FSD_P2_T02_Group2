@@ -28,6 +28,8 @@ namespace FSD_P2_T02_Group2.Models
         //public string Tag { get; set; }
 
         [FirestoreProperty]
+        public string Media { get; set; }
+        
         public DateTime TimeCreated { get; set; }
 
         [FirestoreProperty]

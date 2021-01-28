@@ -321,11 +321,22 @@ namespace FSD_P2_T02_Group2.DAL
             }
             return randNum;
         }
+        public async Task<string> CheckStatusAsync(string room)
+        {
+            var firestoreDb = CreateFirestoreDb();
+
+            DocumentReference doc = firestoreDb.Collection("CounsellingChat").Document(room);
+            DocumentSnapshot docSnapshot = await doc.GetSnapshotAsync();
+            var status = docSnapshot.GetValue<string>("Status");
+            Console.WriteLine(status);
+            return status;
+        }
 
         public async Task CreatePostAsync(Post newPost, string base64image)
         {
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
