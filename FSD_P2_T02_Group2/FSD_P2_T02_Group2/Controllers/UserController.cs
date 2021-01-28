@@ -175,8 +175,8 @@ namespace FSD_P2_T02_Group2.Controllers
             List<SelectListItem> categoryList = new List<SelectListItem>();
             categoryList.Add(new SelectListItem
             {
-                Value = "None",
-                Text = "None"
+                Value = "All",
+                Text = "No specified category"
             });
             categoryList.Add(new SelectListItem
             {
@@ -196,7 +196,37 @@ namespace FSD_P2_T02_Group2.Controllers
             return categoryList;
         }
 
-        public async Task<ActionResult> TalentsAsync()
+        //public async Task<ActionResult> TalentsAsync(IFormCollection formCollection)
+        //{
+        //    //Check if role is user
+        //    if ((HttpContext.Session.GetString("Role") == null) || (HttpContext.Session.GetString("Role") != "User"))
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    //Check user's details
+        //    User user = userDAL.GetUser((int)HttpContext.Session.GetInt32("UserID"));
+        //    if (user == null)
+        //    {
+        //        return RedirectToAction("Index", "Home");   //if there is no current user, redirect back home
+        //    }
+        //    PostViewModel postVM = new PostViewModel();
+        //    ViewData["PostCategories"] = GetPostCategories();
+        //    ViewData["Users"] = userDAL.GetUsers();
+        //    string chosenCat;
+        //    var Category = formCollection["Category"].ToString();
+        //    //string cat = category["chosenCat"];
+        //    //string cat2 = Request.Form["chosenCat"];
+        //    if (Category == "")
+        //        chosenCat = "All";
+        //    else
+        //        chosenCat = Category;
+        //    //    chosenCat = cat;
+        //    //ViewData["Category"] = chosenCat;
+        //    postVM.postList = await userDAL.RetrievePostsAsync(chosenCat);
+        //    return View(postVM);
+        //}
+
+        public async Task<ActionResult> TalentsAsync(IFormCollection formdata)
         {
             //Check if role is user
             if ((HttpContext.Session.GetString("Role") == null) || (HttpContext.Session.GetString("Role") != "User"))
@@ -209,10 +239,15 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 return RedirectToAction("Index", "Home");   //if there is no current user, redirect back home
             }
+            PostViewModel postVM = new PostViewModel();
             ViewData["PostCategories"] = GetPostCategories();
-            return View();
-        }
+            ViewData["Users"] = userDAL.GetUsers();
+            //string Category = Request.Form["Category"];
+            string Category = formdata["Category"].ToString();   
 
+            postVM.postList = await userDAL.RetrievePostsAsync("All");
+            return View(postVM);
+        }
         [HttpPost]
         public async Task<ActionResult> TalentsAsync(PostViewModel newPost)
         {

@@ -27,16 +27,53 @@
             <h3><u>Information Technology</u></h3>
         </div>
         <div class="col">
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">Select Filter</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                    <a href="#">Information Technology</a>
-                    <a href="#">Badmintion</a>
-                </div>
-            </div>
+            <!--<form asp-action="Index" method="get">-->
+                @*<input type="submit" title="Remove filters" value="Show All" asp-route-filter="@ViewData["Filter"]" asp-route-id="" style="background-color:inherit; border:none; color:#DEB500; text-decoration:underline" />*@
+            <!--</form>-->
+
+            @*<button onclick="myFunction()" class="dropbtn">Select Filter</button>*@
+            <form asp-action="Talents" method="get">
+            @*<div class="dropdown">
+                <div id="myDropdown" class="dropdown-content">*@
+                    @*@foreach (SelectListItem category in @ViewData["PostCategories"] as List<SelectListItem>)
+        {
+            <option href="#" onselect="" value="@category.Value">@category.Value</option>
+        }*@
+                    <select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
+            class="form-control" name="Category">
+        </select>
+        @*<input type="hidden" asp-route-category="Art" />*@
+                    @*<input type="hidden" value="hi" />*@
+                    @*<select>
+                    <option value="All">All</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Art">Art</option>
+                    <option value="Engineering">Engineering</option>
+                    </select>*@
+
+                    <input type="submit"/>
+                    @*<input type="image" hidden value="test" asp-route-filter="@ViewData["Filter"]"/>*@
+                    @*<select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
+                class="form-control" asp-route-category="@ViewData["Category"]">
+        </select>*@
+
+                    @*@Html.DropDownList("Category", new SelectList(ViewData["PostCategories"] as List<SelectListItem>), "Choose Category", new { @class = "form-control" })*@
+                    @*<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">*@
+                    @*<select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="choosemyCat"
+                class="form-control">
+        </select>*@
+                    @*<input type="hidden" id="chosenCat" value="test" />
+        <button class="btn post-actions__publish" type="submit">Go</button>*@
+                    @*<input type="submit" />*@
+                @*</div>
+                </div>*@
+            </form>
+            @*<a href="#">Information Technology</a>
+        <a href="#">Badmintion</a>*@
+            <!--</div>-->
         </div>
-    </div>
+        </div>
+
     <div class="row">
         @*<img src="@HttpContextAccessor.HttpContext.Session.GetString("UserDP")" class="rounded-circle" align="left" />*@
         <div class="column">
@@ -75,26 +112,26 @@
         </div>
     </div>
     @{
-        //retrieving posts
-        var projectName = "fir-chat-ukiyo";
-        var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
-        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
-        FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
-        FirestoreDb db = FirestoreDb.Create(projectName);
+////retrieving posts
+//var projectName = "fir-chat-ukiyo";
+//var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+//Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+//FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+//FirestoreDb db = FirestoreDb.Create(projectName);
 
-        Query allPostsQuery = db.Collection("Posts").Document("Category").Collection("All");
-        List<Post> postList = new List<Post>();
-        QuerySnapshot allPostsSnapshot = await allPostsQuery.GetSnapshotAsync();
-        foreach (DocumentSnapshot documentSnapshot in allPostsSnapshot.Documents)
-        {
-            Post post = documentSnapshot.ConvertTo<Post>();
-            postList.Add(post);     //add each post to postList
-        }
-        List<Post> orderedPostList = postList.OrderByDescending(p => p.TimeCreated).ToList();
+//Query allPostsQuery = db.Collection("Posts").Document("Category").Collection("All");
+//List<Post> postList = new List<Post>();
+//QuerySnapshot allPostsSnapshot = await allPostsQuery.GetSnapshotAsync();
+//foreach (DocumentSnapshot documentSnapshot in allPostsSnapshot.Documents)
+//{
+//    Post post = documentSnapshot.ConvertTo<Post>();
+//    postList.Add(post);     //add each post to postList
+//}
+//List<Post> orderedPostList = postList.OrderByDescending(p => p.TimeCreated).ToList();
         <div>
-            @foreach (Post post in orderedPostList)
+            @foreach (Post post in Model.postList)
             {
-            <div class="container" style="background:#C8D8F8">
+                <div class="container" style="background:#C8D8F8">
                 <p>@post.Description</p>
                 @if (post.Likes != null)
                 {
@@ -140,6 +177,17 @@
                 }
             }
         }
+        $("#Category").on("change", function () {
+            var q = $("#Category").val();
+            console.log("val = " + q);
+            $("#chosenCat").val($(q));
+            console.log($("#chosenCat").val);
+        });
+
+        //$("#choosemyCat").on("change", function() {
+        //    $("#chosenCat").val($(this).text());
+        //    console.log($("#chosenCat").val)
+        //});
 
         function getBase64Image(element) {
             var file = element.files[0];

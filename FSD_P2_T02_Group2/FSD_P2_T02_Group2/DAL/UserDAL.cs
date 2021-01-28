@@ -110,8 +110,9 @@ namespace FSD_P2_T02_Group2.DAL
 
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT * FROM [User]
-                                WHERE Username = @username AND Password = @password";
+            cmd.CommandText = @"EXEC uspUserLogin @username, @password";
+            //cmd.CommandText = @"SELECT * FROM [User]
+            //                    WHERE Username = @username AND Password = @password";
 
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@password", password);
@@ -299,7 +300,7 @@ namespace FSD_P2_T02_Group2.DAL
         public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
-            const string authToken = "";
+            const string authToken = "347ae9ac034aa8660cc03f59f629cc39";
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
             string randNum = "";
@@ -358,6 +359,26 @@ namespace FSD_P2_T02_Group2.DAL
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
+        }
+
+        public async Task<List<Post>> RetrievePostsAsync(string category)
+        {
+            var projectName = "fir-chat-ukiyo";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            FirestoreDb db = FirestoreDb.Create(projectName);
+
+            Query allPostsQuery = db.Collection("Posts").Document("Category").Collection(category);
+            List<Post> postList = new List<Post>();
+            QuerySnapshot allPostsSnapshot = await allPostsQuery.GetSnapshotAsync();
+            foreach (DocumentSnapshot documentSnapshot in allPostsSnapshot.Documents)
+            {
+                Post post = documentSnapshot.ConvertTo<Post>();
+                postList.Add(post);     //add each post to postList
+            }
+            List<Post> orderedPostList = postList.OrderByDescending(p => p.TimeCreated).ToList();
+            return orderedPostList;
         }
     }
 }

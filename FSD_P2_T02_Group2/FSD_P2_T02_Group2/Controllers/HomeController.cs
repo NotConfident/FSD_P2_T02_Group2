@@ -153,6 +153,20 @@ namespace FSD_P2_T02_Group2.Controllers
         {
             if (ModelState.IsValid)
             {
+                List<User> userList = userDAL.GetUsers();
+                foreach (User u in userList)
+                {
+                    if (u.Username == user.Username)
+                    {
+                        TempData["usedUsername"] = "This username has been used.";
+                        return View(user);
+                    }
+                    if (u.Email == user.Email)
+                    {
+                        TempData["usedEmail"] = "This email has been used.";
+                        return View(user);
+                    }
+                }
                 string otp = userDAL.OTP(user.PhoneNo);
                 ViewBag.newUser = user;
                 TempData.Put("newUser", user);
@@ -172,23 +186,35 @@ namespace FSD_P2_T02_Group2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RegisterOTP(string inputOtp)
+        public ActionResult RegisterOTP(IFormCollection formData)
         {
-            string otp = TempData["OTP"].ToString();
+            string inputOtp = formData["inputOtp"].ToString();
             string corrOTP = TempData["OTP"].ToString();
-            User u = ViewBag.newUser;
-            User u2 = TempData.Get<User>("newUser");
-            if (otp == corrOTP)
+            User u = TempData.Get<User>("newUser");
+            if (corrOTP != "")
             {
-                userDAL.RegisterUser(u2);
-                return RedirectToAction("Login");
+                if (inputOtp == corrOTP)
+                {
+                    userDAL.RegisterUser(u);
+                    HttpContext.Session.SetString("Username", u.Username);
+                    HttpContext.Session.SetString("Alias", u.Alias);
+                    HttpContext.Session.SetInt32("UserID", u.UserID);
+
+                    string role = "User";
+                    HttpContext.Session.SetString("Role", role);
+                    Set("Username", u.Alias, 60);
+                    return RedirectToAction("UserMain", "User");
+                }
+                else
+                {
+                    TempData["invalidOtp"] = "OTP is entered wrongly. Please try again.";
+                    string newOtp = userDAL.OTP(u.PhoneNo);
+                    TempData["OTP"] = newOtp;
+                    TempData.Put("newUser", u);
+                    return View();
+                }
             }
-            else
-            {
-                string newOtp = userDAL.OTP(u.PhoneNo);
-                TempData["OTP"] = newOtp;
-                return View();
-            }
+            return View();
         }
         public IActionResult Counsellor()
         {
