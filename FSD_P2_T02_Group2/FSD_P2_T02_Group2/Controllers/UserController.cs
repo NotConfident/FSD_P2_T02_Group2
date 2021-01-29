@@ -68,7 +68,7 @@ namespace FSD_P2_T02_Group2.Controllers
         {
             int id = (int)HttpContext.Session.GetInt32("UserID");
             CounselReq counselS = new CounselReq();
-            counselS.Sessions = userDAL.getSession(id);
+            counselS.Queue = userDAL.getSessions();
             return View(counselS);
         }
 
@@ -79,7 +79,7 @@ namespace FSD_P2_T02_Group2.Controllers
             userDAL.reqHelp(id, counsel);
             ModelState.Clear(); // Clears textbox
             CounselReq counselS = new CounselReq();
-            counselS.Sessions = userDAL.getSession(id);
+            counselS.Queue = userDAL.getSessions();
             return View(counselS) ;
         }
         public async Task<ActionResult> CounselChatAsync(String id)
@@ -87,9 +87,6 @@ namespace FSD_P2_T02_Group2.Controllers
             if (id != "")
             {
                 HttpContext.Session.SetString("roomID", id);
-                string status = await userDAL.CheckStatusAsync(HttpContext.Session.GetString("roomID"));
-                if (status != "Online")
-                    return RedirectToAction("Counselling");
                 return View();
             }
             else
@@ -230,7 +227,55 @@ namespace FSD_P2_T02_Group2.Controllers
         //    return View(postVM);
         //}
 
-        public async Task<ActionResult> TalentsAsync(IFormCollection formdata)
+        //public async Task<ActionResult> TalentsAsync()
+        //{
+        //    //Check if role is user
+        //    if ((HttpContext.Session.GetString("Role") == null) || (HttpContext.Session.GetString("Role") != "User"))
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    //Check user's details
+        //    User user = userDAL.GetUser((int)HttpContext.Session.GetInt32("UserID"));
+        //    if (user == null)
+        //    {
+        //        return RedirectToAction("Index", "Home");   //if there is no current user, redirect back home
+        //    }
+        //    PostViewModel postVM = new PostViewModel();
+        //    postVM.chooseCategory = GetPostCategories();
+        //    ViewData["Users"] = userDAL.GetUsers();
+        //    //string Category = Request.Form["Category"];
+        //    //string Category = formdata["Category"].ToString();   
+
+        //    postVM.postList = await userDAL.RetrievePostsAsync("All");
+        //    return View(postVM);
+        //}
+        //[HttpPost]
+        //public async Task<ActionResult> TalentsAsync(PostViewModel newPost)
+        //{
+        //    Console.Write(newPost.chooseCategory);
+        //    string media = Request.Form["uploadImg"];
+        //    if (media != "" || media != null)
+        //    {
+        //        newPost.post.hasMedia = true;
+        //        newPost.Image = media;
+        //    }
+        //    else
+        //    {
+        //        newPost.post.hasMedia = false;
+        //    }
+
+        //    if (newPost.post.Description != null || newPost.Image != "")
+        //    {
+        //        newPost.post.UserID = (int)HttpContext.Session.GetInt32("UserID");
+        //        await userDAL.CreatePostAsync(newPost.post, newPost.Image);
+        //        return View();
+        //    }
+        //    else
+        //    {
+        //        return View(newPost);
+        //    }
+        //}
+        public async Task<ActionResult> TalentsAsync()
         {
             //Check if role is user
             if ((HttpContext.Session.GetString("Role") == null) || (HttpContext.Session.GetString("Role") != "User"))
@@ -243,20 +288,28 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 return RedirectToAction("Index", "Home");   //if there is no current user, redirect back home
             }
-            PostViewModel postVM = new PostViewModel();
+            //PostViewModel postVM = new PostViewModel();
             ViewData["PostCategories"] = GetPostCategories();
             ViewData["Users"] = userDAL.GetUsers();
-            //string Category = Request.Form["Category"];
-            string Category = formdata["Category"].ToString();   
+            //string Category = formdata["category"].ToString();   
+            //string Category = Request.Form["category"];
+            //Console.WriteLine(Category);
 
-            postVM.postList = await userDAL.RetrievePostsAsync("All");
-            return View(postVM);
+            List<PostViewModel> postVMList = await userDAL.RetrievePostsAsync("All");
+            TempData.Put("Posts", postVMList);
+
+            return View();
         }
         [HttpPost]
         public async Task<ActionResult> TalentsAsync(PostViewModel newPost)
         {
+            ViewData["PostCategories"] = GetPostCategories();
+            ViewData["Users"] = userDAL.GetUsers();
+            List<PostViewModel> postVMList = await userDAL.RetrievePostsAsync("All");
+            TempData.Put("Posts", postVMList);
+            //ViewData["Posts"] = await userDAL.RetrievePostsAsync("All");
             string media = Request.Form["uploadImg"];
-            if (media != "" || media != null)
+            if (media != "")
             {
                 newPost.post.hasMedia = true;
                 newPost.Image = media;
@@ -270,27 +323,17 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 newPost.post.UserID = (int)HttpContext.Session.GetInt32("UserID");
                 await userDAL.CreatePostAsync(newPost.post, newPost.Image);
-                return View();
+                //PostViewModel postVM = new PostViewModel();
+                //postVM.postList = await userDAL.RetrievePostsAsync("All");
+                return RedirectToAction("Talents");
             }
             else
             {
+                //newPost.postList = await userDAL.RetrievePostsAsync("All");
                 return View(newPost);
             }
         }
+ 
 
-        public ActionResult EndChat()
-        {
-            var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
-            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
-            FirestoreDb db = FirestoreDb.Create(projectName);
-
-            CollectionReference cchatRef = db.Collection("CounsellingChat");
-
-            return RedirectToAction("User", "EndChat");
-
-
-        }
     }
 }

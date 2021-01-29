@@ -61,6 +61,8 @@ namespace FSD_P2_T02_Group2.Controllers
                 HttpContext.Session.SetString("Username", username);
                 HttpContext.Session.SetString("Alias", user.Alias);
                 HttpContext.Session.SetInt32("UserID", user.UserID);
+                if (user.Image != null)
+                HttpContext.Session.SetString("UserDP", user.Image);
 
                 string role = "User";
                 HttpContext.Session.SetString("Role", role);

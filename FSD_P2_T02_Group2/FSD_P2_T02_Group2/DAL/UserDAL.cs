@@ -232,32 +232,25 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public List<CounselSession> getSession(int userid)
+        public int getSessions()
         {
+            int? count = 0;
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT * FROM CounselSessionView WHERE UserID = @user";
-            cmd.Parameters.AddWithValue("@user", userid);
+            cmd.CommandText = @"SELECT COUNT(*) FROM  PendingCounsellingSession";
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
-            List<CounselSession> cList = new List<CounselSession>();
+
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    cList.Add(
-                    new CounselSession
-                    {
-                        UserID = userid,
-                        CounsellorID = reader.GetInt32(1),
-                        CName = reader.GetString(2),
-                        roomName = Convert.ToString(reader.GetInt32(1)) +'-'+ Convert.ToString(userid)
-                    });
+                    count = !reader.IsDBNull(0) ? (int?)reader.GetInt32(0) : null;
                 }
             }
             reader.Close();
-            conn.Close();
-            return cList;
+            conn.Close();   
+            return count.Value;
         }
         public async Task sendMessage(User user, ChatMessage message, string room)
         {
@@ -352,7 +345,7 @@ namespace FSD_P2_T02_Group2.DAL
             };
             DocumentReference docRef = await db.Collection("Posts").Document("Category").Collection("All").AddAsync(newPostDictionary);
 
-            if (newPost.Tag != "None")
+            if (newPost.Tag != "All")
             {
                 await db.Collection("Posts").Document("Category").Collection(newPost.Tag).Document(docRef.Id).CreateAsync(newPost);
             }
@@ -372,24 +365,47 @@ namespace FSD_P2_T02_Group2.DAL
             }
         }
 
-        public async Task<List<Post>> RetrievePostsAsync(string category)
+        public async Task<List<PostViewModel>> RetrievePostsAsync(string category)
         {
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
 
             Query allPostsQuery = db.Collection("Posts").Document("Category").Collection(category);
-            List<Post> postList = new List<Post>();
+            List<PostViewModel> postList = new List<PostViewModel>();
             QuerySnapshot allPostsSnapshot = await allPostsQuery.GetSnapshotAsync();
             foreach (DocumentSnapshot documentSnapshot in allPostsSnapshot.Documents)
             {
                 Post post = documentSnapshot.ConvertTo<Post>();
-                postList.Add(post);     //add each post to postList
+                PostViewModel postVM = new PostViewModel();
+                postVM.id  = documentSnapshot.Id;
+                postVM.post = post;
+                if (post.hasMedia is true)
+                    postVM.Image = GetPostImageBase64(postVM.id);
+                postList.Add(postVM);     //add each post to postList
             }
-            List<Post> orderedPostList = postList.OrderByDescending(p => p.TimeCreated).ToList();
+            List<PostViewModel> orderedPostList = postList.OrderByDescending(p => p.post.TimeCreated).ToList();
             return orderedPostList;
+        }
+
+        public string GetPostImageBase64(string id)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT * FROM [PostMedia] WHERE DocumentKey = @id";
+            cmd.Parameters.AddWithValue("@id", @id);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            string media = "";
+            while (reader.Read())
+            {
+                media = reader.GetString(1);
+            }
+            reader.Close();
+            conn.Close();
+            return media;
+
         }
     }
 }

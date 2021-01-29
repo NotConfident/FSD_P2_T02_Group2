@@ -20,26 +20,94 @@
         <div class="col" id="subTitle">Frequently Asked Questions</div>
         <br />
         <br />
-        <div class="row" id="buttons">
-            <a href="" class="button">general</a>
-            <a href="" class="button">counselling</a>
-            <a href="" class="button">groups</a>
+        @*<div class="row" id="buttons">
+            <button class="accordion">general</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <button class="accordion">counselling</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <button class="accordion">groups</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
         </div>
         <br />
         <div class="row" id="buttons">
-            <a href="" class="button">privacy</a>
-            <a href="" class="button">account</a>
-            <a href="" class="button">job recognition</a>
+            <button class="accordion">privacy</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <button class="accordion">account</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <button class="accordion">job recognition</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
         </div>
         <br />
-        <p>"a curious mind is a healthy mind"</p>
-        
+        <p>"a curious mind is a healthy mind"</p>*@
 
+        <p>"a curious mind is a healthy mind"</p>
+        <div class="qnBtns">
+            <br />
+            <button class="accordion">general</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <br />
+            <button class="accordion">counselling</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <br />
+            <button class="accordion">groups</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <br />
+            <button class="accordion">privacy</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <br />
+            <button class="accordion">account</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <br />
+            <button class="accordion">job recognition</button>
+            <div class="panel">
+                <p>This is a general enquiry.</p>
+            </div>
+            <br />
+        </div>
     </div>
 
 
     <script type="text/javascript">
         document.getElementById("common_navbar").classList.remove("fixed-top");
+
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+
+
     </script>
 </body>
 

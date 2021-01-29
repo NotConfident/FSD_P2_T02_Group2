@@ -66,39 +66,37 @@ namespace FSD_P2_T02_Group2.Controllers
             return View(session);
         }
 
-        public async Task CreateCounsellingSession(IFormCollection form)
+        public async Task<ActionResult> CreateCounsellingSession(IFormCollection form)
         {
             string userID = form["userID"].ToString();
             string counsellorID = HttpContext.Session.GetInt32("CounsellorID").ToString();
             string session = counsellorID + "-" + userID;
-
+            HttpContext.Session.SetString("roomID", session);
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/tee/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/tee/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
-            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
 
             DocumentReference docRef = db.Collection("CounsellingChat").Document(session);
 
             Dictionary<string, object> start = new Dictionary<string, object>
             {
-                { "Date", DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt")},
+                { "Date", Timestamp.GetCurrentTimestamp()},
+                {"Status","Online" },
+                {"UserID", userID }
             };
 
             await docRef.SetAsync(start);
-
+            return RedirectToAction("CounsellorChat");
             //return View();
         }
-        public ActionResult CounsellorChat(int sessionID)
+        public ActionResult CounsellorChat()
         {
-            Console.WriteLine(sessionID);
-            if (HttpContext.Session.GetInt32("CounsellorID") != null)
+            if (HttpContext.Session.GetString("roomID") != null)
             {
-                int cID = HttpContext.Session.GetInt32("CounsellorID").Value;
 
-                int uID = counsellorDAL.getUserSession(sessionID);
-
-                string roomNo = Convert.ToString(cID) + "-" + Convert.ToString(uID);
+                string roomNo = HttpContext.Session.GetString("roomID");
                 HttpContext.Session.SetString("roomID", roomNo);
                 Console.WriteLine(roomNo);
                 counsellorDAL.startChat(roomNo);
@@ -117,6 +115,13 @@ namespace FSD_P2_T02_Group2.Controllers
             userDAL.sendCMessage(Alias, messageVar, room);
             ModelState.Clear(); // Clears textbox
             return View();
+        }
+
+        public ActionResult EndChat()
+        {
+            string room = HttpContext.Session.GetString("roomID");
+            counsellorDAL.endChat(room);
+            return RedirectToAction("PendingCounsellorSessions");
         }
     }
 }
