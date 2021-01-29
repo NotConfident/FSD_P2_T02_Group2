@@ -32,18 +32,18 @@
             <!--</form>-->
 
             @*<button onclick="myFunction()" class="dropbtn">Select Filter</button>*@
-            <form asp-action="Talents" method="get">
+            <form asp-action="Talents" method="get"  onsubmit="SeeCat()">
             @*<div class="dropdown">
                 <div id="myDropdown" class="dropdown-content">*@
                     @*@foreach (SelectListItem category in @ViewData["PostCategories"] as List<SelectListItem>)
         {
             <option href="#" onselect="" value="@category.Value">@category.Value</option>
         }*@
-                    <select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
+                    @*<select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
             class="form-control" name="Category">
-        </select>
-        @*<input type="hidden" asp-route-category="Art" />*@
-                    @*<input type="hidden" value="hi" />*@
+        </select>*@
+                   <input type="hidden" name="Category2" id="Category2" value="Art"/>
+        @*<input type="hidden" name="Category2" id="Category2"value="Art" />*@
                     @*<select>
                     <option value="All">All</option>
                     <option value="Information Technology">Information Technology</option>
@@ -177,17 +177,18 @@
                 }
             }
         }
-        $("#Category").on("change", function () {
-            var q = $("#Category").val();
-            console.log("val = " + q);
-            $("#chosenCat").val($(q));
-            console.log($("#chosenCat").val);
-        });
+        //function SeeCat() {
+        //    var q = $(".Category").val();
+        //    $(".Category2").val() = q;
+        //    console.log("val = " + q);
+        //    console.log("val = " + $(".Category2").val() );
 
-        //$("#choosemyCat").on("change", function() {
-        //    $("#chosenCat").val($(this).text());
-        //    console.log($("#chosenCat").val)
-        //});
+        //};
+
+        $("#Category").on("change", function() {
+            $("#Category2").val($(this).text());
+            console.log($("#Category2").val)
+        });
 
         function getBase64Image(element) {
             var file = element.files[0];

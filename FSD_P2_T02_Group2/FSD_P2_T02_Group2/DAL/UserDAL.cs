@@ -232,32 +232,25 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.ExecuteNonQuery();
             conn.Close();
         }
-        public List<CounselSession> getSession(int userid)
+        public int getSessions()
         {
+            int? count = 0;
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT * FROM CounselSessionView WHERE UserID = @user";
-            cmd.Parameters.AddWithValue("@user", userid);
+            cmd.CommandText = @"SELECT COUNT(*) FROM  PendingCounsellingSession";
             conn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
-            List<CounselSession> cList = new List<CounselSession>();
+
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    cList.Add(
-                    new CounselSession
-                    {
-                        UserID = userid,
-                        CounsellorID = reader.GetInt32(1),
-                        CName = reader.GetString(2),
-                        roomName = Convert.ToString(reader.GetInt32(1)) +'-'+ Convert.ToString(userid)
-                    });
+                    count = !reader.IsDBNull(0) ? (int?)reader.GetInt32(0) : null;
                 }
             }
             reader.Close();
-            conn.Close();
-            return cList;
+            conn.Close();   
+            return count.Value;
         }
         public async Task sendMessage(User user, ChatMessage message, string room)
         {
@@ -375,7 +368,7 @@ namespace FSD_P2_T02_Group2.DAL
         public async Task<List<Post>> RetrievePostsAsync(string category)
         {
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);

@@ -244,9 +244,20 @@ namespace FSD_P2_T02_Group2.Controllers
             ViewData["PostCategories"] = GetPostCategories();
             ViewData["Users"] = userDAL.GetUsers();
             //string Category = Request.Form["Category"];
-            string Category = formdata["Category"].ToString();   
+            //string Category = formdata["Category2"].ToString();
+            string Category = "Art";
+            Console.Write(" ***" + Category + "=====");
+            if (Category == "")
+            {
+                string chosenCat = "All";
+                postVM.postList = await userDAL.RetrievePostsAsync(chosenCat);
 
-            postVM.postList = await userDAL.RetrievePostsAsync("All");
+            }
+            else
+            {
+                postVM.postList = await userDAL.RetrievePostsAsync(Category);
+            }
+ 
             return View(postVM);
         }
         [HttpPost]
