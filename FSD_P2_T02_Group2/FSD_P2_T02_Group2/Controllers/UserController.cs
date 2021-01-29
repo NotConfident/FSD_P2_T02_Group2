@@ -242,20 +242,7 @@ namespace FSD_P2_T02_Group2.Controllers
                 return View(newPost);
             }
         }
+ 
 
-        public ActionResult EndChat()
-        {
-            var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
-            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
-            FirestoreDb db = FirestoreDb.Create(projectName);
-
-            CollectionReference cchatRef = db.Collection("CounsellingChat");
-
-            return RedirectToAction("User", "EndChat");
-
-
-        }
     }
 }
