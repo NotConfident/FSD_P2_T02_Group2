@@ -29,6 +29,9 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
 
     <div class="d-flex align-items-center col-lg-8" style="border:3px solid#0F89AE ;border-radius:10px;margin:0 auto;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);background-color:white">
+        <div>
+            <a asp-action="EndChat" asp-controller="Counsellor">End Chat</a>
+        </div>
         <div style="margin:0 auto;padding:10px;width:100%">
             <div style="margin:0 auto;margin-bottom:5px;overflow:auto;height:500px;" id="chat" class="chat"></div>
             <partial name="~/Views/Counsellor/_CounsellorSend.cshtml" />

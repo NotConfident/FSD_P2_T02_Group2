@@ -68,7 +68,7 @@ namespace FSD_P2_T02_Group2.Controllers
         {
             int id = (int)HttpContext.Session.GetInt32("UserID");
             CounselReq counselS = new CounselReq();
-            counselS.Sessions = userDAL.getSession(id);
+            counselS.Queue = userDAL.getSessions();
             return View(counselS);
         }
 
@@ -79,7 +79,7 @@ namespace FSD_P2_T02_Group2.Controllers
             userDAL.reqHelp(id, counsel);
             ModelState.Clear(); // Clears textbox
             CounselReq counselS = new CounselReq();
-            counselS.Sessions = userDAL.getSession(id);
+            counselS.Queue = userDAL.getSessions();
             return View(counselS) ;
         }
         public async Task<ActionResult> CounselChatAsync(String id)
@@ -87,9 +87,6 @@ namespace FSD_P2_T02_Group2.Controllers
             if (id != "")
             {
                 HttpContext.Session.SetString("roomID", id);
-                string status = await userDAL.CheckStatusAsync(HttpContext.Session.GetString("roomID"));
-                if (status != "Online")
-                    return RedirectToAction("Counselling");
                 return View();
             }
             else
