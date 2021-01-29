@@ -33,28 +33,31 @@
         <div class="col">
 
             @*<button onclick="myFunction()" class="dropbtn">Select Filter</button>*@
-             @*<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">*@
-            <form asp-action="Talents" method="get">
-                @*<select asp-items="@ViewData["PostCategories"] as List<String>" id="Category"
-                class="form-control" name="Category">
-        </select>*@
-                <div class="form-group form-check-inline"> 
-                @foreach (var item in ViewData["PostCategories"] as List<SelectListItem>)
-                {
-                    <label> 
-                        <input type="radio" value="@item.Value" id="category" name="category"/> @item.Value 
-                    </label>} 
-                </div>
-                <input type="submit" />
-                @*<input type="hidden" id="chosenCat" value="test" />
-        <button class="btn post-actions__publish" type="submit">Go</button>*@
-                @*<input type="submit" />*@
-                @*</div>
-        </div>*@
-            </form>
+            @*<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">*@
             @*<a href="#">Information Technology</a>
         <a href="#">Badmintion</a>*@
             <!--</div>-->
+            <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" method="post" asp-action="Talents">
+
+                @*<form asp-action="Talents" method="get">*@
+                    <select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
+                            class="form-control" name="Category" asp-for="Category"></select>
+                    @*<input type="radio" id="All" name="All" value="Information Technology">*@
+                    @*<label for="All">All</label><br>
+                <input type="radio" id="Art" name="Art" value="Art">
+                <label for="Art">Art</label><br>
+                <input type="radio" id="Information Technology" name="Information Technology" value="Information Technology">
+                <label for="Information Technology">Information Technology</label>*@
+                    @*<div class="form-group form-check-inline">
+                @foreach (var item in ViewData["PostCategories"] as List<SelectListItem>)
+                {
+                    <label>
+                        <input type="radio" value="@item.Value" id="category" name="category"/> @item.Value
+                    </label>
+                }
+                </div>*@
+                    <input type="submit" />
+                </form>
         </div>
         </div>
 
@@ -102,22 +105,6 @@
             </div>
         </div>
     </div>
-@*////retrieving posts
-//var projectName = "fir-chat-ukiyo";
-//var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
-//Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
-//FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
-//FirestoreDb db = FirestoreDb.Create(projectName);
-
-//Query allPostsQuery = db.Collection("Posts").Document("Category").Collection("All");
-//List<Post> postList = new List<Post>();
-//QuerySnapshot allPostsSnapshot = await allPostsQuery.GetSnapshotAsync();
-//foreach (DocumentSnapshot documentSnapshot in allPostsSnapshot.Documents)
-//{
-//    Post post = documentSnapshot.ConvertTo<Post>();
-//    postList.Add(post);     //add each post to postList
-//}
-//List<Post> orderedPostList = postList.OrderByDescending(p => p.TimeCreated).ToList();*@
 
             @foreach (PostViewModel p in TempData.Get<List<PostViewModel>>("Posts"))
             {
@@ -164,7 +151,7 @@
             }
             </div>
     }
-    <script>
+<script>
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
         };
@@ -224,7 +211,7 @@
         function dislike(postId, postCat, userId) {
             postDB.collection("Posts").document("Category")
                 .collection(postCat).document(postId).update
-                ({ ['Likes' + userId]: firebase.firestore.FieldValue.delete() });
+                ({ ['Likes.' + userId]: firebase.firestore.FieldValue.delete() });
         }
 
         function like(postId, postCat, userId) {
@@ -248,7 +235,7 @@
 
         //};
 
-    </script>
+</script>
 </body>
 
 </html>

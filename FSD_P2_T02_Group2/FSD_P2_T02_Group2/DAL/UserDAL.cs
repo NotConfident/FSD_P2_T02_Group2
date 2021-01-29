@@ -328,12 +328,12 @@ namespace FSD_P2_T02_Group2.DAL
         public async Task CreatePostAsync(Post newPost, string base64image)
         {
             var projectName = "fir-chat-ukiyo";
-            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
-            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
-            newPost.TimeCreated = DateTime.UtcNow;
+            newPost.TimeCreated = DateTime.Now;
             Dictionary<string, object> newPostDictionary = new Dictionary<string, object>
             {
                 { "Description", newPost.Description },
@@ -368,7 +368,8 @@ namespace FSD_P2_T02_Group2.DAL
         public async Task<List<PostViewModel>> RetrievePostsAsync(string category)
         {
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
