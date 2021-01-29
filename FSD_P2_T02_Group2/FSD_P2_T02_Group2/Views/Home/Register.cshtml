@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <div class="form-row form-row-1">
-                            <label for="alias">Alias</label>
+                            <label for="alias">Alias, your name in chat</label>
                             <input asp-for="Alias" class="input-text">
                             <span asp-validation-for="Alias" style="color:#ff848c"></span>
                         </div>
@@ -40,6 +40,7 @@
                             <label for="username">Username</label>
                             <input asp-for="Username" class="input-text">
                             <span asp-validation-for="Username" style="color:#ff848c"></span>
+                            <span style="color:#ff848c">@TempData["usedUsername"]</span>
                         </div>
                     </div>
                     <div class="form-group">
@@ -47,6 +48,7 @@
                             <label for="your_email">Email</label>
                             <input asp-for="Email" class="input-text">
                             <span asp-validation-for="Email" style="color:#ff848c"></span>
+                            <span style="color:#ff848c">@TempData["usedEmail"]</span>
                         </div>
                         <div class="form-row form-row-1">
                             <label for="phone_number">Phone Number</label>
