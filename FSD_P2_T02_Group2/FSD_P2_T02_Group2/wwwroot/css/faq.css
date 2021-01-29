@@ -64,7 +64,7 @@ hr {
     letter-spacing: 0.1em;
     font-family: Josefin Sans,sans-serif;
     color: black;
-    text-align: center;
+    text-align:center;
     transition: all 0.15s;
     cursor: pointer;
     width: 50%;
@@ -89,7 +89,6 @@ hr {
     color: white;
     max-height: 0;
     transition: max-height 0.2s ease-out;
-    width: 50%;
     padding-top: 1em
 }
 
@@ -111,6 +110,5 @@ p {
 }
 
 .qnBtns {
-    justify-content: center;
-    align-self: center
+    text-align-last:center;
 }
