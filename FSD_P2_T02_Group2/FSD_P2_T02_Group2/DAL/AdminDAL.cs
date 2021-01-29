@@ -38,8 +38,7 @@ namespace FSD_P2_T02_Group2.DAL
 
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT * FROM [Admin]
-                                WHERE Username = @username AND PASSWORD = @password";
+            cmd.CommandText = @"EXEC uspAdminLogin @username, @password";
 
             cmd.Parameters.AddWithValue("@username", username);
             cmd.Parameters.AddWithValue("@password", password);

@@ -79,6 +79,14 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <style>
+        .preview--rounded {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+        }
+    </style>
 </head>
 
 <body>
@@ -86,17 +94,19 @@
         <div class="form-content">
             <div class="container">
                 <form method="post">
-                    </br>
+                    <br/>
                     <h2>View Account Details</h2>
-                    </br>
+                    <br/>
                     <div class="row">
                         <div class="col-md-4">
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.Image)
-                            </dt>
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.Image)
-                            </dd>
+                            @if (Model.Image != null)
+                            {
+                                <img class="preview preview--rounded" src="@Model.Image.ToString()" />
+                            }
+                            else
+                            {
+                                <img />
+                            }
                         </div>
                         <div class="col-md-6">
                             <dt class="col-sm-2">
@@ -140,7 +150,7 @@
                             @Html.ActionLink("Edit Account", "EditAccount", new { /* id = Model.PrimaryKey */ })
                         </div>
                     </div>                 
-                    </br>
+                    <br/>
                 </form>
             </div>
         </div>

@@ -38,8 +38,7 @@ namespace FSD_P2_T02_Group2.DAL
 
             SqlCommand cmd = conn.CreateCommand();
 
-            cmd.CommandText = @"SELECT * FROM Counsellor
-                                WHERE Email = @email AND Password = @password";
+            cmd.CommandText = @"EXEC uspCounsellorLogin @email, @password";
 
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@password", password);
