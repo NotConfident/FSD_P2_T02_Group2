@@ -1,0 +1,60 @@
+﻿
+@using Microsoft.AspNetCore.Http;
+@using Google.Cloud.Firestore;
+@using System.Web;
+<!DOCTYPE html>
+<head>
+    <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyB_3YSraE6XM9lB-Va12Q36Gxmu19Mju8U",
+            authDomain: "fir-chat-ukiyo.firebaseapp.com",
+            databaseURL: "https://fir-chat-ukiyo-default-rtdb.firebaseio.com",
+            projectId: "fir-chat-ukiyo",
+            storageBucket: "fir-chat-ukiyo.appspot.com",
+            messagingSenderId: "1003455832615"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var firestore = firebase.firestore();
+        console.log("initialized")
+        var uID = "@Context.Session.GetInt32("UserID")";
+        var query = firestore.collection("CounsellingChat").where("UserID", "==", uID);
+        // Start listening to the query.
+        query.onSnapshot(function (snapshot) {
+            snapshot.docChanges().forEach(function (change) {
+                var chat = change.doc.data();
+                if (chat.Status == "Online") {
+                    $('#myModal').modal('show');
+                    var id = change.doc.id;
+                    var string = "CounselChat/" + id;
+                    setTimeout(function () {
+                        window.location.href = string;
+                    }, 3000);
+                }
+            });
+        });
+    </script>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog" style="transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%;width:25vw">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="border: 3px solid #0F89AE; background-color: #0F89AE;border-radius: 15px;">
+                <div class="modal-header" style="background-color: white; border-radius: 14px 14px 0px 0px;">
+                    <h4 class="modal-title">Session has started</h4>
+                </div>
+                <div class="modal-header" style="background-color:white;border-radius: 0px 0px 14px 14px;">
+                    <h4 class="modal-title">Redirecting you to the session...</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- TODO: Add SDKs for Firebase products that you want to use https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+</body>
