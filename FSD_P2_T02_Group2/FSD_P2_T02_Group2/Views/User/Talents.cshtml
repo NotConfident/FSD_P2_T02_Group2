@@ -38,24 +38,8 @@
         <a href="#">Badmintion</a>*@
             <!--</div>-->
             <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" method="post" asp-action="Talents">
-
-                @*<form asp-action="Talents" method="get">*@
                     <select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
                             class="form-control" name="Category" asp-for="Category"></select>
-                    @*<input type="radio" id="All" name="All" value="Information Technology">*@
-                    @*<label for="All">All</label><br>
-                <input type="radio" id="Art" name="Art" value="Art">
-                <label for="Art">Art</label><br>
-                <input type="radio" id="Information Technology" name="Information Technology" value="Information Technology">
-                <label for="Information Technology">Information Technology</label>*@
-                    @*<div class="form-group form-check-inline">
-                @foreach (var item in ViewData["PostCategories"] as List<SelectListItem>)
-                {
-                    <label>
-                        <input type="radio" value="@item.Value" id="category" name="category"/> @item.Value
-                    </label>
-                }
-                </div>*@
                     <input type="submit" />
                 </form>
         </div>
@@ -108,48 +92,62 @@
 
             @foreach (PostViewModel p in TempData.Get<List<PostViewModel>>("Posts"))
             {
-                <div class="container" style="background:#C8D8F8">
-                <p>@p.post.Description</p>
+<div class="container" style="background:#C8D8F8">
+    @{
+        int userId = (int)HttpContextAccessor.HttpContext.Session.GetInt32("UserID");
+        bool check = false;
+        foreach (User u in TempData.Get<List<User>>("UsersDP"))
+        {
+            if (u.Image != null && u.UserID == userId)
+            {
+                <img src="@u.Image" class="rounded-circle" align="left" />
+                check = true;
+            }
+        }
+        if (check != true)
+        {
+            <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
+        }
 
-                @{
-                int userId = (int)HttpContextAccessor.HttpContext.Session.GetInt32("UserID");
-                if (p.post.Likes != null)
-                {
-                    bool liked = false;
-                    for (int i = 0; i < p.post.Likes.Length; i++)
-                    {
-                        if (p.post.Likes[i] == userId)
-                        {
-                            <img src="~/images/heart_shaded.svg" onclick="dislike(@p.id, @p.post.Tag, @userId)" />
-                            liked = true;
-                            break;
-                        }
-                    }
-                    if (liked is false)
-                    {
-                    <img src="~/images/heart_unshaded.svg" onclick="like(@p.id, @p.post.Tag, @userId)" />
-                    }
-                    <p>@p.post.Likes.Count() likes</p>
-                }
+        <p>@p.post.Description</p>
 
-                else
+        if (p.post.Likes != null)
+        {
+            bool liked = false;
+            for (int i = 0; i < p.post.Likes.Length; i++)
+            {
+                if (p.post.Likes[i] == userId)
                 {
-                    <img src="~/images/heart_unshaded.svg" onclick="like(@p.id, @p.post.Tag, @userId)"/>
-                    <p>0 likes</p>
-                }
-                @if (p.post.hasMedia is true)
-                {
-                    <h2>Media:</h2>
-                    <img src="@p.Image.ToString()" id="postsImages" />
-                }
-                <p>@p.post.TimeCreated</p>
-                @if (p.post.Tag != null)
-                {
-                    <h2>Tags:</h2>
-                    <p>@p.post.Tag</p>
+                    <img src="~/images/heart_shaded.svg" onclick="dislike(@p.id, @p.post.Tag, @userId)" />
+                    liked = true;
+                    break;
                 }
             }
-            </div>
+            if (liked is false)
+            {
+                <img src="~/images/heart_unshaded.svg" onclick="like(@p.id, @p.post.Tag, @userId)" />
+            }
+            <p>@p.post.Likes.Count() likes</p>
+        }
+
+        else
+        {
+            <img src="~/images/heart_unshaded.svg" onclick="like(@p.id, @p.post.Tag, @userId)" />
+            <p>0 likes</p>
+        }
+        @if (p.post.hasMedia is true)
+        {
+            <h2>Media:</h2>
+            <img src="@p.Image.ToString()" id="postsImages" />
+        }
+        <p>@p.post.TimeCreated</p>
+        @if (p.post.Tag != null)
+        {
+            <h2>Tags:</h2>
+            <p>@p.post.Tag</p>
+        }
+    }
+</div>
     }
 <script>
         function myFunction() {
