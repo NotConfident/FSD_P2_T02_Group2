@@ -1,19 +1,25 @@
 ﻿@model IEnumerable<FSD_P2_T02_Group2.Models.PendingCounsellorSession>
-<br />
-<br />
-<br />
-<br />
-<br />
-
+@{
+    Layout = "_UserLayout";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
+</head>
 <style>
+    body {
+        font-family: Josefin Sans, sans-serif;
+    }
     .wrapper {
         display: flex;
         width: 100%;
         align-items: stretch;
     }
+
     #sidebar {
         min-width: 250px;
         max-width: 250px;
+        min-height: 100vh;
         background: #0F89AE;
         color: #fff;
         transition: all 0.3s;
@@ -28,12 +34,11 @@
     <nav id="sidebar">
         <div class="sidebar-header">
             <h1>Queue</h1>
-            <h5>User ID</h5>
             <ul class="nav flex-column">
                 @foreach (PendingCounsellorSession item in ViewBag.pcSessionList)
                 {
                     <li>
-                        <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.UserID</a>
+                        <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.Alias</a>
                     </li>
                 }
 

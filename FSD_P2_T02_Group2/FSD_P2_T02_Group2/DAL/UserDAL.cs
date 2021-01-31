@@ -230,6 +230,22 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.ExecuteNonQuery();
             conn.Close();
         }
+        public bool checkReq(int userid)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+            bool inQueue = false;
+            cmd.CommandText = @"SELECT * FROM PendingCounsellingSession WHERE UserID = @userID";
+            cmd.Parameters.AddWithValue("@userID", userid);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                inQueue = true;
+            }
+            reader.Close();
+            conn.Close();
+            return inQueue;
+        }
         public int getSessions()
         {
             int? count = 0;

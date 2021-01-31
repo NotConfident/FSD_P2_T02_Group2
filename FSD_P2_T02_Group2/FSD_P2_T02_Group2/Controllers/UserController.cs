@@ -66,7 +66,11 @@ namespace FSD_P2_T02_Group2.Controllers
         }
         public ActionResult Counselling()
         {
-            int id = (int)HttpContext.Session.GetInt32("UserID");
+            if ((HttpContext.Session.GetString("Role") == null) ||
+           (HttpContext.Session.GetString("Role") != "User"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             CounselReq counselS = new CounselReq();
             counselS.Queue = userDAL.getSessions();
             return View(counselS);
@@ -76,7 +80,17 @@ namespace FSD_P2_T02_Group2.Controllers
         public ActionResult Counselling(CounselReq counsel)
         {
             int id = (int)HttpContext.Session.GetInt32("UserID");
-            userDAL.reqHelp(id, counsel);
+            bool inQueue = userDAL.checkReq(id);
+            if (inQueue == false)
+            {
+                userDAL.reqHelp(id, counsel);
+                
+                TempData["CounselMsg"] = "Thank you for reaching out";
+            }
+            else
+            {
+                TempData["CounselMsg"] = "You are already in queue, please wait";
+            }
             ModelState.Clear(); // Clears textbox
             CounselReq counselS = new CounselReq();
             counselS.Queue = userDAL.getSessions();
