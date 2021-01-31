@@ -10,14 +10,30 @@
 <head>
     <title>User Main Page</title>
     <link href="~/css/usermain.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Josefin+Sans" />
 </head>
 
 <body>
     <partial name="~/Views/User/_JoinChat.cshtml" />
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog" style="transform: translate(-50%, -50%); position: absolute; top: 50%; left: 50%;width:25vw">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="border: 3px solid #0F89AE; background-color: #0F89AE;border-radius: 15px;">
+                <div class="modal-header" style="background-color: white; border-radius: 14px 14px 0px 0px;">
+                    <h4 class="modal-title">Session has started</h4>
+                </div>
+                <div class="modal-header" style="background-color:white;border-radius: 0px 0px 14px 14px;">
+                    <h4 class="modal-title">Redirecting you to the session...</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
     <div class="page-content" style="background: url(../images/usermain.png);background-repeat:no-repeat; background-size:cover">
         <div class="col" id="subTitle">Check Out The Latest News</div>
         <div class="form-content">

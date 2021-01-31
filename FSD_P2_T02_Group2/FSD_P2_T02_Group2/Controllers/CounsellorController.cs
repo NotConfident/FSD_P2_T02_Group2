@@ -69,6 +69,8 @@ namespace FSD_P2_T02_Group2.Controllers
         public async Task<ActionResult> CreateCounsellingSession(IFormCollection form)
         {
             string userID = form["userID"].ToString();
+            int sessionID = Convert.ToInt32(form["SessionID"]);
+            int cID = HttpContext.Session.GetInt32("CounsellorID").Value;
             string counsellorID = HttpContext.Session.GetInt32("CounsellorID").ToString();
             string session = counsellorID + "-" + userID;
             HttpContext.Session.SetString("roomID", session);
@@ -86,7 +88,7 @@ namespace FSD_P2_T02_Group2.Controllers
                 {"Status","Online" },
                 {"UserID", userID }
             };
-
+            counsellorDAL.confirmSes(sessionID,cID);
             await docRef.SetAsync(start);
             return RedirectToAction("CounsellorChat");
             //return View();
