@@ -347,7 +347,7 @@ namespace FSD_P2_T02_Group2.DAL
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
-            newPost.TimeCreated = DateTime.Now;
+            newPost.TimeCreated = DateTime.UtcNow;
             Dictionary<string, object> newPostDictionary = new Dictionary<string, object>
             {
                 { "Description", newPost.Description },

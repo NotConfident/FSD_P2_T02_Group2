@@ -28,7 +28,21 @@
 <body>
     <div class="row">
         <div class="col">
-            <h3><u>Information Technology</u></h3>
+            @if (Model != null)
+            {
+                @if (Model.Category != null)
+                {
+                    <h3><u>@Model.Category</u></h3>
+                }
+                else
+                {
+                    <h3><u>All</u></h3>
+                }
+            }
+            else
+            {
+                <h3><u>All</u></h3>
+            }
         </div>
         <div class="col">
 
