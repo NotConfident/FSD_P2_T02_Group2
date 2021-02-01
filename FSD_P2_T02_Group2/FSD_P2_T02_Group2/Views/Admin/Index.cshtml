@@ -42,6 +42,7 @@
     }*@
 @{
     UserDAL user = new UserDAL();
+    AdminDAL admin = new AdminDAL();
 }
 <div class="content">
     <div class="container-fluid">
@@ -76,9 +77,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <i class="large material-icons">person</i>
+                        No. Of Counsellors
+                        <h3 class="card-title">
+                            @admin.CountCounsellors()
+                        </h3>
+                        <small>Counsellors</small>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">date_range</i> View
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="curve_chart" style="width: 1400px; height: 700px;"></div>
     </div>
+    <div id="curve_chart" style="width: 1400px; height: 700px;"></div>
 </div>
 
 <script type="text/javascript">google.charts.load('current', { 'packages': ['corechart'] });

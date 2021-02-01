@@ -96,6 +96,36 @@ namespace FSD_P2_T02_Group2.DAL
             conn.Close();
         }
 
+        public List<Counsellor> GetAllCounsellors()
+        {
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT * FROM [Cousellor]";
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<Counsellor> counsellorList = new List<Counsellor>();
+            while (reader.Read())
+            {
+                counsellorList.Add(
+                new Counsellor
+                {
+                    counsellorID = reader.GetInt32(0),
+                    Name = reader.GetString(1),
+                    Password = reader.GetString(2),
+                    Email = reader.GetString(3),
+                    DateCreated = reader.GetDateTime(4),
+                    PhoneNumber = reader.GetString(5),
+                    Image = !reader.IsDBNull(6) ? reader.GetString(6) : null,
+                    Certificate = !reader.IsDBNull(7) ? reader.GetString(7) : null,
+                    DateBirth = reader.GetDateTime(8),
+                    AvgRating = reader.GetFloat(9),
+                    Status = !reader.IsDBNull(10) ? reader.GetString(10) : null
+                });
+            }
+            reader.Close();
+            conn.Close();
+            return counsellorList;
+        }
+
         public List<PendingCounsellorSession> retrieveUserForms() // Change to admin model
         {
             PendingCounsellorSession pcSession = new PendingCounsellorSession(); // Change to admin model

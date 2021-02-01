@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<FSD_P2_T02_Group2.Models.PendingCounsellorSession>
+@{
+    Layout = "_UserLayout";
+}
 <br />
 <br />
 <br />
@@ -18,12 +21,14 @@
         background: #0F89AE;
         color: #fff;
         transition: all 0.3s;
+        margin-left: -170px;
+        margin-top: -100px;
     }
 
-        #sidebar .sidebar-header {
-            padding: 20px;
-            background: #0F89AE;
-        }
+    #sidebar .sidebar-header {
+        padding: 20px;
+        background: #0F89AE;
+    }
 
     #content {
         width: 100%;
@@ -43,9 +48,11 @@
         font-weight: 700;
         font-size: 15px;
     }
+
         .submit:hover {
             background: #1098C2;
         }
+
     .form-row-last input {
         font-family: Josefin Sans, sans-serif;
         font-size: 19px;
@@ -57,7 +64,7 @@
 </style>
 
 <div class="wrapper" onclick="ToggleNavMenu">
-    <nav id="sidebar">
+    <nav id="sidebar" class="sidebar1">
         <div class="sidebar-header">
             <h1>Queue</h1>
             <h5>User ID</h5>

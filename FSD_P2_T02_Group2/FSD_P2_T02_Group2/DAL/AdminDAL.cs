@@ -174,5 +174,26 @@ namespace FSD_P2_T02_Group2.DAL
             conn.Close();
             return true;
         }
+
+        public int CountCounsellors()
+        {
+            int? count = 0;
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT COUNT(counsellorID) FROM [Counsellor]";
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    count = !reader.IsDBNull(0) ? (int?)reader.GetInt32(0) : null;
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return count.Value;
+        }
     }
 }
