@@ -73,17 +73,22 @@
                                     upload image/video
                                 </label>
                             </button>
-                            <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
-                            <input type="hidden" id="uploadImg" name="uploadImg" />
                         </div>
-                        <select asp-for="post.Tag"
-                                asp-items="@ViewData["PostCategories"]
-                            as List<SelectListItem>"
-                                class="form-control">
-                        </select>
-                        <div class="post-actions__widget">
-                            <button class="btn post-actions__publish" type="submit">Publish</button>
-                        </div>
+                        <br />
+                    <div class="UploadImage" id="uploadImgDiv" style="display:none">
+                        <img src="" id="newPostPic" style="width:100%"/>
+                        <img src="~/images/remove.svg" class="RemoveUploadImage" onclick="removeImage()" style="width:50%" />
+                    </div>
+                    <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
+                    <input type="hidden" id="uploadImg" name="uploadImg" />
+                    <select asp-for="post.Tag"
+                            asp-items="@ViewData["PostCategories"]
+                        as List<SelectListItem>"
+                            class="form-control">
+                    </select>
+                    <div class="post-actions__widget">
+                        <button class="btn post-actions__publish" type="submit">Publish</button>
+                    </div>
                     </div>
                 </form>
             </div>
@@ -191,7 +196,33 @@
 
             reader.readAsDataURL(file);
             document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
-        };
+            document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
+            document.getElementById("uploadImgDiv").style.display = 'inline';
+            //url = URL.createObjectURL(file);           // create an Object URL
+            //img = new Image();                         // create a temp. image object
+
+            //img.onload = function () {                    // handle async image loading
+            //    var c = document.getElementById("myCanvas");
+            //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
+            //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
+            //}
+    };
+
+    function removeImage() {
+        localStorage.setItem("uploadImg", "");
+        console.log(localStorage.getItem("uploadImg"));
+        document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
+        document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
+        document.getElementById("uploadImgDiv").style.display = 'none';
+        //url = URL.createObjectURL(file);           // create an Object URL
+        //img = new Image();                         // create a temp. image object
+
+        //img.onload = function () {                    // handle async image loading
+        //    var c = document.getElementById("myCanvas");
+        //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
+        //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
+        //}
+    };
 
 
         var firebaseConfig = {
@@ -206,33 +237,25 @@
         firebase.initializeApp(firebaseConfig);
         var postDB = firebase.firestore();
 
-        function dislike(postId, postCat, userId) {
-            postDB.collection("Posts").document("Category")
-                .collection(postCat).document(postId).update
-                ({ ['Likes.' + userId]: firebase.firestore.FieldValue.delete() });
-        }
+    //    function dislike(postId, postCat, userId) {
+    //        postDB.collection("Posts").document("Category")
+    //            .collection(postCat).document(postId).update
+    //            ({ ['Likes.' + userId]: firebase.firestore.FieldValue.delete() });
+    //}
+    function dislike(postId, postCat, userId) {
+        postDB.collection("Posts").document("Category")
+            .collection(postCat).document(postId).update
+            ({ Likes: firebase.firestore.FieldValue.arrayRemove("'" + userId + "'") });
+    }
 
         function like(postId, postCat, userId) {
             postDB.collection("Posts").document("Category")
-                .collection(postCat).document(postId)
+                .collection("'" + postCat + "'").document("'" + postId + "'")
                 .set(
                     { Likes: [{ userId }] },
                     { merge: true }
                 );
         };
-
-        //document.querySelector("upload-image").onchange = function (e) {
-        //    var file = e.target.files[0],                  // reference first file BLOB
-        //        url = URL.createObjectURL(file),           // create an Object URL
-        //        img = new Image();                         // create a temp. image object
-
-        //    img.onload = function () {                    // handle async image loading
-        //        URL.revokeObjectURL(this.src);             // free memory held by Object URL
-        //        c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
-        //    };
-
-        //};
-
 </script>
 </body>
 

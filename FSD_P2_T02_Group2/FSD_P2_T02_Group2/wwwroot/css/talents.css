@@ -250,3 +250,15 @@ img {
 .show {
     display: block;
 }
+
+.UploadImage {
+    position: relative;
+    width:100%;
+    height:auto;
+}
+
+.RemoveUploadImage {
+    position: absolute;
+    right: 0;
+    z-index: 5;
+}
