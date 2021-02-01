@@ -3,29 +3,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ukiyo</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewData["Title"]</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="~/images/ukiyoLogo.svg">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="~/css/navbar.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Josefin Sans, sans-serif;
-        }
-
         .usernav {
             transition: background-color linear;
         }
 
             .usernav a {
                 transition: color linear;
+                padding-top: 40px;
             }
 
             .usernav a {
                 color: black;
-                padding-top: 30px;
             }
 
                 .usernav:hover, .usernav a:hover {
@@ -34,9 +34,64 @@
                 }
     </style>
 </head>
-<body id="Site">
+
+<body>
+
+    <nav id="common_navbar" class="navbar navbar-expand-md col-lg-12" style="padding-top:0px;margin:auto">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style="background-color: #0F89AE; margin-top: 10px;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <img id="logo" src="@Url.Content("~/images/ukiyoLogo.svg")">
+
+        @if (Context.Session.GetString("Role") == "User")
+        {
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item usernav">
+                        <a class="nav-link" asp-action="General" asp-controller="User">Chat Group</a>
+                    </li>
+
+                    <li class="nav-item usernav">
+                        <a class="nav-link" asp-action="Counselling" asp-controller="User">Counselling</a>
+                    </li>
+
+                    <li class="nav-item usernav">
+                        <a class="nav-link" asp-action="Talents" asp-controller="User">Talent Recognition</a>
+                    </li>
+
+                    <li class="nav-item usernav">
+                        <a class="nav-link" asp-action="Account" asp-controller="User">Account</a>
+                    </li>
+                    <li class="nav-item usernav">
+                        <a class="nav-link" asp-action="Index" asp-controller="Home">Log Out</a>
+                    </li>
+                </ul>
+
+            </div>
+        }
+        @if (Context.Session.GetString("Role") == "Admin")
+        {
+            <partial name="~/Views/Shared/_AdminNavBar.cshtml" />
+
+        }
+        @if (Context.Session.GetString("Role") == "Counsellor")
+        {
+            <partial name="~/Views/Shared/_CounsellorNavBar.cshtml" />
+
+        }
+    </nav>
+    @RenderBody()
+
+</body>
+
+</html>
+
+@*<body id="Site">
     <div class="Site-content">
-        <header class="text">
+        <header class="text sticky-top" style="background-color:white;">
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="padding-top:0px">
                 <div class="container">
                     <svg width="57" height="74" viewBox="0 0 113 74" fill="none" xmlns="http://www.w3.org/2000/svg" style="padding-top:30px">
@@ -89,4 +144,4 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
-</html>
+</html>*@

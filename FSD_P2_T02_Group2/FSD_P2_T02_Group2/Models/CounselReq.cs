@@ -12,7 +12,7 @@ namespace FSD_P2_T02_Group2.Models
         public int Feelings { get; set; }
         public bool Thought { get; set; }
         public string Problems { get; set; }
-        public List<CounselSession> Sessions { get; set; }
+        public int Queue { get; set; }
 
     }
 }

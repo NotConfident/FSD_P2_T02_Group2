@@ -149,7 +149,7 @@ namespace FSD_P2_T02_Group2.DAL
                     Problems = reader.GetString(3),
                     DateCreated = reader.GetDateTime(4),
                     UserID = reader.GetInt32(5),
-                    //Alias = reader.GetString(6),
+                    Alias = reader.GetString(6)
                 });
             }
             reader.Close();
@@ -174,6 +174,65 @@ namespace FSD_P2_T02_Group2.DAL
             reader.Close();
             conn.Close();
             return uID;
+        }
+        public void confirmSes(int sID,int cID) // Change to admin model
+        {
+            PendingCounsellorSession p = retrieveForm(sID);
+            SqlCommand cmd = conn.CreateCommand();
+            DateTime date = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+            cmd.CommandText = @"INSERT INTO CounsellingSession(Feeling, Thought, Problems, DateCreated, UserID, CounsellorID)
+                                VALUES(@f, @t, @p, @d, @u, @c)";
+
+            cmd.Parameters.AddWithValue("@f", p.Feeling);
+            //cmd.Parameters.AddWithValue("@password", defaultPassword);
+            cmd.Parameters.AddWithValue("@t", p.Thought);
+            //cmd.Parameters.AddWithValue("@datecreated", currentDT);
+            cmd.Parameters.AddWithValue("@p", p.Problems);
+            cmd.Parameters.AddWithValue("@d", date);
+            cmd.Parameters.AddWithValue("@u", p.UserID);
+            cmd.Parameters.AddWithValue("@c", cID);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            deleteForm(sID);
+        }
+        public void deleteForm(int sID) // Change to admin model
+        {
+
+            SqlCommand cmd = conn.CreateCommand();
+            Console.WriteLine(sID);
+            cmd.CommandText = @"DELETE FROM PendingCounsellingSession WHERE SessionID = @sID";
+            cmd.Parameters.AddWithValue("@sID", sID);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+        }
+        public PendingCounsellorSession retrieveForm(int sID) // Change to admin model
+        {
+
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT * FROM PendingCounsellingSession WHERE SessionID = @sID";
+            cmd.Parameters.AddWithValue("@sID", sID);
+            PendingCounsellorSession p = new PendingCounsellorSession();
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                p = new PendingCounsellorSession
+                {
+                    SessionID = reader.GetInt32(0),
+                    Feeling = reader.GetInt32(1),
+                    Thought = reader.GetInt32(2),
+                    Problems = reader.GetString(3),
+                    DateCreated = reader.GetDateTime(4),
+                    UserID = reader.GetInt32(5)
+                };
+
+            }
+            reader.Close();
+            conn.Close();
+            return p;
         }
         private FirestoreDb CreateFirestoreDb()
         {

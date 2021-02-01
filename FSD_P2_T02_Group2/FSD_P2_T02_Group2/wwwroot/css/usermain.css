@@ -1,0 +1,80 @@
+﻿/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Josefin Sans;
+    src: url('../fonts/JosefinSans/JosefinSans-VariableFont_wght.ttf');
+}
+
+.page-content {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    font-family: Josefin Sans, sans-serif;
+}
+
+.form-content {
+    background: #fff;
+    width: 950px;
+    -webkit-border-radius: 10px;
+    position: relative;
+    display: -webkit-flex;
+    font-family: Josefin Sans, sans-serif;
+    overflow: hidden;
+    border-color: #0F89AE;
+    border-style: solid;
+    border-width: initial;
+    align-self: start;
+}
+
+#subTitle {
+    color: white;
+    font-family: Josefin Sans,sans-serif;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-bottom: 2%;
+    font-size: 33px;
+}
+
+.submit {
+    background: #0F89AE;
+    border-radius: 10px;
+    border: none;
+    margin: 6px 0 60px 0px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+    .submit:hover {
+        background: #1098C2;
+    }
+
+.form-row-last input {
+    font-family: Josefin Sans, sans-serif;
+    font-size: 19px;
+    width: 70%;
+    height: 110%;
+    background: #0F89AE;
+    display: block;
+}

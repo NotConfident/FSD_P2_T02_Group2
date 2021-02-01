@@ -15,6 +15,10 @@
     <title>Talents Recognition</title>
     <link href="~/css/talents.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;500&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
@@ -24,58 +28,46 @@
 <body>
     <div class="row">
         <div class="col">
-            <h3><u>Information Technology</u></h3>
+            @if (Model != null)
+            {
+                @if (Model.Category != null)
+                {
+                    <h3><u>@Model.Category</u></h3>
+                }
+                else
+                {
+                    <h3><u>All</u></h3>
+                }
+            }
+            else
+            {
+                <h3><u>All</u></h3>
+            }
         </div>
         <div class="col">
-            <!--<form asp-action="Index" method="get">-->
-                @*<input type="submit" title="Remove filters" value="Show All" asp-route-filter="@ViewData["Filter"]" asp-route-id="" style="background-color:inherit; border:none; color:#DEB500; text-decoration:underline" />*@
-            <!--</form>-->
 
             @*<button onclick="myFunction()" class="dropbtn">Select Filter</button>*@
-            <form asp-action="Talents" method="get">
-            @*<div class="dropdown">
-                <div id="myDropdown" class="dropdown-content">*@
-                    @*@foreach (SelectListItem category in @ViewData["PostCategories"] as List<SelectListItem>)
-        {
-            <option href="#" onselect="" value="@category.Value">@category.Value</option>
-        }*@
-                    <select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
-            class="form-control" name="Category">
-        </select>
-        @*<input type="hidden" asp-route-category="Art" />*@
-                    @*<input type="hidden" value="hi" />*@
-                    @*<select>
-                    <option value="All">All</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Art">Art</option>
-                    <option value="Engineering">Engineering</option>
-                    </select>*@
-
-                    <input type="submit"/>
-                    @*<input type="image" hidden value="test" asp-route-filter="@ViewData["Filter"]"/>*@
-                    @*<select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
-                class="form-control" asp-route-category="@ViewData["Category"]">
-        </select>*@
-
-                    @*@Html.DropDownList("Category", new SelectList(ViewData["PostCategories"] as List<SelectListItem>), "Choose Category", new { @class = "form-control" })*@
-                    @*<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">*@
-                    @*<select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="choosemyCat"
-                class="form-control">
-        </select>*@
-                    @*<input type="hidden" id="chosenCat" value="test" />
-        <button class="btn post-actions__publish" type="submit">Go</button>*@
-                    @*<input type="submit" />*@
-                @*</div>
-                </div>*@
-            </form>
+            @*<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">*@
             @*<a href="#">Information Technology</a>
         <a href="#">Badmintion</a>*@
             <!--</div>-->
+            <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" method="post" asp-action="Talents">
+                    <select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
+                            class="form-control" name="Category" asp-for="Category"></select>
+                    <input type="submit" />
+                </form>
         </div>
         </div>
 
     <div class="row">
-        @*<img src="@HttpContextAccessor.HttpContext.Session.GetString("UserDP")" class="rounded-circle" align="left" />*@
+        @if (HttpContextAccessor.HttpContext.Session.GetString("UserDP") != null)
+        {
+            <img src="@HttpContextAccessor.HttpContext.Session.GetString("UserDP")" class="rounded-circle" align="left" />
+        }
+        else
+        {
+        <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
+        }
         <div class="column">
             <div class="widget-post" aria-labelledby="post-header-title">
                 <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" method="post" asp-action="Talents">
@@ -95,72 +87,91 @@
                                     upload image/video
                                 </label>
                             </button>
-                            <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
-                            <input type="hidden" id="uploadImg" name="uploadImg" />
                         </div>
-                        <select asp-for="post.Tag"
-                                asp-items="@ViewData["PostCategories"]
-                            as List<SelectListItem>"
-                                class="form-control">
-                        </select>
-                        <div class="post-actions__widget">
-                            <button class="btn post-actions__publish" type="submit">Publish</button>
-                        </div>
+                        <br />
+                    <div class="UploadImage" id="uploadImgDiv" style="display:none">
+                        <img src="" id="newPostPic" style="width:100%"/>
+                        <img src="~/images/remove.svg" class="RemoveUploadImage" onclick="removeImage()" style="width:50%" />
+                    </div>
+                    <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
+                    <input type="hidden" id="uploadImg" name="uploadImg" />
+                    <select asp-for="post.Tag"
+                            asp-items="@ViewData["PostCategories"]
+                        as List<SelectListItem>"
+                            class="form-control">
+                    </select>
+                    <div class="post-actions__widget">
+                        <button class="btn post-actions__publish" type="submit">Publish</button>
+                    </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    @{
-////retrieving posts
-//var projectName = "fir-chat-ukiyo";
-//var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
-//Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
-//FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
-//FirestoreDb db = FirestoreDb.Create(projectName);
 
-//Query allPostsQuery = db.Collection("Posts").Document("Category").Collection("All");
-//List<Post> postList = new List<Post>();
-//QuerySnapshot allPostsSnapshot = await allPostsQuery.GetSnapshotAsync();
-//foreach (DocumentSnapshot documentSnapshot in allPostsSnapshot.Documents)
-//{
-//    Post post = documentSnapshot.ConvertTo<Post>();
-//    postList.Add(post);     //add each post to postList
-//}
-//List<Post> orderedPostList = postList.OrderByDescending(p => p.TimeCreated).ToList();
-        <div>
-            @foreach (Post post in Model.postList)
+            @foreach (PostViewModel p in TempData.Get<List<PostViewModel>>("Posts"))
             {
-                <div class="container" style="background:#C8D8F8">
-                <p>@post.Description</p>
-                @if (post.Likes != null)
-                {
-                    <p>@post.Likes.Count() likes</p>
-                }
-                else
-                {
-                    <p>0 likes</p>
-                }
-                @if (post.hasMedia is true)
-                {
-                <h2>Media:</h2>
-                @*<img src="@post.Image" id="postsImages" />*@
-                    /*take note that have to be retrieved from sql */
-                }
-                <p>@post.TimeCreated</p>
-                @if (post.Tag != null)
-                {
-                <h2>Tags:</h2>
-                <p>@post.Tag</p>
-                }
-            </div>
+<div class="container" style="background:#C8D8F8">
+    @{
+        int userId = (int)HttpContextAccessor.HttpContext.Session.GetInt32("UserID");
+        bool check = false;
+        foreach (User u in TempData.Get<List<User>>("UsersDP"))
+        {
+            if (u.Image != null && u.UserID == userId)
+            {
+                <img src="@u.Image" class="rounded-circle" align="left" />
+                check = true;
             }
-        </div>
+        }
+        if (check != true)
+        {
+            <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
+        }
+
+        <p>@p.post.Description</p>
+
+        if (p.post.Likes != null)
+        {
+            bool liked = false;
+            for (int i = 0; i < p.post.Likes.Length; i++)
+            {
+                if (p.post.Likes[i] == userId)
+                {
+                    <img src="~/images/heart_shaded.svg" onclick="dislike(@p.id, @p.post.Tag, @userId)" />
+                    liked = true;
+                    break;
+                }
+            }
+            if (liked is false)
+            {
+                <img src="~/images/heart_unshaded.svg" onclick="like(@p.id, @p.post.Tag, @userId)" />
+            }
+            <p>@p.post.Likes.Count() likes</p>
+        }
+
+        else
+        {
+            <img src="~/images/heart_unshaded.svg" onclick="like(@p.id, @p.post.Tag, @userId)" />
+            <p>0 likes</p>
+        }
+        @if (p.post.hasMedia is true)
+        {
+            <h2>Media:</h2>
+            <img src="@p.Image.ToString()" id="postsImages" />
+        }
+        <p>@p.post.TimeCreated</p>
+        @if (p.post.Tag != null)
+        {
+            <h2>Tags:</h2>
+            <p>@p.post.Tag</p>
+        }
     }
-    <script>
+</div>
+    }
+<script>
         function myFunction() {
             document.getElementById("myDropdown").classList.toggle("show");
-        }
+        };
 
         function filterFunction() {
             var input, filter, ul, li, a, i;
@@ -176,7 +187,7 @@
                     a[i].style.display = "none";
                 }
             }
-        }
+        };
         $("#Category").on("change", function () {
             var q = $("#Category").val();
             console.log("val = " + q);
@@ -199,21 +210,67 @@
 
             reader.readAsDataURL(file);
             document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
+            document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
+            document.getElementById("uploadImgDiv").style.display = 'inline';
+            //url = URL.createObjectURL(file);           // create an Object URL
+            //img = new Image();                         // create a temp. image object
+
+            //img.onload = function () {                    // handle async image loading
+            //    var c = document.getElementById("myCanvas");
+            //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
+            //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
+            //}
+    };
+
+    function removeImage() {
+        localStorage.setItem("uploadImg", "");
+        console.log(localStorage.getItem("uploadImg"));
+        document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
+        document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
+        document.getElementById("uploadImgDiv").style.display = 'none';
+        //url = URL.createObjectURL(file);           // create an Object URL
+        //img = new Image();                         // create a temp. image object
+
+        //img.onload = function () {                    // handle async image loading
+        //    var c = document.getElementById("myCanvas");
+        //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
+        //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
+        //}
+    };
+
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyB_3YSraE6XM9lB-Va12Q36Gxmu19Mju8U",
+            authDomain: "fir-chat-ukiyo.firebaseapp.com",
+            databaseURL: "https://fir-chat-ukiyo-default-rtdb.firebaseio.com",
+            projectId: "fir-chat-ukiyo",
+            storageBucket: "fir-chat-ukiyo.appspot.com",
+            messagingSenderId: "1003455832615"
         };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var postDB = firebase.firestore();
 
-        //document.querySelector("upload-image").onchange = function (e) {
-        //    var file = e.target.files[0],                  // reference first file BLOB
-        //        url = URL.createObjectURL(file),           // create an Object URL
-        //        img = new Image();                         // create a temp. image object
+    //    function dislike(postId, postCat, userId) {
+    //        postDB.collection("Posts").document("Category")
+    //            .collection(postCat).document(postId).update
+    //            ({ ['Likes.' + userId]: firebase.firestore.FieldValue.delete() });
+    //}
+    function dislike(postId, postCat, userId) {
+        postDB.collection("Posts").document("Category")
+            .collection(postCat).document(postId).update
+            ({ Likes: firebase.firestore.FieldValue.arrayRemove("'" + userId + "'") });
+    }
 
-        //    img.onload = function () {                    // handle async image loading
-        //        URL.revokeObjectURL(this.src);             // free memory held by Object URL
-        //        c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
-        //    };
-
-        //};
-
-    </script>
+        function like(postId, postCat, userId) {
+            postDB.collection("Posts").document("Category")
+                .collection("'" + postCat + "'").document("'" + postId + "'")
+                .set(
+                    { Likes: [{ userId }] },
+                    { merge: true }
+                );
+        };
+</script>
 </body>
 
 </html>
