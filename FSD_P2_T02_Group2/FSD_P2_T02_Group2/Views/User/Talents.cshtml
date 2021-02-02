@@ -24,30 +24,16 @@
     <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="~/css/material-design-iconic-font.min.css">
     <link href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap/css/bootstrap-grid.css" />
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col">
-                @if (Model != null)
-                {
-                    @if (Model.Category != null)
-                    {
-                        <h3><u>@Model.Category</u></h3>
-                    }
-                    else
-                    {
-                        <h3><u>All</u></h3>
-                    }
-                }
-                else
-                {
-                    <h3><u>All</u></h3>
-                }
+            <div class="column">
+                <h4 style="text-align:center;font-size:1rem">Explore the Talents</h4>
             </div>
-            <br />
-            <div class="col">
+            <div class="column">
                 @*<button onclick="myFunction()" class="dropbtn">Select Filter</button>*@
                 @*<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">*@
                 @*<a href="#">Information Technology</a>
@@ -73,7 +59,7 @@
             {
                 <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
             }
-            <div class="column">
+            <div class="col">
                 <div class="widget-post" aria-labelledby="post-header-title">
                     <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" method="post" asp-action="Talents">
                         <div class="widget-post__content">
@@ -86,7 +72,7 @@
                         <div class="UploadImage" id="uploadImgDiv" style="display:none">
                             <img src="" id="newPostPic" style="width:100%" />
                         </div>
-                        <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
+                        <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)"/>
                         <input type="hidden" id="uploadImg" name="uploadImg" />
                         <br />
                         <div class="widget-post__actions post--actions">
@@ -100,9 +86,10 @@
                                     </label>
                                 </button>
                             </div>
-                            <div class="post-actions__attachments">
-                                <button class="btn post-actions__removeimg" onclick="removeImage()"><i class="fa fa-eraser">Remove image</i></button>
-                            </div>
+                            @*<button class="btn post-actions__removeimg" onclick="removeImage()"><i class="fa fa-eraser">Remove image</i></button>*@
+                            <label class="btn post-actions__removeimg" id="removeImg"onclick="removeImage()"><i class="fa fa-eraser"></i>Remove image</label>
+                            @*<div class="post-actions__attachments">
+        </div>*@
                             <div class="post-actions__attachments">
                                 <i class="fa fa-tag"></i>
                                 <select asp-for="post.Tag"
@@ -141,7 +128,7 @@
             {
                 <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
             }
-            <div class="column">
+            <div class="col">
                 <div class="widget-post2" aria-labelledby="post-header-title">
                     <div id="widget-form" class="widget-post__form">
                         <div class="widget-post__content2">
@@ -149,7 +136,8 @@
                             <p>@p.post.Description</p>
                             @if (p.post.hasMedia is true)
                             {
-                                <img src="@p.Image.ToString()" id="postsImages" />
+                                <img src="@p.Image.ToString()" id="postsImages"
+                                     style="width: 100%;margin-left: auto; margin-right: auto;display: block;" />
                             }
                             <br />
                         </div>
@@ -237,6 +225,8 @@
 
                     reader.readAsDataURL(file);
                     document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
+                    document.getElementById("removeImg").style.display = 'inline';
+                    document.getElementById("newPostPic").src = "";
                     document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
                     document.getElementById("uploadImgDiv").style.display = 'inline';
                     //url = URL.createObjectURL(file);           // create an Object URL
@@ -250,10 +240,11 @@
                 };
 
                 function removeImage() {
+                    document.getElementById("upload-image").files[0] = "";
                     localStorage.setItem("uploadImg", "");
-                    console.log(localStorage.getItem("uploadImg"));
-                    document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
-                    document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
+                    document.getElementById("uploadImg").value = "";
+                    document.getElementById("removeImg").style.display = 'none';
+                    document.getElementById("newPostPic").src = "";
                     document.getElementById("uploadImgDiv").style.display = 'none';
                     //url = URL.createObjectURL(file);           // create an Object URL
                     //img = new Image();                         // create a temp. image object
