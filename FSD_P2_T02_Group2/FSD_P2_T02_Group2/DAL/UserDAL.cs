@@ -52,6 +52,7 @@ namespace FSD_P2_T02_Group2.DAL
                     Username = !reader.IsDBNull(1) ? reader.GetString(1) : null,
                     Name = !reader.IsDBNull(2) ? reader.GetString(2) : null,
                     Alias = !reader.IsDBNull(3) ? reader.GetString(3) : null,
+                    Password = !reader.IsDBNull(4) ? reader.GetString(4) : null,
                     Email = !reader.IsDBNull(5) ? reader.GetString(5) : null,
                     PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null,
                     Image = !reader.IsDBNull(8) ? reader.GetString(8) : null,
@@ -83,6 +84,7 @@ namespace FSD_P2_T02_Group2.DAL
                     user.Username = !reader.IsDBNull(1) ? reader.GetString(1) : null;
                     user.Name = !reader.IsDBNull(2) ? reader.GetString(2) : null;
                     user.Alias = !reader.IsDBNull(3) ? reader.GetString(3) : null;
+                    user.Password = !reader.IsDBNull(4) ? reader.GetString(4) : null;
                     user.Email = !reader.IsDBNull(5) ? reader.GetString(5) : null;
                     user.PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null;
                     user.Image = !reader.IsDBNull(8) ? reader.GetString(8) : null;

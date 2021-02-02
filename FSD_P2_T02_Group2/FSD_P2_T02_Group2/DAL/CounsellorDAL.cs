@@ -126,6 +126,46 @@ namespace FSD_P2_T02_Group2.DAL
             return counsellorList;
         }
 
+        public Counsellor GetCounsellor(int id)
+        {
+            Counsellor counsellor = new Counsellor();
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT * FROM [Counsellor]
+                                WHERE CounsellorID = @counsellorid";
+
+            cmd.Parameters.AddWithValue("@counsellorid", id);
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    counsellor.counsellorID = reader.GetInt32(0);
+                    counsellor.Name = !reader.IsDBNull(1) ? reader.GetString(1) : null;
+                    counsellor.Password = !reader.IsDBNull(2) ? reader.GetString(2) : null;
+                    counsellor.Email = !reader.IsDBNull(3) ? reader.GetString(3) : null;
+                    counsellor.DateCreated = reader.GetDateTime(4);
+                    counsellor.PhoneNumber = !reader.IsDBNull(5) ? reader.GetString(5) : null;
+                    counsellor.Image = !reader.IsDBNull(6) ? reader.GetString(6) : null;
+                    counsellor.Certificate = !reader.IsDBNull(7) ? reader.GetString(7) : null;
+                    counsellor.DateBirth = reader.GetDateTime(8).Date;
+                    if (!reader.IsDBNull(9))
+                    {
+                        counsellor.AvgRating = reader.GetFloat(9);
+                    }
+                    else
+                    {
+                        counsellor.AvgRating = null;
+                    }
+                    counsellor.Status = !reader.IsDBNull(10) ? reader.GetString(10) : null;
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return counsellor;
+        }
+
         public List<PendingCounsellorSession> retrieveUserForms() // Change to admin model
         {
             PendingCounsellorSession pcSession = new PendingCounsellorSession(); // Change to admin model
