@@ -56,6 +56,7 @@ namespace FSD_P2_T02_Group2.DAL
                     Email = !reader.IsDBNull(5) ? reader.GetString(5) : null,
                     PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null,
                     Image = !reader.IsDBNull(8) ? reader.GetString(8) : null,
+                    DateCreated = reader.GetDateTime(6),
                     Status = !reader.IsDBNull(9) ? reader.GetString(9) : null
                 });
             }
