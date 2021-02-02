@@ -62,6 +62,37 @@ namespace FSD_P2_T02_Group2.DAL
         }
 
 
+        public List<Counsellor> GetCounsellors() // Change to admin model
+        {
+            List<Counsellor> counsellorList = new List<Counsellor>();
+
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT * FROM [Counsellor]";
+
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                counsellorList.Add(
+                new Counsellor
+                {
+                    counsellorID = reader.GetInt32(0),
+                    Name = reader.GetString(1),
+                    Email = reader.GetString(3),
+                    DateCreated = reader.GetDateTime(4),
+                    PhoneNumber = reader.GetString(5),
+                    Image = !reader.IsDBNull(6) ? reader.GetString(6) : null,
+                    Certificate = !reader.IsDBNull(7) ? reader.GetString(7) : null,
+                    DateBirth = reader.GetDateTime(8)
+                });
+            }
+            reader.Close();
+            conn.Close();
+            return counsellorList;
+        }
+
         public List<PendingCounsellor> retrievePendingCounsellor() // Change to admin model
         {
             PendingCounsellor pCounsellor = new PendingCounsellor(); // Change to admin model
@@ -155,6 +186,33 @@ namespace FSD_P2_T02_Group2.DAL
 
             cmd.CommandText = @"DELETE FROM PendingCounsellor
                                 WHERE PCounsellorID = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            return true;
+        }
+
+        public bool DeleteUser(int id)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"DELETE FROM [User]
+                                WHERE UserID = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            return true;
+        }
+
+
+        public bool DeleteCounsellor(int id)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"DELETE FROM Counsellor
+                                WHERE CounsellorID = @id";
             cmd.Parameters.AddWithValue("@id", id);
             conn.Open();
             cmd.ExecuteNonQuery();
