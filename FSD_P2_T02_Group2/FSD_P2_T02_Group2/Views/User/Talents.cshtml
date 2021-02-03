@@ -95,7 +95,7 @@
                                 <i class="fa fa-tag"></i>
                                 <select asp-for="post.Tag"
                                         asp-items="@ViewData["PostCategories"]
-                        as List<SelectListItem>"
+                                        as List<SelectListItem>"
                                         class="btn post-actions__upload attachments--btn">
                                 </select>
                             </div>
@@ -130,65 +130,65 @@
                                 <img src="@u.Image" class="rounded-circle" align="left" />
 
                             }
-                                check = true;
+                            check = true;
                             break;
                         }
                     }
-                        if (check != true)
-                        {
-                            <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
-                        }
-                        <div class="col">
-                            <div class="widget-post2" aria-labelledby="post-header-title">
-                                <div id="widget-form" class="widget-post__form">
-                                    <div class="widget-post__content2">
-                                        <br />
-                                        <p>@p.post.Description</p>
-                                        @if (p.post.hasMedia is true)
+                    if (check != true)
+                    {
+                        <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
+                    }
+                    <div class="col">
+                        <div class="widget-post2" aria-labelledby="post-header-title">
+                            <div id="widget-form" class="widget-post__form">
+                                <div class="widget-post__content2">
+                                    <br />
+                                    <p>@p.post.Description</p>
+                                    @if (p.post.hasMedia is true)
+                                    {
+                                        <img src="@p.Image.ToString()" id="postsImages"
+                                             style="width: 100%;margin-left: auto; margin-right: auto;display: block;" />
+                                    }
+                                    <br />
+                                </div>
+                                <div class="widget-post__options2 is--hidden" id="stock-options">
+                                </div>
+                                <div class="widget-post__actions2 post--actions2">
+                                    <div class="post-actions__attachments">
+                                        @if (p.post.Likes != null)
                                         {
-                                            <img src="@p.Image.ToString()" id="postsImages"
-                                                 style="width: 100%;margin-left: auto; margin-right: auto;display: block;" />
+                                            bool liked = false;
+                                            for (int i = 0; i < p.post.Likes.Length; i++)
+                                            {
+                                                if (p.post.Likes[i] == userId)
+                                                {
+                                                    <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)"></i>
+                                                    liked = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (liked is false)
+                                            {
+                                                <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">@p.post.Likes.Count()&nbsp;likes</i>
+                                            }
                                         }
-                                        <br />
-                                    </div>
-                                    <div class="widget-post__options2 is--hidden" id="stock-options">
-                                    </div>
-                                    <div class="widget-post__actions2 post--actions2">
-                                        <div class="post-actions__attachments">
-                                            @if (p.post.Likes != null)
-                                            {
-                                                bool liked = false;
-                                                for (int i = 0; i < p.post.Likes.Length; i++)
-                                                {
-                                                    if (p.post.Likes[i] == userId)
-                                                    {
-                                                        <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)"></i>
-                                                        liked = true;
-                                                        break;
-                                                    }
-                                                }
-                                                if (liked is false)
-                                                {
-                                                    <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">@p.post.Likes.Count()&nbsp;likes</i>
-                                                }
-                                            }
 
-                                            else
-                                            {
-                                                <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">&nbsp; 0 likes</i>
-                                            }
-                                        </div>
-                                        <div class="post-actions__attachments">
-                                            @if (p.post.Tag != null)
-                                            {
-                                                <i class="fa fa-tag">&nbsp;@p.post.Tag</i>
-                                            }
-                                        </div>
-                                        <p>@p.post.TimeCreated</p>
+                                        else
+                                        {
+                                            <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">&nbsp; 0 likes</i>
+                                        }
                                     </div>
+                                    <div class="post-actions__attachments">
+                                        @if (p.post.Tag != null)
+                                        {
+                                            <i class="fa fa-tag">&nbsp;@p.post.Tag</i>
+                                        }
+                                    </div>
+                                    <p>@p.post.TimeCreated</p>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 }
             </div>
         </div>
@@ -231,12 +231,9 @@
             reader.onloadend = function () {
                 localStorage.setItem("uploadImg", reader.result);
             }
-            console.log(localStorage.getItem("uploadImg"));
-
             reader.readAsDataURL(file);
             document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
             document.getElementById("removeImg").style.display = 'inline';
-            document.getElementById("newPostPic").src = "";
             document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
             document.getElementById("uploadImgDiv").style.display = 'inline';
             //url = URL.createObjectURL(file);           // create an Object URL
@@ -250,12 +247,12 @@
         };
 
         function removeImage() {
-            document.getElementById("upload-image").files[0] = "";
+            document.getElementById("upload-image").value = "";
             localStorage.setItem("uploadImg", "");
             document.getElementById("uploadImg").value = "";
             document.getElementById("removeImg").style.display = 'none';
-            document.getElementById("newPostPic").src = "";
             document.getElementById("uploadImgDiv").style.display = 'none';
+            document.getElementById("newPostPic").src = "//:0";
             //url = URL.createObjectURL(file);           // create an Object URL
             //img = new Image();                         // create a temp. image object
 
