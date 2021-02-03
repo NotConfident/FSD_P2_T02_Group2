@@ -35,11 +35,15 @@
         <div class="sidebar-header">
             <h1>Queue</h1>
             <ul class="nav flex-column">
-                @foreach (PendingCounsellorSession item in ViewBag.pcSessionList)
-                {
-                    <li>
-                        <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.Alias</a>
-                    </li>
+                @{if (ViewBag.pcSessionList != null)
+                    {
+                        foreach (PendingCounsellorSession item in ViewBag.pcSessionList)
+                        {
+                            <li>
+                                <a type="button" id="modal" class="nav-link" onclick="show()" style="color:white;" asp-route-sessionID="@item.SessionID" asp-controller="Counsellor" asp-action="ViewFormDetails">@item.Alias</a>
+                            </li>
+                        }
+                    }
                 }
 
             </ul>

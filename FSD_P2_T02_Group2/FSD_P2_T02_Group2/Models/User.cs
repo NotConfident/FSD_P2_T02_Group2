@@ -10,16 +10,19 @@ namespace FSD_P2_T02_Group2.Models
     {
         public int UserID { get; set; }
 
+        [Display(Name = "Username")]
         [Required(ErrorMessage ="Username must be provided.")]
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Password must be provided.")]
         public string Password { get; set; }
 
+        [Display(Name = "Confirm Password")]
         [Required]
         [Compare("Password", ErrorMessage = "Passwords do not match!")]
         public string ConfirmPassword { get; set; }
 
+        [Display(Name = "Phone Number")]
         [Required(ErrorMessage = "Phone number must be provided.")]
         public string PhoneNo { get; set; }
 
@@ -36,8 +39,9 @@ namespace FSD_P2_T02_Group2.Models
 
         public string Image { get; set; }
 
+        [Display(Name = "Date Created")]
         public DateTime DateCreated { get; set; }
 
-        public List<Post> PostList { get; set; }
+        public List<PostViewModel> PostList { get; set; }
     }
 }

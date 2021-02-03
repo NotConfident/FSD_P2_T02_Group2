@@ -1,117 +1,4 @@
-﻿@*@model FSD_P2_T02_Group2.Models.User
-    @using Microsoft.AspNetCore.Http;
-    @using Google.Cloud.Firestore;
-    @using System.Web;
-
-    @{
-        ViewData["Title"] = "Account";
-        Layout = "~/Views/Shared/_UserLayout.cshtml";
-    }
-
-    <head>
-        <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    </head>
-
-    <body>
-        <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
-        <h1>Account</h1>
-
-        @{
-            var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
-            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
-            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
-            FirestoreDb db = FirestoreDb.Create(projectName);
-
-            CollectionReference postRef = db.Collection("Posts");
-            List<Post> postList = new List<Post>();
-
-            Query query = postRef.WhereEqualTo("UserID", Model.UserID);
-            QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
-            if (querySnapshot != null)
-            {
-                foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
-                {
-                    Post posts = documentSnapshot.ConvertTo<Post>();
-                    postList.Add(posts);
-                }
-                Model.PostList = postList;
-            }
-        }
-
-        <div>
-            <h4>User</h4>
-            <hr />
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Name)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.PhoneNo)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.PhoneNo)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Email)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Email)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Status)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Status)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Image)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Image)
-                </dd>
-            </dl>
-        </div>
-        <div>
-            @Html.ActionLink("View Account Details", "ViewAccDetails", new { /* id = Model.PrimaryKey */ }) |
-        </div>
-
-        <div id="posts">
-            @if (postList != null)
-            {
-                @foreach (Post p in postList)
-                {
-                    <div class="post">
-                        <p>@p.Description</p>
-                        @for (int i = 0; i < p.Tags.Length; i++)
-                        {
-                            <p>@p.Tags[i]</p>
-                        }
-                        @for (int i = 0; i < p.Likes.Length; i++)
-                        {
-                            <p>@p.Likes[i]</p>
-                        }
-                        @for (int i = 0; i < p.Media.Length; i++)
-                        {
-                            <p>@p.Media[i]</p>
-                        }
-                        <p>@p.TimeCreated</p>
-                    </div>
-                }
-            }
-            else
-            {
-                <p>No posts to show !</p>
-            }
-        </div>
-
-    </body>*@
-
-@model FSD_P2_T02_Group2.Models.User
+﻿@model FSD_P2_T02_Group2.Models.User
 @using Microsoft.AspNetCore.Http;
 @using Google.Cloud.Firestore;
 @using System.Web;
@@ -142,30 +29,6 @@
 
 <body>
     <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
-    @{
-        var projectName = "fir-chat-ukiyo";
-        var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
-        //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
-        //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
-        Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
-        FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
-        FirestoreDb db = FirestoreDb.Create(projectName);
-
-        CollectionReference postRef = db.Collection("Posts");
-        List<Post> postList = new List<Post>();
-
-        Query query = postRef.WhereEqualTo("UserID", Model.UserID);
-        QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
-        if (querySnapshot != null)
-        {
-            foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
-            {
-                Post posts = documentSnapshot.ConvertTo<Post>();
-                postList.Add(posts);
-            }
-            Model.PostList = postList;
-        }
-    }
     <div class="page-content" style="background: url(../images/Login.png);background-repeat:no-repeat; background-size:cover">
         <div class="form-content">
             <div class="container">
@@ -220,23 +83,27 @@
             </div>
         </div>
         <div id="posts">
-            @if (postList != null)
+            @if (Model.PostList != null)
             {
-                @foreach (Post p in postList)
+                @foreach (PostViewModel p in Model.PostList)
                 {
                     <div class="post">
-                        <p>@p.Description</p>
-                        <p>@p.Tag</p>
-                        @for (int i = 0; i < p.Likes.Length; i++)
+                        <p>@p.post.Description</p>
+                        <p>@p.post.Tag</p>
+                        @if (p.post.Likes != null)
                         {
-                            <p>@p.Likes[i]</p>
+                            <p>@p.post.Likes.Length Likes</p>
                         }
-                        @*@for (int i = 0; i < p.Media.Length; i++)
+                        else
                         {
-                            <p>@p.Media[i]</p>
-                        }*@
-                        @* to be resolved, have to take from SQL *@
-                        <p>@p.TimeCreated</p>
+                            <p>0 Likes</p>
+                        }
+                        <p>@p.post.TimeCreated</p>
+                        @if (p.post.hasMedia is true)
+                        {
+                            <img src="@p.Image.ToString()" id="postsImages"
+                                                 style="width: 100%;margin-left: auto; margin-right: auto;display: block;" />
+                        }
                     </div>
                 }
             }
