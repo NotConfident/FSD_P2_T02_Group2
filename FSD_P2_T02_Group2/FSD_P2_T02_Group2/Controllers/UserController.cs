@@ -116,7 +116,7 @@ namespace FSD_P2_T02_Group2.Controllers
             ModelState.Clear(); // Clears textbox
             return View();
         }
-        public ActionResult Account()
+        public async Task<ActionResult> AccountAsync()
         {
             if ((HttpContext.Session.GetString("Role") == null) ||
                     (HttpContext.Session.GetString("Role") != "User"))
@@ -124,6 +124,8 @@ namespace FSD_P2_T02_Group2.Controllers
                 return RedirectToAction("Index", "Home");
             }
             User user = userDAL.GetUser((int)HttpContext.Session.GetInt32("UserID"));
+            List<PostViewModel> postVMList = await userDAL.RetrievePostsAsync(user.UserID);
+            user.PostList = postVMList;
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");

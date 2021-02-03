@@ -42,6 +42,6 @@ namespace FSD_P2_T02_Group2.Models
         [Display(Name = "Date Created")]
         public DateTime DateCreated { get; set; }
 
-        public List<Post> PostList { get; set; }
+        public List<PostViewModel> PostList { get; set; }
     }
 }
