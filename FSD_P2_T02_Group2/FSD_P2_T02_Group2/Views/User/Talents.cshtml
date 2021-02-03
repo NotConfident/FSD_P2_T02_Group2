@@ -119,67 +119,76 @@
                     bool check = false;
                     foreach (User u in TempData.Get<List<User>>("UsersDP"))
                     {
-                        if (u.Image != null && u.UserID == userId)
+                        if (u.UserID == p.post.UserID)
                         {
-                            <img src="@u.Image" class="rounded-circle" align="left" />
-                            check = true;
+                            if (u.Image == null)
+                            {
+                                <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
+                            }
+                            else
+                            {
+                                <img src="@u.Image" class="rounded-circle" align="left" />
+
+                            }
+                                check = true;
+                            break;
                         }
                     }
-                    if (check != true)
-                    {
-                        <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
-                    }
-                    <div class="col">
-                        <div class="widget-post2" aria-labelledby="post-header-title">
-                            <div id="widget-form" class="widget-post__form">
-                                <div class="widget-post__content2">
-                                    <br />
-                                    <p>@p.post.Description</p>
-                                    @if (p.post.hasMedia is true)
-                                    {
-                                        <img src="@p.Image.ToString()" id="postsImages"
-                                             style="width: 100%;margin-left: auto; margin-right: auto;display: block;" />
-                                    }
-                                    <br />
-                                </div>
-                                <div class="widget-post__options2 is--hidden" id="stock-options">
-                                </div>
-                                <div class="widget-post__actions2 post--actions2">
-                                    <div class="post-actions__attachments">
-                                        @if (p.post.Likes != null)
+                        if (check != true)
+                        {
+                            <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
+                        }
+                        <div class="col">
+                            <div class="widget-post2" aria-labelledby="post-header-title">
+                                <div id="widget-form" class="widget-post__form">
+                                    <div class="widget-post__content2">
+                                        <br />
+                                        <p>@p.post.Description</p>
+                                        @if (p.post.hasMedia is true)
                                         {
-                                            bool liked = false;
-                                            for (int i = 0; i < p.post.Likes.Length; i++)
+                                            <img src="@p.Image.ToString()" id="postsImages"
+                                                 style="width: 100%;margin-left: auto; margin-right: auto;display: block;" />
+                                        }
+                                        <br />
+                                    </div>
+                                    <div class="widget-post__options2 is--hidden" id="stock-options">
+                                    </div>
+                                    <div class="widget-post__actions2 post--actions2">
+                                        <div class="post-actions__attachments">
+                                            @if (p.post.Likes != null)
                                             {
-                                                if (p.post.Likes[i] == userId)
+                                                bool liked = false;
+                                                for (int i = 0; i < p.post.Likes.Length; i++)
                                                 {
-                                                    <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)"></i>
-                                                    liked = true;
-                                                    break;
+                                                    if (p.post.Likes[i] == userId)
+                                                    {
+                                                        <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)"></i>
+                                                        liked = true;
+                                                        break;
+                                                    }
+                                                }
+                                                if (liked is false)
+                                                {
+                                                    <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">@p.post.Likes.Count()&nbsp;likes</i>
                                                 }
                                             }
-                                            if (liked is false)
-                                            {
-                                                <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">@p.post.Likes.Count()&nbsp;likes</i>
-                                            }
-                                        }
 
-                                        else
-                                        {
-                                            <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">&nbsp; 0 likes</i>
-                                        }
+                                            else
+                                            {
+                                                <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">&nbsp; 0 likes</i>
+                                            }
+                                        </div>
+                                        <div class="post-actions__attachments">
+                                            @if (p.post.Tag != null)
+                                            {
+                                                <i class="fa fa-tag">&nbsp;@p.post.Tag</i>
+                                            }
+                                        </div>
+                                        <p>@p.post.TimeCreated</p>
                                     </div>
-                                    <div class="post-actions__attachments">
-                                        @if (p.post.Tag != null)
-                                        {
-                                            <i class="fa fa-tag">&nbsp;@p.post.Tag</i>
-                                        }
-                                    </div>
-                                    <p>@p.post.TimeCreated</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 }
             </div>
         </div>
