@@ -62,6 +62,37 @@ namespace FSD_P2_T02_Group2.DAL
         }
 
 
+        public List<Counsellor> GetCounsellors() // Change to admin model
+        {
+            List<Counsellor> counsellorList = new List<Counsellor>();
+
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT * FROM [Counsellor]";
+
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                counsellorList.Add(
+                new Counsellor
+                {
+                    counsellorID = reader.GetInt32(0),
+                    Name = reader.GetString(1),
+                    Email = reader.GetString(3),
+                    DateCreated = reader.GetDateTime(4),
+                    PhoneNumber = reader.GetString(5),
+                    Image = !reader.IsDBNull(6) ? reader.GetString(6) : null,
+                    Certificate = !reader.IsDBNull(7) ? reader.GetString(7) : null,
+                    DateBirth = reader.GetDateTime(8)
+                });
+            }
+            reader.Close();
+            conn.Close();
+            return counsellorList;
+        }
+
         public List<PendingCounsellor> retrievePendingCounsellor() // Change to admin model
         {
             PendingCounsellor pCounsellor = new PendingCounsellor(); // Change to admin model
@@ -162,6 +193,33 @@ namespace FSD_P2_T02_Group2.DAL
             return true;
         }
 
+        public bool DeleteUser(int id)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"DELETE FROM [User]
+                                WHERE UserID = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            return true;
+        }
+
+
+        public bool DeleteCounsellor(int id)
+        {
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"DELETE FROM Counsellor
+                                WHERE CounsellorID = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            return true;
+        }
+
         public bool RejectCounsellor(int id)
         {
             SqlCommand cmd = conn.CreateCommand();
@@ -173,6 +231,27 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.ExecuteNonQuery();
             conn.Close();
             return true;
+        }
+
+        public int CountCounsellors()
+        {
+            int? count = 0;
+            SqlCommand cmd = conn.CreateCommand();
+
+            cmd.CommandText = @"SELECT COUNT(counsellorID) FROM [Counsellor]";
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    count = !reader.IsDBNull(0) ? (int?)reader.GetInt32(0) : null;
+                }
+            }
+            reader.Close();
+            conn.Close();
+            return count.Value;
         }
     }
 }

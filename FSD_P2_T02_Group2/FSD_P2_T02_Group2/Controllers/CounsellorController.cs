@@ -125,5 +125,20 @@ namespace FSD_P2_T02_Group2.Controllers
             counsellorDAL.endChat(room);
             return RedirectToAction("PendingCounsellorSessions");
         }
+
+        public ActionResult CAccount()
+        {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+                    (HttpContext.Session.GetString("Role") != "Counsellor"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            Counsellor counsellor = counsellorDAL.GetCounsellor((int)HttpContext.Session.GetInt32("CounsellorID"));
+            if (counsellor == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View(counsellor);
+        }
     }
 }

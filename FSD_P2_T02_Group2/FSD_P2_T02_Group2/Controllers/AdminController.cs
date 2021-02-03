@@ -21,12 +21,42 @@ namespace FSD_P2_T02_Group2.Controllers
     public class AdminController : Controller
     {
         public AdminDAL adminDAL = new AdminDAL();
+        public UserDAL userDAL = new UserDAL();
 
         // GET: /<controller>/
         public IActionResult Index()
         {
             return View();
         }
+
+        public IActionResult ViewUsers()
+        {
+
+            List<User> userList = new List<User>();
+            userList = userDAL.GetUsers();
+
+            ViewBag.userList = userList;
+            if (userList.Count() == 0)
+            {
+                ViewBag.userList = null;
+            }
+            return View();
+        }
+
+        public IActionResult ViewCounsellors()
+        {
+
+            List<Counsellor> counsellorList = new List<Counsellor>();
+            counsellorList = adminDAL.GetCounsellors();
+
+            ViewBag.counsellorList = counsellorList;
+            if (counsellorList.Count() == 0)
+            {
+                ViewBag.counsellorList = null;
+            }
+            return View();
+        }
+
 
         public IActionResult PendingCounsellor()
         {
@@ -39,6 +69,21 @@ namespace FSD_P2_T02_Group2.Controllers
                 ViewBag.pCounsellorList = null;
             }
             return View();
+        }
+
+
+        [HttpGet]
+        public IActionResult DeleteUser(int id)
+        {
+            bool success = adminDAL.DeleteUser(id);
+            return RedirectToAction("ViewUsers");
+        }
+
+        [HttpGet]
+        public IActionResult DeleteCounsellor(int id)
+        {
+            bool success = adminDAL.DeleteCounsellor(id);
+            return RedirectToAction("ViewCounsellors");
         }
 
         [HttpGet]
@@ -54,5 +99,6 @@ namespace FSD_P2_T02_Group2.Controllers
             bool success = adminDAL.RejectCounsellor(id);
             return RedirectToAction("PendingCounsellor");
         }
+
     }
 }

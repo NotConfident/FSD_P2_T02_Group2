@@ -230,6 +230,8 @@ namespace FSD_P2_T02_Group2.Controllers
 
             List<PostViewModel> postVMList = await userDAL.RetrievePostsAsync("All");
             TempData.Put("Posts", postVMList);
+            List<User> userDPList = userDAL.GetUsersProfilePicture();
+            TempData.Put("UsersDP", userDPList);
 
             return View();
         }
@@ -246,6 +248,9 @@ namespace FSD_P2_T02_Group2.Controllers
             }
             List<PostViewModel> postVMList = await userDAL.RetrievePostsAsync(Category);
             TempData.Put("Posts", postVMList);
+            List<User> userDPList = userDAL.GetUsersProfilePicture();
+            TempData.Put("UsersDP", userDPList);
+
             string media = Request.Form["uploadImg"];
             if (media != "")
             {

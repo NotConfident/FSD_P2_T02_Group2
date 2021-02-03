@@ -4,6 +4,7 @@
 @{ 
     Layout = "_UserLayout";
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,6 +43,7 @@
     }*@
 @{
     UserDAL user = new UserDAL();
+    AdminDAL admin = new AdminDAL();
 }
 <div class="content">
     <div class="container-fluid">
@@ -55,6 +57,11 @@
                             @user.CountUser()
                         </h3>
                         <small>Users</small>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">date_range</i> <a asp-controller="admin" asp-action="ViewUsers">View</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,9 +83,27 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <i class="large material-icons">person</i>
+                        No. Of Counsellors
+                        <h3 class="card-title">
+                            @admin.CountCounsellors()
+                        </h3>
+                        <small>Counsellors</small>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">date_range</i> <a asp-controller="admin" asp-action="ViewCounsellors">View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="curve_chart" style="width: 1400px; height: 700px;"></div>
     </div>
+    <div id="curve_chart" style="width: 1400px; height: 700px;"></div>
 </div>
 
 <script type="text/javascript">google.charts.load('current', { 'packages': ['corechart'] });

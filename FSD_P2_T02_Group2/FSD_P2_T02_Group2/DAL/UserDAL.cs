@@ -56,6 +56,7 @@ namespace FSD_P2_T02_Group2.DAL
                     Email = !reader.IsDBNull(5) ? reader.GetString(5) : null,
                     PhoneNo = !reader.IsDBNull(7) ? reader.GetString(7) : null,
                     Image = !reader.IsDBNull(8) ? reader.GetString(8) : null,
+                    DateCreated = reader.GetDateTime(6),
                     Status = !reader.IsDBNull(9) ? reader.GetString(9) : null
                 });
             }
@@ -296,8 +297,9 @@ namespace FSD_P2_T02_Group2.DAL
         private FirestoreDb CreateFirestoreDb()
         { 
             var projectName = "fir-chat-ukiyo";
+            var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
-            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
+            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
             //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
@@ -344,12 +346,13 @@ namespace FSD_P2_T02_Group2.DAL
         public async Task CreatePostAsync(Post newPost, string base64image)
         {
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
-            newPost.TimeCreated = DateTime.Now;
+            newPost.TimeCreated = DateTime.UtcNow;
             Dictionary<string, object> newPostDictionary = new Dictionary<string, object>
             {
                 { "Description", newPost.Description },
@@ -384,7 +387,8 @@ namespace FSD_P2_T02_Group2.DAL
         public async Task<List<PostViewModel>> RetrievePostsAsync(string category)
         {
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
@@ -424,5 +428,28 @@ namespace FSD_P2_T02_Group2.DAL
             return media;
 
         }
+
+        public List<User> GetUsersProfilePicture()
+        {
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT UserID, Image FROM [User]";
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            List<User> userList = new List<User>();
+            while (reader.Read())
+            {
+                userList.Add(
+                new User
+                {
+                    UserID = reader.GetInt32(0),
+                    Image = !reader.IsDBNull(1) ? reader.GetString(1) : null,
+                });
+            }
+            reader.Close();
+            conn.Close();
+            return userList;
+        }
+
+
     }
 }
