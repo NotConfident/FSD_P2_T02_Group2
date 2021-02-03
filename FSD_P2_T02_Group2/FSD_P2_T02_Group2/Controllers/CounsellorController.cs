@@ -31,6 +31,11 @@ namespace FSD_P2_T02_Group2.Controllers
 
         public IActionResult PendingCounsellorSessions()
         {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+            (HttpContext.Session.GetString("Role") != "Counsellor"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             List<PendingCounsellorSession> pcSessionList = new List<PendingCounsellorSession>();
             pcSessionList = counsellorDAL.retrieveUserForms();
 
@@ -45,6 +50,11 @@ namespace FSD_P2_T02_Group2.Controllers
 
         public ActionResult ViewFormDetails(int sessionID)
         {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+            (HttpContext.Session.GetString("Role") != "Counsellor"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             List<PendingCounsellorSession> session = new List<PendingCounsellorSession>();
             List<PendingCounsellorSession> pcSessionList = new List<PendingCounsellorSession>();
             pcSessionList = counsellorDAL.retrieveUserForms();
@@ -95,6 +105,11 @@ namespace FSD_P2_T02_Group2.Controllers
         }
         public ActionResult CounsellorChat()
         {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+            (HttpContext.Session.GetString("Role") != "Counsellor"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (HttpContext.Session.GetString("roomID") != null)
             {
 
@@ -111,6 +126,11 @@ namespace FSD_P2_T02_Group2.Controllers
         [HttpPost]
         public ActionResult CounsellorChat(ChatMessage messageVar)
         {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+            (HttpContext.Session.GetString("Role") != "Counsellor"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             string Alias = HttpContext.Session.GetString("Alias");
             string room = HttpContext.Session.GetString("roomID");
             Console.WriteLine(room);
@@ -121,6 +141,11 @@ namespace FSD_P2_T02_Group2.Controllers
 
         public ActionResult EndChat()
         {
+            if ((HttpContext.Session.GetString("Role") == null) ||
+            (HttpContext.Session.GetString("Role") != "Counsellor"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
             string room = HttpContext.Session.GetString("roomID");
             counsellorDAL.endChat(room);
             return RedirectToAction("PendingCounsellorSessions");

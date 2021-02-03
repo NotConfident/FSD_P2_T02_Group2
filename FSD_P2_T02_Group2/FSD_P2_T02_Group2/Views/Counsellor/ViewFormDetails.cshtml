@@ -85,8 +85,8 @@
         @foreach (PendingCounsellorSession item in Model)
         {
             <div class="row p-2">
-                <div class="col-md-4">
-                    <form asp-action="CreateCounsellingSession">
+                <div class="col-md-6">
+                    <form asp-action="CreateCounsellingSession" style="background-color: #0F89AE; border: 3px solid#0F89AE; border-radius: 10px; margin-bottom: 10px; padding: 10px; color: white">
                         <div class="form-group">
                             <label class="control-label">Alias:</label>
                             <span id="userID">@item.Alias</span>
