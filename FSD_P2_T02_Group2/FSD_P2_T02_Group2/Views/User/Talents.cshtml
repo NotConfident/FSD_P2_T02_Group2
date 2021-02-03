@@ -118,7 +118,7 @@
             bool check = false;
             foreach (User u in TempData.Get<List<User>>("UsersDP"))
             {
-                if (u.Image != null && u.UserID == userId)
+                if (u.Image != null && u.Name == p.id)
                 {
                     <img src="@u.Image" class="rounded-circle" align="left" />
                     check = true;
