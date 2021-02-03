@@ -36,6 +36,8 @@ namespace FSD_P2_T02_Group2.Models
 
         public string Image { get; set; }
 
+        public DateTime DateCreated { get; set; }
+
         public List<Post> PostList { get; set; }
     }
 }

@@ -28,16 +28,17 @@
 </head>
 
 <body>
+    <br />
     <div class="container">
-        <div class="row">
-            <div class="column">
-                <h4 style="text-align:center;font-size:1rem">Explore the Talents</h4>
+        <div class="row" style="display:flex;">
+            <div class="col" style="flex:50%;padding:10px">
+                <h4 style="text-align:center;font-size:2rem">Explore the Talents</h4>
             </div>
-            <div class="column">
+            <div class="col" style="flex:50%;padding:10px">
                 @*<button onclick="myFunction()" class="dropbtn">Select Filter</button>*@
                 @*<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">*@
                 @*<a href="#">Information Technology</a>
-                <a href="#">Badmintion</a>*@
+                    <a href="#">Badmintion</a>*@
                 <!--</div>-->
                 <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" method="post" asp-action="Talents">
                     <select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
@@ -72,7 +73,7 @@
                         <div class="UploadImage" id="uploadImgDiv" style="display:none">
                             <img src="" id="newPostPic" style="width:100%" />
                         </div>
-                        <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)"/>
+                        <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
                         <input type="hidden" id="uploadImg" name="uploadImg" />
                         <br />
                         <div class="widget-post__actions post--actions">
@@ -87,9 +88,9 @@
                                 </button>
                             </div>
                             @*<button class="btn post-actions__removeimg" onclick="removeImage()"><i class="fa fa-eraser">Remove image</i></button>*@
-                            <label class="btn post-actions__removeimg" id="removeImg"onclick="removeImage()"><i class="fa fa-eraser"></i>Remove image</label>
+                            <label class="btn post-actions__removeimg" id="removeImg" onclick="removeImage()"><i class="fa fa-eraser"></i>Remove image</label>
                             @*<div class="post-actions__attachments">
-        </div>*@
+                                </div>*@
                             <div class="post-actions__attachments">
                                 <i class="fa fa-tag"></i>
                                 <select asp-for="post.Tag"
@@ -111,184 +112,184 @@
     </div>
     @foreach (PostViewModel p in TempData.Get<List<PostViewModel>>("Posts"))
     {
-<div class="container">
-    <div class="row">
-        @{
-            int userId = (int)HttpContextAccessor.HttpContext.Session.GetInt32("UserID");
-            bool check = false;
-            foreach (User u in TempData.Get<List<User>>("UsersDP"))
-            {
-                if (u.Image != null && u.Name == p.id)
-                {
-                    <img src="@u.Image" class="rounded-circle" align="left" />
-                    check = true;
-                }
-            }
-            if (check != true)
-            {
-                <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
-            }
-            <div class="col">
-                <div class="widget-post2" aria-labelledby="post-header-title">
-                    <div id="widget-form" class="widget-post__form">
-                        <div class="widget-post__content2">
-                            <br />
-                            <p>@p.post.Description</p>
-                            @if (p.post.hasMedia is true)
-                            {
-                                <img src="@p.Image.ToString()" id="postsImages"
-                                     style="width: 100%;margin-left: auto; margin-right: auto;display: block;" />
-                            }
-                            <br />
-                        </div>
-                        <div class="widget-post__options2 is--hidden" id="stock-options">
-                        </div>
-                        <div class="widget-post__actions2 post--actions2">
-                            <div class="post-actions__attachments">
-                                @if (p.post.Likes != null)
-                                {
-                                    bool liked = false;
-                                    for (int i = 0; i < p.post.Likes.Length; i++)
-                                    {
-                                        if (p.post.Likes[i] == userId)
-                                        {
-                                            <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)"></i>
-                                            liked = true;
-                                            break;
-                                        }
-                                    }
-                                    if (liked is false)
-                                    {
-                                        <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">@p.post.Likes.Count()&nbsp;likes</i>
-                                    }
-                                }
-
-                                else
-                                {
-                                    <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">&nbsp; 0 likes</i>
-                                }
-                            </div>
-                            <div class="post-actions__attachments">
-                                @if (p.post.Tag != null)
-                                {
-                                    <i class="fa fa-tag">&nbsp;@p.post.Tag</i>
-                                }
-                            </div>
-                            <p>@p.post.TimeCreated</p>
-                        </div>                                                    
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div>
-            }
-            <script>
-                function myFunction() {
-                    document.getElementById("myDropdown").classList.toggle("show");
-                };
-
-                function filterFunction() {
-                    var input, filter, ul, li, a, i;
-                    input = document.getElementById("myInput");
-                    filter = input.value.toUpperCase();
-                    div = document.getElementById("myDropdown");
-                    a = div.getElementsByTagName("a");
-                    for (i = 0; i < a.length; i++) {
-                        txtValue = a[i].textContent || a[i].innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            a[i].style.display = "";
-                        } else {
-                            a[i].style.display = "none";
+        <div class="container">
+            <div class="row">
+                @{
+                    int userId = (int)HttpContextAccessor.HttpContext.Session.GetInt32("UserID");
+                    bool check = false;
+                    foreach (User u in TempData.Get<List<User>>("UsersDP"))
+                    {
+                        if (u.Image != null && u.UserID == userId)
+                        {
+                            <img src="@u.Image" class="rounded-circle" align="left" />
+                            check = true;
                         }
                     }
-                };
-                $("#Category").on("change", function () {
-                    var q = $("#Category").val();
-                    console.log("val = " + q);
-                    $("#chosenCat").val($(q));
-                    console.log($("#chosenCat").val);
-                });
-
-                //$("#choosemyCat").on("change", function() {
-                //    $("#chosenCat").val($(this).text());
-                //    console.log($("#chosenCat").val)
-                //});
-
-                function getBase64Image(element) {
-                    var file = element.files[0];
-                    var reader = new FileReader();
-                    reader.onloadend = function () {
-                        localStorage.setItem("uploadImg", reader.result);
+                    if (check != true)
+                    {
+                        <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
                     }
-                    console.log(localStorage.getItem("uploadImg"));
+                    <div class="col">
+                        <div class="widget-post2" aria-labelledby="post-header-title">
+                            <div id="widget-form" class="widget-post__form">
+                                <div class="widget-post__content2">
+                                    <br />
+                                    <p>@p.post.Description</p>
+                                    @if (p.post.hasMedia is true)
+                                    {
+                                        <img src="@p.Image.ToString()" id="postsImages"
+                                             style="width: 100%;margin-left: auto; margin-right: auto;display: block;" />
+                                    }
+                                    <br />
+                                </div>
+                                <div class="widget-post__options2 is--hidden" id="stock-options">
+                                </div>
+                                <div class="widget-post__actions2 post--actions2">
+                                    <div class="post-actions__attachments">
+                                        @if (p.post.Likes != null)
+                                        {
+                                            bool liked = false;
+                                            for (int i = 0; i < p.post.Likes.Length; i++)
+                                            {
+                                                if (p.post.Likes[i] == userId)
+                                                {
+                                                    <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)"></i>
+                                                    liked = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (liked is false)
+                                            {
+                                                <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">@p.post.Likes.Count()&nbsp;likes</i>
+                                            }
+                                        }
 
-                    reader.readAsDataURL(file);
-                    document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
-                    document.getElementById("removeImg").style.display = 'inline';
-                    document.getElementById("newPostPic").src = "";
-                    document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
-                    document.getElementById("uploadImgDiv").style.display = 'inline';
-                    //url = URL.createObjectURL(file);           // create an Object URL
-                    //img = new Image();                         // create a temp. image object
-
-                    //img.onload = function () {                    // handle async image loading
-                    //    var c = document.getElementById("myCanvas");
-                    //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
-                    //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
-                    //}
-                };
-
-                function removeImage() {
-                    document.getElementById("upload-image").files[0] = "";
-                    localStorage.setItem("uploadImg", "");
-                    document.getElementById("uploadImg").value = "";
-                    document.getElementById("removeImg").style.display = 'none';
-                    document.getElementById("newPostPic").src = "";
-                    document.getElementById("uploadImgDiv").style.display = 'none';
-                    //url = URL.createObjectURL(file);           // create an Object URL
-                    //img = new Image();                         // create a temp. image object
-
-                    //img.onload = function () {                    // handle async image loading
-                    //    var c = document.getElementById("myCanvas");
-                    //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
-                    //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
-                    //}
-                };
-
-
-                var firebaseConfig = {
-                    apiKey: "AIzaSyB_3YSraE6XM9lB-Va12Q36Gxmu19Mju8U",
-                    authDomain: "fir-chat-ukiyo.firebaseapp.com",
-                    databaseURL: "https://fir-chat-ukiyo-default-rtdb.firebaseio.com",
-                    projectId: "fir-chat-ukiyo",
-                    storageBucket: "fir-chat-ukiyo.appspot.com",
-                    messagingSenderId: "1003455832615"
-                };
-                // Initialize Firebase
-                firebase.initializeApp(firebaseConfig);
-                var postDB = firebase.firestore();
-
-                //    function dislike(postId, postCat, userId) {
-                //        postDB.collection("Posts").document("Category")
-                //            .collection(postCat).document(postId).update
-                //            ({ ['Likes.' + userId]: firebase.firestore.FieldValue.delete() });
-                //}
-                function dislike(postId, postCat, userId) {
-                    postDB.collection("Posts").document("Category")
-                        .collection(postCat).document(postId).update
-                        ({ Likes: firebase.firestore.FieldValue.arrayRemove("'" + userId + "'") });
+                                        else
+                                        {
+                                            <i class="fa fa-gittip" onclick="like(@p.id, @p.post.Tag, @userId)">&nbsp; 0 likes</i>
+                                        }
+                                    </div>
+                                    <div class="post-actions__attachments">
+                                        @if (p.post.Tag != null)
+                                        {
+                                            <i class="fa fa-tag">&nbsp;@p.post.Tag</i>
+                                        }
+                                    </div>
+                                    <p>@p.post.TimeCreated</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
+            </div>
+        </div>
+    }
+    <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        };
 
-                function like(postId, postCat, userId) {
-                    postDB.collection("Posts").document("Category")
-                        .collection("'" + postCat + "'").document("'" + postId + "'")
-                        .set(
-                            { Likes: [{ userId }] },
-                            { merge: true }
-                        );
-                };
-            </script>
-    </body>
+        function filterFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    a[i].style.display = "";
+                } else {
+                    a[i].style.display = "none";
+                }
+            }
+        };
+        $("#Category").on("change", function () {
+            var q = $("#Category").val();
+            console.log("val = " + q);
+            $("#chosenCat").val($(q));
+            console.log($("#chosenCat").val);
+        });
+
+        //$("#choosemyCat").on("change", function() {
+        //    $("#chosenCat").val($(this).text());
+        //    console.log($("#chosenCat").val)
+        //});
+
+        function getBase64Image(element) {
+            var file = element.files[0];
+            var reader = new FileReader();
+            reader.onloadend = function () {
+                localStorage.setItem("uploadImg", reader.result);
+            }
+            console.log(localStorage.getItem("uploadImg"));
+
+            reader.readAsDataURL(file);
+            document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
+            document.getElementById("removeImg").style.display = 'inline';
+            document.getElementById("newPostPic").src = "";
+            document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
+            document.getElementById("uploadImgDiv").style.display = 'inline';
+            //url = URL.createObjectURL(file);           // create an Object URL
+            //img = new Image();                         // create a temp. image object
+
+            //img.onload = function () {                    // handle async image loading
+            //    var c = document.getElementById("myCanvas");
+            //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
+            //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
+            //}
+        };
+
+        function removeImage() {
+            document.getElementById("upload-image").files[0] = "";
+            localStorage.setItem("uploadImg", "");
+            document.getElementById("uploadImg").value = "";
+            document.getElementById("removeImg").style.display = 'none';
+            document.getElementById("newPostPic").src = "";
+            document.getElementById("uploadImgDiv").style.display = 'none';
+            //url = URL.createObjectURL(file);           // create an Object URL
+            //img = new Image();                         // create a temp. image object
+
+            //img.onload = function () {                    // handle async image loading
+            //    var c = document.getElementById("myCanvas");
+            //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
+            //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
+            //}
+        };
+
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyB_3YSraE6XM9lB-Va12Q36Gxmu19Mju8U",
+            authDomain: "fir-chat-ukiyo.firebaseapp.com",
+            databaseURL: "https://fir-chat-ukiyo-default-rtdb.firebaseio.com",
+            projectId: "fir-chat-ukiyo",
+            storageBucket: "fir-chat-ukiyo.appspot.com",
+            messagingSenderId: "1003455832615"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var postDB = firebase.firestore();
+
+        //    function dislike(postId, postCat, userId) {
+        //        postDB.collection("Posts").document("Category")
+        //            .collection(postCat).document(postId).update
+        //            ({ ['Likes.' + userId]: firebase.firestore.FieldValue.delete() });
+        //}
+        function dislike(postId, postCat, userId) {
+            postDB.collection("Posts").document("Category")
+                .collection(postCat).document(postId).update
+                ({ Likes: firebase.firestore.FieldValue.arrayRemove("'" + userId + "'") });
+        }
+
+        function like(postId, postCat, userId) {
+            postDB.collection("Posts").document("Category")
+                .collection("'" + postCat + "'").document("'" + postId + "'")
+                .set(
+                    { Likes: [{ userId }] },
+                    { merge: true }
+                );
+        };
+    </script>
+</body>
 
 </html>

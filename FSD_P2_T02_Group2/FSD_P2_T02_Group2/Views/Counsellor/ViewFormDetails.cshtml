@@ -88,20 +88,46 @@
                 <div class="col-md-4">
                     <form asp-action="CreateCounsellingSession">
                         <div class="form-group">
-                            <label class="control-label">User ID:</label>
+                            <label class="control-label">Alias:</label>
                             <span id="userID">@item.Alias</span>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Feeling:</label>
-                            <span>@item.Feeling</span>
+                            @{
+                                switch (item.Feeling)
+                                {
+                                    case 1:
+                                        <span>Fine</span>
+                                        break;
+                                    case 2:
+                                        <span>Sad</span>
+                                        break;
+                                    case 3:
+                                        <span>Anxious</span>
+                                        break;
+                                    case 4:
+                                        <span>Depressed</span>
+                                        break;
+                                }
+                            }
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Thought:</label>
-                            <span>@item.Thought</span>
+                            <label class="control-label">May have thought about self harm:</label>
+                            @{
+                                switch (item.Thought)
+                                {
+                                    case 1:
+                                        <span>Yes</span>
+                                        break;
+                                    case 0:
+                                        <span>No</span>
+                                        break;
+                                }
+                            }
                         </div>
                         <div class="form-group">
                             <label class="control-label">Problems:</label>
-                            <span>@item.Problems</span>
+                            <span style="color:#0F89AE">@item.Problems</span>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Date Created:</label>
