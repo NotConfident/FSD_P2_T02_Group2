@@ -160,19 +160,10 @@ ul {
 }
 
 .post-actions__publish {
-/*    width: 120px;
-*/    background-color: #0F89AE;
+   background-color: #0F89AE;
     color: #fff;
     border-radius: 1.5em;
 }
-/*
-.post-actions__removeimg {
-    background-color: #eaeaea;
-    color: #007582;
-    border-radius: 1.5em;
-    font-family: Josefin Sans,sans-serif;
-    font-size: 16px;
-}*/
 
 #removeImg {
     background-color: #eaeaea;
@@ -203,8 +194,6 @@ ul {
 }
 
 .row{
-/*    padding-top: 5%;
-    padding-left:20%;*/
     display:inherit;
 }
 

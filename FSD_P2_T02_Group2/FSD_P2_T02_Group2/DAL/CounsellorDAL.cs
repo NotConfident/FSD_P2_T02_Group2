@@ -70,24 +70,17 @@ namespace FSD_P2_T02_Group2.DAL
         public void CounsellorForm(PendingCounsellor counsellorForm)
         {
             SqlCommand cmd = conn.CreateCommand();
-            //string status = "Pending";
-            //DateTime currentDT = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd h:mm:ss tt"));
-            //string defaultPassword = "counsellor";
             DateTime temp = Convert.ToDateTime(DateTime.Now.ToString("2020-01-01"));
 
             cmd.CommandText = @"INSERT INTO PendingCounsellor(Name, Email, PhoneNo, DateBirth, Image, Certificate)
                                 VALUES(@name, @email, @phoneno, @datebirth, @image, @certificate)";
 
             cmd.Parameters.AddWithValue("@name", counsellorForm.Name);
-            //cmd.Parameters.AddWithValue("@password", defaultPassword);
             cmd.Parameters.AddWithValue("@email", counsellorForm.Email);
-            //cmd.Parameters.AddWithValue("@datecreated", currentDT);
             cmd.Parameters.AddWithValue("@phoneno", counsellorForm.PhoneNumber);
             cmd.Parameters.AddWithValue("@datebirth", temp);
             cmd.Parameters.AddWithValue("@image", counsellorForm.Image);
             cmd.Parameters.AddWithValue("@certificate", counsellorForm.Certificate);
-            //cmd.Parameters.AddWithValue("@avgrating", counsellorForm.AvgRating);
-            //cmd.Parameters.AddWithValue("@status", status);
 
             conn.Open();
 
@@ -117,7 +110,6 @@ namespace FSD_P2_T02_Group2.DAL
                     Image = !reader.IsDBNull(6) ? reader.GetString(6) : null,
                     Certificate = !reader.IsDBNull(7) ? reader.GetString(7) : null,
                     DateBirth = reader.GetDateTime(8),
-                    //AvgRating = reader.GetFloat(9),
                     Status = !reader.IsDBNull(10) ? reader.GetString(10) : null
                 });
             }
@@ -150,14 +142,6 @@ namespace FSD_P2_T02_Group2.DAL
                     counsellor.Image = !reader.IsDBNull(6) ? reader.GetString(6) : null;
                     counsellor.Certificate = !reader.IsDBNull(7) ? reader.GetString(7) : null;
                     counsellor.DateBirth = reader.GetDateTime(8).Date;
-                    //if (!reader.IsDBNull(9))
-                    //{
-                    //    counsellor.AvgRating = reader.GetFloat(9);
-                    //}
-                    //else
-                    //{
-                    //    counsellor.AvgRating = null;
-                    //}
                     counsellor.Status = !reader.IsDBNull(10) ? reader.GetString(10) : null;
                 }
             }
@@ -224,9 +208,7 @@ namespace FSD_P2_T02_Group2.DAL
                                 VALUES(@f, @t, @p, @d, @u, @c)";
 
             cmd.Parameters.AddWithValue("@f", p.Feeling);
-            //cmd.Parameters.AddWithValue("@password", defaultPassword);
             cmd.Parameters.AddWithValue("@t", p.Thought);
-            //cmd.Parameters.AddWithValue("@datecreated", currentDT);
             cmd.Parameters.AddWithValue("@p", p.Problems);
             cmd.Parameters.AddWithValue("@d", date);
             cmd.Parameters.AddWithValue("@u", p.UserID);

@@ -50,8 +50,6 @@ namespace FSD_P2_T02_Group2.DAL
                 {
                     user.Username = reader.GetString(1);
                     user.Password = reader.GetString(3);
-                    //user.Email = reader.GetString(3);
-                    //user.Name = reader.GetString(4);
                     user.Alias = reader.GetString(2);
                     user.PhoneNo = reader.GetString(4);  // Change according to admin 
                 }
@@ -176,7 +174,6 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.Parameters.AddWithValue("@image", retrieved.Image);
             cmd.Parameters.AddWithValue("@certificate", retrieved.Certificate);
             cmd.Parameters.AddWithValue("@datebirth", tempDate.Date);
-            //cmd.Parameters.AddWithValue("@avgrating", DBNull.Value);
             cmd.Parameters.AddWithValue("@status", status);
 
             conn.Open();

@@ -68,14 +68,6 @@ namespace FSD_P2_T02_Group2.Controllers
                 HttpContext.Session.SetString("Role", role);
                 Set("Username", user.Alias, 60);
                 
-                //var resp = new HttpResponseMessage();
-
-                //var cookie = new System.Net.Http.Headers.CookieHeaderValue("Username", user.Alias);
-
-                //cookie.Expires = DateTimeOffset.Now.AddDays(1);
-                //cookie.Path = "/";
-                //resp.Headers.AddCookies(new System.Net.Http.Headers.CookieHeaderValue[] { cookie })
-
                 return RedirectToAction("UserMain", "User");
             }
             else if (counsellor.Name != null)

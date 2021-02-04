@@ -1,15 +1,10 @@
-﻿<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-    <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item usernav ml-auto" style="padding:10px;">
-            <a class="nav-link" href="~/Admin/Index" style="color:black">Home</a>
+﻿<div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item usernav">
+            <a class="nav-link" asp-action="PendingCounsellor" asp-controller="Admin">Pending Counsellor</a>
         </li>
-        <li class="nav-item usernav" style="padding:10px;">
-            <a class="nav-link" asp-action="PendingCounsellor" asp-controller="Admin" style="color:black">Pending Counsellor</a>
-        </li>
-        <li class="nav-item usernav" style="padding:10px;">
-            <a class="nav-link">Account</a>
-        </li>
-        <li class="nav-item usernav" style="padding:10px;">
+
+        <li class="nav-item usernav">
             <a class="nav-link" asp-action="Index" asp-controller="Home">Log Out</a>
         </li>
     </ul>

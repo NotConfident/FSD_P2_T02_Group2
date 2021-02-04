@@ -39,25 +39,9 @@ hr {
     font-size: 33px;
 }
 
-/*.accordion {
-    display: inline-flex;
-    padding: 4.5em 5em 0.7em 2em;
-    border: 0.01em solid black;
-    margin: 0 0.7em 0.7em 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    text-transform: lowercase;
-    letter-spacing: 0.1em;
-    font-family: Josefin Sans,sans-serif;
-    color: black;
-    text-align: center;
-    transition: all 0.15s;
-    cursor: pointer;
-}*/
 
 .accordion {
     padding: 4.5em 5em 0.7em 2em;
-/*    border: 0.01em solid black;*/
     box-sizing: border-box;
     text-decoration: none;
     text-transform: lowercase;
@@ -77,11 +61,6 @@ hr {
         border-color: #0F89AE;
     }
 
-/*    .accordion:active {
-        color: white;
-        border-color: black;
-        background-color: #0F89AE;
-    }*/
 
 
 .panel {
@@ -92,17 +71,6 @@ hr {
     padding-top: 1em
 }
 
-/*@media all and (max-width:30em) {
-     .accordion {
-        display: block;
-        margin: 1em;
-    }
-}*/
-
-/*#buttons {
-    justify-content:center;
-    
-}*/
 p {
     font-family: Josefin Sans,sans-serif;
     color: black;
