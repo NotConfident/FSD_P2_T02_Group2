@@ -95,7 +95,7 @@
                                 <i class="fa fa-tag"></i>
                                 <select asp-for="post.Tag"
                                         asp-items="@ViewData["PostCategories"]
-                        as List<SelectListItem>"
+                                        as List<SelectListItem>"
                                         class="btn post-actions__upload attachments--btn">
                                 </select>
                             </div>
@@ -119,10 +119,19 @@
                     bool check = false;
                     foreach (User u in TempData.Get<List<User>>("UsersDP"))
                     {
-                        if (u.Image != null && u.Name == p.id)
+                        if (u.UserID == p.post.UserID)
                         {
-                            <img src="@u.Image" class="rounded-circle" align="left" />
+                            if (u.Image == null)
+                            {
+                                <img src="~/images/default_dp.jpg" class="rounded-circle" align="left" />
+                            }
+                            else
+                            {
+                                <img src="@u.Image" class="rounded-circle" align="left" />
+
+                            }
                             check = true;
+                            break;
                         }
                     }
                     if (check != true)
@@ -222,12 +231,9 @@
             reader.onloadend = function () {
                 localStorage.setItem("uploadImg", reader.result);
             }
-            console.log(localStorage.getItem("uploadImg"));
-
             reader.readAsDataURL(file);
             document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
             document.getElementById("removeImg").style.display = 'inline';
-            document.getElementById("newPostPic").src = "";
             document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
             document.getElementById("uploadImgDiv").style.display = 'inline';
             //url = URL.createObjectURL(file);           // create an Object URL
@@ -241,12 +247,12 @@
         };
 
         function removeImage() {
-            document.getElementById("upload-image").files[0] = "";
+            document.getElementById("upload-image").value = "";
             localStorage.setItem("uploadImg", "");
             document.getElementById("uploadImg").value = "";
             document.getElementById("removeImg").style.display = 'none';
-            document.getElementById("newPostPic").src = "";
             document.getElementById("uploadImgDiv").style.display = 'none';
+            document.getElementById("newPostPic").src = "//:0";
             //url = URL.createObjectURL(file);           // create an Object URL
             //img = new Image();                         // create a temp. image object
 

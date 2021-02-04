@@ -506,9 +506,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <hr>
-                            <button type="button" id="uploadBtn">Select Image</button>
                             <hr>
                         </div>
                     </div>
@@ -563,7 +560,7 @@
                         </div>
                     </div>
                     <div class="form-row-last">
-                        <input type="submit" class="submit" value="Save">
+                        <input type="submit" class="submit" id="uploadBtn" value="Save">
                     </div>
                 </form>
             </div>
@@ -1258,6 +1255,7 @@
                     imageHelper: true,
                     onRemove: function (type) {
                         $('.preview').hide().attr('src', '');
+                        $('#Base64Image').empty();
                     },
                     onError: function (type) {
                         console.log('Error type: ' + type);
@@ -1266,31 +1264,17 @@
 
 
             $('#uploadBtn').on('click', function () {
-                //var formData,
-                //    data = p.getData();
-
-                //formData = new FormData();
-                //formData.append('file', data.file);
-                //// Crop size ( Final image size )
-                //formData.append('cropHeight', data.cropHeight);
-                //formData.append('cropWidth', data.cropWidth);
-                //// Image X and Y position
-                //formData.append('x', data.x);
-                //formData.append('y', data.y);
-                //// New image size (the size needed to position the image)
-                //formData.append('newWidth', data.width);
-                //formData.append('newHeight', data.height);
-                //// Zoom/Scale; 0.1 = 10%
-                //formData.append('zoom', data.zoom);
-                //// Original image size (if needed)
-                //formData.append('originalWidth', data.originalWidth);
-                //formData.append('originalHeight', data.originalHeight);
 
                 var image = p.getAsDataURL();
 
                 localStorage.setItem("Base64Image", image);
-                document.getElementById("Base64Image").value = localStorage.getItem("Base64Image");
-                
+                if (p.className == "photo--empty") {
+                    document.getElementById("Base64Image").value = "";
+                }
+                else {
+                    document.getElementById("Base64Image").value = localStorage.getItem("Base64Image");
+                }
+                p.removeImage();
             });
 
 

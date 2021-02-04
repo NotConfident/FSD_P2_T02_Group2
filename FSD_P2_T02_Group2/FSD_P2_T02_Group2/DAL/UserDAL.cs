@@ -302,6 +302,7 @@ namespace FSD_P2_T02_Group2.DAL
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
             //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             var authFilePath = "/Users/tee/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             Console.WriteLine("Created Firestore");
@@ -350,7 +351,11 @@ namespace FSD_P2_T02_Group2.DAL
             //var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+<<<<<<< HEAD
             var authFilePath = "/Users/tee/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+=======
+            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+>>>>>>> 345621c48c98195ea8db872ef6f9f0ae572f8dd2
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
@@ -392,7 +397,11 @@ namespace FSD_P2_T02_Group2.DAL
             //var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+<<<<<<< HEAD
             var authFilePath = "/Users/tee/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+=======
+            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+>>>>>>> 345621c48c98195ea8db872ef6f9f0ae572f8dd2
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
@@ -405,6 +414,35 @@ namespace FSD_P2_T02_Group2.DAL
                 Post post = documentSnapshot.ConvertTo<Post>();
                 PostViewModel postVM = new PostViewModel();
                 postVM.id  = documentSnapshot.Id;
+                postVM.post = post;
+                if (post.hasMedia is true)
+                    postVM.Image = GetPostImageBase64(postVM.id);
+                postList.Add(postVM);     //add each post to postList
+            }
+            List<PostViewModel> orderedPostList = postList.OrderByDescending(p => p.post.TimeCreated).ToList();
+            return orderedPostList;
+        }
+
+        public async Task<List<PostViewModel>> RetrievePostsAsync(int id)
+        {
+            var projectName = "fir-chat-ukiyo";
+            //var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
+            FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
+            FirestoreDb db = FirestoreDb.Create(projectName);
+            CollectionReference postRef = db.Collection("Posts").Document("Category").Collection("All");
+            List<PostViewModel> postList = new List<PostViewModel>();
+
+            Query query = postRef.WhereEqualTo("UserID", id);
+            QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+            foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+            {
+                Post post = documentSnapshot.ConvertTo<Post>();
+                PostViewModel postVM = new PostViewModel();
+                postVM.id = documentSnapshot.Id;
                 postVM.post = post;
                 if (post.hasMedia is true)
                     postVM.Image = GetPostImageBase64(postVM.id);
