@@ -156,7 +156,8 @@ namespace FSD_P2_T02_Group2.Controllers
                 return RedirectToAction("Index", "Home");
             }
             User user = userDAL.GetUser((int)HttpContext.Session.GetInt32("UserID"));
-            HttpContext.Session.SetString("pfp", user.Image);
+            if (user.Image != null)
+                HttpContext.Session.SetString("UserDP", user.Image);
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
@@ -172,7 +173,14 @@ namespace FSD_P2_T02_Group2.Controllers
             {
                 if (Request.Form["Base64Image"] == "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAACzElEQVR4Xu3SMQ0AAAzDsJU/6cHI4xKoFHlnCoQFFn67VuAAhCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5ncOIANpAQDT/M4BZCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5ncOIANpAQDT/M4BZCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5ncOIANpAQDT/M4BZCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5ncOIANpAQDT/M4BZCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5ncOIANpAQDT/M4BZCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5ncOIANpAQDT/M4BZCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5ncOIANpAQDT/M4BZCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5ncOIANpAQDT/M4BZCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5ncOIANpAQDT/M4BZCAtAGCa3zmADKQFAEzzOweQgbQAgGl+5wAykBYAMM3vHEAG0gIApvmdA8hAWgDANL9zABlICwCY5nf+kmEAoaOpQZEAAAAASUVORK5CYII=")
                 {
-                    user.Image = HttpContext.Session.GetString("pfp");
+                    if (HttpContext.Session.GetString("UserDP") != null)
+                    {
+                        user.Image = HttpContext.Session.GetString("UserDP");
+                    }
+                    else
+                    {
+                        user.Image = null;
+                    }
                 }
                 else
                 {
@@ -195,6 +203,8 @@ namespace FSD_P2_T02_Group2.Controllers
                 return View(user);
             }
         }
+
+        //for the filter options in Talent Recognition
         private List<SelectListItem> GetPostCategories()
         {
             List<SelectListItem> categoryList = new List<SelectListItem>();
@@ -221,6 +231,7 @@ namespace FSD_P2_T02_Group2.Controllers
             return categoryList;
         }
 
+        //Talents Page
         public async Task<ActionResult> TalentsAsync()
         {
             //Check if role is user
@@ -235,29 +246,37 @@ namespace FSD_P2_T02_Group2.Controllers
                 return RedirectToAction("Index", "Home");   //if there is no current user, redirect back home
             }
 
-            ViewData["PostCategories"] = GetPostCategories();
-            ViewData["Users"] = userDAL.GetUsers();
+            ViewData["PostCategories"] = GetPostCategories();   //filter
 
+            //Retrieve all posts by and store as TempData
             List<PostViewModel> postVMList = await userDAL.RetrievePostsAsync("All");
             TempData.Put("Posts", postVMList);
+
+            //Retrieve Profile pictures and store as TempData
             List<User> userDPList = userDAL.GetUsersProfilePicture();
             TempData.Put("UsersDP", userDPList);
 
             return View();
         }
+
+        //Talents form
         [HttpPost]
         public async Task<ActionResult> TalentsAsync(PostViewModel newPost)
         {
+            //Populating filter
             ViewData["PostCategories"] = GetPostCategories();
-            ViewData["Users"] = userDAL.GetUsers();
 
             string Category = "All";
+            //Check filter option
             if (newPost.Category != null && newPost.Category != "")
             {
                 Category = newPost.Category;
             }
+            //Retrieve posts by selected category
             List<PostViewModel> postVMList = await userDAL.RetrievePostsAsync(Category);
             TempData.Put("Posts", postVMList);
+
+            //Retrieve Profile pictures of all users
             List<User> userDPList = userDAL.GetUsersProfilePicture();
             TempData.Put("UsersDP", userDPList);
 
@@ -275,14 +294,12 @@ namespace FSD_P2_T02_Group2.Controllers
             if (newPost.post.Description != null || newPost.Image != null)
             {
                 newPost.post.UserID = (int)HttpContext.Session.GetInt32("UserID");
+                //Create the post by adding into firestore
                 await userDAL.CreatePostAsync(newPost.post, newPost.Image);
-                //PostViewModel postVM = new PostViewModel();
-                //postVM.postList = await userDAL.RetrievePostsAsync("All");
                 return View(newPost);
             }
             else
             {
-                //newPost.postList = await userDAL.RetrievePostsAsync("All");
                 return View(newPost);
             } 
         }

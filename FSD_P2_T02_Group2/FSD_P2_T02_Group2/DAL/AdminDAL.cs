@@ -163,8 +163,8 @@ namespace FSD_P2_T02_Group2.DAL
             DateTime tempDate = Convert.ToDateTime(DateTime.Now.ToString("2020-01-01"));
             string status = "Active";
 
-            cmd.CommandText = @"INSERT INTO Counsellor(Name, Password, Email, DateCreated, PhoneNo, Image, Certificate, DateBirth, AvgRating, Status)
-                                VALUES(@name, @password, @email, @datecreated, @phoneno, @image, @certificate, @datebirth, @avgrating, @status)";
+            cmd.CommandText = @"INSERT INTO Counsellor(Name, Password, Email, DateCreated, PhoneNo, Image, Certificate, DateBirth, Status)
+                                VALUES(@name, @password, @email, @datecreated, @phoneno, @image, @certificate, @datebirth, @status)";
 
             PendingCounsellor retrieved = retrieveSpecificPendingCounsellor(id);
 
@@ -176,7 +176,7 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.Parameters.AddWithValue("@image", retrieved.Image);
             cmd.Parameters.AddWithValue("@certificate", retrieved.Certificate);
             cmd.Parameters.AddWithValue("@datebirth", tempDate.Date);
-            cmd.Parameters.AddWithValue("@avgrating", DBNull.Value);
+            //cmd.Parameters.AddWithValue("@avgrating", DBNull.Value);
             cmd.Parameters.AddWithValue("@status", status);
 
             conn.Open();

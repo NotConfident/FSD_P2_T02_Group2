@@ -29,13 +29,13 @@
                 <br />
                 <div class="row">
                     <div class="col-md-4">
-                        @if (Model.Image != null)
+                        @if (Model.Image == null)
                         {
-                            <img class="preview preview--rounded" src="@Model.Image.ToString()" />
+                            <img src="~/images/default_dp.jpg" class="preview preview--rounded" />
                         }
                         else
                         {
-                            <img />
+                            <img class="preview preview--rounded" src="@Model.Image.ToString()" />
                         }
                     </div>
                     <div class="col-md-6">
@@ -74,12 +74,6 @@
                         </dt>
                         <dd class="col-sm-10">
                             @Html.DisplayFor(model => model.DateBirth)
-                        </dd>
-                        <dt class="col-sm-2">
-                            @Html.DisplayNameFor(model => model.AvgRating)
-                        </dt>
-                        <dd class="col-sm-10">
-                            @Html.DisplayFor(model => model.AvgRating)
                         </dd>
                         <dt class="col-sm-2">
                             @Html.DisplayNameFor(model => model.Status)

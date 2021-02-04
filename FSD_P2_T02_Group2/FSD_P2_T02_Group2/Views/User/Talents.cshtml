@@ -29,27 +29,22 @@
 
 <body>
     <br />
+    <!--This contains the heading of the page & the filter options-->
     <div class="container">
         <div class="row" style="display:flex;">
             <div class="col" style="flex:50%;padding:10px">
                 <h4 style="text-align:center;font-size:2rem">Explore the Talents</h4>
             </div>
             <div class="col" style="flex:50%;padding:10px">
-                @*<button onclick="myFunction()" class="dropbtn">Select Filter</button>*@
-                @*<input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">*@
-                @*<a href="#">Information Technology</a>
-                    <a href="#">Badmintion</a>*@
-                <!--</div>-->
                 <form id="widget-form" class="widget-post__form" name="form" aria-label="post widget" method="post" asp-action="Talents">
                     <select asp-items="@ViewData["PostCategories"] as List<SelectListItem>" id="Category"
                             class="btn post-actions__upload attachments--btn" name="Category" asp-for="Category"></select>
                     <button class="btn post-actions__publish" type="submit">Search</button>
-                    @*<input class="btn post-actions__publish" type="search" />*@
                 </form>
             </div>
         </div>
     </div>
-
+    <!--Create Post-->
     <div class="container">
         <div class="row">
             @if (HttpContextAccessor.HttpContext.Session.GetString("UserDP") != null)
@@ -71,7 +66,7 @@
                         <div class="widget-post__options is--hidden" id="stock-options">
                         </div>
                         <div class="UploadImage" id="uploadImgDiv" style="display:none">
-                            <img src="" id="newPostPic" style="width:100%" />
+                            <img src="" id="newPostPic" style="width: 70%;margin-left: auto; margin-right: auto;display: block;" />
                         </div>
                         <input type="file" id="upload-image" accept="image/*" onchange="getBase64Image(this)" />
                         <input type="hidden" id="uploadImg" name="uploadImg" />
@@ -110,6 +105,7 @@
             </div>
         </div>
     </div>
+    <!--View All Posts-->
     @foreach (PostViewModel p in TempData.Get<List<PostViewModel>>("Posts"))
     {
         <div class="container">
@@ -220,50 +216,29 @@
             console.log($("#chosenCat").val);
         });
 
-        //$("#choosemyCat").on("change", function() {
-        //    $("#chosenCat").val($(this).text());
-        //    console.log($("#chosenCat").val)
-        //});
-
+        //convert image to base64image to store in SQL
         function getBase64Image(element) {
             var file = element.files[0];
             var reader = new FileReader();
             reader.onloadend = function () {
                 localStorage.setItem("uploadImg", reader.result);
+                document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
+                document.getElementById("removeImg").style.display = 'inline';
+                document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
+                document.getElementById("uploadImgDiv").style.display = 'inline';
             }
             reader.readAsDataURL(file);
-            document.getElementById("uploadImg").value = localStorage.getItem("uploadImg");
-            document.getElementById("removeImg").style.display = 'inline';
-            document.getElementById("newPostPic").src = localStorage.getItem("uploadImg");
-            document.getElementById("uploadImgDiv").style.display = 'inline';
-            //url = URL.createObjectURL(file);           // create an Object URL
-            //img = new Image();                         // create a temp. image object
-
-            //img.onload = function () {                    // handle async image loading
-            //    var c = document.getElementById("myCanvas");
-            //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
-            //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
-            //}
         };
 
+        //remove base64image by setting the uploadImg value id to null
         function removeImage() {
-            document.getElementById("upload-image").value = "";
-            localStorage.setItem("uploadImg", "");
-            document.getElementById("uploadImg").value = "";
+            localStorage.clear();
             document.getElementById("removeImg").style.display = 'none';
             document.getElementById("uploadImgDiv").style.display = 'none';
-            document.getElementById("newPostPic").src = "//:0";
-            //url = URL.createObjectURL(file);           // create an Object URL
-            //img = new Image();                         // create a temp. image object
-
-            //img.onload = function () {                    // handle async image loading
-            //    var c = document.getElementById("myCanvas");
-            //    URL.revokeObjectURL(this.src);             // free memory held by Object URL
-            //    c.getContext("2d").drawImage(this, 0, 0);  // draw image onto canvas (lazy method™)
-            //}
+            document.getElementById("uploadImg").value = "";
         };
 
-
+        
         var firebaseConfig = {
             apiKey: "AIzaSyB_3YSraE6XM9lB-Va12Q36Gxmu19Mju8U",
             authDomain: "fir-chat-ukiyo.firebaseapp.com",
@@ -276,11 +251,6 @@
         firebase.initializeApp(firebaseConfig);
         var postDB = firebase.firestore();
 
-        //    function dislike(postId, postCat, userId) {
-        //        postDB.collection("Posts").document("Category")
-        //            .collection(postCat).document(postId).update
-        //            ({ ['Likes.' + userId]: firebase.firestore.FieldValue.delete() });
-        //}
         function dislike(postId, postCat, userId) {
             postDB.collection("Posts").document("Category")
                 .collection(postCat).document(postId).update

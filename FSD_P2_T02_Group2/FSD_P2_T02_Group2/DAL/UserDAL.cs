@@ -152,7 +152,7 @@ namespace FSD_P2_T02_Group2.DAL
             cmd.Parameters.AddWithValue("@name", user.Name);
             cmd.Parameters.AddWithValue("@alias", user.Alias);
             cmd.Parameters.AddWithValue("@phoneNo", user.PhoneNo);
-            cmd.Parameters.AddWithValue("@date", DateTime.Now.Date);
+            cmd.Parameters.AddWithValue("@date", DateTime.Now);
 
             conn.Open();
             cmd.ExecuteNonQuery();
@@ -298,9 +298,9 @@ namespace FSD_P2_T02_Group2.DAL
         { 
             var projectName = "fir-chat-ukiyo";
             //var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
-            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
-            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
+            //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             Console.WriteLine("Created Firestore");
@@ -311,7 +311,7 @@ namespace FSD_P2_T02_Group2.DAL
         public string OTP(string number)
         {
             const string accountSID = "ACb2940c2a00ccdd56852ced467d8789b2";
-            const string authToken = "347ae9ac034aa8660cc03f59f629cc39";
+            const string authToken = "b00a4373595c7bb516da7a8c6a920557";
             // Initialize the TwilioClient.
             TwilioClient.Init(accountSID, authToken);
             string randNum = "";
@@ -347,13 +347,15 @@ namespace FSD_P2_T02_Group2.DAL
         {
             var projectName = "fir-chat-ukiyo";
             //var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
-            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
-            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
             newPost.TimeCreated = DateTime.UtcNow;
+
+            //Storing post into "All" and selectedCategory document in Firestore
             Dictionary<string, object> newPostDictionary = new Dictionary<string, object>
             {
                 { "Description", newPost.Description },
@@ -389,9 +391,9 @@ namespace FSD_P2_T02_Group2.DAL
         {
             var projectName = "fir-chat-ukiyo";
             //var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
-            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
-            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);
@@ -417,9 +419,9 @@ namespace FSD_P2_T02_Group2.DAL
         {
             var projectName = "fir-chat-ukiyo";
             //var authFilePath = "/Users/Ivan/Desktop/WeiJie Ang/Year 2/SEM 2/FSD/fir-chat-ukiyo-firebase-adminsdk.json";
-            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
-            var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
             FirestoreDb db = FirestoreDb.Create(projectName);

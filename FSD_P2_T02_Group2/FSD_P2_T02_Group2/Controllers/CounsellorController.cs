@@ -85,7 +85,8 @@ namespace FSD_P2_T02_Group2.Controllers
             string session = counsellorID + "-" + userID;
             HttpContext.Session.SetString("roomID", session);
             var projectName = "fir-chat-ukiyo";
-            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/tee/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb db = FirestoreDb.Create(projectName);

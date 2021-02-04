@@ -117,7 +117,7 @@ namespace FSD_P2_T02_Group2.DAL
                     Image = !reader.IsDBNull(6) ? reader.GetString(6) : null,
                     Certificate = !reader.IsDBNull(7) ? reader.GetString(7) : null,
                     DateBirth = reader.GetDateTime(8),
-                    AvgRating = reader.GetFloat(9),
+                    //AvgRating = reader.GetFloat(9),
                     Status = !reader.IsDBNull(10) ? reader.GetString(10) : null
                 });
             }
@@ -150,14 +150,14 @@ namespace FSD_P2_T02_Group2.DAL
                     counsellor.Image = !reader.IsDBNull(6) ? reader.GetString(6) : null;
                     counsellor.Certificate = !reader.IsDBNull(7) ? reader.GetString(7) : null;
                     counsellor.DateBirth = reader.GetDateTime(8).Date;
-                    if (!reader.IsDBNull(9))
-                    {
-                        counsellor.AvgRating = reader.GetFloat(9);
-                    }
-                    else
-                    {
-                        counsellor.AvgRating = null;
-                    }
+                    //if (!reader.IsDBNull(9))
+                    //{
+                    //    counsellor.AvgRating = reader.GetFloat(9);
+                    //}
+                    //else
+                    //{
+                    //    counsellor.AvgRating = null;
+                    //}
                     counsellor.Status = !reader.IsDBNull(10) ? reader.GetString(10) : null;
                 }
             }
@@ -277,8 +277,8 @@ namespace FSD_P2_T02_Group2.DAL
         private FirestoreDb CreateFirestoreDb()
         {
             var projectName = "fir-chat-ukiyo";
-            //var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
-            var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
+            var authFilePath = "/Users/joeya/Downloads/NP_ICT/FSD & P2/fir-chat-ukiyo-firebase-adminsdk.json";
+            //var authFilePath = "/Users/jaxch/Downloads/fir-chat-ukiyo-firebase-adminsdk.json";
             //var authFilePath = "/Users/gekteng/Downloads/fir-chat-ukiyo-firebase-adminsdk.json"; 
             Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", authFilePath);
             FirestoreDb firestoreDb = FirestoreDb.Create(projectName);
